@@ -13,6 +13,9 @@ import logging
 import os
 import pathlib
 import re
+
+# AI helper utils
+from agents.common import ai_helpers
 import tempfile
 from typing import Any, Dict, List, Tuple
 
@@ -26,6 +29,7 @@ PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 BQ_DATASET = os.getenv("BQ_DATASET", "imsa_history")
 BQ_TABLE = os.getenv("BQ_TABLE", "race_analyses")
+USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -139,6 +143,21 @@ def compare_analyses(current: Dict[str, Any], historical: Dict[str, Any]) -> Lis
 
     return insights
 
+
+def _narrative_summary(insights: List[Dict[str, Any]]) -> str | None:
+    """Generate a concise narrative summary of YoY insights via Gemini."""
+    if not USE_AI_ENHANCED or not insights:
+        return None
+    prompt = (
+        "You are a racing data analyst AI. Craft a concise paragraph (<=120 words) summarizing the following year-over-year insights.\n"
+        "Focus on key trends and notable changes.\n\nInsights JSON:\n" + json.dumps(insights, indent=2) + "\n\nSummary:"
+    )
+    try:
+        return ai_helpers.summarize(prompt, temperature=0.5, max_output_tokens=128)
+    except Exception as exc:  # pylint: disable=broad-except
+        LOGGER.warning("Narrative generation failed: %s", exc)
+        return None
+
 # ---------------------------------------------------------------------------
 # Flask application
 # ---------------------------------------------------------------------------
@@ -195,12 +214,17 @@ def handle_request() -> Response:
                 LOGGER.info("No insights generated for %s", analysis_uri)
                 return Response(status=204)
 
+            summary_text = _narrative_summary(insights)
+            output_obj: Dict[str, Any] = {"insights": insights}
+            if summary_text:
+                output_obj["narrative"] = summary_text
+
             # Write insights file
             basename = local_analysis.stem.replace("_results_enhanced", "")
             out_filename = f"{basename}_historical_insights.json"
             local_out = tmp / out_filename
             with local_out.open("w", encoding="utf-8") as fp:
-                json.dump(insights, fp)
+                json.dump(output_obj, fp)
             _gcs_upload(local_out, ANALYZED_DATA_BUCKET, out_filename)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)

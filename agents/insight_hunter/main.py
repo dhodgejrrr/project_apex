@@ -17,6 +17,9 @@ from collections import defaultdict
 from statistics import mean
 from typing import Any, Dict, List
 
+# AI helper utils
+from agents.common import ai_helpers
+
 from flask import Flask, Response, request
 from google.cloud import pubsub_v1, storage
 
@@ -26,6 +29,7 @@ from google.cloud import pubsub_v1, storage
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 VIS_TOPIC_ID = os.getenv("VISUALIZATION_REQUESTS_TOPIC", "visualization-requests")
+USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
 # ----------------------------------------------------------------------------
 # Logging
@@ -264,6 +268,25 @@ def derive_insights(data: Dict[str, Any]) -> List[Dict[str, Any]]:
     return insights
 
 
+def enrich_insights_with_ai(insights: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Add LLM commentary and recommended actions to each insight if enabled."""
+    if not USE_AI_ENHANCED or not insights:
+        return insights
+    prompt = (
+        "You are a professional motorsport strategist AI. For each JSON object representing an insight, "
+        "append two new keys: 'llm_commentary' (brief explanation) and 'recommended_action' (clear next step). "
+        "Return the updated list strictly as JSON with no extra text.\n\n"
+        f"Insights:\n{json.dumps(insights, indent=2)}\n"
+    )
+    try:
+        enriched = ai_helpers.generate_json(prompt)
+        if isinstance(enriched, list):
+            return enriched
+    except Exception as exc:  # pylint: disable=broad-except
+        LOGGER.warning("AI enrichment failed: %s", exc)
+    return insights
+
+
 # ----------------------------------------------------------------------------
 # Flask application
 # ----------------------------------------------------------------------------
@@ -290,6 +313,7 @@ def handle_request() -> Response:
                 analysis_data = json.load(fp)
 
             insights = derive_insights(analysis_data)
+            insights = enrich_insights_with_ai(insights)
 
             # Write insights to file
             basename = pathlib.Path(local_analysis_path).stem.replace("_results_enhanced", "")

@@ -11,12 +11,15 @@ import logging
 import os
 import pathlib
 import tempfile
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+
+# AI helpers
+from agents.common import ai_helpers
 from flask import Flask, Response, request
 from google.cloud import storage
 
@@ -30,6 +33,7 @@ plt.rcParams["figure.dpi"] = 150
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 TEAM_CAR_NUMBER = os.getenv("TEAM_CAR_NUMBER")  # optional override
+USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -164,17 +168,37 @@ def plot_stint_pace_falloff(analysis: Dict[str, Any], car_number: str, output: p
 # Orchestration
 # ---------------------------------------------------------------------------
 
-def generate_all_visuals(analysis: Dict[str, Any], insights: List[Dict[str, Any]], dest_dir: pathlib.Path) -> List[pathlib.Path]:
-    outputs: List[pathlib.Path] = []
-    outputs.append(dest_dir / "pit_stationary_times.png")
-    plot_pit_stationary_times(analysis, outputs[-1])
-    outputs.append(dest_dir / "driver_consistency.png")
-    plot_driver_consistency(analysis, outputs[-1])
+def _generate_caption(plot_path: pathlib.Path, insights: List[Dict[str, Any]]) -> str | None:
+    """Generate a caption via Gemini for a given plot image."""
+    if not USE_AI_ENHANCED:
+        return None
+    prompt = (
+        "You are a data visualization expert. Write a one-sentence caption (max 25 words) for the chart saved as '" + plot_path.name + "'. "
+        "Base your description on the following race insights JSON for context.\n\nInsights:\n" + json.dumps(insights[:10], indent=2) + "\n\nCaption:"
+    )
+    try:
+        return ai_helpers.summarize(prompt, temperature=0.6, max_output_tokens=32)
+    except Exception as exc:  # pylint: disable=broad-except
+        LOGGER.warning("Caption generation failed: %s", exc)
+        return None
+
+
+def generate_all_visuals(analysis: Dict[str, Any], insights: List[Dict[str, Any]], dest_dir: pathlib.Path) -> List[tuple[pathlib.Path, str | None]]:
+    outputs: List[Tuple[pathlib.Path, str | None]] = []
+
+    paths = [dest_dir / "pit_stationary_times.png", dest_dir / "driver_consistency.png"]
+    plot_pit_stationary_times(analysis, paths[0])
+    plot_driver_consistency(analysis, paths[1])
 
     car_num = TEAM_CAR_NUMBER or analysis.get("race_strategy_by_car", [{}])[0].get("car_number", "")
     if car_num:
-        outputs.append(dest_dir / f"stint_pace_car_{car_num}.png")
-        plot_stint_pace_falloff(analysis, car_num, outputs[-1])
+        stint_path = dest_dir / f"stint_pace_car_{car_num}.png"
+        plot_stint_pace_falloff(analysis, car_num, stint_path)
+        paths.append(stint_path)
+
+    for p in paths:
+        caption = _generate_caption(p, insights)
+        outputs.append((p, caption))
     return outputs
 
 # ---------------------------------------------------------------------------
@@ -204,14 +228,22 @@ def handle_request() -> Response:
             analysis_data = json.loads(local_analysis.read_text())
             insights_data = json.loads(local_insights.read_text())
 
-            generate_all_visuals(analysis_data, insights_data, tmp)
+            plot_info = generate_all_visuals(analysis_data, insights_data, tmp)
 
             # Upload all PNGs in tmp
             basename = local_analysis.stem.replace("_results_enhanced", "")
             uploaded = []
-            for png in tmp.glob("*.png"):
-                dest_blob = f"{basename}/visuals/{png.name}"
-                uploaded.append(_gcs_upload(png, dest_blob))
+            captions: Dict[str, str] = {}
+            for p, cap in plot_info:
+                dest_blob = f"{basename}/visuals/{p.name}"
+                uploaded.append(_gcs_upload(p, dest_blob))
+                if cap:
+                    captions[p.name] = cap
+            # upload captions json if any
+            if captions:
+                cap_file = tmp / "captions.json"
+                json.dump(captions, cap_file.open("w", encoding="utf-8"))
+                _gcs_upload(cap_file, f"{basename}/visuals/captions.json")
             LOGGER.info("Uploaded visuals: %s", uploaded)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)

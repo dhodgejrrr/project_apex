@@ -11,6 +11,9 @@ import logging
 import os
 import pathlib
 import tempfile
+
+# AI helpers
+from agents.common import ai_helpers
 from typing import Any, Dict, List
 
 from flask import Flask, Response, request
@@ -24,6 +27,7 @@ PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 MODEL_NAME = os.getenv("VERTEX_MODEL", "gemini-1.0-pro")
+USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -60,6 +64,29 @@ def _gcs_upload(local_path: pathlib.Path, dest_blob: str) -> str:
     return f"gs://{ANALYZED_DATA_BUCKET}/{dest_blob}"
 
 # ---------------------------------------------------------------------------
+# Insight selection
+
+def _select_key_insights(insights: List[Dict[str, Any]], limit: int = 8) -> List[Dict[str, Any]]:
+    """Deduplicate by type and prioritise Historical & Strategy categories."""
+    selected: List[Dict[str, Any]] = []
+    seen_types: set[str] = set()
+    def _priority(ins):
+        cat = ins.get("category", "")
+        if cat == "Historical Comparison":
+            return 0
+        if "Strategy" in cat:
+            return 1
+        return 2
+    sorted_in = sorted(insights, key=_priority)
+    for ins in sorted_in:
+        if ins.get("type") in seen_types:
+            continue
+        selected.append(ins)
+        seen_types.add(ins.get("type"))
+        if len(selected) >= limit:
+            break
+    return selected
+
 # Gemini helper
 # ---------------------------------------------------------------------------
 
@@ -69,26 +96,24 @@ def _init_gemini() -> None:
 
 def _gen_tweets(insights: List[Dict[str, Any]], max_posts: int = 5) -> List[str]:
     """Call Gemini to generate up to `max_posts` social media posts."""
-    try:
-        _init_gemini()
-        model = aiplatform.TextGenerationModel.from_pretrained(MODEL_NAME)
+    key_ins = _select_key_insights(insights)
+    if USE_AI_ENHANCED and key_ins:
         prompt = (
             "You are a social media manager for a professional race team. "
-            "Create up to 5 engaging tweets based on these race insights. "
-            "Include relevant hashtags like #IMSA and emojis where appropriate.\n\n"
-            f"Insights:\n{json.dumps(insights, indent=2)}\n"
+            "Create between 3 and 5 engaging tweets based on the JSON insights. "
+            "Each tweet should be standalone, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
+            "Return ONLY a JSON array of strings.\n\nInsights JSON:\n" + json.dumps(key_ins, indent=2)
         )
-        response = model.predict(prompt, temperature=0.7, max_output_tokens=256)
-        # Assume response is a string with one tweet per line
-        tweets = [line.strip("-• ") for line in response.text.split("\n") if line.strip()]
-        return tweets[:max_posts]
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.warning("Gemini generation failed (%s). Falling back to template.", exc)
-        # Fallback: simple templated messages
-        fallback = []
-        for ins in insights[:max_posts]:
-            fallback.append(f"🏁 {ins.get('type')}: {ins.get('details')} #IMSA #ProjectApex")
-        return fallback
+        try:
+            tweets = ai_helpers.generate_json(prompt, temperature=0.7, max_output_tokens=256)
+            if isinstance(tweets, list):
+                return tweets[:max_posts]
+            LOGGER.warning("Unexpected tweets JSON: %s", tweets)
+        except Exception as exc:  # pylint: disable=broad-except
+            LOGGER.warning("AI tweet generation failed: %s", exc)
+    # fallback template
+    fallback = [f"🏁 {ins.get('type')}: {ins.get('details')} #IMSA #ProjectApex" for ins in key_ins[:max_posts]]
+    return fallback
 
 # ---------------------------------------------------------------------------
 # Flask application
