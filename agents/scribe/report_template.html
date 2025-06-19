@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Apex Race Report - {{ event_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        .section { margin-top: 30px; }
+        ul { list-style-type: disc; margin-left: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+
+<h1>Project Apex Race Report - {{ event_name }}</h1>
+
+<div class="section">
+    <h2>Executive Summary</h2>
+    <ul>
+        {% for insight in insights if insight.category == 'Historical Comparison' %}
+        <li><strong>{{ insight.type }}</strong> – {{ insight.details }}</li>
+        {% else %}
+        <li>No historical comparison insights available.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Tactical Insights</h2>
+    <ul>
+        {% for insight in insights if insight.category != 'Historical Comparison' %}
+        <li><strong>{{ insight.type }}</strong> – {{ insight.details }}</li>
+        {% else %}
+        <li>No tactical insights available.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

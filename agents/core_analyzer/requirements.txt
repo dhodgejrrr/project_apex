@@ -1,0 +1,6 @@
+Flask>=2.3.0
+gunicorn>=21.2.0
+pandas>=2.2.0
+numpy>=1.26.0
+google-cloud-storage>=2.16.0
+google-cloud-pubsub>=2.21.0
