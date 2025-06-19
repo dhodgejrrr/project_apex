@@ -1,5 +1,309 @@
 [
-  "\ud83c\udfc1 Stellar stint pace keeps us in the hunt! \ud83d\udcaa #IMSA #ProjectApex",
-  "Strategy pays off \u2013 minimal tyre deg and lightning pit work \ud83d\ude80 #RaceDay",
-  "Consistency is king; watch us climb the charts! \ud83d\udcc8 #Motorsport"
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "10",
+    "details": "Stop #4 was 1400.4s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "10",
+    "details": "Stop #9 was 406.2s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "10",
+    "details": "Driver changes cost an average of -197.9s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "14",
+    "details": "Stop #3 was 411.4s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "14",
+    "details": "Driver changes cost an average of -548.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "15",
+    "details": "Driver changes cost an average of 16.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "16",
+    "details": "Driver changes cost an average of -1.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "17",
+    "details": "Driver changes cost an average of 17.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "18",
+    "details": "Driver changes cost an average of -19.2s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "19",
+    "details": "Driver changes cost an average of -2.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "2",
+    "details": "Driver changes cost an average of 38.9s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "27",
+    "details": "Stop #1 was 41.1s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "27",
+    "details": "Driver changes cost an average of 37.7s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "28",
+    "details": "Driver changes cost an average of 3.7s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "31",
+    "details": "Stop #6 was 1814.0s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "31",
+    "details": "Driver changes cost an average of 2116.3s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "33",
+    "details": "Driver changes cost an average of 16.0s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "37",
+    "details": "Driver changes cost an average of 32.3s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "39",
+    "details": "Driver changes cost an average of -0.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "44",
+    "details": "Driver changes cost an average of 8.0s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "46",
+    "details": "Driver changes cost an average of 13.8s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "5",
+    "details": "Stop #6 was 1949.7s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "5",
+    "details": "Driver changes cost an average of -464.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "52",
+    "details": "Stop #3 was 323.6s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "52",
+    "details": "Driver changes cost an average of -151.4s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "53",
+    "details": "Driver changes cost an average of -9.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "57",
+    "details": "Driver changes cost an average of 7.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "59",
+    "details": "Driver changes cost an average of 5.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "64",
+    "details": "Driver changes cost an average of 21.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "67",
+    "details": "Stop #4 was 89.5s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "67",
+    "details": "Driver changes cost an average of -52.4s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "7",
+    "details": "Stop #1 was 1286.7s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "7",
+    "details": "Driver changes cost an average of -558.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "71",
+    "details": "Driver changes cost an average of 33.9s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "72",
+    "details": "Stop #3 was 1325.4s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "72",
+    "details": "Driver changes cost an average of -483.7s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "76",
+    "details": "Driver changes cost an average of 7.7s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "89",
+    "details": "Driver changes cost an average of 29.6s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "9",
+    "details": "Driver changes cost an average of 27.2s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "93",
+    "details": "Driver changes cost an average of 17.1s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "95",
+    "details": "Driver changes cost an average of 7.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "96",
+    "details": "Stop #5 was 458.6s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "96",
+    "details": "Driver changes cost an average of -194.0s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "98",
+    "details": "Driver changes cost an average of 1.5s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "99",
+    "details": "Stop #2 was 55.8s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Pit Delta Outlier",
+    "car_number": "99",
+    "details": "Stop #6 was 53.6s slower than team average."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Driver Change Cost",
+    "car_number": "99",
+    "details": "Driver changes cost an average of 4.3s more stationary time."
+  },
+  {
+    "category": "Pit Stop Intelligence",
+    "type": "Stationary Time Champion",
+    "car_number": "19",
+    "details": "Fastest crew on pit road with an average stationary time of 54.2s."
+  },
+  {
+    "category": "Performance",
+    "type": "Consistency King",
+    "car_number": "44",
+    "driver_name": null,
+    "details": "Most consistent driver with a standard deviation of 1.248s on clean, fuel-corrected laps."
+  },
+  {
+    "category": "Tire Management",
+    "type": "Tire-Killer Alert",
+    "manufacturer": "McLaren",
+    "details": "McLaren shows the highest tire degradation rate (avg coeff 0.0179)."
+  },
+  {
+    "category": "Driver Performance",
+    "type": "Largest Teammate Pace Gap",
+    "car_number": "64",
+    "details": "Car #64 has the largest pace delta (6.04s) between its drivers."
+  }
 ]

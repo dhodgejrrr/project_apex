@@ -14,6 +14,9 @@ Usage:
 """
 from __future__ import annotations
 
+import dotenv
+dotenv.load_dotenv()
+
 import argparse
 import json
 import logging
@@ -21,38 +24,54 @@ import pathlib
 import shutil
 import sys
 import tempfile
+import contextlib
 from types import SimpleNamespace
 from typing import List, Dict, Any, Sequence
 from unittest import mock
 
-# Import dry_run_harness for AI & GCP stubs (does NOT override pandas/numpy)
-import dry_run_harness  # noqa: F401  pylint: disable=unused-import
-from dry_run_harness import _mock_generate_json, _mock_summarize
-
-# Project modules
-from agents.core_analyzer.imsa_analyzer import IMSADataAnalyzer  # type: ignore
-import agents.insight_hunter.main as insight_hunter
-import agents.visualizer.main as visualizer
-import agents.scribe.main as scribe
-import agents.publicist.main as publicist
-from agents.common import ai_helpers
+import dry_run_harness
 
 
 LOGGER = logging.getLogger("full_pipeline")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 
-def run_pipeline(csv_path: pathlib.Path, pit_path: pathlib.Path, out_dir: pathlib.Path) -> None:  # noqa: D401
+def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: pathlib.Path | None, out_dir: pathlib.Path, live_ai: bool = False) -> None:  # noqa: D401
     """Run the entire local pipeline and write outputs into `out_dir`."""
+
+    if not live_ai:
+        dry_run_harness.activate()
+    else:
+        LOGGER.warning("--- RUNNING WITH LIVE VERTEX AI – THIS WILL INCUR COSTS ---")
+
+    # Must import agent modules AFTER harness is potentially activated
+    from agents.core_analyzer.imsa_analyzer import IMSADataAnalyzer  # type: ignore
+    import agents.insight_hunter.main as insight_hunter
+    import agents.visualizer.main as visualizer
+    import agents.scribe.main as scribe
+    import agents.publicist.main as publicist
+    from agents.common import ai_helpers
+    from dry_run_harness import _mock_generate_json, _mock_summarize
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    with mock.patch.object(ai_helpers, "summarize", _mock_summarize), mock.patch.object(
-        ai_helpers, "generate_json", _mock_generate_json
-    ):
+    # Use mock context manager for AI functions if not in live mode
+    mock_context = contextlib.nullcontext()
+    if not live_ai:
+        mock_context = mock.patch.multiple(
+            ai_helpers,
+            summarize=_mock_summarize,
+            generate_json=_mock_generate_json,
+        )
+
+    with mock_context:
         # 1. Core analysis
         LOGGER.info("Running IMSADataAnalyzer …")
-        analyzer = IMSADataAnalyzer(str(csv_path), str(pit_path))
+        analyzer = IMSADataAnalyzer(
+            str(csv_path),
+            str(pit_json),
+            str(fuel_json) if fuel_json else None,
+        )
         analysis_data: Dict[str, Any] = analyzer.run_all_analyses()
         (out_dir / "analysis_enhanced.json").write_text(json.dumps(analysis_data, indent=2))
 
@@ -98,18 +117,29 @@ def run_pipeline(csv_path: pathlib.Path, pit_path: pathlib.Path, out_dir: pathli
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run Project Apex pipeline locally.")
     parser.add_argument("--csv", type=pathlib.Path, default=pathlib.Path("agents/test_data/race.csv"), help="Race CSV file path.")
-    parser.add_argument("--pits", type=pathlib.Path, default=pathlib.Path("agents/test_data/fuel.json"), help="Pit/fuel JSON file path.")
+    parser.add_argument("--pit_json", type=pathlib.Path, default=pathlib.Path("agents/test_data/pit.json"), help="Pit-stop JSON file path.")
+    parser.add_argument(
+        "--fuel_caps",
+        "--pits",  # backward-compat alias
+        dest="fuel_caps",
+        type=pathlib.Path,
+        default=pathlib.Path("agents/test_data/fuel.json"),
+        help="Fuel capacity JSON file path (optional).",
+        nargs="?",
+    )
     parser.add_argument("--out_dir", type=pathlib.Path, default=pathlib.Path("out_local"), help="Output directory.")
+    parser.add_argument("--live-ai", action="store_true", help="Use live Vertex AI APIs instead of mock data.")
     return parser.parse_args(argv)
 
 
 def main(argv: Sequence[str] | None = None) -> None:
     args = parse_args(argv)
-    if not args.csv.exists() or not args.pits.exists():
-        sys.exit("CSV or Pits file not found.")
+    if not args.csv.exists() or not args.pit_json.exists():
+        sys.exit("CSV or pit JSON file not found.")
+    fuel_json_path = args.fuel_caps if args.fuel_caps and args.fuel_caps.exists() else None
     if args.out_dir.exists():
         shutil.rmtree(args.out_dir)
-    run_pipeline(args.csv, args.pits, args.out_dir)
+    run_pipeline(args.csv, args.pit_json, fuel_json_path, args.out_dir, live_ai=args.live_ai)
 
 
 if __name__ == "__main__":

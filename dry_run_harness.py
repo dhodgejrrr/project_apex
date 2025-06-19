@@ -17,110 +17,130 @@ from types import SimpleNamespace
 from typing import Any, Dict, List
 from unittest import mock
 
-# ---------------------------------------------------------------------------
-# Google API stubs (prevents import errors when google-cloud libs are absent)
-# ---------------------------------------------------------------------------
-import types, sys
-_dummy_google = types.ModuleType("google")
-_dummy_google_cloud = types.ModuleType("google.cloud")
-
 class _MockModel:
-    @staticmethod
-    def from_pretrained(_name: str):
-        return _MockModel()
+    def __init__(self, *_, **__):
+        pass
 
     def predict(self, _prompt: str, **_kwargs):
         # Return object with .text attribute to mimic Vertex response
         return SimpleNamespace(text="{}")
 
-_dummy_aiplatform = types.ModuleType("google.cloud.aiplatform")
-_dummy_aiplatform.init = lambda *_, **__: None
-_dummy_aiplatform.TextGenerationModel = _MockModel
+    def generate_content(self, *_, **__):
+        return self.predict("")
 
-sys.modules.setdefault("google", _dummy_google)
-sys.modules.setdefault("google.cloud", _dummy_google_cloud)
-sys.modules.setdefault("google.cloud.aiplatform", _dummy_aiplatform)
+def activate():
+    """Activates all mock patches for an offline run."""
+    # ---------------------------------------------------------------------------
+    # Google API stubs (prevents import errors when google-cloud libs are absent)
+    # ---------------------------------------------------------------------------
+    import types, sys
+    _dummy_google = types.ModuleType("google")
+    _dummy_google_cloud = types.ModuleType("google.cloud")
 
-# ---------------------------------------------------------------------------
-# Additional dependency stubs
-# ---------------------------------------------------------------------------
-from types import ModuleType
+    _dummy_aiplatform = types.ModuleType("google.cloud.aiplatform")
+    _dummy_aiplatform.init = lambda *_, **__: None
 
-def _stub_module(fullname: str, attrs: Dict[str, Any] | None = None):
-    mod = ModuleType(fullname)
-    if attrs:
-        for k, v in attrs.items():
-            setattr(mod, k, v)
-    sys.modules.setdefault(fullname, mod)
-    return mod
+    _dummy_vertexai = types.ModuleType("vertexai")
+    _dummy_vertexai_genmodels = types.ModuleType("vertexai.generative_models")
+    setattr(_dummy_vertexai_genmodels, "GenerativeModel", _MockModel)
+    setattr(_dummy_vertexai_genmodels, "GenerationConfig", lambda **_: None)
 
-# Flask minimal stub
-class _FlaskStub:
-    def __init__(self, *_, **__):
-        pass
-    def route(self, _path: str, **__):
-        def decorator(func):
-            return func
-        return decorator
+    sys.modules.setdefault("google", _dummy_google)
+    sys.modules.setdefault("google.cloud", _dummy_google_cloud)
+    sys.modules.setdefault("google.cloud.aiplatform", _dummy_aiplatform)
+    sys.modules.setdefault("vertexai", _dummy_vertexai)
+    sys.modules.setdefault("vertexai.generative_models", _dummy_vertexai_genmodels)
 
-_stub_module("flask", {
-    "Flask": _FlaskStub,
-    "Response": object,
-    "request": SimpleNamespace(get_json=lambda *_, **__: {}),
-})
+    # ---------------------------------------------------------------------------
+    # Additional dependency stubs
+    # ---------------------------------------------------------------------------
+    from types import ModuleType
 
-# Google Cloud stubs
-_stub_module("google.cloud.storage", {"Client": lambda *_, **__: None})
-_stub_module("google.cloud.bigquery", {"Client": lambda *_, **__: None, "ScalarQueryParameter": object, "QueryJobConfig": object})
+    def _stub_module(fullname: str, attrs: Dict[str, Any] | None = None):
+        mod = ModuleType(fullname)
+        if attrs:
+            for k, v in attrs.items():
+                setattr(mod, k, v)
+        sys.modules.setdefault(fullname, mod)
+        return mod
 
-# Matplotlib / seaborn / pandas / numpy stubs
-# seaborn stub with set_theme
-seaborn_stub = _stub_module("seaborn")
-setattr(seaborn_stub, "set_theme", lambda *_, **__: None)
-setattr(seaborn_stub, "barplot", lambda *_, **__: None)
+    # Flask minimal stub
+    class _FlaskStub:
+        def __init__(self, *_, **__):
+            pass
+        def route(self, _path: str, **__):
+            def decorator(func):
+                return func
+            return decorator
 
-# matplotlib
-mat_stub = _stub_module("matplotlib")
-plt_stub = _stub_module("matplotlib.pyplot")
-plt_stub.rcParams = {}
-for fname in [
-    "figure",
-    "bar",
-    "plot",
-    "close",
-    "savefig",
-    "text",
-    "xlabel",
-    "ylabel",
-    "title",
-    "legend",
-    "tight_layout",
-]:
-    setattr(plt_stub, fname, lambda *_, **__: None)
-setattr(plt_stub, "gca", lambda: SimpleNamespace(invert_yaxis=lambda: None))
+    _stub_module("flask", {
+        "Flask": _FlaskStub,
+        "Response": object,
+        "request": SimpleNamespace(get_json=lambda *_, **__: {}),
+    })
 
-# numpy & pandas – only stub if not installed
-try:
-    import numpy  # type: ignore  # noqa: F401
-except ModuleNotFoundError:  # pragma: no cover
-    _stub_module("numpy", {"linspace": lambda *_, **__: []})
+    # Google Cloud stubs
+    _stub_module("google.cloud.storage", {"Client": lambda *_, **__: None})
+    _stub_module("google.cloud.bigquery", {"Client": lambda *_, **__: None, "ScalarQueryParameter": object, "QueryJobConfig": object})
 
-try:
-    import pandas  # type: ignore  # noqa: F401
-except ModuleNotFoundError:  # pragma: no cover
-    _stub_module("pandas", {"DataFrame": lambda *_, **__: object, "errors": SimpleNamespace(PerformanceWarning=Warning)})
+    # Matplotlib / seaborn / pandas / numpy stubs
+    # seaborn stub with set_theme
+    seaborn_stub = _stub_module("seaborn")
+    setattr(seaborn_stub, "set_theme", lambda *_, **__: None)
+    setattr(seaborn_stub, "barplot", lambda *_, **__: None)
 
-# Jinja2 & WeasyPrint stubs
-_stub_module("jinja2", {"Environment": lambda *_, **__: SimpleNamespace(get_template=lambda _name: SimpleNamespace(render=lambda **__: "<html></html>")),
-                          "FileSystemLoader": lambda *_, **__: None,
-                          "select_autoescape": lambda *_: None})
-class _HTMLStub:
-    def __init__(self, *_, **__):
-        pass
-    def write_pdf(self, *_: Any, **__: Any):
-        return None
+    # matplotlib
+    mat_stub = _stub_module("matplotlib")
+    plt_stub = _stub_module("matplotlib.pyplot")
+    plt_stub.rcParams = {}
+    import pathlib as _pl
 
-_stub_module("weasyprint", {"HTML": _HTMLStub})
+    def _mock_savefig(path, *_, **__):
+        try:
+            p = _pl.Path(path)
+            p.parent.mkdir(parents=True, exist_ok=True)
+            # create tiny placeholder file if not exists
+            if not p.exists():
+                p.write_bytes(b"PNG")
+        except Exception:  # pragma: no cover
+            pass
+
+    for fname in [
+        "figure",
+        "bar",
+        "plot",
+        "close",
+        "text",
+        "xlabel",
+        "ylabel",
+        "title",
+        "legend",
+        "tight_layout",
+    ]:
+        setattr(plt_stub, fname, lambda *_, **__: None)
+    setattr(plt_stub, "savefig", _mock_savefig)
+    setattr(plt_stub, "gca", lambda: SimpleNamespace(invert_yaxis=lambda: None))
+
+    # numpy & pandas – only stub if not installed
+    try:
+        import numpy  # type: ignore  # noqa: F401
+    except ModuleNotFoundError:  # pragma: no cover
+        _stub_module("numpy", {"linspace": lambda *_, **__: []})
+
+    try:
+        import pandas  # type: ignore  # noqa: F401
+    except ModuleNotFoundError:  # pragma: no cover
+        _stub_module("pandas", {"DataFrame": lambda *_, **__: object, "errors": SimpleNamespace(PerformanceWarning=Warning)})
+
+    # Jinja2 & WeasyPrint stubs
+    _stub_module("jinja2", {"Environment": lambda *_, **__: SimpleNamespace(get_template=lambda _name: SimpleNamespace(render=lambda **__: "<html></html>")),
+                              "FileSystemLoader": lambda *_, **__: None,
+                              "select_autoescape": lambda *_: None})
+    class _HTMLStub:
+        def __init__(self, *_, **__):
+            pass
+        def write_pdf(self, *args: Any, **__: Any):
+            """Create a tiny placeholder PDF so downstream code sees a real file."""
 
 # ---------------------------------------------------------------------------
 # Mock AI helper functions
@@ -133,24 +153,41 @@ def _mock_summarize(prompt: str, **_: Any) -> str:  # noqa: D401
 
 def _mock_generate_json(prompt: str, **_: Any):  # noqa: D401
     """Return canned JSON structures based on keywords in the prompt."""
-    if "executive summary" in prompt.lower():
+    low = prompt.lower()
+    if "executive summary" in low:
         return {
             "executive_summary": (
-                "Despite stiff competition, the team demonstrated superior pace in critical phases, "
+                "Despite stiff competition, the team demonstrated superior pace in key phases, "
                 "leveraging lower tyre degradation to secure consistent lap times."
             ),
             "tactical_recommendations": [
                 "Focus on maintaining tyre temperature in opening stints.",
                 "Explore undercut opportunities during early cautions.",
-                "Increase fuel-corrected pace in final third to pressure rivals.",
+                "Increase fuel-corrected pace in the final third to pressure rivals.",
             ],
         }
-    # otherwise assume tweet generation
-    return [
-        "🏁 Stellar stint pace keeps us in the hunt! 💪 #IMSA #ProjectApex",
-        "Strategy pays off – minimal tyre deg and lightning pit work 🚀 #RaceDay",
-        "Consistency is king; watch us climb the charts! 📈 #Motorsport",
-    ]
+    if "create between 3 and 5 engaging tweets" in low or "json array of strings" in low:
+        return [
+            "🏁 Stellar stint pace keeps us in the hunt! 💪 #IMSA #ProjectApex",
+            "Strategy pays off – minimal tyre deg and lightning pit work 🚀 #RaceDay",
+            "Consistency is king; watch us climb the charts! 📈 #Motorsport",
+        ]
+    import re
+    if "append two new keys" in low:  # insight enrichment
+        match = re.search(r"Insights:\s*(\[.*?\])\s*$", prompt, re.S)
+        if not match:
+            return []
+        try:
+            insights = json.loads(match.group(1))
+        except Exception:
+            return []
+        for ins in insights:
+            if isinstance(ins, dict):
+                ins["llm_commentary"] = "[MOCK COMMENTARY]"
+                ins["recommended_action"] = "[MOCK ACTION]"
+        return insights
+    # default fallback
+    return []
 
 
 # ---------------------------------------------------------------------------

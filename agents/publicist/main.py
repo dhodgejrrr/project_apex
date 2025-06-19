@@ -100,21 +100,30 @@ def _init_gemini() -> None:
 def _gen_tweets(insights: List[Dict[str, Any]], max_posts: int = 5) -> List[str]:
     """Call Gemini to generate up to `max_posts` social media posts."""
     key_ins = _select_key_insights(insights)
-    if USE_AI_ENHANCED and key_ins:
+    if not key_ins:
+        return []
+
+    if USE_AI_ENHANCED:
         prompt = (
             "You are a social media manager for a professional race team. "
-            "Create between 3 and 5 engaging tweets based on the JSON insights. "
-            "Each tweet should be standalone, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
-            "Return ONLY a JSON array of strings.\n\nInsights JSON:\n" + json.dumps(key_ins, indent=2)
+            "Create between 3 and 5 engaging tweets based on the provided JSON data. "
+            "Each tweet must be a standalone string, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
+            "Your response MUST be a valid JSON array of strings, like [\"tweet1\", \"tweet2\"]. Do not return anything else.\n\n"
+            "Insights JSON:\n" + json.dumps(key_ins, indent=2)
         )
         try:
-            tweets = ai_helpers.generate_json(prompt, temperature=0.7, max_output_tokens=256)
-            if isinstance(tweets, list):
+            # Slightly higher temp for creativity, more tokens for safety
+            tweets = ai_helpers.generate_json(prompt, temperature=0.8, max_output_tokens=512)
+            if isinstance(tweets, list) and all(isinstance(t, str) for t in tweets):
                 return tweets[:max_posts]
-            LOGGER.warning("Unexpected tweets JSON: %s", tweets)
+
+            LOGGER.warning("AI response was not a list of strings: %s", tweets)
+            return []  # Return empty list on malformed AI response
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.warning("AI tweet generation failed: %s", exc)
-    # fallback template
+            return []  # Return empty list on API error
+
+    # Fallback template only if AI is not used
     fallback = [f"🏁 {ins.get('type')}: {ins.get('details')} #IMSA #ProjectApex" for ins in key_ins[:max_posts]]
     return fallback
 

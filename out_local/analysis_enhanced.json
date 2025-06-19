@@ -3260,9 +3260,9 @@
   "race_strategy_by_car": [
     {
       "car_number": "10",
-      "total_pit_time": "24:21.545",
-      "average_pit_time": "2:26.154",
-      "total_pit_time_minus_travel": "9:26.207",
+      "total_pit_time": "48:30.794",
+      "average_pit_time": "4:51.079",
+      "total_pit_time_minus_travel": "42:15.994",
       "total_pit_stops": 10,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -3420,72 +3420,72 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "4:20.840",
-          "stationary_time": "3:35.840",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "2:37.461",
+          "stationary_time": "1:52.461",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 34,
-          "total_pit_lane_time": "1:47.414",
-          "stationary_time": "1:02.414",
+          "lap_number_entry": 33,
+          "total_pit_lane_time": "26.366",
+          "stationary_time": "-18.634",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 35,
-          "total_pit_lane_time": "1:59.538",
-          "stationary_time": "1:14.538",
+          "lap_number_entry": 34,
+          "total_pit_lane_time": "27.039",
+          "stationary_time": "-17.961",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 37,
-          "total_pit_lane_time": "2:11.268",
-          "stationary_time": "1:26.268",
+          "lap_number_entry": 36,
+          "total_pit_lane_time": "28:11.512",
+          "stationary_time": "27:26.512",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 40,
-          "total_pit_lane_time": "1:47.716",
-          "stationary_time": "1:02.716",
+          "lap_number_entry": 39,
+          "total_pit_lane_time": "27.599",
+          "stationary_time": "-17.401",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 65,
-          "total_pit_lane_time": "2:43.866",
-          "stationary_time": "1:58.866",
+          "lap_number_entry": 64,
+          "total_pit_lane_time": "1:26.626",
+          "stationary_time": "41.626",
           "driver_change": false
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "3:11.960",
-          "stationary_time": "2:26.960",
-          "driver_change": false
-        },
-        {
-          "stop_number": 8,
-          "lap_number_entry": 77,
-          "total_pit_lane_time": "1:54.294",
-          "stationary_time": "1:09.294",
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:48.081",
+          "stationary_time": "1:03.081",
           "driver_change": true
         },
         {
+          "stop_number": 8,
+          "lap_number_entry": 76,
+          "total_pit_lane_time": "23.796",
+          "stationary_time": "-21.204",
+          "driver_change": false
+        },
+        {
           "stop_number": 9,
-          "lap_number_entry": 80,
-          "total_pit_lane_time": "1:42.119",
-          "stationary_time": "57.119",
+          "lap_number_entry": 79,
+          "total_pit_lane_time": "11:37.264",
+          "stationary_time": "10:52.264",
           "driver_change": false
         },
         {
           "stop_number": 10,
-          "lap_number_entry": 88,
-          "total_pit_lane_time": "2:42.530",
-          "stationary_time": "1:57.530",
+          "lap_number_entry": 87,
+          "total_pit_lane_time": "1:05.050",
+          "stationary_time": "20.050",
           "driver_change": false
         }
       ]
@@ -3528,9 +3528,9 @@
     },
     {
       "car_number": "13",
-      "total_pit_time": "5:28.830",
-      "average_pit_time": "1:49.610",
-      "total_pit_time_minus_travel": "1:06.447",
+      "total_pit_time": "4:02.701",
+      "average_pit_time": "1:20.900",
+      "total_pit_time_minus_travel": "1:47.701",
       "total_pit_stops": 3,
       "total_driver_changes": 3,
       "driver_change_details": [
@@ -3618,33 +3618,33 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:18.044",
-          "stationary_time": "1:33.044",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:15.804",
+          "stationary_time": "30.804",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "1:35.368",
-          "stationary_time": "50.368",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:24.068",
+          "stationary_time": "39.068",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "1:35.418",
-          "stationary_time": "50.418",
-          "driver_change": false
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "1:22.829",
+          "stationary_time": "37.829",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "14",
-      "total_pit_time": "12:25.880",
-      "average_pit_time": "4:08.627",
-      "total_pit_time_minus_travel": "8:03.738",
-      "total_pit_stops": 3,
+      "total_pit_time": "19:24.472",
+      "average_pit_time": "4:51.118",
+      "total_pit_time_minus_travel": "16:24.472",
+      "total_pit_stops": 4,
       "total_driver_changes": 3,
       "driver_change_details": [
         {
@@ -3732,32 +3732,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "3:15.948",
-          "stationary_time": "2:30.948",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:20.637",
+          "stationary_time": "35.637",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "2:46.999",
-          "stationary_time": "2:01.999",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:30.559",
+          "stationary_time": "45.559",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 126,
-          "total_pit_lane_time": "6:22.933",
-          "stationary_time": "5:37.933",
+          "lap_number_entry": 114,
+          "total_pit_lane_time": "11:42.473",
+          "stationary_time": "10:57.473",
           "driver_change": false
+        },
+        {
+          "stop_number": 4,
+          "lap_number_entry": 125,
+          "total_pit_lane_time": "4:50.803",
+          "stationary_time": "4:05.803",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "15",
-      "total_pit_time": "8:43.059",
-      "average_pit_time": "2:54.353",
-      "total_pit_time_minus_travel": "4:09.736",
+      "total_pit_time": "3:15.944",
+      "average_pit_time": "1:05.315",
+      "total_pit_time_minus_travel": "1:04.404",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -3835,32 +3842,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 2,
-          "total_pit_lane_time": "3:08.194",
-          "stationary_time": "2:23.194",
+          "lap_number_entry": 1,
+          "total_pit_lane_time": "1:17.996",
+          "stationary_time": "32.996",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:55.242",
-          "stationary_time": "2:10.242",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:16.408",
+          "stationary_time": "31.408",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 38,
-          "total_pit_lane_time": "2:39.623",
-          "stationary_time": "1:54.623",
+          "lap_number_entry": 37,
+          "total_pit_lane_time": "41.540",
+          "stationary_time": "-3.460",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "16",
-      "total_pit_time": "8:09.442",
-      "average_pit_time": "2:43.147",
-      "total_pit_time_minus_travel": "3:43.761",
+      "total_pit_time": "4:15.954",
+      "average_pit_time": "1:25.318",
+      "total_pit_time_minus_travel": "2:00.954",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -3938,32 +3945,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:48.803",
-          "stationary_time": "2:03.803",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:22.924",
+          "stationary_time": "37.924",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 71,
-          "total_pit_lane_time": "2:38.823",
-          "stationary_time": "1:53.823",
-          "driver_change": false
+          "lap_number_entry": 70,
+          "total_pit_lane_time": "1:24.257",
+          "stationary_time": "39.257",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 109,
-          "total_pit_lane_time": "2:41.816",
-          "stationary_time": "1:56.816",
+          "lap_number_entry": 108,
+          "total_pit_lane_time": "1:28.773",
+          "stationary_time": "43.773",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "17",
-      "total_pit_time": "7:58.054",
-      "average_pit_time": "2:39.351",
-      "total_pit_time_minus_travel": "3:34.221",
+      "total_pit_time": "4:03.969",
+      "average_pit_time": "1:21.323",
+      "total_pit_time_minus_travel": "1:48.969",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4041,32 +4048,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:35.172",
-          "stationary_time": "1:50.172",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:09.774",
+          "stationary_time": "24.774",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 75,
-          "total_pit_lane_time": "2:49.996",
-          "stationary_time": "2:04.996",
-          "driver_change": false
+          "lap_number_entry": 74,
+          "total_pit_lane_time": "1:32.996",
+          "stationary_time": "47.996",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "2:32.886",
-          "stationary_time": "1:47.886",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:21.199",
+          "stationary_time": "36.199",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "18",
-      "total_pit_time": "5:20.446",
-      "average_pit_time": "1:46.815",
-      "total_pit_time_minus_travel": "53.677",
+      "total_pit_time": "4:44.538",
+      "average_pit_time": "1:34.846",
+      "total_pit_time_minus_travel": "2:29.538",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4145,32 +4152,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "1:41.761",
-          "stationary_time": "56.761",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:22.049",
+          "stationary_time": "37.049",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:36.454",
-          "stationary_time": "51.454",
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:55.275",
+          "stationary_time": "1:10.275",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 118,
-          "total_pit_lane_time": "2:02.231",
-          "stationary_time": "1:17.231",
+          "lap_number_entry": 117,
+          "total_pit_lane_time": "1:27.214",
+          "stationary_time": "42.214",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "19",
-      "total_pit_time": "4:57.733",
-      "average_pit_time": "1:39.244",
-      "total_pit_time_minus_travel": "35.051",
+      "total_pit_time": "4:14.873",
+      "average_pit_time": "1:24.958",
+      "total_pit_time_minus_travel": "1:59.873",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4248,32 +4255,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "1:47.171",
-          "stationary_time": "1:02.171",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:23.236",
+          "stationary_time": "38.236",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 73,
-          "total_pit_lane_time": "1:35.550",
-          "stationary_time": "50.550",
+          "lap_number_entry": 72,
+          "total_pit_lane_time": "1:25.002",
+          "stationary_time": "40.002",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 113,
-          "total_pit_lane_time": "1:35.012",
-          "stationary_time": "50.012",
+          "lap_number_entry": 112,
+          "total_pit_lane_time": "1:26.635",
+          "stationary_time": "41.635",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "2",
-      "total_pit_time": "15:46.668",
-      "average_pit_time": "2:15.238",
-      "total_pit_time_minus_travel": "5:28.372",
+      "total_pit_time": "7:48.678",
+      "average_pit_time": "1:06.954",
+      "total_pit_time_minus_travel": "3:16.755",
       "total_pit_stops": 7,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4394,60 +4401,60 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 30,
-          "total_pit_lane_time": "2:34.171",
-          "stationary_time": "1:49.171",
-          "driver_change": false
+          "lap_number_entry": 29,
+          "total_pit_lane_time": "1:40.306",
+          "stationary_time": "55.306",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "2:39.788",
-          "stationary_time": "1:54.788",
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:27.804",
+          "stationary_time": "42.804",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "2:55.602",
-          "stationary_time": "2:10.602",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:13.561",
+          "stationary_time": "28.561",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 116,
-          "total_pit_lane_time": "2:29.305",
-          "stationary_time": "1:44.305",
+          "lap_number_entry": 115,
+          "total_pit_lane_time": "1:13.252",
+          "stationary_time": "28.252",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 118,
-          "total_pit_lane_time": "1:42.984",
-          "stationary_time": "57.984",
+          "lap_number_entry": 117,
+          "total_pit_lane_time": "23.734",
+          "stationary_time": "-21.266",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 120,
-          "total_pit_lane_time": "1:36.990",
-          "stationary_time": "51.990",
+          "lap_number_entry": 119,
+          "total_pit_lane_time": "23.189",
+          "stationary_time": "-21.811",
           "driver_change": false
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 121,
-          "total_pit_lane_time": "1:47.828",
-          "stationary_time": "1:02.828",
+          "lap_number_entry": 120,
+          "total_pit_lane_time": "1:26.832",
+          "stationary_time": "41.832",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "27",
-      "total_pit_time": "8:57.724",
-      "average_pit_time": "1:47.545",
-      "total_pit_time_minus_travel": "1:41.684",
+      "total_pit_time": "5:31.449",
+      "average_pit_time": "1:06.290",
+      "total_pit_time_minus_travel": "2:07.702",
       "total_pit_stops": 5,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -4562,46 +4569,46 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "1:47.249",
-          "stationary_time": "1:02.249",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:47.398",
+          "stationary_time": "1:02.398",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 36,
-          "total_pit_lane_time": "1:38.776",
-          "stationary_time": "53.776",
+          "lap_number_entry": 35,
+          "total_pit_lane_time": "23.747",
+          "stationary_time": "-21.253",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 40,
-          "total_pit_lane_time": "2:19.504",
-          "stationary_time": "1:34.504",
+          "lap_number_entry": 39,
+          "total_pit_lane_time": "48.977",
+          "stationary_time": "3.977",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "1:36.395",
-          "stationary_time": "51.395",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:10.481",
+          "stationary_time": "25.481",
+          "driver_change": true
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:35.800",
-          "stationary_time": "50.800",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:20.846",
+          "stationary_time": "35.846",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "28",
-      "total_pit_time": "5:26.786",
-      "average_pit_time": "1:48.929",
-      "total_pit_time_minus_travel": "1:05.118",
+      "total_pit_time": "3:49.264",
+      "average_pit_time": "1:16.421",
+      "total_pit_time_minus_travel": "1:34.264",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4679,33 +4686,33 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:16.822",
-          "stationary_time": "1:31.822",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:04.661",
+          "stationary_time": "19.661",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 73,
-          "total_pit_lane_time": "1:34.690",
-          "stationary_time": "49.690",
-          "driver_change": false
+          "lap_number_entry": 72,
+          "total_pit_lane_time": "1:18.883",
+          "stationary_time": "33.883",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:35.274",
-          "stationary_time": "50.274",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:25.720",
+          "stationary_time": "40.720",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "31",
-      "total_pit_time": "21:45.337",
-      "average_pit_time": "3:37.556",
-      "total_pit_time_minus_travel": "12:52.700",
-      "total_pit_stops": 6,
+      "total_pit_time": "49:05.884",
+      "average_pit_time": "7:00.841",
+      "total_pit_time_minus_travel": "44:30.023",
+      "total_pit_stops": 7,
       "total_driver_changes": 1,
       "driver_change_details": [
         {
@@ -4798,53 +4805,60 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:41.273",
-          "stationary_time": "1:56.273",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:03.428",
+          "stationary_time": "18.428",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 47,
-          "total_pit_lane_time": "3:02.949",
-          "stationary_time": "2:17.949",
+          "lap_number_entry": 46,
+          "total_pit_lane_time": "54.320",
+          "stationary_time": "9.320",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 48,
-          "total_pit_lane_time": "1:58.874",
-          "stationary_time": "1:13.874",
+          "lap_number_entry": 47,
+          "total_pit_lane_time": "7:57.373",
+          "stationary_time": "7:12.373",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 49,
-          "total_pit_lane_time": "9:25.081",
-          "stationary_time": "8:40.081",
+          "lap_number_entry": 48,
+          "total_pit_lane_time": "26.348",
+          "stationary_time": "-18.652",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 51,
-          "total_pit_lane_time": "1:38.435",
-          "stationary_time": "53.435",
+          "lap_number_entry": 50,
+          "total_pit_lane_time": "24.513",
+          "stationary_time": "-20.487",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 90,
-          "total_pit_lane_time": "2:58.725",
-          "stationary_time": "2:13.725",
+          "lap_number_entry": 69,
+          "total_pit_lane_time": "37:14.832",
+          "stationary_time": "36:29.832",
+          "driver_change": true
+        },
+        {
+          "stop_number": 7,
+          "lap_number_entry": 89,
+          "total_pit_lane_time": "1:05.070",
+          "stationary_time": "20.070",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "33",
-      "total_pit_time": "13:52.528",
-      "average_pit_time": "1:58.933",
-      "total_pit_time_minus_travel": "3:34.452",
+      "total_pit_time": "7:08.649",
+      "average_pit_time": "1:01.236",
+      "total_pit_time_minus_travel": "2:02.132",
       "total_pit_stops": 7,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -4969,60 +4983,60 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 6,
-          "total_pit_lane_time": "1:56.538",
-          "stationary_time": "1:11.538",
+          "lap_number_entry": 5,
+          "total_pit_lane_time": "1:00.615",
+          "stationary_time": "15.615",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 35,
-          "total_pit_lane_time": "2:16.687",
-          "stationary_time": "1:31.687",
+          "lap_number_entry": 34,
+          "total_pit_lane_time": "1:07.777",
+          "stationary_time": "22.777",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 41,
-          "total_pit_lane_time": "2:01.008",
-          "stationary_time": "1:16.008",
+          "lap_number_entry": 40,
+          "total_pit_lane_time": "40.573",
+          "stationary_time": "-4.427",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:36.953",
-          "stationary_time": "51.953",
-          "driver_change": false
-        },
-        {
-          "stop_number": 5,
-          "lap_number_entry": 77,
-          "total_pit_lane_time": "2:39.894",
-          "stationary_time": "1:54.894",
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:14.943",
+          "stationary_time": "29.943",
           "driver_change": true
         },
         {
+          "stop_number": 5,
+          "lap_number_entry": 76,
+          "total_pit_lane_time": "40.944",
+          "stationary_time": "-4.056",
+          "driver_change": false
+        },
+        {
           "stop_number": 6,
-          "lap_number_entry": 86,
-          "total_pit_lane_time": "1:41.267",
-          "stationary_time": "56.267",
+          "lap_number_entry": 85,
+          "total_pit_lane_time": "1:25.268",
+          "stationary_time": "40.268",
           "driver_change": false
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 118,
-          "total_pit_lane_time": "1:40.181",
-          "stationary_time": "55.181",
+          "lap_number_entry": 117,
+          "total_pit_lane_time": "58.529",
+          "stationary_time": "13.529",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "37",
-      "total_pit_time": "7:04.819",
-      "average_pit_time": "1:46.205",
-      "total_pit_time_minus_travel": "1:06.675",
+      "total_pit_time": "4:27.209",
+      "average_pit_time": "1:06.802",
+      "total_pit_time_minus_travel": "1:28.702",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -5117,40 +5131,40 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "1:42.117",
-          "stationary_time": "57.117",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:06.251",
+          "stationary_time": "21.251",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 41,
-          "total_pit_lane_time": "2:01.938",
-          "stationary_time": "1:16.938",
+          "lap_number_entry": 40,
+          "total_pit_lane_time": "43.507",
+          "stationary_time": "-1.493",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 90,
-          "total_pit_lane_time": "1:40.568",
-          "stationary_time": "55.568",
-          "driver_change": false
+          "lap_number_entry": 89,
+          "total_pit_lane_time": "1:31.034",
+          "stationary_time": "46.034",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 117,
-          "total_pit_lane_time": "1:40.196",
-          "stationary_time": "55.196",
+          "lap_number_entry": 116,
+          "total_pit_lane_time": "1:06.417",
+          "stationary_time": "21.417",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "38",
-      "total_pit_time": "9:01.192",
-      "average_pit_time": "3:00.397",
-      "total_pit_time_minus_travel": "4:36.072",
-      "total_pit_stops": 3,
+      "total_pit_time": "2:43.301",
+      "average_pit_time": "1:21.650",
+      "total_pit_time_minus_travel": "1:13.301",
+      "total_pit_stops": 2,
       "total_driver_changes": 2,
       "driver_change_details": [
         {
@@ -5216,33 +5230,26 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:35.470",
-          "stationary_time": "1:50.470",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:15.955",
+          "stationary_time": "30.955",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "2:40.854",
-          "stationary_time": "1:55.854",
-          "driver_change": false
-        },
-        {
-          "stop_number": 3,
-          "lap_number_entry": 82,
-          "total_pit_lane_time": "3:44.868",
-          "stationary_time": "2:59.868",
-          "driver_change": false
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:27.346",
+          "stationary_time": "42.346",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "39",
-      "total_pit_time": "7:17.804",
-      "average_pit_time": "1:49.451",
-      "total_pit_time_minus_travel": "1:29.772",
-      "total_pit_stops": 4,
+      "total_pit_time": "3:37.599",
+      "average_pit_time": "1:12.533",
+      "total_pit_time_minus_travel": "1:22.599",
+      "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
         {
@@ -5319,39 +5326,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:18.157",
-          "stationary_time": "1:33.157",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:09.045",
+          "stationary_time": "24.045",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 73,
-          "total_pit_lane_time": "1:34.073",
-          "stationary_time": "49.073",
-          "driver_change": false
+          "lap_number_entry": 72,
+          "total_pit_lane_time": "1:12.175",
+          "stationary_time": "27.175",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:35.044",
-          "stationary_time": "50.044",
-          "driver_change": false
-        },
-        {
-          "stop_number": 4,
-          "lap_number_entry": 141,
-          "total_pit_lane_time": "1:50.530",
-          "stationary_time": "1:05.530",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:16.379",
+          "stationary_time": "31.379",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "44",
-      "total_pit_time": "8:50.729",
-      "average_pit_time": "1:46.146",
-      "total_pit_time_minus_travel": "1:35.154",
+      "total_pit_time": "6:19.494",
+      "average_pit_time": "1:15.899",
+      "total_pit_time_minus_travel": "2:34.494",
       "total_pit_stops": 5,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -5460,46 +5460,46 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 12,
-          "total_pit_lane_time": "1:38.580",
-          "stationary_time": "53.580",
+          "lap_number_entry": 11,
+          "total_pit_lane_time": "1:29.921",
+          "stationary_time": "44.921",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 31,
-          "total_pit_lane_time": "1:37.799",
-          "stationary_time": "52.799",
+          "lap_number_entry": 30,
+          "total_pit_lane_time": "1:06.426",
+          "stationary_time": "21.426",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 40,
-          "total_pit_lane_time": "2:21.486",
-          "stationary_time": "1:36.486",
+          "lap_number_entry": 39,
+          "total_pit_lane_time": "55.719",
+          "stationary_time": "10.719",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:38.013",
-          "stationary_time": "53.013",
-          "driver_change": false
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:22.312",
+          "stationary_time": "37.312",
+          "driver_change": true
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:34.851",
-          "stationary_time": "49.851",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:25.116",
+          "stationary_time": "40.116",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "46",
-      "total_pit_time": "5:28.631",
-      "average_pit_time": "1:49.544",
-      "total_pit_time_minus_travel": "1:06.034",
+      "total_pit_time": "3:46.873",
+      "average_pit_time": "1:15.624",
+      "total_pit_time_minus_travel": "1:31.873",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -5577,33 +5577,33 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:17.060",
-          "stationary_time": "1:32.060",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:05.451",
+          "stationary_time": "20.451",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 71,
-          "total_pit_lane_time": "1:35.498",
-          "stationary_time": "50.498",
+          "lap_number_entry": 70,
+          "total_pit_lane_time": "1:16.603",
+          "stationary_time": "31.603",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "1:36.073",
-          "stationary_time": "51.073",
-          "driver_change": false
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "1:24.819",
+          "stationary_time": "39.819",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "5",
-      "total_pit_time": "19:19.050",
-      "average_pit_time": "2:45.579",
-      "total_pit_time_minus_travel": "9:01.114",
-      "total_pit_stops": 7,
+      "total_pit_time": "47:00.037",
+      "average_pit_time": "7:50.006",
+      "total_pit_time_minus_travel": "42:31.295",
+      "total_pit_stops": 6,
       "total_driver_changes": 1,
       "driver_change_details": [
         {
@@ -5711,60 +5711,53 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:19.551",
-          "stationary_time": "1:34.551",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:03.029",
+          "stationary_time": "18.029",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 36,
-          "total_pit_lane_time": "2:22.882",
-          "stationary_time": "1:37.882",
+          "lap_number_entry": 35,
+          "total_pit_lane_time": "43.742",
+          "stationary_time": "-1.258",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 67,
-          "total_pit_lane_time": "2:37.808",
-          "stationary_time": "1:52.808",
-          "driver_change": false
+          "lap_number_entry": 66,
+          "total_pit_lane_time": "1:22.916",
+          "stationary_time": "37.916",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "3:56.951",
-          "stationary_time": "3:11.951",
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "2:44.382",
+          "stationary_time": "1:59.382",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 116,
-          "total_pit_lane_time": "2:04.074",
-          "stationary_time": "1:19.074",
+          "lap_number_entry": 115,
+          "total_pit_lane_time": "46.225",
+          "stationary_time": "1.225",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 117,
-          "total_pit_lane_time": "4:15.769",
-          "stationary_time": "3:30.769",
-          "driver_change": false
-        },
-        {
-          "stop_number": 7,
-          "lap_number_entry": 121,
-          "total_pit_lane_time": "1:42.015",
-          "stationary_time": "57.015",
+          "lap_number_entry": 116,
+          "total_pit_lane_time": "40:19.743",
+          "stationary_time": "39:34.743",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "52",
-      "total_pit_time": "6:43.841",
-      "average_pit_time": "1:40.960",
-      "total_pit_time_minus_travel": "47.954",
+      "total_pit_time": "11:58.468",
+      "average_pit_time": "2:59.617",
+      "total_pit_time_minus_travel": "8:58.468",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -5857,39 +5850,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "1:40.624",
-          "stationary_time": "55.624",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:08.160",
+          "stationary_time": "23.160",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 61,
-          "total_pit_lane_time": "1:38.771",
-          "stationary_time": "53.771",
-          "driver_change": false
+          "lap_number_entry": 60,
+          "total_pit_lane_time": "1:06.063",
+          "stationary_time": "21.063",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 63,
-          "total_pit_lane_time": "1:48.173",
-          "stationary_time": "1:03.173",
+          "lap_number_entry": 62,
+          "total_pit_lane_time": "8:23.179",
+          "stationary_time": "7:38.179",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 104,
-          "total_pit_lane_time": "1:36.273",
-          "stationary_time": "51.273",
+          "lap_number_entry": 103,
+          "total_pit_lane_time": "1:21.066",
+          "stationary_time": "36.066",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "53",
-      "total_pit_time": "9:12.056",
-      "average_pit_time": "3:04.019",
-      "total_pit_time_minus_travel": "4:48.101",
+      "total_pit_time": "5:01.274",
+      "average_pit_time": "1:40.425",
+      "total_pit_time_minus_travel": "2:46.274",
       "total_pit_stops": 3,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -5972,32 +5965,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 29,
-          "total_pit_lane_time": "3:31.715",
-          "stationary_time": "2:46.715",
+          "lap_number_entry": 28,
+          "total_pit_lane_time": "1:46.748",
+          "stationary_time": "1:01.748",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "2:49.817",
-          "stationary_time": "2:04.817",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:37.106",
+          "stationary_time": "52.106",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "2:50.524",
-          "stationary_time": "2:05.524",
-          "driver_change": false
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "1:37.420",
+          "stationary_time": "52.420",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "57",
-      "total_pit_time": "10:12.694",
-      "average_pit_time": "2:33.173",
-      "total_pit_time_minus_travel": "4:25.333",
+      "total_pit_time": "4:10.965",
+      "average_pit_time": "1:02.741",
+      "total_pit_time_minus_travel": "1:17.829",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -6091,39 +6084,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:53.952",
-          "stationary_time": "2:08.952",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:08.465",
+          "stationary_time": "23.465",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 39,
-          "total_pit_lane_time": "2:35.444",
-          "stationary_time": "1:50.444",
+          "lap_number_entry": 38,
+          "total_pit_lane_time": "38.136",
+          "stationary_time": "-6.864",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 79,
-          "total_pit_lane_time": "2:22.447",
-          "stationary_time": "1:37.447",
+          "lap_number_entry": 78,
+          "total_pit_lane_time": "1:12.943",
+          "stationary_time": "27.943",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 115,
-          "total_pit_lane_time": "2:20.851",
-          "stationary_time": "1:35.851",
+          "lap_number_entry": 114,
+          "total_pit_lane_time": "1:11.421",
+          "stationary_time": "26.421",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "59",
-      "total_pit_time": "5:31.981",
-      "average_pit_time": "1:50.660",
-      "total_pit_time_minus_travel": "1:09.353",
+      "total_pit_time": "3:47.637",
+      "average_pit_time": "1:15.879",
+      "total_pit_time_minus_travel": "1:32.637",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -6201,32 +6194,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:18.349",
-          "stationary_time": "1:33.349",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:11.152",
+          "stationary_time": "26.152",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "1:38.780",
-          "stationary_time": "53.780",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:19.538",
+          "stationary_time": "34.538",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:34.852",
-          "stationary_time": "49.852",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:16.947",
+          "stationary_time": "31.947",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "64",
-      "total_pit_time": "17:27.357",
-      "average_pit_time": "2:10.920",
-      "total_pit_time_minus_travel": "5:43.867",
+      "total_pit_time": "10:25.997",
+      "average_pit_time": "1:18.250",
+      "total_pit_time_minus_travel": "4:27.422",
       "total_pit_stops": 8,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -6369,67 +6362,67 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 18,
-          "total_pit_lane_time": "1:56.143",
-          "stationary_time": "1:11.143",
+          "lap_number_entry": 17,
+          "total_pit_lane_time": "1:49.327",
+          "stationary_time": "1:04.327",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 19,
-          "total_pit_lane_time": "4:00.904",
-          "stationary_time": "3:15.904",
+          "lap_number_entry": 18,
+          "total_pit_lane_time": "1:08.409",
+          "stationary_time": "23.409",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 24,
-          "total_pit_lane_time": "2:11.559",
-          "stationary_time": "1:26.559",
-          "driver_change": false
+          "lap_number_entry": 23,
+          "total_pit_lane_time": "1:20.180",
+          "stationary_time": "35.180",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 37,
-          "total_pit_lane_time": "2:02.875",
-          "stationary_time": "1:17.875",
+          "lap_number_entry": 36,
+          "total_pit_lane_time": "43.575",
+          "stationary_time": "-1.425",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 55,
-          "total_pit_lane_time": "1:38.123",
-          "stationary_time": "53.123",
+          "lap_number_entry": 54,
+          "total_pit_lane_time": "1:21.481",
+          "stationary_time": "36.481",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 68,
-          "total_pit_lane_time": "1:36.134",
-          "stationary_time": "51.134",
+          "lap_number_entry": 67,
+          "total_pit_lane_time": "1:03.594",
+          "stationary_time": "18.594",
           "driver_change": false
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:39.441",
-          "stationary_time": "54.441",
-          "driver_change": false
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:48.705",
+          "stationary_time": "1:03.705",
+          "driver_change": true
         },
         {
           "stop_number": 8,
-          "lap_number_entry": 110,
-          "total_pit_lane_time": "2:22.178",
-          "stationary_time": "1:37.178",
+          "lap_number_entry": 109,
+          "total_pit_lane_time": "1:10.726",
+          "stationary_time": "25.726",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "67",
-      "total_pit_time": "10:05.848",
-      "average_pit_time": "2:31.462",
-      "total_pit_time_minus_travel": "4:12.273",
+      "total_pit_time": "7:32.827",
+      "average_pit_time": "1:53.207",
+      "total_pit_time_minus_travel": "4:32.827",
       "total_pit_stops": 4,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -6528,39 +6521,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "3:09.357",
-          "stationary_time": "2:24.357",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:16.060",
+          "stationary_time": "31.060",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "2:45.733",
-          "stationary_time": "2:00.733",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:31.719",
+          "stationary_time": "46.719",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "2:34.923",
-          "stationary_time": "1:49.923",
-          "driver_change": false
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:22.294",
+          "stationary_time": "37.294",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 123,
-          "total_pit_lane_time": "1:35.835",
-          "stationary_time": "50.835",
+          "lap_number_entry": 122,
+          "total_pit_lane_time": "3:22.754",
+          "stationary_time": "2:37.754",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "7",
-      "total_pit_time": "7:45.888",
-      "average_pit_time": "1:56.472",
-      "total_pit_time_minus_travel": "1:52.227",
+      "total_pit_time": "33:21.625",
+      "average_pit_time": "8:20.406",
+      "total_pit_time_minus_travel": "30:21.625",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -6653,39 +6646,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 11,
-          "total_pit_lane_time": "1:37.295",
-          "stationary_time": "52.295",
+          "lap_number_entry": 10,
+          "total_pit_lane_time": "29:47.140",
+          "stationary_time": "29:02.140",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 35,
-          "total_pit_lane_time": "2:29.220",
-          "stationary_time": "1:44.220",
+          "lap_number_entry": 34,
+          "total_pit_lane_time": "1:12.509",
+          "stationary_time": "27.509",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:37.028",
-          "stationary_time": "52.028",
-          "driver_change": false
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "1:21.562",
+          "stationary_time": "36.562",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 99,
-          "total_pit_lane_time": "2:02.345",
-          "stationary_time": "1:17.345",
+          "lap_number_entry": 98,
+          "total_pit_lane_time": "1:00.414",
+          "stationary_time": "15.414",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "71",
-      "total_pit_time": "7:54.988",
-      "average_pit_time": "1:58.747",
-      "total_pit_time_minus_travel": "2:05.384",
+      "total_pit_time": "4:45.106",
+      "average_pit_time": "1:11.276",
+      "total_pit_time_minus_travel": "1:46.414",
       "total_pit_stops": 4,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -6785,39 +6778,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 30,
-          "total_pit_lane_time": "1:42.597",
-          "stationary_time": "57.597",
-          "driver_change": false
+          "lap_number_entry": 29,
+          "total_pit_lane_time": "1:36.550",
+          "stationary_time": "51.550",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 39,
-          "total_pit_lane_time": "2:22.556",
-          "stationary_time": "1:37.556",
+          "lap_number_entry": 38,
+          "total_pit_lane_time": "43.692",
+          "stationary_time": "-1.308",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 81,
-          "total_pit_lane_time": "1:35.476",
-          "stationary_time": "50.476",
-          "driver_change": false
+          "lap_number_entry": 80,
+          "total_pit_lane_time": "1:19.948",
+          "stationary_time": "34.948",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 117,
-          "total_pit_lane_time": "2:14.359",
-          "stationary_time": "1:29.359",
+          "lap_number_entry": 116,
+          "total_pit_lane_time": "1:04.916",
+          "stationary_time": "19.916",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "72",
-      "total_pit_time": "40:33.326",
-      "average_pit_time": "5:47.618",
-      "total_pit_time_minus_travel": "30:07.186",
+      "total_pit_time": "33:33.286",
+      "average_pit_time": "4:47.612",
+      "total_pit_time_minus_travel": "28:39.410",
       "total_pit_stops": 7,
       "total_driver_changes": 4,
       "driver_change_details": [
@@ -6941,60 +6934,60 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:01.959",
-          "stationary_time": "1:16.959",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:17.791",
+          "stationary_time": "32.791",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 72,
-          "total_pit_lane_time": "1:39.972",
-          "stationary_time": "54.972",
-          "driver_change": false
+          "lap_number_entry": 71,
+          "total_pit_lane_time": "1:24.998",
+          "stationary_time": "39.998",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 76,
-          "total_pit_lane_time": "1:47.835",
-          "stationary_time": "1:02.835",
+          "lap_number_entry": 75,
+          "total_pit_lane_time": "26:53.016",
+          "stationary_time": "26:08.016",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 77,
-          "total_pit_lane_time": "28:24.548",
-          "stationary_time": "27:39.548",
+          "lap_number_entry": 76,
+          "total_pit_lane_time": "23.876",
+          "stationary_time": "-21.124",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 81,
-          "total_pit_lane_time": "1:39.633",
-          "stationary_time": "54.633",
-          "driver_change": false
+          "lap_number_entry": 80,
+          "total_pit_lane_time": "1:28.917",
+          "stationary_time": "43.917",
+          "driver_change": true
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 97,
-          "total_pit_lane_time": "2:08.551",
-          "stationary_time": "1:23.551",
-          "driver_change": false
+          "lap_number_entry": 96,
+          "total_pit_lane_time": "1:09.460",
+          "stationary_time": "24.460",
+          "driver_change": true
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 98,
-          "total_pit_lane_time": "2:50.828",
-          "stationary_time": "2:05.828",
-          "driver_change": true
+          "lap_number_entry": 97,
+          "total_pit_lane_time": "55.228",
+          "stationary_time": "10.228",
+          "driver_change": false
         }
       ]
     },
     {
       "car_number": "76",
-      "total_pit_time": "6:56.231",
-      "average_pit_time": "1:44.058",
-      "total_pit_time_minus_travel": "1:03.475",
+      "total_pit_time": "4:24.111",
+      "average_pit_time": "1:06.028",
+      "total_pit_time_minus_travel": "1:26.422",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -7088,39 +7081,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "1:40.298",
-          "stationary_time": "55.298",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:11.810",
+          "stationary_time": "26.810",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 41,
-          "total_pit_lane_time": "2:03.267",
-          "stationary_time": "1:18.267",
+          "lap_number_entry": 40,
+          "total_pit_lane_time": "42.689",
+          "stationary_time": "-2.311",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "1:37.252",
-          "stationary_time": "52.252",
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:11.009",
+          "stationary_time": "26.009",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "1:35.414",
-          "stationary_time": "50.414",
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "1:18.603",
+          "stationary_time": "33.603",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "89",
-      "total_pit_time": "8:04.441",
-      "average_pit_time": "2:41.480",
-      "total_pit_time_minus_travel": "3:38.761",
+      "total_pit_time": "3:25.465",
+      "average_pit_time": "1:08.488",
+      "total_pit_time_minus_travel": "1:10.465",
       "total_pit_stops": 3,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -7203,32 +7196,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:50.347",
-          "stationary_time": "2:05.347",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:08.983",
+          "stationary_time": "23.983",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 41,
-          "total_pit_lane_time": "2:33.033",
-          "stationary_time": "1:48.033",
+          "lap_number_entry": 40,
+          "total_pit_lane_time": "48.780",
+          "stationary_time": "3.780",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 85,
-          "total_pit_lane_time": "2:41.061",
-          "stationary_time": "1:56.061",
-          "driver_change": false
+          "lap_number_entry": 84,
+          "total_pit_lane_time": "1:27.702",
+          "stationary_time": "42.702",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "9",
-      "total_pit_time": "7:05.711",
-      "average_pit_time": "1:46.428",
-      "total_pit_time_minus_travel": "1:09.550",
+      "total_pit_time": "4:25.095",
+      "average_pit_time": "1:06.274",
+      "total_pit_time_minus_travel": "1:35.764",
       "total_pit_stops": 4,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -7322,39 +7315,39 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:04.757",
-          "stationary_time": "1:19.757",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:09.156",
+          "stationary_time": "24.156",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 38,
-          "total_pit_lane_time": "1:44.694",
-          "stationary_time": "59.694",
+          "lap_number_entry": 37,
+          "total_pit_lane_time": "34.331",
+          "stationary_time": "-10.669",
           "driver_change": false
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 77,
-          "total_pit_lane_time": "1:36.596",
-          "stationary_time": "51.596",
-          "driver_change": false
+          "lap_number_entry": 76,
+          "total_pit_lane_time": "1:26.675",
+          "stationary_time": "41.675",
+          "driver_change": true
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 111,
-          "total_pit_lane_time": "1:39.664",
-          "stationary_time": "54.664",
+          "lap_number_entry": 110,
+          "total_pit_lane_time": "1:14.933",
+          "stationary_time": "29.933",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "93",
-      "total_pit_time": "8:54.847",
-      "average_pit_time": "1:46.969",
-      "total_pit_time_minus_travel": "1:33.320",
+      "total_pit_time": "5:07.255",
+      "average_pit_time": "1:01.451",
+      "total_pit_time_minus_travel": "1:25.829",
       "total_pit_stops": 5,
       "total_driver_changes": 3,
       "driver_change_details": [
@@ -7471,46 +7464,46 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 23,
-          "total_pit_lane_time": "1:53.989",
-          "stationary_time": "1:08.989",
+          "lap_number_entry": 22,
+          "total_pit_lane_time": "1:00.978",
+          "stationary_time": "15.978",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "1:41.435",
-          "stationary_time": "56.435",
-          "driver_change": false
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:03.759",
+          "stationary_time": "18.759",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 41,
-          "total_pit_lane_time": "2:05.456",
-          "stationary_time": "1:20.456",
+          "lap_number_entry": 40,
+          "total_pit_lane_time": "41.426",
+          "stationary_time": "-3.574",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 75,
-          "total_pit_lane_time": "1:37.162",
-          "stationary_time": "52.162",
-          "driver_change": false
+          "lap_number_entry": 74,
+          "total_pit_lane_time": "1:07.303",
+          "stationary_time": "22.303",
+          "driver_change": true
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 112,
-          "total_pit_lane_time": "1:36.805",
-          "stationary_time": "51.805",
-          "driver_change": false
+          "lap_number_entry": 111,
+          "total_pit_lane_time": "1:13.789",
+          "stationary_time": "28.789",
+          "driver_change": true
         }
       ]
     },
     {
       "car_number": "95",
-      "total_pit_time": "5:29.244",
-      "average_pit_time": "1:49.748",
-      "total_pit_time_minus_travel": "1:07.925",
+      "total_pit_time": "3:39.640",
+      "average_pit_time": "1:13.213",
+      "total_pit_time_minus_travel": "1:24.640",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -7588,33 +7581,33 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:18.130",
-          "stationary_time": "1:33.130",
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:04.550",
+          "stationary_time": "19.550",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 74,
-          "total_pit_lane_time": "1:35.060",
-          "stationary_time": "50.060",
-          "driver_change": false
+          "lap_number_entry": 73,
+          "total_pit_lane_time": "1:18.238",
+          "stationary_time": "33.238",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:36.054",
-          "stationary_time": "51.054",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:16.852",
+          "stationary_time": "31.852",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "96",
-      "total_pit_time": "7:36.969",
-      "average_pit_time": "1:54.242",
-      "total_pit_time_minus_travel": "1:48.585",
-      "total_pit_stops": 4,
+      "total_pit_time": "15:24.865",
+      "average_pit_time": "3:04.973",
+      "total_pit_time_minus_travel": "11:39.865",
+      "total_pit_stops": 5,
       "total_driver_changes": 2,
       "driver_change_details": [
         {
@@ -7711,39 +7704,46 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 27,
-          "total_pit_lane_time": "2:18.677",
-          "stationary_time": "1:33.677",
-          "driver_change": false
+          "lap_number_entry": 26,
+          "total_pit_lane_time": "1:17.757",
+          "stationary_time": "32.757",
+          "driver_change": true
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 50,
-          "total_pit_lane_time": "2:08.152",
-          "stationary_time": "1:23.152",
-          "driver_change": false
+          "lap_number_entry": 49,
+          "total_pit_lane_time": "59.404",
+          "stationary_time": "14.404",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 87,
-          "total_pit_lane_time": "1:34.635",
-          "stationary_time": "49.635",
+          "lap_number_entry": 86,
+          "total_pit_lane_time": "1:14.743",
+          "stationary_time": "29.743",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 114,
-          "total_pit_lane_time": "1:35.505",
-          "stationary_time": "50.505",
+          "lap_number_entry": 113,
+          "total_pit_lane_time": "1:09.424",
+          "stationary_time": "24.424",
+          "driver_change": false
+        },
+        {
+          "stop_number": 5,
+          "lap_number_entry": 133,
+          "total_pit_lane_time": "10:43.537",
+          "stationary_time": "9:58.537",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "98",
-      "total_pit_time": "5:16.693",
-      "average_pit_time": "1:45.564",
-      "total_pit_time_minus_travel": "51.928",
+      "total_pit_time": "3:39.872",
+      "average_pit_time": "1:13.291",
+      "total_pit_time_minus_travel": "1:24.872",
       "total_pit_stops": 3,
       "total_driver_changes": 1,
       "driver_change_details": [
@@ -7821,32 +7821,32 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:04.794",
-          "stationary_time": "1:19.794",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:08.017",
+          "stationary_time": "23.017",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 71,
-          "total_pit_lane_time": "1:36.548",
-          "stationary_time": "51.548",
-          "driver_change": false
+          "lap_number_entry": 70,
+          "total_pit_lane_time": "1:14.297",
+          "stationary_time": "29.297",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 110,
-          "total_pit_lane_time": "1:35.351",
-          "stationary_time": "50.351",
+          "lap_number_entry": 109,
+          "total_pit_lane_time": "1:17.558",
+          "stationary_time": "32.558",
           "driver_change": false
         }
       ]
     },
     {
       "car_number": "99",
-      "total_pit_time": "14:04.116",
-      "average_pit_time": "2:00.588",
-      "total_pit_time_minus_travel": "3:45.852",
+      "total_pit_time": "8:36.100",
+      "average_pit_time": "1:13.729",
+      "total_pit_time_minus_travel": "4:24.410",
       "total_pit_stops": 7,
       "total_driver_changes": 2,
       "driver_change_details": [
@@ -7959,52 +7959,52 @@
       "pit_stop_details": [
         {
           "stop_number": 1,
-          "lap_number_entry": 28,
-          "total_pit_lane_time": "2:04.913",
-          "stationary_time": "1:19.913",
+          "lap_number_entry": 27,
+          "total_pit_lane_time": "1:20.538",
+          "stationary_time": "35.538",
           "driver_change": false
         },
         {
           "stop_number": 2,
-          "lap_number_entry": 75,
-          "total_pit_lane_time": "1:35.003",
-          "stationary_time": "50.003",
-          "driver_change": false
+          "lap_number_entry": 74,
+          "total_pit_lane_time": "2:09.565",
+          "stationary_time": "1:24.565",
+          "driver_change": true
         },
         {
           "stop_number": 3,
-          "lap_number_entry": 88,
-          "total_pit_lane_time": "1:43.422",
-          "stationary_time": "58.422",
+          "lap_number_entry": 87,
+          "total_pit_lane_time": "1:46.998",
+          "stationary_time": "1:01.998",
           "driver_change": false
         },
         {
           "stop_number": 4,
-          "lap_number_entry": 90,
-          "total_pit_lane_time": "1:39.819",
-          "stationary_time": "54.819",
+          "lap_number_entry": 89,
+          "total_pit_lane_time": "23.920",
+          "stationary_time": "-21.080",
           "driver_change": false
         },
         {
           "stop_number": 5,
-          "lap_number_entry": 91,
-          "total_pit_lane_time": "1:48.959",
-          "stationary_time": "1:03.959",
+          "lap_number_entry": 90,
+          "total_pit_lane_time": "23.791",
+          "stationary_time": "-21.209",
           "driver_change": false
         },
         {
           "stop_number": 6,
-          "lap_number_entry": 108,
-          "total_pit_lane_time": "1:37.152",
-          "stationary_time": "52.152",
+          "lap_number_entry": 107,
+          "total_pit_lane_time": "2:07.309",
+          "stationary_time": "1:22.309",
           "driver_change": false
         },
         {
           "stop_number": 7,
-          "lap_number_entry": 109,
-          "total_pit_lane_time": "3:34.848",
-          "stationary_time": "2:49.848",
-          "driver_change": false
+          "lap_number_entry": 108,
+          "total_pit_lane_time": "23.979",
+          "stationary_time": "-21.021",
+          "driver_change": true
         }
       ]
     }
@@ -8014,13 +8014,13 @@
       "car_number": "10",
       "team": "Rockwell Autosport Development",
       "manufacturer": "Audi",
-      "avg_green_pace_fuel_corrected": "1:59.404",
+      "avg_green_pace_fuel_corrected": "1:59.124",
       "race_pace_consistency_stdev": 201.347,
       "avg_pit_stationary_time": "1:41.154",
       "tire_degradation_model": {
         "deg_coeff_a": 0.051295,
         "deg_coeff_b": -1.381738,
-        "deg_coeff_c": 103.368161,
+        "deg_coeff_c": 103.088161,
         "fastest_lap_of_stint_predicted_at": 13.5,
         "model_quality": "GOOD",
         "total_clean_laps_used": 63,
@@ -8032,13 +8032,13 @@
       "car_number": "12",
       "team": "RAFA Racing",
       "manufacturer": "Toyota",
-      "avg_green_pace_fuel_corrected": "1:33.027",
+      "avg_green_pace_fuel_corrected": "1:32.677",
       "race_pace_consistency_stdev": 2.203,
       "avg_pit_stationary_time": "5:19.715",
       "tire_degradation_model": {
         "deg_coeff_a": 0.017432,
         "deg_coeff_b": -0.742723,
-        "deg_coeff_c": 99.066009,
+        "deg_coeff_c": 98.716009,
         "fastest_lap_of_stint_predicted_at": 21.3,
         "model_quality": "FAIR",
         "total_clean_laps_used": 20,
@@ -8050,13 +8050,13 @@
       "car_number": "13",
       "team": "McCumbee McAleer Racing with Aerosport",
       "manufacturer": "Ford",
-      "avg_green_pace_fuel_corrected": "1:29.927",
+      "avg_green_pace_fuel_corrected": "1:29.892",
       "race_pace_consistency_stdev": 7.537,
       "avg_pit_stationary_time": "1:04.610",
       "tire_degradation_model": {
         "deg_coeff_a": 0.001613,
         "deg_coeff_b": -0.160774,
-        "deg_coeff_c": 91.951231,
+        "deg_coeff_c": 91.916231,
         "fastest_lap_of_stint_predicted_at": 49.8,
         "model_quality": "GOOD",
         "total_clean_laps_used": 101,
@@ -8068,13 +8068,13 @@
       "car_number": "14",
       "team": "AR Motorsports",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:30.498",
+      "avg_green_pace_fuel_corrected": "1:30.113",
       "race_pace_consistency_stdev": 4.689,
       "avg_pit_stationary_time": "3:23.627",
       "tire_degradation_model": {
         "deg_coeff_a": 0.092881,
         "deg_coeff_b": -2.011835,
-        "deg_coeff_c": 101.499554,
+        "deg_coeff_c": 101.114554,
         "fastest_lap_of_stint_predicted_at": 10.8,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8086,13 +8086,13 @@
       "car_number": "15",
       "team": "van der Steur Racing",
       "manufacturer": "Aston Martin",
-      "avg_green_pace_fuel_corrected": "1:36.257",
+      "avg_green_pace_fuel_corrected": "1:36.292",
       "race_pace_consistency_stdev": 2.525,
       "avg_pit_stationary_time": "2:09.353",
       "tire_degradation_model": {
         "deg_coeff_a": -0.011137,
         "deg_coeff_b": -0.023827,
-        "deg_coeff_c": 98.789023,
+        "deg_coeff_c": 98.824023,
         "fastest_lap_of_stint_predicted_at": -1.1,
         "model_quality": "FAIR",
         "total_clean_laps_used": 14,
@@ -8104,13 +8104,13 @@
       "car_number": "16",
       "team": "CSM",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:30.410",
+      "avg_green_pace_fuel_corrected": "1:30.025",
       "race_pace_consistency_stdev": 1.762,
       "avg_pit_stationary_time": "1:58.147",
       "tire_degradation_model": {
         "deg_coeff_a": 0.00328,
         "deg_coeff_b": -0.224675,
-        "deg_coeff_c": 93.753626,
+        "deg_coeff_c": 93.368626,
         "fastest_lap_of_stint_predicted_at": 34.3,
         "model_quality": "GOOD",
         "total_clean_laps_used": 83,
@@ -8122,13 +8122,13 @@
       "car_number": "17",
       "team": "Unitronic/JDC Miller MotorSports",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:29.968",
+      "avg_green_pace_fuel_corrected": "1:29.583",
       "race_pace_consistency_stdev": 2.137,
       "avg_pit_stationary_time": "1:54.351",
       "tire_degradation_model": {
         "deg_coeff_a": -0.000785,
         "deg_coeff_b": -0.052167,
-        "deg_coeff_c": 91.587905,
+        "deg_coeff_c": 91.202905,
         "fastest_lap_of_stint_predicted_at": -33.2,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8140,13 +8140,13 @@
       "car_number": "18",
       "team": "Victor Gonzalez Racing",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:30.959",
+      "avg_green_pace_fuel_corrected": "1:30.784",
       "race_pace_consistency_stdev": 1.624,
       "avg_pit_stationary_time": "1:01.815",
       "tire_degradation_model": {
         "deg_coeff_a": 0.007594,
         "deg_coeff_b": -0.363456,
-        "deg_coeff_c": 95.347587,
+        "deg_coeff_c": 95.172587,
         "fastest_lap_of_stint_predicted_at": 23.9,
         "model_quality": "GOOD",
         "total_clean_laps_used": 101,
@@ -8158,13 +8158,13 @@
       "car_number": "19",
       "team": "Stephen Cameron Racing",
       "manufacturer": "Ford",
-      "avg_green_pace_fuel_corrected": "1:31.311",
+      "avg_green_pace_fuel_corrected": "1:31.276",
       "race_pace_consistency_stdev": 11.219,
       "avg_pit_stationary_time": "54.244",
       "tire_degradation_model": {
         "deg_coeff_a": 0.001006,
         "deg_coeff_b": -0.088633,
-        "deg_coeff_c": 91.536985,
+        "deg_coeff_c": 91.501985,
         "fastest_lap_of_stint_predicted_at": 44.0,
         "model_quality": "GOOD",
         "total_clean_laps_used": 93,
@@ -8176,13 +8176,13 @@
       "car_number": "2",
       "team": "CSM",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:31.442",
+      "avg_green_pace_fuel_corrected": "1:31.057",
       "race_pace_consistency_stdev": 7.937,
       "avg_pit_stationary_time": "1:30.238",
       "tire_degradation_model": {
         "deg_coeff_a": 0.005564,
         "deg_coeff_b": -0.29925,
-        "deg_coeff_c": 94.460514,
+        "deg_coeff_c": 94.075514,
         "fastest_lap_of_stint_predicted_at": 26.9,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8194,13 +8194,13 @@
       "car_number": "27",
       "team": "Auto Technic Racing",
       "manufacturer": "BMW",
-      "avg_green_pace_fuel_corrected": "1:30.239",
+      "avg_green_pace_fuel_corrected": "1:30.204",
       "race_pace_consistency_stdev": 6.597,
       "avg_pit_stationary_time": "1:02.545",
       "tire_degradation_model": {
         "deg_coeff_a": 0.001226,
         "deg_coeff_b": -0.13999,
-        "deg_coeff_c": 92.042421,
+        "deg_coeff_c": 92.007421,
         "fastest_lap_of_stint_predicted_at": 57.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 93,
@@ -8212,13 +8212,13 @@
       "car_number": "28",
       "team": "RS1",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:30.415",
+      "avg_green_pace_fuel_corrected": "1:30.030",
       "race_pace_consistency_stdev": 7.96,
       "avg_pit_stationary_time": "1:03.929",
       "tire_degradation_model": {
         "deg_coeff_a": 0.005088,
         "deg_coeff_b": -0.488274,
-        "deg_coeff_c": 98.943361,
+        "deg_coeff_c": 98.558361,
         "fastest_lap_of_stint_predicted_at": 48.0,
         "model_quality": "GOOD",
         "total_clean_laps_used": 106,
@@ -8230,13 +8230,13 @@
       "car_number": "31",
       "team": "RVA Graphics Motorsports By Speed Syndicate",
       "manufacturer": "Audi",
-      "avg_green_pace_fuel_corrected": "2:07.075",
+      "avg_green_pace_fuel_corrected": "2:06.795",
       "race_pace_consistency_stdev": 281.959,
       "avg_pit_stationary_time": "2:52.556",
       "tire_degradation_model": {
         "deg_coeff_a": -0.455343,
         "deg_coeff_b": 15.233923,
-        "deg_coeff_c": 24.292388,
+        "deg_coeff_c": 24.012388,
         "fastest_lap_of_stint_predicted_at": 16.7,
         "model_quality": "GOOD",
         "total_clean_laps_used": 58,
@@ -8248,13 +8248,13 @@
       "car_number": "33",
       "team": "Bryan Herta Autosport with Curb Agajanian",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:31.325",
+      "avg_green_pace_fuel_corrected": "1:31.150",
       "race_pace_consistency_stdev": 5.969,
       "avg_pit_stationary_time": "1:13.933",
       "tire_degradation_model": {
         "deg_coeff_a": 0.001515,
         "deg_coeff_b": -0.049303,
-        "deg_coeff_c": 91.69786,
+        "deg_coeff_c": 91.52286,
         "fastest_lap_of_stint_predicted_at": 16.3,
         "model_quality": "GOOD",
         "total_clean_laps_used": 91,
@@ -8266,13 +8266,13 @@
       "car_number": "37",
       "team": "Precision Racing LA",
       "manufacturer": "Audi",
-      "avg_green_pace_fuel_corrected": "1:34.127",
+      "avg_green_pace_fuel_corrected": "1:33.847",
       "race_pace_consistency_stdev": 9.432,
       "avg_pit_stationary_time": "1:01.205",
       "tire_degradation_model": {
         "deg_coeff_a": -0.005196,
         "deg_coeff_b": 0.030107,
-        "deg_coeff_c": 94.452928,
+        "deg_coeff_c": 94.172928,
         "fastest_lap_of_stint_predicted_at": 2.9,
         "model_quality": "GOOD",
         "total_clean_laps_used": 85,
@@ -8284,13 +8284,13 @@
       "car_number": "38",
       "team": "BGB MOTORSPORTS",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:30.379",
+      "avg_green_pace_fuel_corrected": "1:29.994",
       "race_pace_consistency_stdev": 1.478,
       "avg_pit_stationary_time": "2:15.397",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002613,
         "deg_coeff_b": -0.203188,
-        "deg_coeff_c": 93.787358,
+        "deg_coeff_c": 93.402358,
         "fastest_lap_of_stint_predicted_at": 38.9,
         "model_quality": "GOOD",
         "total_clean_laps_used": 48,
@@ -8302,13 +8302,13 @@
       "car_number": "39",
       "team": "CarBahn with Peregrine racing",
       "manufacturer": "BMW",
-      "avg_green_pace_fuel_corrected": "1:29.731",
+      "avg_green_pace_fuel_corrected": "1:29.696",
       "race_pace_consistency_stdev": 6.958,
       "avg_pit_stationary_time": "1:04.451",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002483,
         "deg_coeff_b": -0.172453,
-        "deg_coeff_c": 91.420554,
+        "deg_coeff_c": 91.385554,
         "fastest_lap_of_stint_predicted_at": 34.7,
         "model_quality": "GOOD",
         "total_clean_laps_used": 89,
@@ -8320,13 +8320,13 @@
       "car_number": "44",
       "team": "Ibiza Farm Motorsports",
       "manufacturer": "McLaren",
-      "avg_green_pace_fuel_corrected": "1:29.571",
+      "avg_green_pace_fuel_corrected": "1:29.361",
       "race_pace_consistency_stdev": 1.248,
       "avg_pit_stationary_time": "1:01.146",
       "tire_degradation_model": {
         "deg_coeff_a": 0.017898,
         "deg_coeff_b": -0.394684,
-        "deg_coeff_c": 92.804469,
+        "deg_coeff_c": 92.594469,
         "fastest_lap_of_stint_predicted_at": 11.0,
         "model_quality": "GOOD",
         "total_clean_laps_used": 91,
@@ -8338,13 +8338,13 @@
       "car_number": "46",
       "team": "Team TGM",
       "manufacturer": "Aston Martin",
-      "avg_green_pace_fuel_corrected": "1:30.938",
+      "avg_green_pace_fuel_corrected": "1:30.973",
       "race_pace_consistency_stdev": 10.562,
       "avg_pit_stationary_time": "1:04.544",
       "tire_degradation_model": {
         "deg_coeff_a": 0.001185,
         "deg_coeff_b": -0.135436,
-        "deg_coeff_c": 91.724634,
+        "deg_coeff_c": 91.759634,
         "fastest_lap_of_stint_predicted_at": 57.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 95,
@@ -8356,13 +8356,13 @@
       "car_number": "5",
       "team": "KMW Motorsports with TMR Engineering",
       "manufacturer": "Honda",
-      "avg_green_pace_fuel_corrected": "2:03.382",
+      "avg_green_pace_fuel_corrected": "2:03.207",
       "race_pace_consistency_stdev": 270.059,
       "avg_pit_stationary_time": "2:00.579",
       "tire_degradation_model": {
         "deg_coeff_a": 0.011045,
         "deg_coeff_b": -0.487422,
-        "deg_coeff_c": 96.02334,
+        "deg_coeff_c": 95.84834,
         "fastest_lap_of_stint_predicted_at": 22.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 65,
@@ -8374,13 +8374,13 @@
       "car_number": "52",
       "team": "Baker Racing",
       "manufacturer": "Audi",
-      "avg_green_pace_fuel_corrected": "1:31.772",
+      "avg_green_pace_fuel_corrected": "1:31.492",
       "race_pace_consistency_stdev": 6.565,
       "avg_pit_stationary_time": "55.960",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002462,
         "deg_coeff_b": -0.204684,
-        "deg_coeff_c": 94.103291,
+        "deg_coeff_c": 93.823291,
         "fastest_lap_of_stint_predicted_at": 41.6,
         "model_quality": "GOOD",
         "total_clean_laps_used": 86,
@@ -8392,13 +8392,13 @@
       "car_number": "53",
       "team": "Kingpin Racing",
       "manufacturer": "Toyota",
-      "avg_green_pace_fuel_corrected": "1:30.550",
+      "avg_green_pace_fuel_corrected": "1:30.200",
       "race_pace_consistency_stdev": 3.183,
       "avg_pit_stationary_time": "2:19.019",
       "tire_degradation_model": {
         "deg_coeff_a": 0.005211,
         "deg_coeff_b": -0.267231,
-        "deg_coeff_c": 93.032849,
+        "deg_coeff_c": 92.682849,
         "fastest_lap_of_stint_predicted_at": 25.6,
         "model_quality": "GOOD",
         "total_clean_laps_used": 87,
@@ -8410,13 +8410,13 @@
       "car_number": "57",
       "team": "Winward Racing",
       "manufacturer": "Mercedes-AMG",
-      "avg_green_pace_fuel_corrected": "1:29.139",
+      "avg_green_pace_fuel_corrected": "1:28.789",
       "race_pace_consistency_stdev": 1.939,
       "avg_pit_stationary_time": "1:48.173",
       "tire_degradation_model": {
         "deg_coeff_a": -0.001698,
         "deg_coeff_b": -0.027412,
-        "deg_coeff_c": 90.364429,
+        "deg_coeff_c": 90.014429,
         "fastest_lap_of_stint_predicted_at": -8.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8428,13 +8428,13 @@
       "car_number": "59",
       "team": "KOHR MOTORSPORTS",
       "manufacturer": "Ford",
-      "avg_green_pace_fuel_corrected": "1:30.155",
+      "avg_green_pace_fuel_corrected": "1:30.120",
       "race_pace_consistency_stdev": 7.143,
       "avg_pit_stationary_time": "1:05.660",
       "tire_degradation_model": {
         "deg_coeff_a": 0.000913,
         "deg_coeff_b": -0.125999,
-        "deg_coeff_c": 91.98324,
+        "deg_coeff_c": 91.94824,
         "fastest_lap_of_stint_predicted_at": 69.0,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8446,13 +8446,13 @@
       "car_number": "64",
       "team": "Team TGM",
       "manufacturer": "Aston Martin",
-      "avg_green_pace_fuel_corrected": "1:34.710",
+      "avg_green_pace_fuel_corrected": "1:34.745",
       "race_pace_consistency_stdev": 13.414,
       "avg_pit_stationary_time": "1:25.920",
       "tire_degradation_model": {
         "deg_coeff_a": -0.018109,
         "deg_coeff_b": 0.230231,
-        "deg_coeff_c": 92.933169,
+        "deg_coeff_c": 92.968169,
         "fastest_lap_of_stint_predicted_at": 6.4,
         "model_quality": "GOOD",
         "total_clean_laps_used": 79,
@@ -8464,13 +8464,13 @@
       "car_number": "67",
       "team": "CSM",
       "manufacturer": "Porsche",
-      "avg_green_pace_fuel_corrected": "1:32.415",
+      "avg_green_pace_fuel_corrected": "1:32.030",
       "race_pace_consistency_stdev": 19.002,
       "avg_pit_stationary_time": "1:46.462",
       "tire_degradation_model": {
         "deg_coeff_a": -0.001864,
         "deg_coeff_b": -0.041438,
-        "deg_coeff_c": 91.994947,
+        "deg_coeff_c": 91.609947,
         "fastest_lap_of_stint_predicted_at": -11.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 99,
@@ -8482,13 +8482,13 @@
       "car_number": "7",
       "team": "Precision Racing LA",
       "manufacturer": "Audi",
-      "avg_green_pace_fuel_corrected": "1:32.455",
+      "avg_green_pace_fuel_corrected": "1:32.175",
       "race_pace_consistency_stdev": 10.588,
       "avg_pit_stationary_time": "1:11.472",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002271,
         "deg_coeff_b": -0.123349,
-        "deg_coeff_c": 92.32148,
+        "deg_coeff_c": 92.04148,
         "fastest_lap_of_stint_predicted_at": 27.2,
         "model_quality": "GOOD",
         "total_clean_laps_used": 76,
@@ -8500,13 +8500,13 @@
       "car_number": "71",
       "team": "Rebel Rock Racing",
       "manufacturer": "Aston Martin",
-      "avg_green_pace_fuel_corrected": "1:31.896",
+      "avg_green_pace_fuel_corrected": "1:31.931",
       "race_pace_consistency_stdev": 13.678,
       "avg_pit_stationary_time": "1:13.747",
       "tire_degradation_model": {
         "deg_coeff_a": 0.018196,
         "deg_coeff_b": -0.728674,
-        "deg_coeff_c": 97.161191,
+        "deg_coeff_c": 97.196191,
         "fastest_lap_of_stint_predicted_at": 20.0,
         "model_quality": "GOOD",
         "total_clean_laps_used": 94,
@@ -8518,13 +8518,13 @@
       "car_number": "72",
       "team": "Pegram Racing",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:34.972",
+      "avg_green_pace_fuel_corrected": "1:34.797",
       "race_pace_consistency_stdev": 14.231,
       "avg_pit_stationary_time": "5:02.618",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002156,
         "deg_coeff_b": -0.171606,
-        "deg_coeff_c": 94.809126,
+        "deg_coeff_c": 94.634126,
         "fastest_lap_of_stint_predicted_at": 39.8,
         "model_quality": "GOOD",
         "total_clean_laps_used": 71,
@@ -8536,13 +8536,13 @@
       "car_number": "76",
       "team": "Bryan Herta Autosport with Curb Agajanian",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:30.606",
+      "avg_green_pace_fuel_corrected": "1:30.431",
       "race_pace_consistency_stdev": 1.971,
       "avg_pit_stationary_time": "59.058",
       "tire_degradation_model": {
         "deg_coeff_a": 0.004601,
         "deg_coeff_b": -0.217783,
-        "deg_coeff_c": 93.046548,
+        "deg_coeff_c": 92.871548,
         "fastest_lap_of_stint_predicted_at": 23.7,
         "model_quality": "GOOD",
         "total_clean_laps_used": 97,
@@ -8554,13 +8554,13 @@
       "car_number": "89",
       "team": "HART",
       "manufacturer": "Honda",
-      "avg_green_pace_fuel_corrected": "1:31.180",
+      "avg_green_pace_fuel_corrected": "1:31.005",
       "race_pace_consistency_stdev": 2.049,
       "avg_pit_stationary_time": "1:56.480",
       "tire_degradation_model": {
         "deg_coeff_a": -0.002649,
         "deg_coeff_b": 0.024108,
-        "deg_coeff_c": 91.380061,
+        "deg_coeff_c": 91.205061,
         "fastest_lap_of_stint_predicted_at": 4.6,
         "model_quality": "GOOD",
         "total_clean_laps_used": 58,
@@ -8572,13 +8572,13 @@
       "car_number": "9",
       "team": "Bryan Herta Autosport w Curb Agajanian",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:32.606",
+      "avg_green_pace_fuel_corrected": "1:32.431",
       "race_pace_consistency_stdev": 10.847,
       "avg_pit_stationary_time": "1:01.428",
       "tire_degradation_model": {
         "deg_coeff_a": 0.000341,
         "deg_coeff_b": -0.116793,
-        "deg_coeff_c": 93.156116,
+        "deg_coeff_c": 92.981116,
         "fastest_lap_of_stint_predicted_at": 171.3,
         "model_quality": "GOOD",
         "total_clean_laps_used": 90,
@@ -8590,13 +8590,13 @@
       "car_number": "93",
       "team": "MMG",
       "manufacturer": "Honda",
-      "avg_green_pace_fuel_corrected": "1:31.535",
+      "avg_green_pace_fuel_corrected": "1:31.360",
       "race_pace_consistency_stdev": 7.896,
       "avg_pit_stationary_time": "1:01.969",
       "tire_degradation_model": {
         "deg_coeff_a": 0.002513,
         "deg_coeff_b": -0.153294,
-        "deg_coeff_c": 92.461405,
+        "deg_coeff_c": 92.286405,
         "fastest_lap_of_stint_predicted_at": 30.5,
         "model_quality": "GOOD",
         "total_clean_laps_used": 93,
@@ -8608,13 +8608,13 @@
       "car_number": "95",
       "team": "Turner Motorsport",
       "manufacturer": "BMW",
-      "avg_green_pace_fuel_corrected": "1:30.529",
+      "avg_green_pace_fuel_corrected": "1:30.494",
       "race_pace_consistency_stdev": 7.847,
       "avg_pit_stationary_time": "1:04.748",
       "tire_degradation_model": {
         "deg_coeff_a": 0.011836,
         "deg_coeff_b": -0.872825,
-        "deg_coeff_c": 104.060508,
+        "deg_coeff_c": 104.025508,
         "fastest_lap_of_stint_predicted_at": 36.9,
         "model_quality": "GOOD",
         "total_clean_laps_used": 111,
@@ -8626,13 +8626,13 @@
       "car_number": "96",
       "team": "Turner Motorsport",
       "manufacturer": "BMW",
-      "avg_green_pace_fuel_corrected": "1:37.300",
+      "avg_green_pace_fuel_corrected": "1:37.265",
       "race_pace_consistency_stdev": 64.883,
       "avg_pit_stationary_time": "1:09.242",
       "tire_degradation_model": {
         "deg_coeff_a": -0.431369,
         "deg_coeff_b": 16.075786,
-        "deg_coeff_c": -33.042699,
+        "deg_coeff_c": -33.077699,
         "fastest_lap_of_stint_predicted_at": 18.6,
         "model_quality": "GOOD",
         "total_clean_laps_used": 94,
@@ -8644,13 +8644,13 @@
       "car_number": "98",
       "team": "Bryan Herta Autosport with Curb Agajanian",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:30.615",
+      "avg_green_pace_fuel_corrected": "1:30.440",
       "race_pace_consistency_stdev": 6.631,
       "avg_pit_stationary_time": "1:00.564",
       "tire_degradation_model": {
         "deg_coeff_a": -1.2e-05,
         "deg_coeff_b": -0.075726,
-        "deg_coeff_c": 91.84834,
+        "deg_coeff_c": 91.67334,
         "fastest_lap_of_stint_predicted_at": -3235.1,
         "model_quality": "GOOD",
         "total_clean_laps_used": 98,
@@ -8662,13 +8662,13 @@
       "car_number": "99",
       "team": "Victor Gonzalez Racing Team",
       "manufacturer": "Hyundai",
-      "avg_green_pace_fuel_corrected": "1:30.660",
+      "avg_green_pace_fuel_corrected": "1:30.485",
       "race_pace_consistency_stdev": 2.517,
       "avg_pit_stationary_time": "1:15.588",
       "tire_degradation_model": {
         "deg_coeff_a": 0.025899,
         "deg_coeff_b": -0.400065,
-        "deg_coeff_c": 93.073934,
+        "deg_coeff_c": 92.898934,
         "fastest_lap_of_stint_predicted_at": 7.7,
         "model_quality": "GOOD",
         "total_clean_laps_used": 77,
@@ -9429,226 +9429,226 @@
   "full_pit_cycle_analysis": [
     {
       "rank": 1,
-      "car_number": "93",
-      "team": "MMG",
-      "average_cycle_loss": 125.62932,
-      "number_of_stops_analyzed": 5
+      "car_number": "15",
+      "team": "van der Steur Racing",
+      "average_cycle_loss": 45.52453333333333,
+      "number_of_stops_analyzed": 3
     },
     {
       "rank": 2,
-      "car_number": "39",
-      "team": "CarBahn with Peregrine racing",
-      "average_cycle_loss": 125.707525,
+      "car_number": "57",
+      "team": "Winward Racing",
+      "average_cycle_loss": 52.65305,
       "number_of_stops_analyzed": 4
     },
     {
       "rank": 3,
-      "car_number": "9",
-      "team": "Bryan Herta Autosport w Curb Agajanian",
-      "average_cycle_loss": 127.15510000000002,
-      "number_of_stops_analyzed": 4
-    },
-    {
-      "rank": 4,
-      "car_number": "76",
-      "team": "Bryan Herta Autosport with Curb Agajanian",
-      "average_cycle_loss": 128.86135000000002,
-      "number_of_stops_analyzed": 4
-    },
-    {
-      "rank": 5,
-      "car_number": "33",
-      "team": "Bryan Herta Autosport with Curb Agajanian",
-      "average_cycle_loss": 129.47982857142856,
-      "number_of_stops_analyzed": 7
-    },
-    {
-      "rank": 6,
-      "car_number": "98",
-      "team": "Bryan Herta Autosport with Curb Agajanian",
-      "average_cycle_loss": 130.4082,
+      "car_number": "89",
+      "team": "HART",
+      "average_cycle_loss": 61.745899999999985,
       "number_of_stops_analyzed": 3
     },
     {
+      "rank": 4,
+      "car_number": "17",
+      "team": "Unitronic/JDC Miller MotorSports",
+      "average_cycle_loss": 63.45583333333334,
+      "number_of_stops_analyzed": 3
+    },
+    {
+      "rank": 5,
+      "car_number": "16",
+      "team": "CSM",
+      "average_cycle_loss": 65.30745,
+      "number_of_stops_analyzed": 3
+    },
+    {
+      "rank": 6,
+      "car_number": "33",
+      "team": "Bryan Herta Autosport with Curb Agajanian",
+      "average_cycle_loss": 67.58754285714285,
+      "number_of_stops_analyzed": 7
+    },
+    {
       "rank": 7,
-      "car_number": "37",
-      "team": "Precision Racing LA",
-      "average_cycle_loss": 133.89895,
-      "number_of_stops_analyzed": 4
+      "car_number": "38",
+      "team": "BGB MOTORSPORTS",
+      "average_cycle_loss": 68.367375,
+      "number_of_stops_analyzed": 2
     },
     {
       "rank": 8,
-      "car_number": "44",
-      "team": "Ibiza Farm Motorsports",
-      "average_cycle_loss": 136.09324,
+      "car_number": "93",
+      "team": "MMG",
+      "average_cycle_loss": 75.92912,
       "number_of_stops_analyzed": 5
     },
     {
       "rank": 9,
-      "car_number": "59",
-      "team": "KOHR MOTORSPORTS",
-      "average_cycle_loss": 139.86096666666666,
-      "number_of_stops_analyzed": 3
+      "car_number": "76",
+      "team": "Bryan Herta Autosport with Curb Agajanian",
+      "average_cycle_loss": 84.55234999999999,
+      "number_of_stops_analyzed": 4
     },
     {
       "rank": 10,
-      "car_number": "27",
-      "team": "Auto Technic Racing",
-      "average_cycle_loss": 140.47377999999998,
-      "number_of_stops_analyzed": 5
+      "car_number": "37",
+      "team": "Precision Racing LA",
+      "average_cycle_loss": 86.53545000000001,
+      "number_of_stops_analyzed": 4
     },
     {
       "rank": 11,
-      "car_number": "2",
-      "team": "CSM",
-      "average_cycle_loss": 141.55534285714288,
-      "number_of_stops_analyzed": 7
-    },
-    {
-      "rank": 12,
-      "car_number": "17",
-      "team": "Unitronic/JDC Miller MotorSports",
-      "average_cycle_loss": 141.77316666666664,
+      "car_number": "53",
+      "team": "Kingpin Racing",
+      "average_cycle_loss": 91.30505,
       "number_of_stops_analyzed": 3
     },
     {
+      "rank": 12,
+      "car_number": "9",
+      "team": "Bryan Herta Autosport w Curb Agajanian",
+      "average_cycle_loss": 91.98335000000003,
+      "number_of_stops_analyzed": 4
+    },
+    {
       "rank": 13,
-      "car_number": "19",
-      "team": "Stephen Cameron Racing",
-      "average_cycle_loss": 142.52938333333336,
+      "car_number": "95",
+      "team": "Turner Motorsport",
+      "average_cycle_loss": 95.71393333333333,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 14,
-      "car_number": "16",
-      "team": "CSM",
-      "average_cycle_loss": 143.65845000000002,
+      "car_number": "39",
+      "team": "CarBahn with Peregrine racing",
+      "average_cycle_loss": 95.73311666666667,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 15,
-      "car_number": "57",
-      "team": "Winward Racing",
-      "average_cycle_loss": 144.5148,
-      "number_of_stops_analyzed": 4
-    },
-    {
-      "rank": 16,
-      "car_number": "99",
-      "team": "Victor Gonzalez Racing Team",
-      "average_cycle_loss": 145.47325,
+      "car_number": "2",
+      "team": "CSM",
+      "average_cycle_loss": 97.38034285714285,
       "number_of_stops_analyzed": 7
     },
     {
+      "rank": 16,
+      "car_number": "27",
+      "team": "Auto Technic Racing",
+      "average_cycle_loss": 100.79758,
+      "number_of_stops_analyzed": 5
+    },
+    {
       "rank": 17,
-      "car_number": "95",
-      "team": "Turner Motorsport",
-      "average_cycle_loss": 146.35760000000002,
+      "car_number": "98",
+      "team": "Bryan Herta Autosport with Curb Agajanian",
+      "average_cycle_loss": 100.99286666666667,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 18,
-      "car_number": "89",
-      "team": "HART",
-      "average_cycle_loss": 146.5429,
+      "car_number": "46",
+      "team": "Team TGM",
+      "average_cycle_loss": 102.34825000000001,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 19,
-      "car_number": "46",
-      "team": "Team TGM",
-      "average_cycle_loss": 149.45791666666665,
+      "car_number": "59",
+      "team": "KOHR MOTORSPORTS",
+      "average_cycle_loss": 103.54796666666668,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 20,
-      "car_number": "96",
-      "team": "Turner Motorsport",
-      "average_cycle_loss": 152.8883,
-      "number_of_stops_analyzed": 4
+      "car_number": "44",
+      "team": "Ibiza Farm Motorsports",
+      "average_cycle_loss": 107.58724000000002,
+      "number_of_stops_analyzed": 5
     },
     {
       "rank": 21,
       "car_number": "28",
       "team": "RS1",
-      "average_cycle_loss": 153.02655000000001,
+      "average_cycle_loss": 107.68721666666666,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 22,
-      "car_number": "13",
-      "team": "McCumbee McAleer Racing with Aerosport",
-      "average_cycle_loss": 154.44308333333333,
-      "number_of_stops_analyzed": 3
+      "car_number": "99",
+      "team": "Victor Gonzalez Racing Team",
+      "average_cycle_loss": 107.72010714285716,
+      "number_of_stops_analyzed": 7
     },
     {
       "rank": 23,
-      "car_number": "18",
-      "team": "Victor Gonzalez Racing",
-      "average_cycle_loss": 157.05414999999996,
-      "number_of_stops_analyzed": 3
-    },
-    {
-      "rank": 24,
       "car_number": "71",
       "team": "Rebel Rock Racing",
-      "average_cycle_loss": 157.38460000000003,
+      "average_cycle_loss": 108.33485,
       "number_of_stops_analyzed": 4
     },
     {
+      "rank": 24,
+      "car_number": "64",
+      "team": "Team TGM",
+      "average_cycle_loss": 108.52894999999998,
+      "number_of_stops_analyzed": 8
+    },
+    {
       "rank": 25,
-      "car_number": "38",
-      "team": "BGB MOTORSPORTS",
-      "average_cycle_loss": 165.14736666666667,
+      "car_number": "13",
+      "team": "McCumbee McAleer Racing with Aerosport",
+      "average_cycle_loss": 111.69241666666666,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 26,
-      "car_number": "64",
-      "team": "Team TGM",
-      "average_cycle_loss": 167.03969999999998,
-      "number_of_stops_analyzed": 8
-    },
-    {
-      "rank": 27,
-      "car_number": "53",
-      "team": "Kingpin Racing",
-      "average_cycle_loss": 171.7057166666667,
+      "car_number": "19",
+      "team": "Stephen Cameron Racing",
+      "average_cycle_loss": 125.97971666666668,
       "number_of_stops_analyzed": 3
     },
     {
+      "rank": 27,
+      "car_number": "67",
+      "team": "CSM",
+      "average_cycle_loss": 135.040325,
+      "number_of_stops_analyzed": 4
+    },
+    {
       "rank": 28,
-      "car_number": "15",
-      "team": "van der Steur Racing",
-      "average_cycle_loss": 175.69458333333333,
+      "car_number": "18",
+      "team": "Victor Gonzalez Racing",
+      "average_cycle_loss": 140.1654833333333,
       "number_of_stops_analyzed": 3
     },
     {
       "rank": 29,
-      "car_number": "67",
-      "team": "CSM",
-      "average_cycle_loss": 178.184075,
-      "number_of_stops_analyzed": 4
+      "car_number": "96",
+      "team": "Turner Motorsport",
+      "average_cycle_loss": 205.68364000000003,
+      "number_of_stops_analyzed": 5
     },
     {
       "rank": 30,
-      "car_number": "31",
-      "team": "RVA Graphics Motorsports By Speed Syndicate",
-      "average_cycle_loss": 219.87565000000004,
-      "number_of_stops_analyzed": 6
+      "car_number": "14",
+      "team": "AR Motorsports",
+      "average_cycle_loss": 269.6558,
+      "number_of_stops_analyzed": 4
     },
     {
       "rank": 31,
-      "car_number": "14",
-      "team": "AR Motorsports",
-      "average_cycle_loss": 245.54238333333333,
-      "number_of_stops_analyzed": 3
+      "car_number": "72",
+      "team": "Pegram Racing",
+      "average_cycle_loss": 316.0967428571429,
+      "number_of_stops_analyzed": 7
     },
     {
       "rank": 32,
       "car_number": "52",
       "team": "Baker Racing",
-      "average_cycle_loss": 250.38649999999998,
+      "average_cycle_loss": 316.95129999999995,
       "number_of_stops_analyzed": 4
     },
     {
@@ -9660,31 +9660,31 @@
     },
     {
       "rank": 34,
-      "car_number": "72",
-      "team": "Pegram Racing",
-      "average_cycle_loss": 373.64574285714286,
+      "car_number": "31",
+      "team": "RVA Graphics Motorsports By Speed Syndicate",
+      "average_cycle_loss": 485.4432928571428,
       "number_of_stops_analyzed": 7
     },
     {
       "rank": 35,
       "car_number": "10",
       "team": "Rockwell Autosport Development",
-      "average_cycle_loss": 374.83833,
+      "average_cycle_loss": 689.37393,
       "number_of_stops_analyzed": 10
     },
     {
       "rank": 36,
       "car_number": "7",
       "team": "Precision Racing LA",
-      "average_cycle_loss": 574.7648125000001,
+      "average_cycle_loss": 954.1058125000001,
       "number_of_stops_analyzed": 4
     },
     {
       "rank": 37,
       "car_number": "5",
       "team": "KMW Motorsports with TMR Engineering",
-      "average_cycle_loss": 794.42,
-      "number_of_stops_analyzed": 7
+      "average_cycle_loss": 1207.0053333333333,
+      "number_of_stops_analyzed": 6
     }
   ],
   "social_media_highlights": {
