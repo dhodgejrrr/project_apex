@@ -77,7 +77,10 @@ def _select_key_insights(insights: List[Dict[str, Any]], limit: int = 8) -> List
         if "Strategy" in cat:
             return 1
         return 2
-    sorted_in = sorted(insights, key=_priority)
+    valid_insights = [ins for ins in insights if isinstance(ins, dict)]
+    if not valid_insights:
+        return []
+    sorted_in = sorted(valid_insights, key=_priority)
     for ins in sorted_in:
         if ins.get("type") in seen_types:
             continue

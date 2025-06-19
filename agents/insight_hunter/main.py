@@ -238,16 +238,34 @@ def find_degradation_insights(enhanced_strategy: List[Dict[str, Any]]) -> List[D
 
 
 def find_driver_delta_insights(delta_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Identify car with the largest average lap-time delta between its drivers.
+
+    The source value may sometimes arrive as a string; ensure robust numeric
+    handling to avoid formatting errors.
+    """
     if not delta_data:
         return []
-    worst_entry = max(delta_data, key=lambda d: d.get("average_lap_time_delta_for_car", 0))
-    gap = worst_entry.get("average_lap_time_delta_for_car", 0)
-    return [{
-        "category": "Driver Performance",
-        "type": "Largest Teammate Pace Gap",
-        "car_number": worst_entry.get("car_number"),
-        "details": f"Car #{worst_entry.get('car_number')} has the largest pace delta ({gap:.2f}s) between its drivers."
-    }]
+
+    def _delta_val(entry: Dict[str, Any]) -> float:
+        try:
+            return float(entry.get("average_lap_time_delta_for_car", 0) or 0)
+        except (TypeError, ValueError):
+            return 0.0
+
+    worst_entry = max(delta_data, key=_delta_val)
+    gap_val = _delta_val(worst_entry)
+
+    return [
+        {
+            "category": "Driver Performance",
+            "type": "Largest Teammate Pace Gap",
+            "car_number": worst_entry.get("car_number"),
+            "details": (
+                f"Car #{worst_entry.get('car_number')} has the largest pace delta "
+                f"({gap_val:.2f}s) between its drivers."
+            ),
+        }
+    ]
 
 
 # ----------------------------------------------------------------------------

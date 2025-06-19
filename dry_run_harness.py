@@ -99,15 +99,28 @@ for fname in [
     setattr(plt_stub, fname, lambda *_, **__: None)
 setattr(plt_stub, "gca", lambda: SimpleNamespace(invert_yaxis=lambda: None))
 
-# numpy, pandas
-_stub_module("numpy", {"linspace": lambda *_, **__: []})
-_stub_module("pandas", {"DataFrame": lambda *_, **__: object})
+# numpy & pandas – only stub if not installed
+try:
+    import numpy  # type: ignore  # noqa: F401
+except ModuleNotFoundError:  # pragma: no cover
+    _stub_module("numpy", {"linspace": lambda *_, **__: []})
+
+try:
+    import pandas  # type: ignore  # noqa: F401
+except ModuleNotFoundError:  # pragma: no cover
+    _stub_module("pandas", {"DataFrame": lambda *_, **__: object, "errors": SimpleNamespace(PerformanceWarning=Warning)})
 
 # Jinja2 & WeasyPrint stubs
 _stub_module("jinja2", {"Environment": lambda *_, **__: SimpleNamespace(get_template=lambda _name: SimpleNamespace(render=lambda **__: "<html></html>")),
-                          "FileSystemLoader": object,
+                          "FileSystemLoader": lambda *_, **__: None,
                           "select_autoescape": lambda *_: None})
-_stub_module("weasyprint", {"HTML": SimpleNamespace(write_pdf=lambda *_: None)})
+class _HTMLStub:
+    def __init__(self, *_, **__):
+        pass
+    def write_pdf(self, *_: Any, **__: Any):
+        return None
+
+_stub_module("weasyprint", {"HTML": _HTMLStub})
 
 # ---------------------------------------------------------------------------
 # Mock AI helper functions
