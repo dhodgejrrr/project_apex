@@ -1,309 +1,334 @@
-[
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "10",
-    "details": "Stop #4 was 1400.4s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "10",
-    "details": "Stop #9 was 406.2s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "10",
-    "details": "Driver changes cost an average of -197.9s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "14",
-    "details": "Stop #3 was 411.4s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "14",
-    "details": "Driver changes cost an average of -548.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "15",
-    "details": "Driver changes cost an average of 16.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "16",
-    "details": "Driver changes cost an average of -1.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "17",
-    "details": "Driver changes cost an average of 17.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "18",
-    "details": "Driver changes cost an average of -19.2s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "19",
-    "details": "Driver changes cost an average of -2.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "2",
-    "details": "Driver changes cost an average of 38.9s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "27",
-    "details": "Stop #1 was 41.1s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "27",
-    "details": "Driver changes cost an average of 37.7s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "28",
-    "details": "Driver changes cost an average of 3.7s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "31",
-    "details": "Stop #6 was 1814.0s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "31",
-    "details": "Driver changes cost an average of 2116.3s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "33",
-    "details": "Driver changes cost an average of 16.0s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "37",
-    "details": "Driver changes cost an average of 32.3s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "39",
-    "details": "Driver changes cost an average of -0.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "44",
-    "details": "Driver changes cost an average of 8.0s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "46",
-    "details": "Driver changes cost an average of 13.8s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "5",
-    "details": "Stop #6 was 1949.7s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "5",
-    "details": "Driver changes cost an average of -464.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "52",
-    "details": "Stop #3 was 323.6s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "52",
-    "details": "Driver changes cost an average of -151.4s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "53",
-    "details": "Driver changes cost an average of -9.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "57",
-    "details": "Driver changes cost an average of 7.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "59",
-    "details": "Driver changes cost an average of 5.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "64",
-    "details": "Driver changes cost an average of 21.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "67",
-    "details": "Stop #4 was 89.5s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "67",
-    "details": "Driver changes cost an average of -52.4s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "7",
-    "details": "Stop #1 was 1286.7s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "7",
-    "details": "Driver changes cost an average of -558.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "71",
-    "details": "Driver changes cost an average of 33.9s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "72",
-    "details": "Stop #3 was 1325.4s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "72",
-    "details": "Driver changes cost an average of -483.7s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "76",
-    "details": "Driver changes cost an average of 7.7s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "89",
-    "details": "Driver changes cost an average of 29.6s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "9",
-    "details": "Driver changes cost an average of 27.2s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "93",
-    "details": "Driver changes cost an average of 17.1s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "95",
-    "details": "Driver changes cost an average of 7.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "96",
-    "details": "Stop #5 was 458.6s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "96",
-    "details": "Driver changes cost an average of -194.0s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "98",
-    "details": "Driver changes cost an average of 1.5s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "99",
-    "details": "Stop #2 was 55.8s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Pit Delta Outlier",
-    "car_number": "99",
-    "details": "Stop #6 was 53.6s slower than team average."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Driver Change Cost",
-    "car_number": "99",
-    "details": "Driver changes cost an average of 4.3s more stationary time."
-  },
-  {
-    "category": "Pit Stop Intelligence",
-    "type": "Stationary Time Champion",
-    "car_number": "19",
-    "details": "Fastest crew on pit road with an average stationary time of 54.2s."
-  },
-  {
-    "category": "Performance",
-    "type": "Consistency King",
-    "car_number": "44",
-    "driver_name": null,
-    "details": "Most consistent driver with a standard deviation of 1.248s on clean, fuel-corrected laps."
-  },
-  {
-    "category": "Tire Management",
-    "type": "Tire-Killer Alert",
-    "manufacturer": "McLaren",
-    "details": "McLaren shows the highest tire degradation rate (avg coeff 0.0179)."
-  },
-  {
-    "category": "Driver Performance",
-    "type": "Largest Teammate Pace Gap",
-    "car_number": "64",
-    "details": "Car #64 has the largest pace delta (6.04s) between its drivers."
-  }
-]
+{
+  "manufacturer_pace_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Mercedes-AMG",
+      "average_value": "+89.139",
+      "delta_from_field_avg": "-4.444",
+      "llm_commentary": "Mercedes-AMG demonstrates clear dominance, establishing themselves as the undisputed pace-setters with a significant advantage over the entire field."
+    },
+    {
+      "rank": 2,
+      "manufacturer": "McLaren",
+      "average_value": "+89.571",
+      "delta_from_field_avg": "-4.012",
+      "llm_commentary": "McLaren maintains a very strong second position, showing competitive pace that keeps them firmly in contention and just behind the leading manufacturer."
+    },
+    {
+      "rank": 3,
+      "manufacturer": "Ford",
+      "average_value": "+90.464",
+      "delta_from_field_avg": "-3.119",
+      "llm_commentary": "Ford secures a solid top-tier performance, leading the chase group but with a noticeable gap to the front two manufacturers."
+    },
+    {
+      "rank": 4,
+      "manufacturer": "Porsche",
+      "average_value": "+90.790",
+      "delta_from_field_avg": "-2.793",
+      "llm_commentary": "Porsche delivers a strong upper-midfield performance, consistently competitive and forming part of the leading pack just outside the top three."
+    },
+    {
+      "rank": 5,
+      "manufacturer": "Hyundai",
+      "average_value": "+91.678",
+      "delta_from_field_avg": "-1.905",
+      "llm_commentary": "Hyundai holds a respectable position in the middle of the field, showcasing a consistent pace that keeps them ahead of many competitors."
+    },
+    {
+      "rank": 6,
+      "manufacturer": "Toyota",
+      "average_value": "+91.788",
+      "delta_from_field_avg": "-1.794",
+      "llm_commentary": "Toyota is a solid mid-field contender, closely matched with Hyundai and demonstrating a reliable, if not leading, race pace."
+    },
+    {
+      "rank": 7,
+      "manufacturer": "BMW",
+      "average_value": "+91.950",
+      "delta_from_field_avg": "-1.633",
+      "llm_commentary": "BMW occupies a competitive position within the mid-pack, maintaining a steady performance that places them squarely in the thick of the field."
+    },
+    {
+      "rank": 8,
+      "manufacturer": "Aston Martin",
+      "average_value": "+93.450",
+      "delta_from_field_avg": "-0.133",
+      "llm_commentary": "Aston Martin is positioned towards the rear of the main competitive group, registering a pace very close to the overall field average."
+    },
+    {
+      "rank": 9,
+      "manufacturer": "Honda",
+      "average_value": "+102.032",
+      "delta_from_field_avg": "+8.449",
+      "llm_commentary": "Honda struggles significantly at the back of the grid, demonstrating a substantial deficit in average race pace compared to the rest of the field."
+    },
+    {
+      "rank": 10,
+      "manufacturer": "Audi",
+      "average_value": "+104.967",
+      "delta_from_field_avg": "+11.384",
+      "llm_commentary": "Audi is considerably off the pace, ranking last with a significant performance gap that places them well behind all other manufacturers."
+    }
+  ],
+  "manufacturer_tire_wear_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "BMW",
+      "average_value": "-0.1040",
+      "delta_from_field_avg": "-0.0906"
+    },
+    {
+      "rank": 2,
+      "manufacturer": "Audi",
+      "average_value": "-0.0809",
+      "delta_from_field_avg": "-0.0675"
+    },
+    {
+      "rank": 3,
+      "manufacturer": "Aston Martin",
+      "average_value": "-0.0025",
+      "delta_from_field_avg": "+0.0109"
+    },
+    {
+      "rank": 4,
+      "manufacturer": "Mercedes-AMG",
+      "average_value": "-0.0017",
+      "delta_from_field_avg": "+0.0117"
+    },
+    {
+      "rank": 5,
+      "manufacturer": "Ford",
+      "average_value": "0.0012",
+      "delta_from_field_avg": "+0.0145"
+    },
+    {
+      "rank": 6,
+      "manufacturer": "Honda",
+      "average_value": "0.0036",
+      "delta_from_field_avg": "+0.0170"
+    },
+    {
+      "rank": 7,
+      "manufacturer": "Hyundai",
+      "average_value": "0.0060",
+      "delta_from_field_avg": "+0.0194"
+    },
+    {
+      "rank": 8,
+      "manufacturer": "Toyota",
+      "average_value": "0.0113",
+      "delta_from_field_avg": "+0.0247"
+    },
+    {
+      "rank": 9,
+      "manufacturer": "Porsche",
+      "average_value": "0.0153",
+      "delta_from_field_avg": "+0.0286"
+    },
+    {
+      "rank": 10,
+      "manufacturer": "McLaren",
+      "average_value": "0.0179",
+      "delta_from_field_avg": "+0.0313"
+    }
+  ],
+  "manufacturer_pit_cycle_ranking": [],
+  "car_untapped_potential_ranking": [
+    {
+      "rank": 1,
+      "car_number": "39",
+      "driver_name": "Sean McAlister",
+      "time_left_on_track": "+0.545s"
+    },
+    {
+      "rank": 2,
+      "car_number": "93",
+      "driver_name": "LP Montour",
+      "time_left_on_track": "+0.510s"
+    },
+    {
+      "rank": 3,
+      "car_number": "31",
+      "driver_name": "Jaden Conwright",
+      "time_left_on_track": "+0.481s"
+    },
+    {
+      "rank": 4,
+      "car_number": "16",
+      "driver_name": "Zach Veach",
+      "time_left_on_track": "+0.391s"
+    },
+    {
+      "rank": 5,
+      "car_number": "53",
+      "driver_name": "David Hodge",
+      "time_left_on_track": "+0.380s"
+    },
+    {
+      "rank": 6,
+      "car_number": "13",
+      "driver_name": "Jenson Altzman",
+      "time_left_on_track": "+0.363s"
+    },
+    {
+      "rank": 7,
+      "car_number": "44",
+      "driver_name": "Michael Cooper",
+      "time_left_on_track": "+0.335s"
+    },
+    {
+      "rank": 8,
+      "car_number": "10",
+      "driver_name": "Bruno Colombo",
+      "time_left_on_track": "+0.318s"
+    },
+    {
+      "rank": 9,
+      "car_number": "38",
+      "driver_name": "Spencer Pumpelly",
+      "time_left_on_track": "+0.309s"
+    },
+    {
+      "rank": 10,
+      "car_number": "57",
+      "driver_name": "Daniel Morad",
+      "time_left_on_track": "+0.283s"
+    },
+    {
+      "rank": 11,
+      "car_number": "12",
+      "driver_name": "Rafael Martinez",
+      "time_left_on_track": "+0.281s"
+    },
+    {
+      "rank": 12,
+      "car_number": "52",
+      "driver_name": "Sam Baker",
+      "time_left_on_track": "+0.272s"
+    },
+    {
+      "rank": 13,
+      "car_number": "37",
+      "driver_name": "Ron Tomlinson",
+      "time_left_on_track": "+0.270s"
+    },
+    {
+      "rank": 14,
+      "car_number": "7",
+      "driver_name": "Celso Neto",
+      "time_left_on_track": "+0.266s"
+    },
+    {
+      "rank": 15,
+      "car_number": "27",
+      "driver_name": "Stevan McAleer",
+      "time_left_on_track": "+0.261s"
+    },
+    {
+      "rank": 16,
+      "car_number": "71",
+      "driver_name": "Robin Liddell",
+      "time_left_on_track": "+0.256s"
+    },
+    {
+      "rank": 17,
+      "car_number": "99",
+      "driver_name": "Tyler Gonzalez",
+      "time_left_on_track": "+0.250s"
+    },
+    {
+      "rank": 18,
+      "car_number": "98",
+      "driver_name": "Harry Gottsacker",
+      "time_left_on_track": "+0.238s"
+    },
+    {
+      "rank": 19,
+      "car_number": "33",
+      "driver_name": "Bryson Morris",
+      "time_left_on_track": "+0.235s"
+    },
+    {
+      "rank": 20,
+      "car_number": "89",
+      "driver_name": "Cameron Lawrence",
+      "time_left_on_track": "+0.231s"
+    },
+    {
+      "rank": 21,
+      "car_number": "9",
+      "driver_name": "Suellio Almeida",
+      "time_left_on_track": "+0.220s"
+    },
+    {
+      "rank": 22,
+      "car_number": "64",
+      "driver_name": "Hugh Plumb",
+      "time_left_on_track": "+0.213s"
+    },
+    {
+      "rank": 23,
+      "car_number": "76",
+      "driver_name": "Denis Dupont",
+      "time_left_on_track": "+0.173s"
+    },
+    {
+      "rank": 24,
+      "car_number": "72",
+      "driver_name": "Larry Pegram",
+      "time_left_on_track": "+0.168s"
+    },
+    {
+      "rank": 25,
+      "car_number": "14",
+      "driver_name": "Thomas Merrill",
+      "time_left_on_track": "+0.158s"
+    },
+    {
+      "rank": 26,
+      "car_number": "95",
+      "driver_name": "Dillon Machavern",
+      "time_left_on_track": "+0.152s"
+    },
+    {
+      "rank": 27,
+      "car_number": "46",
+      "driver_name": "Paul Holton",
+      "time_left_on_track": "+0.150s"
+    },
+    {
+      "rank": 28,
+      "car_number": "17",
+      "driver_name": "Mikey Taylor",
+      "time_left_on_track": "+0.134s"
+    },
+    {
+      "rank": 29,
+      "car_number": "19",
+      "driver_name": "Gregory Liefooghe",
+      "time_left_on_track": "+0.133s"
+    },
+    {
+      "rank": 30,
+      "car_number": "96",
+      "driver_name": "Patrick Gallagher",
+      "time_left_on_track": "+0.108s"
+    },
+    {
+      "rank": 31,
+      "car_number": "59",
+      "driver_name": "Billy Johnson",
+      "time_left_on_track": "+0.104s"
+    }
+  ],
+  "driver_traffic_meister_ranking": [],
+  "individual_outliers": [
+    {
+      "category": "Driver Performance",
+      "type": "Largest Teammate Pace Gap",
+      "car_number": "64",
+      "details": "Car #64 has the largest pace difference between its drivers, with an average gap of 6.044s in best lap times."
+    }
+  ]
+}

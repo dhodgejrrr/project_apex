@@ -1,4 +1,5 @@
-"""InsightHunter Cloud Run service for Project Apex.
+"""
+InsightHunter Cloud Run service for Project Apex.
 
 Listens for Pub/Sub push messages containing the Cloud Storage path to an
 _enhanced.json race analysis file, derives tactical insights, stores them as a
@@ -9,68 +10,59 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import logging
 import os
 import pathlib
 import tempfile
 from collections import defaultdict
 from statistics import mean
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
-# AI helper utils
+# AI helper utils - Assuming this is a local utility
 from agents.common import ai_helpers
 
 from flask import Flask, Response, request
 from google.cloud import pubsub_v1, storage
 
 # ----------------------------------------------------------------------------
-# Environment configuration
+# Environment configuration & Logging
 # ----------------------------------------------------------------------------
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 VIS_TOPIC_ID = os.getenv("VISUALIZATION_REQUESTS_TOPIC", "visualization-requests")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
-# ----------------------------------------------------------------------------
-# Logging
-# ----------------------------------------------------------------------------
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 LOGGER = logging.getLogger("insight_hunter")
 
 # ----------------------------------------------------------------------------
-# Google Cloud clients (lazy)
+# Cloud Clients & Helpers
 # ----------------------------------------------------------------------------
-_storage_client: storage.Client | None = None
-_publisher: pubsub_v1.PublisherClient | None = None
+_storage_client: Optional[storage.Client] = None
+_publisher: Optional[pubsub_v1.PublisherClient] = None
 
 
 def _init_clients() -> tuple[storage.Client, pubsub_v1.PublisherClient]:
-    global _storage_client, _publisher  # pylint: disable=global-statement
+    global _storage_client, _publisher
     if _storage_client is None:
         _storage_client = storage.Client()
     if _publisher is None:
         _publisher = pubsub_v1.PublisherClient()
     return _storage_client, _publisher
 
-# ----------------------------------------------------------------------------
-# Utility helpers
-# ----------------------------------------------------------------------------
-
 def _gcs_download(gcs_uri: str, dest_path: pathlib.Path) -> None:
     storage_client, _ = _init_clients()
-    if not gcs_uri.startswith("gs://"):
-        raise ValueError(f"Invalid GCS URI: {gcs_uri}")
+    if not gcs_uri.startswith("gs://"): raise ValueError(f"Invalid GCS URI: {gcs_uri}")
     bucket_name, blob_name = gcs_uri[5:].split("/", 1)
     bucket = storage_client.bucket(bucket_name)
     bucket.blob(blob_name).download_to_filename(dest_path)
-
 
 def _gcs_upload(local_path: pathlib.Path, bucket: str, blob_name: str) -> str:
     storage_client, _ = _init_clients()
     blob = storage_client.bucket(bucket).blob(blob_name)
     blob.upload_from_filename(local_path)
     return f"gs://{bucket}/{blob_name}"
-
 
 def _publish_visualization_request(analysis_uri: str, insights_uri: str) -> None:
     _, publisher = _init_clients()
@@ -79,32 +71,39 @@ def _publish_visualization_request(analysis_uri: str, insights_uri: str) -> None
     publisher.publish(topic_path, json.dumps(message).encode("utf-8"))
     LOGGER.info("Published visualization request: %s", message)
 
-
 def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
     if "message" not in req_json or "data" not in req_json["message"]:
         raise ValueError("Invalid Pub/Sub push payload")
     decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
     return json.loads(decoded)
 
-
 # ----------------------------------------------------------------------------
-# Domain-specific helper functions
+# Domain-specific Helper Functions
 # ----------------------------------------------------------------------------
 
 def _time_str_to_seconds(time_str: str | None) -> float | None:
-    """Converts time formats like '1:23.456' or '23.456' into float seconds."""
-    if time_str is None:
-        return None
+    if not isinstance(time_str, str): return None
     try:
-        if ":" in time_str:
-            mins, rest = time_str.split(":", 1)
-            return float(mins) * 60 + float(rest)
-        return float(time_str)
-    except ValueError:
+        sign = 1
+        clean_str = time_str
+        if time_str.startswith("-"):
+            sign = -1
+            clean_str = time_str[1:]
+        
+        if ":" in clean_str:
+            parts = clean_str.split(":")
+            if len(parts) == 2: return sign * (float(parts[0]) * 60 + float(parts[1]))
+            elif len(parts) == 3: return sign * (float(parts[0]) * 3600 + float(parts[1]) * 60 + float(parts[2]))
+        return sign * float(clean_str)
+    except (ValueError, TypeError):
         return None
 
+def _format_seconds(seconds: Optional[float], precision: int = 3, unit: str = "") -> Optional[str]:
+    if seconds is None: return None
+    return f"{seconds:+.{precision}f}{unit}"
+
 # ----------------------------------------------------------------------------
-# Insight algorithms
+# Insight Ranking Algorithms
 # ----------------------------------------------------------------------------
 
 def find_pit_stop_insights(strategy_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -156,154 +155,170 @@ def find_pit_stop_insights(strategy_data: List[Dict[str, Any]]) -> List[Dict[str
     # Logic 3: Stationary Time Champion (needs enhanced_strategy_analysis section)
     # This will be added from outer function because data lives elsewhere.
     return insights
-
-
-def _stationary_time_champion(enhanced_strategy: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    min_time = float("inf")
-    champion_car = None
-    for entry in enhanced_strategy:
-        avg_stat = _time_str_to_seconds(entry.get("avg_pit_stationary_time"))
-        if avg_stat is not None and avg_stat < min_time:
-            min_time = avg_stat
-            champion_car = entry.get("car_number")
-    if champion_car is None:
-        return []
-    return [{
-        "category": "Pit Stop Intelligence",
-        "type": "Stationary Time Champion",
-        "car_number": champion_car,
-        "details": f"Fastest crew on pit road with an average stationary time of {min_time:.1f}s."
-    }]
-
-
-def find_performance_insights(data: Dict[str, Any]) -> List[Dict[str, Any]]:
-    insights: List[Dict[str, Any]] = []
-
-    # Consistency King
-    enhanced = data.get("enhanced_strategy_analysis", [])
-    min_stdev = float("inf")
-    king_entry = None
-    for entry in enhanced:
-        stdev = entry.get("race_pace_consistency_stdev")
-        if stdev is not None and stdev < min_stdev:
-            min_stdev = stdev
-            king_entry = entry
-    if king_entry is not None:
-        insights.append({
-            "category": "Performance",
-            "type": "Consistency King",
-            "car_number": king_entry.get("car_number"),
-            "driver_name": king_entry.get("primary_driver"),
-            "details": f"Most consistent driver with a standard deviation of {min_stdev:.3f}s on clean, fuel-corrected laps."
-        })
-
-    # Leaving Time on the Table – Optimal Lap Delta
-    fastest = data.get("fastest_by_car_number", [])
-    for car in fastest:
-        fastest_lap_s = _time_str_to_seconds(car.get("fastest_lap", {}).get("time"))
-        optimal_s = _time_str_to_seconds(car.get("optimal_lap_time"))
-        if fastest_lap_s is None or optimal_s is None:
-            continue
-        delta = optimal_s - fastest_lap_s
-        if delta > 0.3:
-            insights.append({
-                "category": "Performance",
-                "type": "Optimal Lap Delta",
-                "car_number": car.get("car_number"),
-                "details": f"Car #{car.get('car_number')} has a {delta:.1f}s gap between its fastest and optimal lap, indicating inconsistent sector performance."
-            })
-    return insights
-
-
-def find_degradation_insights(enhanced_strategy: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    coeffs: defaultdict[str, List[float]] = defaultdict(list)
-    for entry in enhanced_strategy:
-        model = entry.get("tire_degradation_model", {})
-        coeff_a = model.get("deg_coeff_a")
-        if coeff_a is not None:
-            coeffs[entry.get("manufacturer")].append(coeff_a)
-    if not coeffs:
-        return []
-    # manufacturer with highest average positive coefficient
-    worst_manufacturer, worst_value = max(
-        ((m, mean(vals)) for m, vals in coeffs.items()),
-        key=lambda x: x[1],
-    )
-    return [{
-        "category": "Tire Management",
-        "type": "Tire-Killer Alert",
-        "manufacturer": worst_manufacturer,
-        "details": f"{worst_manufacturer} shows the highest tire degradation rate (avg coeff {worst_value:.4f})."
-    }]
-
-
-def find_driver_delta_insights(delta_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Identify car with the largest average lap-time delta between its drivers.
-
-    The source value may sometimes arrive as a string; ensure robust numeric
-    handling to avoid formatting errors.
-    """
-    if not delta_data:
-        return []
-
-    def _delta_val(entry: Dict[str, Any]) -> float:
+    
+def _rank_by_metric(
+    data_list: List[Dict], group_by_key: str, metric_path: List[str], higher_is_better: bool, value_is_time: bool = True
+) -> List[Dict]:
+    """Generic function to rank entities (cars or manufacturers) by a given metric."""
+    grouped_metrics = defaultdict(list)
+    for item in data_list:
+        group_name = item.get(group_by_key)
+        value = item
         try:
-            return float(entry.get("average_lap_time_delta_for_car", 0) or 0)
-        except (TypeError, ValueError):
-            return 0.0
+            for key in metric_path: value = value[key]
+        except (KeyError, TypeError): continue
+        
+        if isinstance(value, str): value = _time_str_to_seconds(value)
+        
+        if group_name and value is not None:
+            grouped_metrics[group_name].append(value)
 
-    worst_entry = max(delta_data, key=_delta_val)
-    gap_val = _delta_val(worst_entry)
+    if not grouped_metrics: return []
 
-    return [
-        {
-            "category": "Driver Performance",
-            "type": "Largest Teammate Pace Gap",
-            "car_number": worst_entry.get("car_number"),
-            "details": (
-                f"Car #{worst_entry.get('car_number')} has the largest pace delta "
-                f"({gap_val:.2f}s) between its drivers."
-            ),
-        }
-    ]
+    avg_metrics = {name: mean(vals) for name, vals in grouped_metrics.items() if vals}
+    if not avg_metrics: return []
+    
+    field_average = mean(avg_metrics.values())
+    
+    ranked_list = [{
+        "name": name, "value": avg_val, "delta_from_avg": avg_val - field_average
+    } for name, avg_val in avg_metrics.items()]
 
+    ranked_list.sort(key=lambda x: x["value"], reverse=higher_is_better)
+
+    return [{
+        "rank": i + 1,
+        group_by_key: item["name"],
+        "average_value": _format_seconds(item["value"]) if value_is_time else f"{item['value']:.4f}",
+        "delta_from_field_avg": _format_seconds(item["delta_from_avg"]) if value_is_time else f"{item['delta_from_avg']:+.4f}"
+    } for i, item in enumerate(ranked_list)]
+
+def _rank_cars_by_untapped_potential(fastest_by_car: List[Dict]) -> List[Dict]:
+    """Ranks cars by the largest gap between their actual fastest lap and theoretical optimal lap."""
+    gaps = []
+    for car in fastest_by_car:
+        fastest_s = _time_str_to_seconds(car.get("fastest_lap", {}).get("time"))
+        optimal_s = _time_str_to_seconds(car.get("optimal_lap_time"))
+        if fastest_s and optimal_s:
+            gap = fastest_s - optimal_s
+            if gap > 0.1:  # Only include meaningful gaps
+                gaps.append({
+                    "car_number": car.get("car_number"),
+                    "driver_name": car.get("fastest_lap", {}).get("driver_name"),
+                    "gap_seconds": gap,
+                    "team": car.get("team", "N/A") # Assume team might be available
+                })
+    
+    gaps.sort(key=lambda x: x["gap_seconds"], reverse=True)
+    return [{
+        "rank": i + 1,
+        "car_number": item["car_number"],
+        "driver_name": item["driver_name"],
+        "time_left_on_track": _format_seconds(item["gap_seconds"], unit="s")
+    } for i, item in enumerate(gaps)]
+
+def _rank_drivers_by_traffic_management(traffic_data: List[Dict]) -> List[Dict]:
+    """Ranks drivers by their effectiveness in traffic (lowest time lost)."""
+    if not traffic_data: return []
+    
+    # The data is already ranked in the source file, so we just need to add context.
+    all_lost_times = [_time_str_to_seconds(d.get("avg_time_lost_total_sec")) for d in traffic_data]
+    valid_lost_times = [t for t in all_lost_times if t is not None]
+    if not valid_lost_times: return []
+
+    field_avg_lost_time = mean(valid_lost_times)
+    
+    contextual_list = []
+    for item in traffic_data:
+        time_lost = _time_str_to_seconds(item.get("avg_time_lost_total_sec"))
+        if time_lost is not None:
+            new_item = item.copy()
+            new_item["performance_vs_avg"] = f"{((time_lost / field_avg_lost_time) - 1) * 100:+.1f}%"
+            contextual_list.append(new_item)
+            
+    return contextual_list
+
+def find_individual_outliers(data: Dict) -> List[Dict]:
+    """Finds single-instance insights that aren't full rankings."""
+    insights = []
+    
+    # Largest Teammate Pace Gap
+    delta_data = data.get("driver_deltas_by_car", [])
+    if delta_data:
+        valid_deltas = [d for d in delta_data if _time_str_to_seconds(d.get("average_lap_time_delta_for_car")) is not None]
+        if valid_deltas:
+            worst_entry = max(valid_deltas, key=lambda x: _time_str_to_seconds(x.get("average_lap_time_delta_for_car")))
+            gap_val = _time_str_to_seconds(worst_entry.get("average_lap_time_delta_for_car"))
+            if gap_val and gap_val > 0.5: # Threshold for significance
+                insights.append({
+                    "category": "Driver Performance",
+                    "type": "Largest Teammate Pace Gap",
+                    "car_number": worst_entry.get("car_number"),
+                    "details": f"Car #{worst_entry.get('car_number')} has the largest pace difference between its drivers, with an average gap of {gap_val:.3f}s in best lap times."
+                })
+
+    return insights
 
 # ----------------------------------------------------------------------------
 # Orchestration
 # ----------------------------------------------------------------------------
 
-def derive_insights(data: Dict[str, Any]) -> List[Dict[str, Any]]:
-    insights = []
-    strategy_data = data.get("race_strategy_by_car", [])
-    enhanced_strategy = data.get("enhanced_strategy_analysis", [])
-    delta_data = data.get("driver_deltas_by_car", [])
-
-    insights.extend(find_pit_stop_insights(strategy_data))
-    insights.extend(_stationary_time_champion(enhanced_strategy))
-    insights.extend(find_performance_insights(data))
-    insights.extend(find_degradation_insights(enhanced_strategy))
-    insights.extend(find_driver_delta_insights(delta_data))
+def derive_insights(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Generates a structured dictionary of ranked insights from the analysis data."""
+    
+    enhanced_data = data.get("enhanced_strategy_analysis", [])
+    pit_cycle_data = data.get("full_pit_cycle_analysis", [])
+    
+    insights = {
+        "manufacturer_pace_ranking": _rank_by_metric(
+            enhanced_data, "manufacturer", ["avg_green_pace_fuel_corrected"], higher_is_better=False, value_is_time=True
+        ),
+        "manufacturer_tire_wear_ranking": _rank_by_metric(
+            enhanced_data, "manufacturer", ["tire_degradation_model", "deg_coeff_a"], higher_is_better=False, value_is_time=False
+        ),
+        "manufacturer_pit_cycle_ranking": _rank_by_metric(
+            pit_cycle_data, "manufacturer", ["average_cycle_loss"], higher_is_better=False, value_is_time=True
+        ),
+        "car_untapped_potential_ranking": _rank_cars_by_untapped_potential(
+            data.get("fastest_by_car_number", [])
+        ),
+        "driver_traffic_meister_ranking": _rank_drivers_by_traffic_management(
+            data.get("traffic_management_analysis", [])
+        ),
+        "individual_outliers": find_individual_outliers(data)
+    }
+    
     return insights
 
 
-def enrich_insights_with_ai(insights: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Add LLM commentary and recommended actions to each insight if enabled."""
+def enrich_insights_with_ai(insights: Dict[str, Any]) -> Dict[str, Any]:
+    """Adds LLM commentary to each list of ranked insights."""
     if not USE_AI_ENHANCED or not insights:
         return insights
-    prompt = (
-        "You are a professional motorsport strategist AI. For each JSON object representing an insight, "
-        "append two new keys: 'llm_commentary' (brief explanation) and 'recommended_action' (clear next step). "
-        "Return the updated list strictly as JSON with no extra text.\n\n"
-        f"Insights:\n{json.dumps(insights, indent=2)}\n"
-    )
-    try:
-        enriched = ai_helpers.generate_json(prompt)
-        if isinstance(enriched, list):
-            return enriched
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.warning("AI enrichment failed: %s", exc)
-    return insights
-
+        
+    enriched_insights = insights.copy()
+    
+    # Example for one ranking list, can be expanded to others
+    pace_ranking = insights.get("manufacturer_pace_ranking")
+    if pace_ranking:
+        prompt = (
+            "You are a professional motorsport strategist AI. I will provide a JSON list of manufacturers ranked by their average race pace. "
+            "Your task is to add a new key, 'llm_commentary', to each object in the list. "
+            "This commentary should be a concise, professional one-sentence analysis about their performance relative to the field. "
+            "You should provide an insightful commentary about the relative performance of each manufacturer, outlining how and where they compare relative to the field. "
+            "Return only the updated JSON list, with no other text.\n\n"
+            f"Pace Ranking:\n{json.dumps(pace_ranking, indent=2)}\n"
+        )
+        try:
+            enriched_pace = ai_helpers.generate_json(
+                prompt, max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
+            )
+            if isinstance(enriched_pace, list) and len(enriched_pace) == len(pace_ranking):
+                enriched_insights["manufacturer_pace_ranking"] = enriched_pace
+        except Exception as e:
+            LOGGER.warning("AI enrichment for pace ranking failed: %s", e)
+            
+    return enriched_insights
 
 # ----------------------------------------------------------------------------
 # Flask application
@@ -317,34 +332,38 @@ def handle_request() -> Response:
         req_json = request.get_json(force=True, silent=False)
         payload = _parse_pubsub_push(req_json)
         analysis_uri = payload["analysis_path"]
-    except Exception as exc:  # pylint: disable=broad-except
+    except Exception as exc:
         LOGGER.exception("Invalid request: %s", exc)
         return Response("Bad Request", status=400)
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
-        local_analysis_path = tmp / pathlib.Path(analysis_uri).name
+        local_analysis_path = tmp / "analysis_data.json"
         try:
-            # Download analysis file
+            LOGGER.info("Downloading analysis file: %s", analysis_uri)
             _gcs_download(analysis_uri, local_analysis_path)
             with local_analysis_path.open("r", encoding="utf-8") as fp:
                 analysis_data = json.load(fp)
 
+            LOGGER.info("Deriving ranked insights from analysis data...")
             insights = derive_insights(analysis_data)
-            insights = enrich_insights_with_ai(insights)
+            
+            if USE_AI_ENHANCED:
+                LOGGER.info("Enriching insights with AI...")
+                insights = enrich_insights_with_ai(insights)
 
-            # Write insights to file
-            basename = pathlib.Path(local_analysis_path).stem.replace("_results_enhanced", "")
+            basename = pathlib.Path(analysis_uri).stem.replace("_enhanced", "")
             insights_filename = f"{basename}_insights.json"
             local_insights_path = tmp / insights_filename
             with local_insights_path.open("w", encoding="utf-8") as fp:
-                json.dump(insights, fp)
+                json.dump(insights, fp, indent=2)
+            LOGGER.info("Successfully generated insights file: %s", insights_filename)
 
             insights_uri = _gcs_upload(local_insights_path, ANALYZED_DATA_BUCKET, insights_filename)
+            LOGGER.info("Uploaded insights to: %s", insights_uri)
 
-            # Publish visualisation request
             _publish_visualization_request(analysis_uri, insights_uri)
-        except Exception as exc:  # pylint: disable=broad-except
+        except Exception as exc:
             LOGGER.exception("Processing failed: %s", exc)
             return Response("Internal Server Error", status=500)
 

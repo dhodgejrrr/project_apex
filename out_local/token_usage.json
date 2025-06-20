@@ -1,0 +1,8 @@
+{
+  "gemini-2.5-flash": {
+    "prompt_tokens": 11276,
+    "completion_tokens": 2373,
+    "total_tokens": 22271,
+    "estimated_cost_usd": 0.009315
+  }
+}

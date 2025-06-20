@@ -9,6 +9,7 @@ import json
 import logging
 import os
 from typing import Any, Dict
+from collections import defaultdict
 
 import google.auth
 from vertexai.generative_models import (
@@ -18,8 +19,18 @@ import vertexai
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 # ---------------------------------------------------------------------------
-# Configuration
+# Configuration & Cost Tracking
 # ---------------------------------------------------------------------------
+
+# Token pricing (USD per 1K tokens). Update as Google pricing evolves.
+TOKEN_PRICES: Dict[str, Dict[str, float]] = {
+    "gemini-2.5-flash": {"in": 0.0003, "out": 0.0025},
+    # "gemini-pro": {"in": 0.000375, "out": 0.00075},
+    # Add other models as required
+}
+
+# Accumulate usage during runtime
+_usage_totals: Dict[str, Dict[str, int]] = defaultdict(lambda: {"prompt": 0, "completion": 0, "total": 0})
 LOGGER = logging.getLogger("apex.ai_helpers")
 
 
@@ -57,22 +68,54 @@ def _init_vertex() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Internal helpers for usage tracking
+# ---------------------------------------------------------------------------
+
+def _record_usage(model_name: str, usage_md: Any | None) -> None:  # type: ignore[valid-type]
+    """Record prompt / completion tokens for a model run."""
+    if not usage_md:
+        return
+    _usage_totals[model_name]["prompt"] += usage_md.prompt_token_count or 0
+    _usage_totals[model_name]["completion"] += usage_md.candidates_token_count or 0
+    _usage_totals[model_name]["total"] += usage_md.total_token_count or 0
+
+
+def get_usage_summary() -> Dict[str, Dict[str, float]]:
+    """Return aggregated token counts and estimated cost per model."""
+    summary: Dict[str, Dict[str, float]] = {}
+    for model, counts in _usage_totals.items():
+        price_cfg = TOKEN_PRICES.get(model, {"in": 0.0, "out": 0.0})
+        cost = (
+            counts["prompt"] / 1000 * price_cfg["in"] +
+            counts["completion"] / 1000 * price_cfg["out"]
+        )
+        summary[model] = {
+            "prompt_tokens": counts["prompt"],
+            "completion_tokens": counts["completion"],
+            "total_tokens": counts["total"],
+            "estimated_cost_usd": round(cost, 6),
+        }
+    return summary
+
+
+# ---------------------------------------------------------------------------
 # Generation helpers
 # ---------------------------------------------------------------------------
 @retry(wait=wait_exponential(multiplier=1, min=2, max=10), stop=stop_after_attempt(3))
-def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int = 12000) -> Any:
+def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int = 25000) -> Any:
     """Calls Gemini to generate JSON and parses the result.
 
     If parsing fails, raises ValueError to trigger retry.
     """
     _init_vertex()
-    model_name = os.environ.get("VERTEX_MODEL", "gemini-2.5-flash")  
+    model_name = os.environ.get("VERTEX_MODEL", "gemini-2.5-flash")
     LOGGER.info("Using Vertex AI model: %s", model_name)
+    LOGGER.debug("Prompt for generate_json:\n%s", prompt)
     model = GenerativeModel(model_name)
     config = GenerationConfig(
         temperature=temperature,
-        max_output_tokens=12000,
-        response_mime_type="application/json", 
+        max_output_tokens=max_output_tokens,
+        response_mime_type="application/json",
     )
     safety_settings = {
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
@@ -81,37 +124,68 @@ def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int 
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
     }
 
-    response = model.generate_content(
-        prompt, generation_config=config, safety_settings=safety_settings
-    )
+    response = None
     try:
+        response = model.generate_content(
+            prompt, generation_config=config, safety_settings=safety_settings
+        )
+        # Track token usage metadata
+        _record_usage(model_name, getattr(response, "usage_metadata", None))
+        LOGGER.debug("Full AI Response: %s", response)
         text = response.text.strip()
         return json.loads(text)
     except (ValueError, json.JSONDecodeError, TypeError) as exc:
         # ValueError is raised by response.text if the candidate is empty/blocked.
-        LOGGER.warning(
-            "Gemini response not valid JSON or was blocked/truncated. Response: %s", response
-        )
+        log_message = "Gemini response not valid JSON or was blocked/truncated."
+        if response:
+            log_message += (
+                f" Prompt Feedback: {response.prompt_feedback}. "
+                f"Finish Reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}."
+            )
+        LOGGER.warning(log_message)
         raise ValueError("Invalid JSON or empty response from Gemini") from exc
 
 
-def summarize(text: str, **kwargs: Dict[str, Any]) -> str:
+def summarize(text: str, **kwargs: Any) -> str:
     """Simple summarization wrapper returning plain text."""
     prompt = (
         "Summarize the following text in 3 concise sentences:\n\n" + text + "\n\nSummary:"
     )
     _init_vertex()
-    model_name = os.environ.get("VERTEX_MODEL", "gemini-2.5-flash") 
+    model_name = os.environ.get("VERTEX_MODEL", "gemini-2.5-flash")
     LOGGER.info("Using Vertex AI model for summarization: %s", model_name)
+    LOGGER.debug("Prompt for summarize:\n%s", prompt)
     model = GenerativeModel(model_name)
-    config = GenerationConfig(temperature=0.2, max_output_tokens=256)
+
+    # Allow overriding default config via kwargs
+    # config_args = {"temperature": 0.2, "max_output_tokens": 256}
+    # config_args.update(kwargs)
+    # config = GenerationConfig(**config_args)
+
     safety_settings = {
         HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
         HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
     }
-    response = model.generate_content(
-        prompt, generation_config=config, safety_settings=safety_settings
-    )
-    return response.text.strip()
+
+    response = None
+    try:
+        response = model.generate_content(
+            prompt, safety_settings=safety_settings
+        )
+        _record_usage(model_name, getattr(response, "usage_metadata", None))
+        LOGGER.debug("Full AI Response: %s", response)
+        if not response.text:
+            raise ValueError("Empty response from Gemini.")
+        return response.text.strip()
+    except (ValueError, AttributeError) as exc:
+        log_message = "Summarization failed or was blocked/truncated."
+        if response:
+            log_message += (
+                f" Prompt Feedback: {response.prompt_feedback}. "
+                f"Finish Reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}."
+            )
+        LOGGER.warning(log_message)
+        # Return empty string on failure to avoid breaking callers
+        return ""

@@ -315,7 +315,27 @@ class IMSADataAnalyzer:
             green_laps = racing_laps[racing_laps['FLAG_AT_FL'] == 'GF'].dropna(subset=['LAP_TIME_SEC']); best_5_lap_avg_sec = np.nan
             if len(green_laps) >= 5: best_5_lap_avg_sec = green_laps['LAP_TIME_SEC'].nsmallest(5).mean()
             traffic_counts = racing_laps['LAP_CATEGORY'].value_counts().to_dict()
-            stint_results.append({'stint_number': int(stint_num), 'total_laps': len(racing_laps), 'total_time': self._format_seconds_to_ms_str(total_stint_time_sec), **flag_stats, 'lap_range': f"{int(racing_laps['LAP_NUMBER'].min())}-{int(racing_laps['LAP_NUMBER'].max())}", 'best_5_lap_avg': self._format_seconds_to_ms_str(best_5_lap_avg_sec), 'traffic_in_class_laps': traffic_counts.get('TRAFFIC_IN_CLASS', 0), 'traffic_out_of_class_laps': traffic_counts.get('TRAFFIC_OUT_OF_CLASS', 0)})
+            # Collect per-lap data for visualizer (lap number within stint and fuel-corrected lap time)
+            laps_data = [
+                {
+                    'lap_in_stint': int(row['lap_in_stint']),
+                    # Use None instead of NaN to keep JSON serializable & let visualizer filter invalid laps
+                    'LAP_TIME_FUEL_CORRECTED_SEC': (row['LAP_TIME_FUEL_CORRECTED_SEC'] if pd.notna(row['LAP_TIME_FUEL_CORRECTED_SEC']) else None),
+                }
+                for _, row in racing_laps[['lap_in_stint', 'LAP_TIME_FUEL_CORRECTED_SEC']].iterrows()
+            ]
+
+            stint_results.append({
+                'stint_number': int(stint_num),
+                'total_laps': len(racing_laps),
+                'total_time': self._format_seconds_to_ms_str(total_stint_time_sec),
+                **flag_stats,
+                'lap_range': f"{int(racing_laps['LAP_NUMBER'].min())}-{int(racing_laps['LAP_NUMBER'].max())}",
+                'best_5_lap_avg': self._format_seconds_to_ms_str(best_5_lap_avg_sec),
+                'traffic_in_class_laps': traffic_counts.get('TRAFFIC_IN_CLASS', 0),
+                'traffic_out_of_class_laps': traffic_counts.get('TRAFFIC_OUT_OF_CLASS', 0),
+                'laps': laps_data,
+            })
         return stint_results
     
     def _calculate_baseline_travel_time(self, car_df):

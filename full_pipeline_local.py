@@ -33,7 +33,7 @@ import dry_run_harness
 
 
 LOGGER = logging.getLogger("full_pipeline")
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+
 
 
 def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: pathlib.Path | None, out_dir: pathlib.Path, live_ai: bool = False) -> None:  # noqa: D401
@@ -94,13 +94,19 @@ def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: path
         # 4. Scribe report
         LOGGER.info("Rendering PDF report …")
         pdf_path = out_dir / "race_report.pdf"
-        narrative = scribe._generate_narrative(insights)  # type: ignore[attr-defined]
+        narrative = scribe._generate_narrative(insights, analysis_data)  # type: ignore[attr-defined]
         scribe._render_report(analysis_data, insights, narrative, pdf_path)  # type: ignore[attr-defined]
 
         # 5. Publicist tweets
         LOGGER.info("Composing tweets …")
         tweets = publicist._gen_tweets(insights)  # type: ignore[attr-defined]
         (out_dir / "tweets.json").write_text(json.dumps(tweets, indent=2))
+
+        # 6. Token usage summary (only meaningful in live mode)
+        usage_summary = ai_helpers.get_usage_summary()
+        if usage_summary:
+            (out_dir / "token_usage.json").write_text(json.dumps(usage_summary, indent=2))
+            LOGGER.info("Token usage summary written to token_usage.json: %s", usage_summary)
 
     LOGGER.info("\n=== LOCAL PIPELINE COMPLETE ===")
     LOGGER.info("Outputs in %s", out_dir.resolve())
@@ -115,31 +121,72 @@ def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: path
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Run Project Apex pipeline locally.")
-    parser.add_argument("--csv", type=pathlib.Path, default=pathlib.Path("agents/test_data/race.csv"), help="Race CSV file path.")
-    parser.add_argument("--pit_json", type=pathlib.Path, default=pathlib.Path("agents/test_data/pit.json"), help="Pit-stop JSON file path.")
+    parser.add_argument(
+        "--csv",
+        type=pathlib.Path,
+        default=pathlib.Path("agents/test_data/race.csv"),
+        help="Race CSV file path.",
+    )
+    parser.add_argument(
+        "--pit_json",
+        type=pathlib.Path,
+        default=pathlib.Path("agents/test_data/pit.json"),
+        help="Pit-stop JSON file path.",
+    )
     parser.add_argument(
         "--fuel_caps",
         "--pits",  # backward-compat alias
-        dest="fuel_caps",
         type=pathlib.Path,
-        default=pathlib.Path("agents/test_data/fuel.json"),
+        default=pathlib.Path("agents/test_data/fuel_capacity.json"),
         help="Fuel capacity JSON file path (optional).",
         nargs="?",
     )
-    parser.add_argument("--out_dir", type=pathlib.Path, default=pathlib.Path("out_local"), help="Output directory.")
-    parser.add_argument("--live-ai", action="store_true", help="Use live Vertex AI APIs instead of mock data.")
+    parser.add_argument(
+        "--out_dir",
+        type=pathlib.Path,
+        default=pathlib.Path("out_local"),
+        help="Output directory.",
+    )
+    parser.add_argument(
+        "--live-ai",
+        action="store_true",
+        help="Use live Vertex AI APIs instead of mock data.",
+    )
+    parser.add_argument(
+        "--log",
+        default="INFO",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        help="Set the logging level.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: Sequence[str] | None = None) -> None:
+    """Pipeline entrypoint."""
     args = parse_args(argv)
+
+    # Configure logging
+    logging.basicConfig(
+        level=getattr(logging, args.log.upper()),
+        format="%(asctime)s %(levelname)s %(message)s",
+        force=True,  # override any prior logging setup so --log works reliably
+    )
+
     if not args.csv.exists() or not args.pit_json.exists():
         sys.exit("CSV or pit JSON file not found.")
-    fuel_json_path = args.fuel_caps if args.fuel_caps and args.fuel_caps.exists() else None
+
+    fuel_json_path = (
+        args.fuel_caps if args.fuel_caps and args.fuel_caps.exists() else None
+    )
+
     if args.out_dir.exists():
         shutil.rmtree(args.out_dir)
-    run_pipeline(args.csv, args.pit_json, fuel_json_path, args.out_dir, live_ai=args.live_ai)
+
+    run_pipeline(
+        args.csv, args.pit_json, fuel_json_path, args.out_dir, live_ai=args.live_ai
+    )
 
 
 if __name__ == "__main__":

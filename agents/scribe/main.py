@@ -14,6 +14,7 @@ import tempfile
 
 # AI helpers
 from agents.common import ai_helpers
+import os
 from typing import Any, Dict, List
 
 from flask import Flask, Response, request
@@ -28,6 +29,10 @@ PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 TEMPLATE_NAME = "report_template.html"
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
+
+# --- NEW: Load the prompt template from the file on startup ---
+PROMPT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "prompt_template.md"
+PROMPT_TEMPLATE = PROMPT_TEMPLATE_PATH.read_text()
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -68,25 +73,40 @@ def _gcs_upload(local_path: pathlib.Path, dest_blob: str) -> str:
 # AI narrative generation
 # ---------------------------------------------------------------------------
 
-def _generate_narrative(insights: List[Dict[str, Any]]) -> Dict[str, Any] | None:
+def _generate_narrative(insights: Dict[str, List[Dict[str, Any]]], analysis: Dict[str, Any]) -> Dict[str, Any] | None:
     """Uses Gemini to craft executive summary paragraph and tactical recommendations."""
     if not USE_AI_ENHANCED or not insights:
         return None
-    prompt = (
-        "You are a motorsport performance engineer. Based on the race insights JSON, "
-        "write a concise executive summary (<= 150 words) and 3 tactical recommendations. "
-        "Respond ONLY as minified JSON with keys 'executive_summary' and 'tactical_recommendations' (array of strings).\n\n"
-        f"Insights:\n{json.dumps(insights[:20], indent=2)}\n"
+
+    # --- MODIFIED: Use the loaded template and format it with both JSON objects ---
+    # WARNING: Passing the full analysis_enhanced.json can be very large and may
+    # exceed model input token limits. For production, consider summarizing
+    # this payload first or ensuring you use a model with a large context window.
+    prompt = PROMPT_TEMPLATE.format(
+        insights_json=json.dumps(insights, indent=2),
+        analysis_enhanced_json=json.dumps(analysis, indent=2),
     )
+
+    # Pass the entire insights dictionary (already grouped by category) to the model
+    # prompt = (
+    #     "You are a motorsport performance engineer. Based on the race insights JSON, "
+    #     "write a concise executive summary (<= 500 words) and 3 tactical recommendations. "
+    #     "You should outline which cars, manufacturers, and teams are leading, mid-field, and lagging based on ALL provided data. "
+    #     "Consider extreme outliers as not relevant, and focus only on those that are majorly influencing the race in various aspects of the field. "
+    #     "Respond ONLY as minified JSON with keys 'executive_summary' and 'tactical_recommendations' (array of strings).\n\n"
+    #     f"Insights:\n{json.dumps(insights, indent=2)}\n"
+    # )
     try:
-        result = ai_helpers.generate_json(prompt, temperature=0.5, max_output_tokens=256)
+        result = ai_helpers.generate_json(
+            prompt, temperature=0.5, max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
+        )
         if isinstance(result, dict):
             return result
         LOGGER.warning("Unexpected narrative JSON format: %s", result)
-        return None
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.warning("Narrative generation failed: %s", exc)
-        return None
+    except Exception:
+        LOGGER.exception("Narrative generation failed")
+
+    return None
 
 # ---------------------------------------------------------------------------
 # Report generation
@@ -133,7 +153,7 @@ def handle_request() -> Response:
             insights_data = json.loads(local_insights.read_text())
 
             pdf_path = tmp / "race_report.pdf"
-            narrative = _generate_narrative(insights_data)
+            narrative = _generate_narrative(insights_data, analysis_data)
             _render_report(analysis_data, insights_data, narrative, pdf_path)
 
             basename = local_analysis.stem.replace("_results_enhanced", "")

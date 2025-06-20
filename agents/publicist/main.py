@@ -97,23 +97,46 @@ def _init_gemini() -> None:
     aiplatform.init(project=PROJECT_ID, location=LOCATION)
 
 
-def _gen_tweets(insights: List[Dict[str, Any]], max_posts: int = 5) -> List[str]:
-    """Call Gemini to generate up to `max_posts` social media posts."""
-    key_ins = _select_key_insights(insights)
+def _gen_tweets(insights: Any, max_posts: int = 5) -> List[str]:
+    """Call Gemini to generate up to `max_posts` social media posts.
+
+    The `insights` parameter can be either:
+    1. A list of dictionaries (legacy behaviour) or
+    2. A dictionary whose values contain lists of insight dicts (current Insight Hunter output).
+    The function normalises the structure so downstream logic always works with a flat
+    list of insight dictionaries.
+    """
+    # ---------------------------------------------------------------------
+    # Normalise the insights structure so we always work with List[Dict].
+    # ---------------------------------------------------------------------
+    flat_insights: List[Dict[str, Any]] = []
+    if isinstance(insights, list):
+        # Already the expected shape
+        flat_insights = [ins for ins in insights if isinstance(ins, dict)]
+    elif isinstance(insights, dict):
+        # Flatten all list-valued entries (e.g. manufacturer_pace_ranking, etc.)
+        for val in insights.values():
+            if isinstance(val, list):
+                flat_insights.extend([ins for ins in val if isinstance(ins, dict)])
+    else:
+        LOGGER.warning("Unsupported insights type passed to _gen_tweets: %s", type(insights))
+
+    key_ins = _select_key_insights(flat_insights)
     if not key_ins:
         return []
 
     if USE_AI_ENHANCED:
         prompt = (
             "You are a social media manager for a professional race team. "
-            "Create between 3 and 5 engaging tweets based on the provided JSON data. "
-            "Each tweet must be a standalone string, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
-            "Your response MUST be a valid JSON array of strings, like [\"tweet1\", \"tweet2\"]. Do not return anything else.\n\n"
-            "Insights JSON:\n" + json.dumps(key_ins, indent=2)
+            "Create up to " + str(max_posts) + " engaging social media posts based on the provided JSON data. "
+            "Each post must be a standalone string, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
+            "Only reference a particular manufacturer, car, or team once. If you use them for a post, do not use them for another.  "
+            "Your response MUST be a valid JSON array of strings, like [\"post1\", \"post2\"]. Do not return anything else.\n\n"
+            "Insights JSON:\n" + json.dumps(insights, indent=2)
         )
         try:
             # Slightly higher temp for creativity, more tokens for safety
-            tweets = ai_helpers.generate_json(prompt, temperature=0.8, max_output_tokens=512)
+            tweets = ai_helpers.generate_json(prompt, temperature=0.8, max_output_tokens=5000)
             if isinstance(tweets, list) and all(isinstance(t, str) for t in tweets):
                 return tweets[:max_posts]
 

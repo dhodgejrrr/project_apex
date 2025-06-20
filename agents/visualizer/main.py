@@ -11,6 +11,7 @@ import logging
 import os
 import pathlib
 import tempfile
+import os
 from typing import Any, Dict, List, Tuple
 
 import matplotlib.pyplot as plt
@@ -168,22 +169,25 @@ def plot_stint_pace_falloff(analysis: Dict[str, Any], car_number: str, output: p
 # Orchestration
 # ---------------------------------------------------------------------------
 
-def _generate_caption(plot_path: pathlib.Path, insights: List[Dict[str, Any]]) -> str | None:
+def _generate_caption(plot_path: pathlib.Path, insights: Dict[str, List[Dict[str, Any]]]) -> str | None:
     """Generate a caption via Gemini for a given plot image."""
     if not USE_AI_ENHANCED:
         return None
+    all_insights = [insight for insight_list in insights.values() for insight in insight_list]
     prompt = (
         "You are a data visualization expert. Write a one-sentence caption (max 25 words) for the chart saved as '" + plot_path.name + "'. "
-        "Base your description on the following race insights JSON for context.\n\nInsights:\n" + json.dumps(insights[:10], indent=2) + "\n\nCaption:"
+        "Base your description on the following race insights JSON for context.\n\nInsights:\n" + json.dumps(all_insights[:10], indent=2) + "\n\nCaption:"
     )
     try:
-        return ai_helpers.summarize(prompt, temperature=0.6, max_output_tokens=32)
+        return ai_helpers.summarize(
+            prompt, temperature=0.6, max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
+        )
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.warning("Caption generation failed: %s", exc)
         return None
 
 
-def generate_all_visuals(analysis: Dict[str, Any], insights: List[Dict[str, Any]], dest_dir: pathlib.Path) -> List[tuple[pathlib.Path, str | None]]:
+def generate_all_visuals(analysis: Dict[str, Any], insights: Dict[str, List[Dict[str, Any]]], dest_dir: pathlib.Path) -> List[tuple[pathlib.Path, str | None]]:
     outputs: List[Tuple[pathlib.Path, str | None]] = []
 
     paths = [dest_dir / "pit_stationary_times.png", dest_dir / "driver_consistency.png"]
