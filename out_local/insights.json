@@ -5,70 +5,70 @@
       "manufacturer": "Mercedes-AMG",
       "average_value": "+89.139",
       "delta_from_field_avg": "-4.444",
-      "llm_commentary": "Mercedes-AMG demonstrates clear dominance, establishing themselves as the undisputed pace-setters with a significant advantage over the entire field."
+      "llm_commentary": "Mercedes-AMG demonstrates dominant race pace, consistently leading the field by a significant margin."
     },
     {
       "rank": 2,
       "manufacturer": "McLaren",
       "average_value": "+89.571",
       "delta_from_field_avg": "-4.012",
-      "llm_commentary": "McLaren maintains a very strong second position, showing competitive pace that keeps them firmly in contention and just behind the leading manufacturer."
+      "llm_commentary": "McLaren shows very strong performance, maintaining a solid second position just behind the leader and well ahead of the midfield."
     },
     {
       "rank": 3,
       "manufacturer": "Ford",
       "average_value": "+90.464",
       "delta_from_field_avg": "-3.119",
-      "llm_commentary": "Ford secures a solid top-tier performance, leading the chase group but with a noticeable gap to the front two manufacturers."
+      "llm_commentary": "Ford secures a strong third place, establishing itself as the leading contender in the second tier of manufacturers."
     },
     {
       "rank": 4,
       "manufacturer": "Porsche",
       "average_value": "+90.790",
       "delta_from_field_avg": "-2.793",
-      "llm_commentary": "Porsche delivers a strong upper-midfield performance, consistently competitive and forming part of the leading pack just outside the top three."
+      "llm_commentary": "Porsche exhibits competitive pace, holding a respectable fourth position and remaining firmly within contention for the top spots."
     },
     {
       "rank": 5,
       "manufacturer": "Hyundai",
       "average_value": "+91.678",
       "delta_from_field_avg": "-1.905",
-      "llm_commentary": "Hyundai holds a respectable position in the middle of the field, showcasing a consistent pace that keeps them ahead of many competitors."
+      "llm_commentary": "Hyundai performs well in the midfield, showcasing consistent pace that places them comfortably above the lower-ranked manufacturers."
     },
     {
       "rank": 6,
       "manufacturer": "Toyota",
       "average_value": "+91.788",
       "delta_from_field_avg": "-1.794",
-      "llm_commentary": "Toyota is a solid mid-field contender, closely matched with Hyundai and demonstrating a reliable, if not leading, race pace."
+      "llm_commentary": "Toyota maintains a solid presence in the midfield, displaying reliable pace that keeps them closely matched with their immediate competitors."
     },
     {
       "rank": 7,
       "manufacturer": "BMW",
       "average_value": "+91.950",
       "delta_from_field_avg": "-1.633",
-      "llm_commentary": "BMW occupies a competitive position within the mid-pack, maintaining a steady performance that places them squarely in the thick of the field."
+      "llm_commentary": "BMW is positioned at the lower end of the midfield, showing pace that is just above the field average but still competitive within their group."
     },
     {
       "rank": 8,
       "manufacturer": "Aston Martin",
       "average_value": "+93.450",
       "delta_from_field_avg": "-0.133",
-      "llm_commentary": "Aston Martin is positioned towards the rear of the main competitive group, registering a pace very close to the overall field average."
+      "llm_commentary": "Aston Martin's performance is very close to the field average, positioning them at the tail end of the competitive pack."
     },
     {
       "rank": 9,
       "manufacturer": "Honda",
       "average_value": "+102.032",
       "delta_from_field_avg": "+8.449",
-      "llm_commentary": "Honda struggles significantly at the back of the grid, demonstrating a substantial deficit in average race pace compared to the rest of the field."
+      "llm_commentary": "Honda struggles significantly with race pace, exhibiting a substantial deficit compared to the rest of the field."
     },
     {
       "rank": 10,
       "manufacturer": "Audi",
       "average_value": "+104.967",
       "delta_from_field_avg": "+11.384",
-      "llm_commentary": "Audi is considerably off the pace, ranking last with a significant performance gap that places them well behind all other manufacturers."
+      "llm_commentary": "Audi ranks last with a considerable gap to all other manufacturers, indicating a pressing need for substantial performance gains."
     }
   ],
   "manufacturer_tire_wear_ranking": [

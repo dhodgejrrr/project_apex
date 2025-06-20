@@ -99,7 +99,7 @@ def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: path
 
         # 5. Publicist tweets
         LOGGER.info("Composing tweets …")
-        tweets = publicist._gen_tweets(insights)  # type: ignore[attr-defined]
+        tweets = publicist._gen_tweets(insights, analysis_data)  # type: ignore[attr-defined]
         (out_dir / "tweets.json").write_text(json.dumps(tweets, indent=2))
 
         # 6. Token usage summary (only meaningful in live mode)

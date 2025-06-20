@@ -249,6 +249,51 @@ class IMSADataAnalyzer:
             results.append({"car_number": car_no, "drivers_performance": driver_performances, "fastest_driver_name": fastest_driver_perf['driver_name'], "deltas_to_fastest": deltas_to_fastest, "average_lap_time_delta_for_car": self._format_seconds_to_ms_str(avg_lap_time_delta_sec)})
         return results
 
+    def get_earliest_fastest_lap_drivers(self, top_n: int = 5):
+        """
+        Determine which drivers achieved their car's fastest lap earliest into a stint.
+
+        This metric helps highlight drivers who were able to deliver peak pace
+        while the car was still heavy with fuel, i.e. closer to the start of the
+        stint.  Drivers are ranked by the lap position within the stint
+        (``lap_in_stint``) at which the overall fastest lap for their car was
+        recorded.  Ties are broken using the absolute lap-time value.
+
+        Parameters
+        ----------
+        top_n : int, default 5
+            Number of top ranked drivers to return.
+
+        Returns
+        -------
+        list[dict]
+            A list of dictionaries, each containing the ranked driver and
+            contextual information useful for reporting.
+        """
+        results = []
+        # Group by car to identify each car's single fastest lap and its metadata
+        for car_no, car_df in self.df.groupby('NUMBER'):
+            fastest_row = self._get_row_at_min_time(car_df, 'LAP_TIME_SEC', 'LAP_TIME')
+            # Require valid lap_in_stint information
+            if pd.isna(fastest_row['LAP_TIME_SEC']) or pd.isna(fastest_row.get('lap_in_stint')):
+                continue
+            results.append({
+                'driver_name': fastest_row.get('DRIVER_NAME'),
+                'car_number': car_no,
+                'team': fastest_row.get('TEAM'),
+                'lap_in_stint': int(fastest_row.get('lap_in_stint')),
+                'stint_id': fastest_row.get('stint_id'),
+                'lap_number_race': int(fastest_row.get('LAP_NUMBER')),
+                'fastest_lap_time': fastest_row.get('LAP_TIME')
+            })
+        # Sort by earliest lap in stint, then by the absolute lap time as tiebreaker
+        results.sort(key=lambda x: (x['lap_in_stint'], self._parse_time_to_seconds(x['fastest_lap_time'])))
+        ranked = [{
+            'rank': i + 1,
+            **res
+        } for i, res in enumerate(results[:top_n])]
+        return ranked
+
     def get_manufacturer_driver_pace_gap(self):
         lap_gaps, s1_gaps, s2_gaps, s3_gaps = [], [], [], []
         for manu_name, manu_df in self.df.groupby('MANUFACTURER'):
@@ -559,6 +604,7 @@ class IMSADataAnalyzer:
         final_results = {"fastest_by_car_number": self.get_fastest_by_car_number(), "fastest_by_manufacturer": self.get_fastest_by_manufacturer(), "longest_stints_by_manufacturer": self.get_longest_stints_by_manufacturer(), "driver_deltas_by_car": self.get_driver_deltas_by_car(), "manufacturer_driver_pace_gap": self.get_manufacturer_driver_pace_gap(), "race_strategy_by_car": self.get_race_strategy_by_car(), "enhanced_strategy_analysis": self.get_enhanced_strategy_analysis()}
         print("Running new internal analysis suite...")
         final_results["traffic_management_analysis"] = self.get_traffic_management_analysis()
+        final_results["earliest_fastest_lap_drivers"] = self.get_earliest_fastest_lap_drivers()
         final_results["full_pit_cycle_analysis"] = self.get_full_pit_cycle_analysis(final_results['race_strategy_by_car'], final_results['enhanced_strategy_analysis'])
         final_results["enhanced_strategy_analysis"] = self.add_degradation_cliff_analysis(final_results['enhanced_strategy_analysis'])
         print("Running new social media highlights suite...")

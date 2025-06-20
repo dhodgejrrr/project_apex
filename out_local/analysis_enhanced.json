@@ -29112,6 +29112,58 @@
       "out_of_class_traffic_laps": 3
     }
   ],
+  "earliest_fastest_lap_drivers": [
+    {
+      "rank": 1,
+      "driver_name": "Morgan Burkhard",
+      "car_number": "67",
+      "team": "CSM",
+      "lap_in_stint": 2,
+      "stint_id": "67_S5",
+      "lap_number_race": 125,
+      "fastest_lap_time": "1:27.204"
+    },
+    {
+      "rank": 2,
+      "driver_name": "Cameron Lawrence",
+      "car_number": "89",
+      "team": "HART",
+      "lap_in_stint": 2,
+      "stint_id": "89_S4",
+      "lap_number_race": 87,
+      "fastest_lap_time": "1:27.634"
+    },
+    {
+      "rank": 3,
+      "driver_name": "Denis Dupont",
+      "car_number": "76",
+      "team": "Bryan Herta Autosport with Curb Agajanian",
+      "lap_in_stint": 3,
+      "stint_id": "76_S4",
+      "lap_number_race": 77,
+      "fastest_lap_time": "1:27.651"
+    },
+    {
+      "rank": 4,
+      "driver_name": "Celso Neto",
+      "car_number": "7",
+      "team": "Precision Racing LA",
+      "lap_in_stint": 3,
+      "stint_id": "7_S3",
+      "lap_number_race": 38,
+      "fastest_lap_time": "1:27.788"
+    },
+    {
+      "rank": 5,
+      "driver_name": "LP Montour",
+      "car_number": "93",
+      "team": "MMG",
+      "lap_in_stint": 3,
+      "stint_id": "93_S5",
+      "lap_number_race": 78,
+      "fastest_lap_time": "1:27.825"
+    }
+  ],
   "full_pit_cycle_analysis": [
     {
       "rank": 1,

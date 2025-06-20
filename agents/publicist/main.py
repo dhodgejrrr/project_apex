@@ -29,6 +29,10 @@ LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 MODEL_NAME = os.getenv("VERTEX_MODEL", "gemini-1.0-pro")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
+# --- NEW: Load the prompt template from the file on startup ---
+PROMPT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "prompt_template.md"
+PROMPT_TEMPLATE = PROMPT_TEMPLATE_PATH.read_text()
+
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
@@ -97,7 +101,7 @@ def _init_gemini() -> None:
     aiplatform.init(project=PROJECT_ID, location=LOCATION)
 
 
-def _gen_tweets(insights: Any, max_posts: int = 5) -> List[str]:
+def _gen_tweets(insights: Any, analysis: Any, max_posts: int = 5) -> List[str]:
     """Call Gemini to generate up to `max_posts` social media posts.
 
     The `insights` parameter can be either:
@@ -126,14 +130,22 @@ def _gen_tweets(insights: Any, max_posts: int = 5) -> List[str]:
         return []
 
     if USE_AI_ENHANCED:
-        prompt = (
-            "You are a social media manager for a professional race team. "
-            "Create up to " + str(max_posts) + " engaging social media posts based on the provided JSON data. "
-            "Each post must be a standalone string, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
-            "Only reference a particular manufacturer, car, or team once. If you use them for a post, do not use them for another.  "
-            "Your response MUST be a valid JSON array of strings, like [\"post1\", \"post2\"]. Do not return anything else.\n\n"
-            "Insights JSON:\n" + json.dumps(insights, indent=2)
+        # --- MODIFIED: Use the loaded template and format it with both JSON objects ---
+        # WARNING: Passing the full analysis_enhanced.json can be very large and may
+        # exceed model input token limits. For production, consider summarizing
+        # this payload first or ensuring you use a model with a large context window.
+        prompt = PROMPT_TEMPLATE.format(
+            insights_json=json.dumps(insights, indent=2),
+            analysis_enhanced_json=json.dumps(analysis, indent=2),
         )
+        # prompt = (
+        #     "You are a social media manager for a professional race team. "
+        #     "Create up to " + str(max_posts) + " engaging social media posts based on the provided JSON data. "
+        #     "Each post must be a standalone string, under 280 characters, and include relevant hashtags like #IMSA and appropriate emojis. "
+        #     "Only reference a particular manufacturer, car, or team once. If you use them for a post, do not use them for another.  "
+        #     "Your response MUST be a valid JSON array of strings, like [\"post1\", \"post2\"]. Do not return anything else.\n\n"
+        #     "Insights JSON:\n" + json.dumps(insights, indent=2)
+        # )
         try:
             # Slightly higher temp for creativity, more tokens for safety
             tweets = ai_helpers.generate_json(prompt, temperature=0.8, max_output_tokens=5000)
@@ -173,7 +185,7 @@ def handle_request() -> Response:
             _gcs_download(insights_uri, local_insights)
             insights_data = json.loads(local_insights.read_text())
 
-            tweets = _gen_tweets(insights_data)
+            tweets = _gen_tweets(insights_data, analysis_data)
             output_json = tmp / "social_media_posts.json"
             json.dump({"posts": tweets}, output_json.open("w", encoding="utf-8"))
 

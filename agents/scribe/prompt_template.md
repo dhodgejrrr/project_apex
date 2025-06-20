@@ -34,3 +34,8 @@ You will be provided with two JSON data sources:
 Insights JSON:
 ```json
 {insights_json}
+```
+Analysis Enhanced JSON:
+```json
+{analysis_enhanced_json}
+```
