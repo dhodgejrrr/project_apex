@@ -1,8 +1,52 @@
 {
   "gemini-2.5-flash": {
-    "prompt_tokens": 11276,
-    "completion_tokens": 2373,
-    "total_tokens": 22271,
-    "estimated_cost_usd": 0.009315
-  }
+    "prompt_tokens": 672001,
+    "completion_tokens": 2498,
+    "total_tokens": 683408,
+    "estimated_cost_usd": 0.207845
+  },
+  "_overall": {
+    "prompt_tokens": 672001,
+    "completion_tokens": 2498,
+    "total_tokens": 683408,
+    "estimated_cost_usd": 0.207845
+  },
+  "_calls": [
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 669,
+      "completion_tokens": 873,
+      "total_tokens": 2876
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 941,
+      "completion_tokens": 80,
+      "total_tokens": 1755
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 939,
+      "completion_tokens": 96,
+      "total_tokens": 1806
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 945,
+      "completion_tokens": 102,
+      "total_tokens": 1518
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 334242,
+      "completion_tokens": 1061,
+      "total_tokens": 338622
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "prompt_tokens": 334265,
+      "completion_tokens": 286,
+      "total_tokens": 336831
+    }
+  ]
 }

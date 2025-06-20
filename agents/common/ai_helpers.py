@@ -29,8 +29,10 @@ TOKEN_PRICES: Dict[str, Dict[str, float]] = {
     # Add other models as required
 }
 
-# Accumulate usage during runtime
+# Accumulate usage during runtime (cumulative per model)
 _usage_totals: Dict[str, Dict[str, int]] = defaultdict(lambda: {"prompt": 0, "completion": 0, "total": 0})
+# Store per-call token usage details in the order that API calls were made
+_usage_calls: list[Dict[str, int | str]] = []
 LOGGER = logging.getLogger("apex.ai_helpers")
 
 
@@ -72,17 +74,65 @@ def _init_vertex() -> None:
 # ---------------------------------------------------------------------------
 
 def _record_usage(model_name: str, usage_md: Any | None) -> None:  # type: ignore[valid-type]
-    """Record prompt / completion tokens for a model run."""
+    """Record prompt / completion tokens for a model run.
+
+    In addition to accumulating totals per model, we now store a per-call
+    breakdown so that detailed auditing is possible. Each call appends an
+    entry to the global ``_usage_calls`` list.
+    """
     if not usage_md:
         return
-    _usage_totals[model_name]["prompt"] += usage_md.prompt_token_count or 0
-    _usage_totals[model_name]["completion"] += usage_md.candidates_token_count or 0
-    _usage_totals[model_name]["total"] += usage_md.total_token_count or 0
+
+    prompt_tokens = usage_md.prompt_token_count or 0
+    completion_tokens = usage_md.candidates_token_count or 0
+    total_tokens = usage_md.total_token_count or 0
+
+    # Cumulative per-model totals
+    _usage_totals[model_name]["prompt"] += prompt_tokens
+    _usage_totals[model_name]["completion"] += completion_tokens
+    _usage_totals[model_name]["total"] += total_tokens
+
+    # Per-call record (order preserved)
+    _usage_calls.append(
+        {
+            "model": model_name,
+            "prompt_tokens": prompt_tokens,
+            "completion_tokens": completion_tokens,
+            "total_tokens": total_tokens,
+        }
+    )
 
 
-def get_usage_summary() -> Dict[str, Dict[str, float]]:
-    """Return aggregated token counts and estimated cost per model."""
-    summary: Dict[str, Dict[str, float]] = {}
+def get_usage_summary() -> Dict[str, Any]:  # type: ignore[override]
+    """Return detailed usage information.
+
+    The returned dictionary now contains *both* per-model cumulative totals and
+    a chronological list of per-call token counts. The structure is:
+
+    ```json
+    {
+      "gemini-2.5-flash": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579,
+        "estimated_cost_usd": 0.123
+      },
+      "_overall": {
+        "prompt_tokens": 123,
+        "completion_tokens": 456,
+        "total_tokens": 579,
+        "estimated_cost_usd": 0.123
+      },
+      "_calls": [
+        {"model": "gemini-2.5-flash", "prompt_tokens": 10, "completion_tokens": 20, "total_tokens": 30},
+        ...
+      ]
+    }
+    """
+    summary: Dict[str, Any] = {}
+    overall_prompt = overall_completion = overall_total = overall_cost = 0.0
+
+    # Per-model aggregates
     for model, counts in _usage_totals.items():
         price_cfg = TOKEN_PRICES.get(model, {"in": 0.0, "out": 0.0})
         cost = (
@@ -95,6 +145,21 @@ def get_usage_summary() -> Dict[str, Dict[str, float]]:
             "total_tokens": counts["total"],
             "estimated_cost_usd": round(cost, 6),
         }
+        overall_prompt += counts["prompt"]
+        overall_completion += counts["completion"]
+        overall_total += counts["total"]
+        overall_cost += cost
+
+    # Grand totals across all models
+    summary["_overall"] = {
+        "prompt_tokens": int(overall_prompt),
+        "completion_tokens": int(overall_completion),
+        "total_tokens": int(overall_total),
+        "estimated_cost_usd": round(overall_cost, 6),
+    }
+
+    # Chronological per-call breakdown
+    summary["_calls"] = list(_usage_calls)  # shallow copy to avoid external mutation
     return summary
 
 
