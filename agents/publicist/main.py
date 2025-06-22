@@ -101,7 +101,7 @@ def _init_gemini() -> None:
     aiplatform.init(project=PROJECT_ID, location=LOCATION)
 
 
-def _gen_tweets(insights: Any, analysis: Any, max_posts: int = 5) -> List[str]:
+def _gen_tweets(insights: Any, analysis: Any, max_posts: int = 7) -> List[str]:
     """Call Gemini to generate up to `max_posts` social media posts.
 
     The `insights` parameter can be either:
@@ -137,6 +137,7 @@ def _gen_tweets(insights: Any, analysis: Any, max_posts: int = 5) -> List[str]:
         prompt = PROMPT_TEMPLATE.format(
             insights_json=json.dumps(insights, indent=2),
             analysis_enhanced_json=json.dumps(analysis, indent=2),
+            max_posts=max_posts,
         )
         # prompt = (
         #     "You are a social media manager for a professional race team. "

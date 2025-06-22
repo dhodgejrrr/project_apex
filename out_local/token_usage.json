@@ -1,52 +1,52 @@
 {
   "gemini-2.5-flash": {
-    "prompt_tokens": 384254,
-    "completion_tokens": 2728,
-    "total_tokens": 397398,
-    "estimated_cost_usd": 0.122096
+    "prompt_tokens": 384190,
+    "completion_tokens": 2877,
+    "total_tokens": 397020,
+    "estimated_cost_usd": 0.122449
   },
   "_overall": {
-    "prompt_tokens": 384254,
-    "completion_tokens": 2728,
-    "total_tokens": 397398,
-    "estimated_cost_usd": 0.122096
+    "prompt_tokens": 384190,
+    "completion_tokens": 2877,
+    "total_tokens": 397020,
+    "estimated_cost_usd": 0.122449
   },
   "_calls": [
     {
       "model": "gemini-2.5-flash",
       "prompt_tokens": 734,
-      "completion_tokens": 990,
-      "total_tokens": 2698
+      "completion_tokens": 973,
+      "total_tokens": 2777
     },
     {
       "model": "gemini-2.5-flash",
-      "prompt_tokens": 965,
-      "completion_tokens": 100,
-      "total_tokens": 2166
+      "prompt_tokens": 947,
+      "completion_tokens": 116,
+      "total_tokens": 1966
     },
     {
       "model": "gemini-2.5-flash",
-      "prompt_tokens": 963,
-      "completion_tokens": 109,
-      "total_tokens": 1654
+      "prompt_tokens": 945,
+      "completion_tokens": 94,
+      "total_tokens": 2379
     },
     {
       "model": "gemini-2.5-flash",
-      "prompt_tokens": 969,
-      "completion_tokens": 99,
-      "total_tokens": 1887
+      "prompt_tokens": 951,
+      "completion_tokens": 105,
+      "total_tokens": 1347
     },
     {
       "model": "gemini-2.5-flash",
-      "prompt_tokens": 190300,
-      "completion_tokens": 1187,
-      "total_tokens": 196500
+      "prompt_tokens": 190283,
+      "completion_tokens": 1237,
+      "total_tokens": 194850
     },
     {
       "model": "gemini-2.5-flash",
-      "prompt_tokens": 190323,
-      "completion_tokens": 243,
-      "total_tokens": 192493
+      "prompt_tokens": 190330,
+      "completion_tokens": 352,
+      "total_tokens": 193701
     }
   ]
 }

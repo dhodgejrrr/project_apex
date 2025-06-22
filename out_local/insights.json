@@ -5,77 +5,77 @@
       "manufacturer": "BMW",
       "average_value": "+119.827",
       "delta_from_field_avg": "-1.243",
-      "llm_commentary": "BMW leads the field with a commanding pace advantage, consistently over a second quicker than the average."
+      "llm_commentary": "BMW demonstrates clear dominance, leading the field with a substantial pace advantage over all competitors."
     },
     {
       "rank": 2,
       "manufacturer": "Ford",
       "average_value": "+120.227",
       "delta_from_field_avg": "-0.844",
-      "llm_commentary": "Ford demonstrates strong competitive pace, positioning themselves firmly as a top contender, albeit trailing the leader."
+      "llm_commentary": "Ford maintains a strong second position, consistently well ahead of the field average, though a clear gap exists to the leading manufacturer."
     },
     {
       "rank": 3,
       "manufacturer": "Porsche",
       "average_value": "+120.532",
       "delta_from_field_avg": "-0.539",
-      "llm_commentary": "Porsche maintains a solid presence in the top three, consistently showcasing a significant pace advantage over the field average."
+      "llm_commentary": "Porsche secures a solid third place, performing notably above the field average and establishing itself firmly within the top tier."
     },
     {
       "rank": 4,
       "manufacturer": "McLaren",
       "average_value": "+120.623",
       "delta_from_field_avg": "-0.448",
-      "llm_commentary": "McLaren exhibits a strong upper-midfield performance, comfortably quicker than the field average and within striking distance of the podium contenders."
+      "llm_commentary": "McLaren holds a competitive fourth position, showing consistent pace significantly better than the overall field average."
     },
     {
       "rank": 5,
       "manufacturer": "Aston Martin",
       "average_value": "+120.737",
       "delta_from_field_avg": "-0.333",
-      "llm_commentary": "Aston Martin holds a respectable position in the top half, consistently outperforming the field average, indicating solid competitive potential."
+      "llm_commentary": "Aston Martin is a strong upper-midfield contender, exhibiting competitive pace that is comfortably faster than the field average."
     },
     {
       "rank": 6,
       "manufacturer": "Cupra",
       "average_value": "+120.742",
       "delta_from_field_avg": "-0.329",
-      "llm_commentary": "Cupra performs admirably in the upper midfield, closely matching Aston Martin's pace and maintaining a clear advantage over the field average."
+      "llm_commentary": "Cupra performs well in the upper midfield, displaying commendable pace that outstrips the field average."
     },
     {
       "rank": 7,
       "manufacturer": "Honda",
       "average_value": "+120.919",
       "delta_from_field_avg": "-0.152",
-      "llm_commentary": "Honda occupies a mid-pack position, demonstrating slightly better than average pace but needing to find more speed to challenge the leading group."
+      "llm_commentary": "Honda occupies a consistent mid-field position, operating slightly quicker than the overall field average."
     },
     {
       "rank": 8,
       "manufacturer": "Mercedes-AMG",
       "average_value": "+121.165",
       "delta_from_field_avg": "+0.094",
-      "llm_commentary": "Mercedes-AMG is currently operating just below the field average, indicating a need for performance optimization to climb up the ranks."
+      "llm_commentary": "Mercedes-AMG is positioned just below the field average, indicating a slight struggle to match the overall pace of the competition."
     },
     {
       "rank": 9,
       "manufacturer": "Hyundai",
       "average_value": "+122.118",
       "delta_from_field_avg": "+1.047",
-      "llm_commentary": "Hyundai is significantly off the pace, running over a second slower than the field average, highlighting a substantial performance deficit."
+      "llm_commentary": "Hyundai demonstrates a significant pace deficit, operating more than a second slower than the field average and well behind the front runners."
     },
     {
       "rank": 10,
       "manufacturer": "Toyota",
       "average_value": "+122.364",
       "delta_from_field_avg": "+1.293",
-      "llm_commentary": "Toyota struggles at the back of the field, showing a considerable pace disadvantage compared to the average, requiring significant development."
+      "llm_commentary": "Toyota struggles considerably, registering a substantial performance gap of over 1.2 seconds behind the field average."
     },
     {
       "rank": 11,
       "manufacturer": "Audi",
       "average_value": "+122.525",
       "delta_from_field_avg": "+1.454",
-      "llm_commentary": "Audi consistently registers the slowest pace, nearly 1.5 seconds behind the field average, indicating a critical need for performance improvements."
+      "llm_commentary": "Audi is currently the slowest in the field, showing a considerable pace disadvantage of nearly 1.5 seconds compared to the field average."
     }
   ],
   "manufacturer_tire_wear_ranking": [
