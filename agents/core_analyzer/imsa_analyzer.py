@@ -52,21 +52,21 @@ class IMSADataAnalyzer:
         if self.df.empty: raise ValueError("CSV file is empty or not parsed correctly.")
 
         # <<< NEW: Filter rows based on allowed classes from environment variable >>>
-        env_classes = os.getenv('IMSA_CLASSES') or os.getenv('ALLOWED_CLASSES')
-        if env_classes:
-            try:
-                allowed_classes = json.loads(env_classes)
-                if isinstance(allowed_classes, str):
-                    allowed_classes = [allowed_classes]
-            except json.JSONDecodeError:
-                allowed_classes = [c.strip() for c in env_classes.split(',')]
-            allowed_classes = [c.upper().strip() for c in allowed_classes if c.strip()]
-            if 'CLASS' in self.df.columns and allowed_classes:
-                before_rows = len(self.df)
-                self.df = self.df[self.df['CLASS'].str.upper().isin(allowed_classes)].copy()
-                print(f"Applied class filter {allowed_classes}: rows {before_rows} -> {len(self.df)}.")
-        else:
-            print("No class filter applied.")
+        # env_classes = os.getenv('IMSA_CLASSES') or os.getenv('ALLOWED_CLASSES')
+        # if env_classes:
+        #     try:
+        #         allowed_classes = json.loads(env_classes)
+        #         if isinstance(allowed_classes, str):
+        #             allowed_classes = [allowed_classes]
+        #     except json.JSONDecodeError:
+        #         allowed_classes = [c.strip() for c in env_classes.split(',')]
+        #     allowed_classes = [c.upper().strip() for c in allowed_classes if c.strip()]
+        #     if 'CLASS' in self.df.columns and allowed_classes:
+        #         before_rows = len(self.df)
+        #         self.df = self.df[self.df['CLASS'].str.upper().isin(allowed_classes)].copy()
+        #         print(f"Applied class filter {allowed_classes}: rows {before_rows} -> {len(self.df)}.")
+        # else:
+        #     print("No class filter applied.")
         # <<< END NEW >>>
 
         self._preprocess_data()
@@ -223,11 +223,33 @@ class IMSADataAnalyzer:
         for stint_id_val, laps_this_stint_df in stint_df.groupby('stint_id'):
             if laps_this_stint_df.empty: continue
             racing_laps_for_stint_df = laps_this_stint_df.copy()
-            if laps_this_stint_df.iloc[-1]['is_pit_stop_lap']: racing_laps_for_stint_df = laps_this_stint_df.iloc[:-1] if len(laps_this_stint_df) > 1 else pd.DataFrame(columns=laps_this_stint_df.columns) 
-            if racing_laps_for_stint_df.empty: continue
-            valid_green_racing_laps_df = racing_laps_for_stint_df[(racing_laps_for_stint_df['FLAG_AT_FL'] == 'GF') & (racing_laps_for_stint_df['LAP_TIME_SEC'].notna())]
-            if len(valid_green_racing_laps_df) == len(racing_laps_for_stint_df) and not valid_green_racing_laps_df.empty:
-                stints_data.append({'stint_id': stint_id_val, 'manufacturer': valid_green_racing_laps_df['MANUFACTURER'].iloc[0], 'num_green_laps': len(valid_green_racing_laps_df), 'laps_data_for_metrics': valid_green_racing_laps_df})
+            if laps_this_stint_df.iloc[-1]['is_pit_stop_lap']:
+                racing_laps_for_stint_df = laps_this_stint_df.iloc[:-1] if len(laps_this_stint_df) > 1 else pd.DataFrame(columns=laps_this_stint_df.columns)
+            if racing_laps_for_stint_df.empty:
+                continue
+
+            # --- NEW: find the longest consecutive segment of valid green-flag laps ---
+            stint_sorted = racing_laps_for_stint_df.sort_values('LAP_NUMBER').copy()
+            stint_sorted['is_green_valid'] = (stint_sorted['FLAG_AT_FL'] == 'GF') & (stint_sorted['LAP_TIME_SEC'].notna())
+            stint_sorted['segment_id'] = (stint_sorted['is_green_valid'] != stint_sorted['is_green_valid'].shift()).cumsum()
+
+            longest_seg_len = 0
+            best_segment_df = pd.DataFrame()
+            for seg_id, seg_df in stint_sorted.groupby('segment_id'):
+                if not seg_df.iloc[0]['is_green_valid']:
+                    continue  # skip non-green segments
+                seg_len = len(seg_df)
+                if seg_len > longest_seg_len:
+                    longest_seg_len = seg_len
+                    best_segment_df = seg_df.copy()
+
+            if longest_seg_len > 0:
+                stints_data.append({
+                    'stint_id': stint_id_val,
+                    'manufacturer': best_segment_df['MANUFACTURER'].iloc[0],
+                    'num_green_laps': longest_seg_len,
+                    'laps_data_for_metrics': best_segment_df,
+                })
         if not stints_data: return results
         all_valid_green_stints_df = pd.DataFrame(stints_data)
         for manufacturer_name, manu_stints_df in all_valid_green_stints_df.groupby('manufacturer'): 

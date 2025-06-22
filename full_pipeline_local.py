@@ -126,20 +126,20 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--csv",
         type=pathlib.Path,
-        default=pathlib.Path("agents/test_data/race.csv"),
+        default=pathlib.Path("agents/test_data/glen_race.csv"),
         help="Race CSV file path.",
     )
     parser.add_argument(
         "--pit_json",
         type=pathlib.Path,
-        default=pathlib.Path("agents/test_data/pit.json"),
+        default=pathlib.Path("agents/test_data/glen_pit.json"),
         help="Pit-stop JSON file path.",
     )
     parser.add_argument(
         "--fuel_caps",
         "--pits",  # backward-compat alias
         type=pathlib.Path,
-        default=pathlib.Path("agents/test_data/fuel_capacity.json"),
+        default=pathlib.Path("agents/test_data/mido_fuel.json"),
         help="Fuel capacity JSON file path (optional).",
         nargs="?",
     )
