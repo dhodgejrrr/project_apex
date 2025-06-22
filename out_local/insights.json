@@ -3,134 +3,95 @@
     {
       "rank": 1,
       "manufacturer": "Mercedes-AMG",
-      "average_value": "+89.139",
-      "delta_from_field_avg": "-4.444",
-      "llm_commentary": "Mercedes-AMG demonstrates dominant race pace, consistently leading the field by a significant margin."
+      "average_value": "+89.140",
+      "delta_from_field_avg": "-2.259",
+      "llm_commentary": "Mercedes-AMG stands out as the clear leader, demonstrating exceptional pace well ahead of the entire field."
     },
     {
       "rank": 2,
       "manufacturer": "McLaren",
-      "average_value": "+89.571",
-      "delta_from_field_avg": "-4.012",
-      "llm_commentary": "McLaren shows very strong performance, maintaining a solid second position just behind the leader and well ahead of the midfield."
+      "average_value": "+90.387",
+      "delta_from_field_avg": "-1.012",
+      "llm_commentary": "McLaren shows strong competitive performance, securing a solid second place and maintaining a significant advantage over the field average."
     },
     {
       "rank": 3,
       "manufacturer": "Ford",
-      "average_value": "+90.464",
-      "delta_from_field_avg": "-3.119",
-      "llm_commentary": "Ford secures a strong third place, establishing itself as the leading contender in the second tier of manufacturers."
+      "average_value": "+90.497",
+      "delta_from_field_avg": "-0.901",
+      "llm_commentary": "Ford delivers a commendable third-place performance, closely trailing McLaren and firmly establishing itself among the front-runners."
     },
     {
       "rank": 4,
       "manufacturer": "Porsche",
-      "average_value": "+90.790",
-      "delta_from_field_avg": "-2.793",
-      "llm_commentary": "Porsche exhibits competitive pace, holding a respectable fourth position and remaining firmly within contention for the top spots."
+      "average_value": "+91.896",
+      "delta_from_field_avg": "+0.497",
+      "llm_commentary": "Porsche occupies a mid-field position, slightly behind the overall field average but leading the second half of the competitive set."
     },
     {
       "rank": 5,
-      "manufacturer": "Hyundai",
-      "average_value": "+91.678",
-      "delta_from_field_avg": "-1.905",
-      "llm_commentary": "Hyundai performs well in the midfield, showcasing consistent pace that places them comfortably above the lower-ranked manufacturers."
+      "manufacturer": "Toyota",
+      "average_value": "+91.987",
+      "delta_from_field_avg": "+0.588",
+      "llm_commentary": "Toyota is positioned in the lower mid-field, with pace just shy of the field average, indicating room for improvement to challenge the top contenders."
     },
     {
       "rank": 6,
-      "manufacturer": "Toyota",
-      "average_value": "+91.788",
-      "delta_from_field_avg": "-1.794",
-      "llm_commentary": "Toyota maintains a solid presence in the midfield, displaying reliable pace that keeps them closely matched with their immediate competitors."
+      "manufacturer": "BMW",
+      "average_value": "+92.140",
+      "delta_from_field_avg": "+0.741",
+      "llm_commentary": "BMW finds itself towards the rear of the pack, exhibiting a noticeable deficit compared to the field average, suggesting a need for significant performance gains."
     },
     {
       "rank": 7,
-      "manufacturer": "BMW",
-      "average_value": "+91.950",
-      "delta_from_field_avg": "-1.633",
-      "llm_commentary": "BMW is positioned at the lower end of the midfield, showing pace that is just above the field average but still competitive within their group."
-    },
-    {
-      "rank": 8,
       "manufacturer": "Aston Martin",
-      "average_value": "+93.450",
-      "delta_from_field_avg": "-0.133",
-      "llm_commentary": "Aston Martin's performance is very close to the field average, positioning them at the tail end of the competitive pack."
-    },
-    {
-      "rank": 9,
-      "manufacturer": "Honda",
-      "average_value": "+102.032",
-      "delta_from_field_avg": "+8.449",
-      "llm_commentary": "Honda struggles significantly with race pace, exhibiting a substantial deficit compared to the rest of the field."
-    },
-    {
-      "rank": 10,
-      "manufacturer": "Audi",
-      "average_value": "+104.967",
-      "delta_from_field_avg": "+11.384",
-      "llm_commentary": "Audi ranks last with a considerable gap to all other manufacturers, indicating a pressing need for substantial performance gains."
+      "average_value": "+93.743",
+      "delta_from_field_avg": "+2.344",
+      "llm_commentary": "Aston Martin is clearly struggling at the back of the field, demonstrating a substantial pace disadvantage relative to all competitors."
     }
   ],
   "manufacturer_tire_wear_ranking": [
     {
       "rank": 1,
       "manufacturer": "BMW",
-      "average_value": "-0.1040",
-      "delta_from_field_avg": "-0.0906"
+      "average_value": "-0.1049",
+      "delta_from_field_avg": "-0.0955"
     },
     {
       "rank": 2,
-      "manufacturer": "Audi",
-      "average_value": "-0.0809",
-      "delta_from_field_avg": "-0.0675"
+      "manufacturer": "Aston Martin",
+      "average_value": "-0.0032",
+      "delta_from_field_avg": "+0.0062"
     },
     {
       "rank": 3,
-      "manufacturer": "Aston Martin",
-      "average_value": "-0.0025",
-      "delta_from_field_avg": "+0.0109"
+      "manufacturer": "Mercedes-AMG",
+      "average_value": "-0.0015",
+      "delta_from_field_avg": "+0.0080"
     },
     {
       "rank": 4,
-      "manufacturer": "Mercedes-AMG",
-      "average_value": "-0.0017",
-      "delta_from_field_avg": "+0.0117"
+      "manufacturer": "Ford",
+      "average_value": "0.0002",
+      "delta_from_field_avg": "+0.0097"
     },
     {
       "rank": 5,
-      "manufacturer": "Ford",
-      "average_value": "0.0012",
-      "delta_from_field_avg": "+0.0145"
+      "manufacturer": "Toyota",
+      "average_value": "0.0086",
+      "delta_from_field_avg": "+0.0181"
     },
     {
       "rank": 6,
-      "manufacturer": "Honda",
-      "average_value": "0.0036",
-      "delta_from_field_avg": "+0.0170"
+      "manufacturer": "Porsche",
+      "average_value": "0.0167",
+      "delta_from_field_avg": "+0.0262"
     },
     {
       "rank": 7,
-      "manufacturer": "Hyundai",
-      "average_value": "0.0060",
-      "delta_from_field_avg": "+0.0194"
-    },
-    {
-      "rank": 8,
-      "manufacturer": "Toyota",
-      "average_value": "0.0113",
-      "delta_from_field_avg": "+0.0247"
-    },
-    {
-      "rank": 9,
-      "manufacturer": "Porsche",
-      "average_value": "0.0153",
-      "delta_from_field_avg": "+0.0286"
-    },
-    {
-      "rank": 10,
       "manufacturer": "McLaren",
       "average_value": "0.0179",
-      "delta_from_field_avg": "+0.0313"
+      "delta_from_field_avg": "+0.0273"
     }
   ],
   "manufacturer_pit_cycle_ranking": [],
@@ -143,180 +104,102 @@
     },
     {
       "rank": 2,
-      "car_number": "93",
-      "driver_name": "LP Montour",
-      "time_left_on_track": "+0.510s"
-    },
-    {
-      "rank": 3,
-      "car_number": "31",
-      "driver_name": "Jaden Conwright",
-      "time_left_on_track": "+0.481s"
-    },
-    {
-      "rank": 4,
       "car_number": "16",
       "driver_name": "Zach Veach",
       "time_left_on_track": "+0.391s"
     },
     {
-      "rank": 5,
+      "rank": 3,
       "car_number": "53",
       "driver_name": "David Hodge",
       "time_left_on_track": "+0.380s"
     },
     {
-      "rank": 6,
+      "rank": 4,
       "car_number": "13",
       "driver_name": "Jenson Altzman",
       "time_left_on_track": "+0.363s"
     },
     {
-      "rank": 7,
+      "rank": 5,
       "car_number": "44",
       "driver_name": "Michael Cooper",
       "time_left_on_track": "+0.335s"
     },
     {
-      "rank": 8,
-      "car_number": "10",
-      "driver_name": "Bruno Colombo",
-      "time_left_on_track": "+0.318s"
-    },
-    {
-      "rank": 9,
+      "rank": 6,
       "car_number": "38",
       "driver_name": "Spencer Pumpelly",
       "time_left_on_track": "+0.309s"
     },
     {
-      "rank": 10,
+      "rank": 7,
       "car_number": "57",
       "driver_name": "Daniel Morad",
       "time_left_on_track": "+0.283s"
     },
     {
-      "rank": 11,
+      "rank": 8,
       "car_number": "12",
       "driver_name": "Rafael Martinez",
       "time_left_on_track": "+0.281s"
     },
     {
-      "rank": 12,
-      "car_number": "52",
-      "driver_name": "Sam Baker",
-      "time_left_on_track": "+0.272s"
-    },
-    {
-      "rank": 13,
-      "car_number": "37",
-      "driver_name": "Ron Tomlinson",
-      "time_left_on_track": "+0.270s"
-    },
-    {
-      "rank": 14,
-      "car_number": "7",
-      "driver_name": "Celso Neto",
-      "time_left_on_track": "+0.266s"
-    },
-    {
-      "rank": 15,
+      "rank": 9,
       "car_number": "27",
       "driver_name": "Stevan McAleer",
       "time_left_on_track": "+0.261s"
     },
     {
-      "rank": 16,
+      "rank": 10,
       "car_number": "71",
       "driver_name": "Robin Liddell",
       "time_left_on_track": "+0.256s"
     },
     {
-      "rank": 17,
-      "car_number": "99",
-      "driver_name": "Tyler Gonzalez",
-      "time_left_on_track": "+0.250s"
-    },
-    {
-      "rank": 18,
-      "car_number": "98",
-      "driver_name": "Harry Gottsacker",
-      "time_left_on_track": "+0.238s"
-    },
-    {
-      "rank": 19,
-      "car_number": "33",
-      "driver_name": "Bryson Morris",
-      "time_left_on_track": "+0.235s"
-    },
-    {
-      "rank": 20,
-      "car_number": "89",
-      "driver_name": "Cameron Lawrence",
-      "time_left_on_track": "+0.231s"
-    },
-    {
-      "rank": 21,
-      "car_number": "9",
-      "driver_name": "Suellio Almeida",
-      "time_left_on_track": "+0.220s"
-    },
-    {
-      "rank": 22,
+      "rank": 11,
       "car_number": "64",
       "driver_name": "Hugh Plumb",
       "time_left_on_track": "+0.213s"
     },
     {
-      "rank": 23,
-      "car_number": "76",
-      "driver_name": "Denis Dupont",
-      "time_left_on_track": "+0.173s"
-    },
-    {
-      "rank": 24,
-      "car_number": "72",
-      "driver_name": "Larry Pegram",
-      "time_left_on_track": "+0.168s"
-    },
-    {
-      "rank": 25,
+      "rank": 12,
       "car_number": "14",
       "driver_name": "Thomas Merrill",
       "time_left_on_track": "+0.158s"
     },
     {
-      "rank": 26,
+      "rank": 13,
       "car_number": "95",
       "driver_name": "Dillon Machavern",
       "time_left_on_track": "+0.152s"
     },
     {
-      "rank": 27,
+      "rank": 14,
       "car_number": "46",
       "driver_name": "Paul Holton",
       "time_left_on_track": "+0.150s"
     },
     {
-      "rank": 28,
+      "rank": 15,
       "car_number": "17",
       "driver_name": "Mikey Taylor",
       "time_left_on_track": "+0.134s"
     },
     {
-      "rank": 29,
+      "rank": 16,
       "car_number": "19",
       "driver_name": "Gregory Liefooghe",
       "time_left_on_track": "+0.133s"
     },
     {
-      "rank": 30,
+      "rank": 17,
       "car_number": "96",
       "driver_name": "Patrick Gallagher",
       "time_left_on_track": "+0.108s"
     },
     {
-      "rank": 31,
+      "rank": 18,
       "car_number": "59",
       "driver_name": "Billy Johnson",
       "time_left_on_track": "+0.104s"

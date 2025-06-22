@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import numpy as np
+import os
 import warnings
 
 # Optional: Suppress the FutureWarning about downcasting if it's too noisy
@@ -49,6 +50,25 @@ class IMSADataAnalyzer:
             self.df = pd.read_csv(csv_filepath, sep=';'); self.df.columns = self.df.columns.str.strip(); print(f"CSV loaded successfully. Shape: {self.df.shape}")
         except FileNotFoundError: raise FileNotFoundError(f"Error: The file {csv_filepath} was not found.")
         if self.df.empty: raise ValueError("CSV file is empty or not parsed correctly.")
+
+        # <<< NEW: Filter rows based on allowed classes from environment variable >>>
+        env_classes = os.getenv('IMSA_CLASSES') or os.getenv('ALLOWED_CLASSES')
+        if env_classes:
+            try:
+                allowed_classes = json.loads(env_classes)
+                if isinstance(allowed_classes, str):
+                    allowed_classes = [allowed_classes]
+            except json.JSONDecodeError:
+                allowed_classes = [c.strip() for c in env_classes.split(',')]
+            allowed_classes = [c.upper().strip() for c in allowed_classes if c.strip()]
+            if 'CLASS' in self.df.columns and allowed_classes:
+                before_rows = len(self.df)
+                self.df = self.df[self.df['CLASS'].str.upper().isin(allowed_classes)].copy()
+                print(f"Applied class filter {allowed_classes}: rows {before_rows} -> {len(self.df)}.")
+        else:
+            print("No class filter applied.")
+        # <<< END NEW >>>
+
         self._preprocess_data()
 
     def _parse_time_to_seconds(self, time_str):
