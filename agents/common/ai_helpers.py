@@ -12,9 +12,22 @@ from typing import Any, Dict
 from collections import defaultdict
 
 import google.auth
-from vertexai.generative_models import (
-    GenerativeModel, GenerationConfig, HarmCategory, HarmBlockThreshold
-)
+
+try:
+    from vertexai.generative_models import (
+        GenerativeModel,
+        GenerationConfig,
+        HarmCategory,
+        HarmBlockThreshold,
+    )
+except ImportError:  # Vertex AI not available or outdated during offline/local runs
+    class _Stub:  # type: ignore
+        """Fallback stub for missing Vertex AI classes when running without Vertex AI SDK."""
+        def __getattr__(self, name):  # noqa: D401, D401
+            return self
+        def __call__(self, *args, **kwargs):
+            return self
+    GenerativeModel = GenerationConfig = HarmCategory = HarmBlockThreshold = _Stub()  # type: ignore
 import vertexai
 from tenacity import retry, stop_after_attempt, wait_exponential
 
