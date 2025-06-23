@@ -5,7 +5,7 @@ and WeasyPrint.
 """
 from __future__ import annotations
 
-import base64
+
 import json
 import logging
 import os
@@ -17,7 +17,7 @@ from agents.common import ai_helpers
 import os
 from typing import Any, Dict, List
 
-from flask import Flask, Response, request
+from flask import Flask, request, jsonify
 from google.cloud import storage
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from weasyprint import HTML
@@ -132,15 +132,18 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["POST"])
-def handle_request() -> Response:
+def handle_request():
     try:
-        payload_b64 = request.get_json()["message"]["data"]
-        payload = json.loads(base64.b64decode(payload_b64))
-        analysis_uri: str = payload["analysis_path"]
-        insights_uri: str = payload["insights_path"]
+        req_json = request.get_json(force=True, silent=True)
+        if req_json is None:
+            return jsonify({"error": "invalid_json"}), 400
+        analysis_uri: str | None = req_json.get("analysis_path")
+        insights_uri: str | None = req_json.get("insights_path")
+        if not analysis_uri or not insights_uri:
+            return jsonify({"error": "missing_fields"}), 400
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.exception("Bad request: %s", exc)
-        return Response("Bad Request", status=400)
+        return jsonify({"error": "bad_request"}), 400
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
@@ -161,5 +164,5 @@ def handle_request() -> Response:
             LOGGER.info("Uploaded PDF report to %s", out_uri)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
-            return Response("Internal Server Error", status=500)
-    return Response(status=204)
+            return jsonify({"error": "internal_error"}), 500
+    return jsonify({"report_path": out_uri}), 200

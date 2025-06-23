@@ -1,0 +1,24 @@
+steps:
+# Step 0: Install dependencies, including the one from git.
+# We use the official python image as our build environment because
+# it guarantees that 'python' and 'pip' are available. We first
+# install git into it, then run pip install.
+- name: 'python:3.11-slim'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    apt-get update && apt-get install -y git && \
+    pip install --no-cache-dir -r requirements.txt -t ./packages
+
+# Step 1: Build the final, clean production image.
+# This step uses the standard docker builder. It copies the app code
+# and the pre-installed packages from the previous step into a new,
+# clean python:3.11-slim image. This keeps our final image small
+# and secure, without build tools like git.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag', '${_TAG}', '.']
+
+# Step 2: Push the final image to Artifact Registry.
+images:
+- '${_TAG}'

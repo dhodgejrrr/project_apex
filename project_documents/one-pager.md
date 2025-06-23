@@ -1,7 +1,3 @@
-Of course. Here is the "One-Pager" Executive Summary, designed to be clean, impactful, and easily digestible. It's crafted to be visually appealing on a standard document page and to communicate the project's value proposition immediately.
-
----
-
 ### **[Your Race Team Logo Here]**
 
 ## **Project Apex: The AI Race Strategist**

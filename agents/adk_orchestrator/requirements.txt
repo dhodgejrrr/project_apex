@@ -1,0 +1,6 @@
+Flask
+gunicorn
+requests
+google-auth
+# Pin to the official v1.4.2 source code release from GitHub
+https://github.com/google/adk-python/archive/refs/tags/v1.4.2.tar.gz

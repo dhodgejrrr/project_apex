@@ -1,32 +1,62 @@
-"""CoreAnalyzer Cloud Run service for Project Apex.
+"""CoreAnalyzer Toolbox Service for Project Apex.
 
-Receives Pub/Sub push messages containing paths to race CSV and pit JSON files
-in Google Cloud Storage, runs the IMSADataAnalyzer, writes the resulting
-_enhanced.json back to Cloud Storage, and publishes a notification to the
-`insight-requests` topic.
+Provides HTTP endpoints for running specific race data analyses:
+- Full analysis (original endpoint)
+- Pace analysis only
+- Strategy analysis only
+- Comparison of multiple analyses
+
+Input/Output via Google Cloud Storage URIs.
 """
 from __future__ import annotations
 
-import base64
+
 import json
 import logging
 import os
 import pathlib
 import tempfile
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional, TypedDict
+from dataclasses import dataclass, asdict
+from enum import Enum
 
-from flask import Flask, Response, request
-from google.cloud import pubsub_v1, storage
+from flask import Flask, request, jsonify, Response
+from google.cloud import storage
 
 # Third-party analysis module provided separately in this repository.
 from imsa_analyzer import IMSADataAnalyzer  # type: ignore
+
+# ---------------------------------------------------------------------------
+# Types
+# ---------------------------------------------------------------------------
+class AnalysisType(str, Enum):
+    FULL = "full"
+    PACE = "pace"
+    STRATEGY = "strategy"
+
+@dataclass
+class AnalysisResult:
+    analysis_type: AnalysisType
+    gcs_uri: str
+    metrics: Dict[str, Any]
+
+class AnalysisRequest(TypedDict):
+    run_id: str
+    csv_path: str
+    pit_json_path: str
+    analysis_type: Optional[str]  # For single analysis requests
+
+class ComparisonRequest(TypedDict):
+    run_id: str
+    analysis_paths: List[str]  # List of analysis URIs to compare
+    comparison_metrics: List[str]  # Which metrics to include in comparison
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
 ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
-INSIGHT_TOPIC_ID = os.getenv("INSIGHT_REQUESTS_TOPIC", "insight-requests")
+
 
 # ---------------------------------------------------------------------------
 # Logging setup (structured for Cloud Logging)
@@ -38,16 +68,14 @@ LOGGER = logging.getLogger("core_analyzer")
 # Google Cloud clients (lazily initialised)
 # ---------------------------------------------------------------------------
 _storage_client: storage.Client | None = None
-_publisher: pubsub_v1.PublisherClient | None = None
 
 
-def _init_clients() -> tuple[storage.Client, pubsub_v1.PublisherClient]:
-    global _storage_client, _publisher  # pylint: disable=global-statement
+def _get_storage_client() -> storage.Client:
+    """Lazily initialises and returns a Google Cloud Storage client."""
+    global _storage_client  # pylint: disable=global-statement
     if _storage_client is None:
         _storage_client = storage.Client()
-    if _publisher is None:
-        _publisher = pubsub_v1.PublisherClient()
-    return _storage_client, _publisher
+    return _storage_client
 
 # ---------------------------------------------------------------------------
 # Helper utilities
@@ -55,7 +83,7 @@ def _init_clients() -> tuple[storage.Client, pubsub_v1.PublisherClient]:
 
 def _download_blob(gcs_uri: str, dest_path: pathlib.Path) -> None:
     """Downloads a GCS object to a local file path."""
-    storage_client, _ = _init_clients()
+    storage_client = _get_storage_client()
     if not gcs_uri.startswith("gs://"):
         raise ValueError(f"Invalid GCS URI: {gcs_uri}")
     bucket_name, blob_name = gcs_uri[5:].split("/", 1)
@@ -68,7 +96,7 @@ def _download_blob(gcs_uri: str, dest_path: pathlib.Path) -> None:
 
 def _upload_file(local_path: pathlib.Path, dest_bucket: str, dest_blob_name: str) -> str:
     """Uploads local file to GCS and returns the gs:// URI."""
-    storage_client, _ = _init_clients()
+    storage_client = _get_storage_client()
     bucket = storage_client.bucket(dest_bucket)
     blob = bucket.blob(dest_blob_name)
     blob.upload_from_filename(str(local_path))
@@ -77,48 +105,110 @@ def _upload_file(local_path: pathlib.Path, dest_bucket: str, dest_blob_name: str
     return gcs_uri
 
 
-def _publish_notification(analysis_gcs_uri: str) -> None:
-    """Publishes a message to the insight-requests topic with the analysis URI."""
-    _, publisher = _init_clients()
-    topic_path = publisher.topic_path(PROJECT_ID, INSIGHT_TOPIC_ID)
-    payload = {"analysis_path": analysis_gcs_uri}
-    future = publisher.publish(topic_path, json.dumps(payload).encode("utf-8"))
-    future.result(timeout=30)
-    LOGGER.info("Published insight request: %s", payload)
 
 
-def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
-    """Decodes a Pub/Sub push message and returns the inner JSON payload."""
-    if "message" not in req_json or "data" not in req_json["message"]:
-        raise ValueError("Invalid Pub/Sub push payload: missing 'message.data'")
-    encoded_data = req_json["message"]["data"]
-    decoded_bytes = base64.b64decode(encoded_data)
-    return json.loads(decoded_bytes)
+
+
+
 
 
 # ---------------------------------------------------------------------------
-# Flask application
+# Analysis Functions
+# ---------------------------------------------------------------------------
+
+def _run_analysis(
+    analyzer: IMSADataAnalyzer,
+    analysis_type: AnalysisType = AnalysisType.FULL
+) -> Dict[str, Any]:
+    """Run the specified type of analysis."""
+    if analysis_type == AnalysisType.PACE:
+        return {
+            "pace_analysis": analyzer.analyze_pace(),
+            "metadata": {"analysis_type": "pace"}
+        }
+    elif analysis_type == AnalysisType.STRATEGY:
+        return {
+            "strategy_analysis": analyzer.analyze_strategy(),
+            "metadata": {"analysis_type": "strategy"}
+        }
+    else:  # FULL
+        return {
+            **analyzer.run_all_analyses(),
+            "metadata": {"analysis_type": "full"}
+        }
+
+def _compare_analyses(analysis_paths: List[str]) -> Dict[str, Any]:
+    """Compare multiple analysis results."""
+    comparisons = {}
+    for path in analysis_paths:
+        with tempfile.NamedTemporaryFile(delete=True) as tmp:
+            _download_blob(path, pathlib.Path(tmp.name))
+            with open(tmp.name, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                comparisons[path] = {
+                    "summary": {
+                        k: v for k, v in data.items()
+                        if k in ["metadata", "race_summary"]
+                    },
+                    "metrics": {
+                        k: v for k, v in data.items()
+                        if k not in ["metadata", "race_summary"]
+                    }
+                }
+    return {"comparisons": comparisons}
+
+# ---------------------------------------------------------------------------
+# Flask Application
 # ---------------------------------------------------------------------------
 app = Flask(__name__)
 
+@app.route("/health")
+def health_check() -> Response:
+    """Health check endpoint."""
+    return jsonify({"status": "healthy"}), 200
 
-@app.route("/", methods=["POST"])
-def handle_request() -> Response:  # pylint: disable=too-many-return-statements
+@app.route("/analyze", methods=["POST"])
+def analyze() -> Response:
+    """Run a full analysis."""
+    return _handle_analysis_request(request, AnalysisType.FULL)
+
+@app.route("/analyze/pace", methods=["POST"])
+def analyze_pace() -> Response:
+    """Run pace analysis only."""
+    return _handle_analysis_request(request, AnalysisType.PACE)
+
+@app.route("/analyze/strategy", methods=["POST"])
+def analyze_strategy() -> Response:
+    """Run strategy analysis only."""
+    return _handle_analysis_request(request, AnalysisType.STRATEGY)
+
+@app.route("/analyze/compare", methods=["POST"])
+def compare_analyses() -> Response:
+    """Compare multiple analysis results."""
+    req_json = request.get_json(force=True, silent=True)
+    if not req_json:
+        return jsonify({"error": "invalid_json"}), 400
+
     try:
-        req_json = request.get_json(force=True, silent=False)
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.exception("Failed to parse request JSON: %s", exc)
-        return Response("Bad Request", status=400)
+        comparison = _compare_analyses(req_json["analysis_paths"])
+        return jsonify(comparison), 200
+    except Exception as exc:
+        LOGGER.exception("Comparison failed: %s", exc)
+        return jsonify({"error": "comparison_failed"}), 500
 
-    try:
-        payload = _parse_pubsub_push(req_json)
-        csv_uri = payload["csv_path"]
-        pit_uri = payload["pit_json_path"]
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.exception("Invalid Pub/Sub payload: %s", exc)
-        return Response("Bad Request", status=400)
+def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
+    """Handle analysis requests with common logic."""
+    req_json = request.get_json(force=True, silent=True)
+    if req_json is None:
+        return jsonify({"error": "invalid_json"}), 400
 
-    # Work directory in ephemeral /tmp
+    run_id = req_json.get("run_id")
+    csv_uri = req_json.get("csv_path")
+    pit_uri = req_json.get("pit_json_path")
+
+    if not all([run_id, csv_uri, pit_uri]):
+        return jsonify({"error": "missing_required_fields"}), 400
+
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = pathlib.Path(tmpdir)
         local_csv = tmp_path / pathlib.Path(csv_uri).name
@@ -129,25 +219,25 @@ def handle_request() -> Response:  # pylint: disable=too-many-return-statements
             _download_blob(csv_uri, local_csv)
             _download_blob(pit_uri, local_pit)
 
-            # Run analysis
+            # Run specified analysis
             analyzer = IMSADataAnalyzer(str(local_csv), str(local_pit))
-            results: Dict[str, Any] = analyzer.run_all_analyses()
+            results = _run_analysis(analyzer, analysis_type)
 
-            # Determine output name (basename_results_enhanced.json)
-            basename = pathlib.Path(local_csv).stem  # e.g., 2025_mido_race
-            output_filename = f"{basename}_results_enhanced.json"
+            # Save results
+            output_filename = f"{run_id}_results_{analysis_type.value}.json"
             local_out = tmp_path / output_filename
             with local_out.open("w", encoding="utf-8") as fp:
                 json.dump(results, fp)
 
-            # Upload results
-            analysis_gcs_uri = _upload_file(local_out, ANALYZED_DATA_BUCKET, output_filename)
+            # Upload to GCS
+            dest_blob_name = f"{run_id}/{output_filename}"
+            gcs_uri = _upload_file(local_out, ANALYZED_DATA_BUCKET, dest_blob_name)
+            
+            return jsonify({
+                "analysis_path": gcs_uri,
+                "analysis_type": analysis_type.value
+            }), 200
 
-            # Notify downstream agents
-            _publish_notification(analysis_gcs_uri)
-        except Exception as exc:  # pylint: disable=broad-except
-            LOGGER.exception("Processing failed: %s", exc)
-            return Response("Internal Server Error", status=500)
-
-    # Success – Cloud Run prefers 204 No Content for Pub/Sub push acknowledgments
-    return Response(status=204)
+        except Exception as exc:
+            LOGGER.exception("Analysis failed: %s", exc)
+            return jsonify({"error": "analysis_failed"}), 500

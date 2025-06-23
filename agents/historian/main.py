@@ -7,7 +7,7 @@ writes them to GCS, and completes (no downstream Pub/Sub).
 """
 from __future__ import annotations
 
-import base64
+
 import json
 import logging
 import os
@@ -19,7 +19,7 @@ from agents.common import ai_helpers
 import tempfile
 from typing import Any, Dict, List, Tuple
 
-from flask import Flask, Response, request
+from flask import Flask, request, jsonify
 from google.cloud import bigquery, storage
 
 # ---------------------------------------------------------------------------
@@ -165,18 +165,25 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["POST"])
-def handle_request() -> Response:
+def handle_request():
     try:
-        req_json = request.get_json(force=True, silent=False)
-        encoded_payload = req_json["message"]["data"]
-        payload = json.loads(base64.b64decode(encoded_payload))
-        analysis_uri: str = payload["analysis_path"]
+        req_json = request.get_json(force=True, silent=True)
+        if req_json is None:
+            return jsonify({"error": "invalid_json"}), 400
+        analysis_uri: str | None = req_json.get("analysis_path")
+        if not analysis_uri:
+            return jsonify({"error": "missing_analysis_path"}), 400
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.exception("Invalid request: %s", exc)
-        return Response("Bad Request", status=400)
+        return jsonify({"message": "no_content"}), 204
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
+        # Derive run_id from GCS URI assuming format gs://bucket/run_id/...
+        try:
+            run_id = analysis_uri.split("/", 3)[3].split("/", 1)[0]
+        except Exception:
+            run_id = "unknown_run"
         local_analysis = tmp / pathlib.Path(analysis_uri).name
         try:
             # Download current analysis
@@ -206,13 +213,13 @@ def handle_request() -> Response:
             results = list(job.result())
             if not results:
                 LOGGER.warning("No historical analysis found for %s %s %s", track, prev_year, session)
-                return Response(status=204)
+                return jsonify({"message": "no_content"}), 204
             historical_data = results[0]["analysis_json"]
 
             insights = compare_analyses(current_data, historical_data)
             if not insights:
                 LOGGER.info("No insights generated for %s", analysis_uri)
-                return Response(status=204)
+                return jsonify({"message": "no_content"}), 204
 
             summary_text = _narrative_summary(insights)
             output_obj: Dict[str, Any] = {"insights": insights}
@@ -225,9 +232,10 @@ def handle_request() -> Response:
             local_out = tmp / out_filename
             with local_out.open("w", encoding="utf-8") as fp:
                 json.dump(output_obj, fp)
-            _gcs_upload(local_out, ANALYZED_DATA_BUCKET, out_filename)
+            historical_gcs_uri = _gcs_upload(local_out, ANALYZED_DATA_BUCKET, f"{run_id}/{out_filename}")
+            return jsonify({"historical_path": historical_gcs_uri}), 200
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
-            return Response("Internal Server Error", status=500)
+            return jsonify({"error": "internal_error"}), 500
 
-    return Response(status=204)
+    return jsonify({"message": "no_content"}), 204

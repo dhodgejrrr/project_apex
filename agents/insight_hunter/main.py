@@ -8,7 +8,7 @@ new _insights.json file, and publishes a notification to the
 """
 from __future__ import annotations
 
-import base64
+
 import json
 import os
 import logging
@@ -22,7 +22,7 @@ from typing import Any, Dict, List, Optional
 # AI helper utils - Assuming this is a local utility
 from agents.common import ai_helpers
 
-from flask import Flask, Response, request
+from flask import Flask, request, jsonify
 from google.cloud import pubsub_v1, storage
 
 # ----------------------------------------------------------------------------
@@ -327,14 +327,17 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["POST"])
-def handle_request() -> Response:
+def handle_request():
     try:
-        req_json = request.get_json(force=True, silent=False)
-        payload = _parse_pubsub_push(req_json)
-        analysis_uri = payload["analysis_path"]
+        req_json = request.get_json(force=True, silent=True)
+        if req_json is None:
+            return jsonify({"error": "invalid_json"}), 400
+        analysis_uri: str | None = req_json.get("analysis_path")
+        if not analysis_uri:
+            return jsonify({"error": "missing_analysis_path"}), 400
     except Exception as exc:
         LOGGER.exception("Invalid request: %s", exc)
-        return Response("Bad Request", status=400)
+        return jsonify({"error": "bad_request"}), 400
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
@@ -365,6 +368,6 @@ def handle_request() -> Response:
             _publish_visualization_request(analysis_uri, insights_uri)
         except Exception as exc:
             LOGGER.exception("Processing failed: %s", exc)
-            return Response("Internal Server Error", status=500)
+            return jsonify({"error": "internal_error"}), 500
 
-    return Response(status=204)
+    return jsonify({"insights_path": insights_uri}), 200

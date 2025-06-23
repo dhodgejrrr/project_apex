@@ -5,7 +5,7 @@ Gemini. Expects Pub/Sub push payload with `analysis_path` and `insights_path`.
 """
 from __future__ import annotations
 
-import base64
+
 import json
 import logging
 import os
@@ -16,7 +16,7 @@ import tempfile
 from agents.common import ai_helpers
 from typing import Any, Dict, List
 
-from flask import Flask, Response, request
+from flask import Flask, request, jsonify
 from google.cloud import storage
 from google.cloud import aiplatform
 
@@ -170,22 +170,33 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["POST"])
-def handle_request() -> Response:
+def handle_request():
     try:
-        payload_b64 = request.get_json()["message"]["data"]
-        payload = json.loads(base64.b64decode(payload_b64))
-        insights_uri: str = payload["insights_path"]
+        req_json = request.get_json(force=True, silent=True)
+        if req_json is None:
+            return jsonify({"error": "invalid_json"}), 400
+        analysis_uri: str | None = req_json.get("analysis_path")
+        insights_uri: str | None = req_json.get("insights_path")
+        if not analysis_uri or not insights_uri:
+            return jsonify({"error": "missing_fields"}), 400
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.exception("Bad request: %s", exc)
-        return Response("Bad Request", status=400)
+        return jsonify({"error": "bad_request"}), 400
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
+        local_analysis = tmp / pathlib.Path(analysis_uri).name
         local_insights = tmp / pathlib.Path(insights_uri).name
         try:
+            # Download input files
+            _gcs_download(analysis_uri, local_analysis)
             _gcs_download(insights_uri, local_insights)
+
+            # Load JSON content
+            analysis_data = json.loads(local_analysis.read_text())
             insights_data = json.loads(local_insights.read_text())
 
+            # Generate tweets
             tweets = _gen_tweets(insights_data, analysis_data)
             output_json = tmp / "social_media_posts.json"
             json.dump({"posts": tweets}, output_json.open("w", encoding="utf-8"))
@@ -195,5 +206,6 @@ def handle_request() -> Response:
             LOGGER.info("Uploaded social media posts to %s", out_uri)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
-            return Response("Internal Server Error", status=500)
-    return Response(status=204)
+            return jsonify({"error": "internal_error"}), 500
+
+    return jsonify({"posts_path": out_uri}), 200
