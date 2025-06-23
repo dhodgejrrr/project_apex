@@ -1,0 +1,48 @@
+graph TD
+    subgraph "Input"
+        P1(👩‍💻 Race Strategist)
+    end
+
+    subgraph "Project Apex: Autonomous Agent Team"
+        A1(<b>Analysis Agent</b><br>Processes Raw Data)
+        A2(<b>Insight Agent</b><br>Finds Tactical Anomalies)
+        A3(<b>Historian Agent</b><br>Spots YoY Changes)
+        A4(<b>Arbiter Agent</b><br>Synthesizes & Creates Narrative)
+        A5(<b>Content Agent</b><br>Generates Reports & Socials)
+    end
+
+    subgraph "Intelligent Outputs"
+        O1(📈 <b>Engineering Report</b><br>with Executive Summary)
+        O2(📱 <b>Social Media Package</b><br>with Auto-Generated Visuals)
+        O3(🚨 <b>Critical Alerts</b><br>e.g., Slack, PagerDuty)
+    end
+
+    P1 -- "Uploads Data" --> A1
+    A1 -- Raw Data --> A2
+    A1 -- Raw Data --> A3
+
+    A2 -- "<i>'This car has a huge driver gap!'</i>" --> B1{Asks for<br>Details}
+    B1 --> A1
+    A1 -- Drill-Down Report --> A2
+    
+    A3 -- "<i>'Porsche is 2s faster than last year!'</i>" --> B2{Asks for<br>5-Year Trend}
+    B2 --> A1
+    A1 -- Trend Report --> A3
+
+    A2 -- Tactical Insights --> A4
+    A3 -- Historical Context --> A4
+
+    A4 -- Final Briefing & Storylines --> A5
+    
+    A2 -- "CRITICAL FINDING" --> O3
+    
+    A5 -- Report & Visuals --> O1
+    O1 --> P1
+    
+    A5 -- Social Posts --> O2
+    O2 --> P2(🧑‍💼 Marketing Manager)
+
+    classDef persona fill:#E6F3FF,stroke:#0066CC,stroke-width:2px;
+    classDef output fill:#D5E8D4,stroke:#82B366,stroke-width:2px;
+    class P1,P2 persona;
+    class O1,O2,O3 output;
