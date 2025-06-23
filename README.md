@@ -4,7 +4,7 @@
 
 This system moves beyond simple data processing, creating a collaborative team of AI agents that can analyze, investigate, synthesize, and generate content, demonstrating a sophisticated, modern agentic architecture.
 
-[![Video Pitch](https://img.shields.io/badge/Video-Watch%20Our%20Pitch-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=your-video-id)
+[![Video Pitch](https://img.shields.io/badge/Video-Watch%20Our%20Pitch-red?style=for-the-badge&logo=youtube)](https://youtu.be/2hkXCy1FGEU)
 [![UI Portal](https://img.shields.io/badge/Live%20Demo-UI%20Portal-blue?style=for-the-badge&logo=google-cloud)](https://your-ui-portal-url.a.run.app)
 
 ---
@@ -27,7 +27,7 @@ Our system unlocks the winning story hidden in motorsport telemetry. It works in
 
 This diagram illustrates the journey from a user's perspective, focusing on the value delivered to each persona.
 
-![Product Flow Diagram](mermaid_product.svg)
+![Product Flow Diagram](/project_documents/mermaid_product.svg)
 
 ## How We Built It
 
@@ -48,7 +48,7 @@ Project Apex is built entirely on Google Cloud, architected around the principle
 
 This diagram shows how our ADK Orchestrator manages the flow of information and tool calls between agents.
 
-![Technical Flow Diagram](mermaid_flow.svg)
+![Technical Flow Diagram](/project_documents/mermaid_flow.svg)
 
 ## Testing the Application
 
