@@ -39,11 +39,12 @@ def trigger_orchestration(run_id: str, csv_gcs_path: str, pit_gcs_path: str):
     st.success(f"Orchestration triggered for Run ID: {run_id}")
 
 def upload_page():
-    st.set_page_config(page_title="Project Apex: New Run", layout="centered")
     st.title("🚀 Project Apex: Trigger New Analysis")
     st.write("Upload a race CSV and its corresponding pit data JSON to begin the multi-agent analysis.")
 
-    with st.form("upload_form"):
+    # Create a unique form key using a timestamp to prevent duplicates
+    form_key = f"upload_form_{st.session_state.get('form_key', 0)}"
+    with st.form(key=form_key):
         csv_file = st.file_uploader("Upload Race CSV", type=["csv"])
         pit_file = st.file_uploader("Upload Pit Data JSON", type=["json"])
         submitted = st.form_submit_button("Start Analysis")
@@ -70,7 +71,8 @@ def upload_page():
                 st.experimental_rerun()
 
 def results_page():
-    st.set_page_config(page_title=f"Results: {st.query_params['run_id']}", layout="wide")
+    # Page config is now set in app.py
+    st.set_page_config(layout="wide")
     run_id = st.query_params["run_id"]
     st.title(f"📊 Results for Run: `{run_id}`")
     
@@ -118,11 +120,5 @@ def results_page():
         else:
             st.warning("Visuals are not yet available.")
 
-# --- Main App Router ---
-if 'run_id' in st.session_state:
-    st.query_params["run_id"] = st.session_state.pop('run_id')
-
-if "run_id" in st.query_params:
-    results_page()
-else:
-    upload_page()
+# This code is now handled in app.py
+# The main router has been moved to app.py to avoid duplicate execution
