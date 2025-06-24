@@ -1,0 +1,45 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t',
+      '${_GCP_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/ui-portal:latest',
+      '--build-arg', 'PORT=8080',
+      '.'
+    ]
+    dir: 'agents/ui_portal'
+    id: 'build-ui-portal'
+
+  # Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      '${_GCP_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/ui-portal:latest'
+    ]
+    id: 'push-ui-portal'
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ui-portal-service'
+      - '--image'
+      - '${_GCP_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/ui-portal:latest'
+      - '--region'
+      - '${_GCP_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'RAW_DATA_BUCKET=${_RAW_DATA_BUCKET},ANALYZED_DATA_BUCKET=${_ANALYZED_DATA_BUCKET},ORCHESTRATION_TOPIC_ID=${_ORCHESTRATION_TOPIC_ID}'
+    id: 'deploy-ui-portal'
+
+# Images to be pushed to Artifact Registry
+images:
+  - '${_GCP_REGION}-docker.pkg.dev/$PROJECT_ID/${_AR_REPO}/ui-portal:latest'
+
+# Timeout for the build (in seconds)
+timeout: 1800s

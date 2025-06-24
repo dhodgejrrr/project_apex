@@ -1,0 +1,61 @@
+# Master Cloud Build configuration for all Project Apex agents.
+
+steps:
+# Define the build step for each agent. They can all run in parallel.
+# Each step calls the same universal Dockerfile but passes a different
+# --build-arg to customize it for the specific agent.
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-ui-portal'
+  args:
+  - 'build'
+  - '--tag'
+  - '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/ui-portal:latest'
+  - '--build-arg'
+  - 'AGENT_NAME=ui_portal'
+  - '.' # Build context is the project root
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-core-analyzer'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/core-analyzer:latest', '--build-arg', 'AGENT_NAME=core_analyzer', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-adk-orchestrator'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/adk-orchestrator:latest', '--build-arg', 'AGENT_NAME=adk_orchestrator', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-insight-hunter'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/insight-hunter:latest', '--build-arg', 'AGENT_NAME=insight_hunter', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-historian'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/historian:latest', '--build-arg', 'AGENT_NAME=historian', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-visualizer'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/visualizer:latest', '--build-arg', 'AGENT_NAME=visualizer', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-scribe'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/scribe:latest', '--build-arg', 'AGENT_NAME=scribe', '.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-publicist'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/publicist:latest', '--build-arg', 'AGENT_NAME=publicist', '.']
+  
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'build-arbiter'
+  args: ['build', '-t', '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/arbiter:latest', '--build-arg', 'AGENT_NAME=arbiter', '.']
+
+# --- Push all images to the registry in parallel ---
+images:
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/adk-orchestrator:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/core-analyzer:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/insight-hunter:latest'
+# ... add all other agent image names here ...
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/historian:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/visualizer:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/scribe:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/publicist:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/arbiter:latest'
+- '${_GCP_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/ui-portal:latest'
