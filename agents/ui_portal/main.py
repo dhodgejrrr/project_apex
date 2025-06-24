@@ -9,12 +9,22 @@ import streamlit as st
 from google.cloud import storage, pubsub_v1
 
 # --- Configuration ---
-# In a real deployment, these would come from environment variables
-# set by Terraform or gcloud commands.
-PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
-RAW_BUCKET_NAME = os.getenv("RAW_DATA_BUCKET", "imsa-raw-data-hackathon")
-ANALYZED_BUCKET_NAME = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data-hackathon")
-ORCHESTRATION_TOPIC_ID = os.getenv("ORCHESTRATION_TOPIC_ID", "orchestration-requests")
+# These come from environment variables set in the Cloud Run service
+PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
+if not PROJECT_ID:
+    raise ValueError("GOOGLE_CLOUD_PROJECT or GCP_PROJECT environment variable must be set")
+
+RAW_BUCKET_NAME = os.getenv("RAW_DATA_BUCKET")
+if not RAW_DATA_BUCKET:
+    raise ValueError("RAW_DATA_BUCKET environment variable must be set")
+    
+ANALYZED_BUCKET_NAME = os.getenv("ANALYZED_DATA_BUCKET")
+if not ANALYZED_BUCKET_NAME:
+    raise ValueError("ANALYZED_DATA_BUCKET environment variable must be set")
+    
+ORCHESTRATION_TOPIC_ID = os.getenv("ORCHESTRATION_TOPIC_ID")
+if not ORCHESTRATION_TOPIC_ID:
+    raise ValueError("ORCHESTRATION_TOPIC_ID environment variable must be set")
 
 # Use st.cache_resource for clients to avoid re-initializing on every interaction.
 @st.cache_resource
@@ -27,16 +37,35 @@ def get_pubsub_client() -> pubsub_v1.PublisherClient:
 
 def trigger_orchestration(run_id: str, csv_gcs_path: str, pit_gcs_path: str):
     """Publishes a message to the orchestration topic to start the workflow."""
-    publisher = get_pubsub_client()
-    topic_path = publisher.topic_path(PROJECT_ID, ORCHESTRATION_TOPIC_ID)
-    payload = {
-        "run_id": run_id,
-        "csv_gcs_path": csv_gcs_path,
-        "pit_gcs_path": pit_gcs_path,
-    }
-    future = publisher.publish(topic_path, json.dumps(payload).encode("utf-8"))
-    future.result(timeout=60)
-    st.success(f"Orchestration triggered for Run ID: {run_id}")
+    try:
+        publisher = get_pubsub_client()
+        topic_path = publisher.topic_path(PROJECT_ID, ORCHESTRATION_TOPIC_ID)
+        
+        # Log the project ID and topic path for debugging
+        st.sidebar.info(f"Publishing to project: {PROJECT_ID}")
+        st.sidebar.info(f"Topic path: {topic_path}")
+        
+        payload = {
+            "run_id": run_id,
+            "csv_gcs_path": csv_gcs_path,
+            "pit_gcs_path": pit_gcs_path,
+        }
+        
+        # Publish the message
+        future = publisher.publish(
+            topic_path,
+            json.dumps(payload).encode("utf-8")
+        )
+        
+        # Wait for the publish to complete
+        message_id = future.result(timeout=60)
+        st.success(f"Orchestration triggered for Run ID: {run_id}")
+        st.sidebar.success(f"Message published with ID: {message_id}")
+        
+    except Exception as e:
+        st.error(f"Failed to trigger orchestration: {str(e)}")
+        st.sidebar.error(f"Error details: {str(e)}")
+        raise
 
 def upload_page():
     st.title("🚀 Project Apex: Trigger New Analysis")
