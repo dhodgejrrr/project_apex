@@ -13,6 +13,7 @@ import logging
 import os
 import pathlib
 import re
+import base64
 
 # AI helper utils
 from agents.common import ai_helpers
@@ -56,6 +57,13 @@ def _init_clients() -> Tuple[storage.Client, bigquery.Client]:
 # Helper utilities
 # ---------------------------------------------------------------------------
 
+def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
+    """Decodes the data field from a Pub/Sub push message."""
+    if "message" not in req_json or "data" not in req_json["message"]:
+        raise ValueError("Invalid Pub/Sub push payload")
+    decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
+    return json.loads(decoded)
+
 def _gcs_download(gcs_uri: str, dest: pathlib.Path) -> None:
     storage_client, _ = _init_clients()
     if not gcs_uri.startswith("gs://"):
@@ -70,11 +78,14 @@ def _gcs_upload(local_path: pathlib.Path, bucket: str, blob_name: str) -> str:
     return f"gs://{bucket}/{blob_name}"
 
 
-def _parse_filename(filename: str) -> Tuple[int, str, str]:
-    """Extracts (year, track, session) from filenames like 2025_mido_race*."""
+def _parse_filename(filename: str) -> Tuple[int | None, str | None, str | None]:
+    """
+    Extracts (year, track, session) from filenames like 2025_mido_race*.
+    Returns None for parts if the format doesn't match, allowing graceful failure.
+    """
     match = re.match(r"(?P<year>\d{4})_(?P<track>[a-zA-Z]+)_(?P<session>[a-zA-Z]+)", filename)
     if not match:
-        raise ValueError(f"Unrecognised filename format: {filename}")
+        return None, None, None
     return int(match.group("year")), match.group("track"), match.group("session")
 
 
@@ -170,7 +181,9 @@ def handle_request():
         req_json = request.get_json(force=True, silent=True)
         if req_json is None:
             return jsonify({"error": "invalid_json"}), 400
-        analysis_uri: str | None = req_json.get("analysis_path")
+            
+        message_data = _parse_pubsub_push(req_json)
+        analysis_uri: str | None = message_data.get("analysis_path")
         if not analysis_uri:
             return jsonify({"error": "missing_analysis_path"}), 400
     except Exception as exc:  # pylint: disable=broad-except
@@ -179,7 +192,6 @@ def handle_request():
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
-        # Derive run_id from GCS URI assuming format gs://bucket/run_id/...
         try:
             run_id = analysis_uri.split("/", 3)[3].split("/", 1)[0]
         except Exception:
@@ -193,28 +205,34 @@ def handle_request():
 
             # Extract event info
             year, track, session = _parse_filename(local_analysis.stem)
-            prev_year = year - 1
-            LOGGER.info("Comparing against historical year %s", prev_year)
+            
+            historical_data = None
+            if all([year, track, session]):
+                prev_year = year - 1
+                LOGGER.info("Comparing against historical year %s", prev_year)
 
-            # Query BigQuery
-            _, bq_client = _init_clients()
-            table_full = f"{PROJECT_ID}.{BQ_DATASET}.{BQ_TABLE}"
-            job = bq_client.query(
-                f"SELECT analysis_json FROM `{table_full}`\n"
-                "WHERE track = @track AND year = @year AND session_type = @session",
-                job_config=bigquery.QueryJobConfig(
-                    query_parameters=[
-                        bigquery.ScalarQueryParameter("track", "STRING", track),
-                        bigquery.ScalarQueryParameter("year", "INT64", prev_year),
-                        bigquery.ScalarQueryParameter("session", "STRING", session),
-                    ]
-                ),
-            )
-            results = list(job.result())
-            if not results:
-                LOGGER.warning("No historical analysis found for %s %s %s", track, prev_year, session)
-                return jsonify({"message": "no_content"}), 204
-            historical_data = results[0]["analysis_json"]
+                # Query BigQuery
+                _, bq_client = _init_clients()
+                if bq_client:
+                    table_full = f"{PROJECT_ID}.{BQ_DATASET}.{BQ_TABLE}"
+                    job = bq_client.query(
+                        f"SELECT analysis_json FROM `{table_full}`\n"
+                        "WHERE track = @track AND year = @year AND session_type = @session",
+                        job_config=bigquery.QueryJobConfig(
+                            query_parameters=[
+                                bigquery.ScalarQueryParameter("track", "STRING", track),
+                                bigquery.ScalarQueryParameter("year", "INT64", prev_year),
+                                bigquery.ScalarQueryParameter("session", "STRING", session),
+                            ]
+                        ),
+                    )
+                    results = list(job.result())
+                    if results:
+                        historical_data = results[0]["analysis_json"]
+
+            if not historical_data:
+                LOGGER.warning("No historical analysis found for %s (or BQ skipped in local test). Historian step will be skipped.", analysis_uri)
+                return jsonify({"message": "no_historical_data_to_compare"}), 200
 
             insights = compare_analyses(current_data, historical_data)
             if not insights:
@@ -227,7 +245,7 @@ def handle_request():
                 output_obj["narrative"] = summary_text
 
             # Write insights file
-            basename = local_analysis.stem.replace("_results_enhanced", "")
+            basename = local_analysis.stem.replace("_results_full", "").replace("_results_enhanced", "")
             out_filename = f"{basename}_historical_insights.json"
             local_out = tmp / out_filename
             with local_out.open("w", encoding="utf-8") as fp:

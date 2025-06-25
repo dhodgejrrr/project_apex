@@ -13,6 +13,7 @@ import pathlib
 import tempfile
 import os
 from typing import Any, Dict, List, Tuple
+import base64
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -205,6 +206,13 @@ def generate_all_visuals(analysis: Dict[str, Any], insights: Dict[str, List[Dict
         outputs.append((p, caption))
     return outputs
 
+def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
+    """Decodes the data field from a Pub/Sub push message."""
+    if "message" not in req_json or "data" not in req_json["message"]:
+        raise ValueError("Invalid Pub/Sub push payload")
+    decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
+    return json.loads(decoded)
+
 # ---------------------------------------------------------------------------
 # Flask application
 # ---------------------------------------------------------------------------
@@ -217,8 +225,10 @@ def handle_request():
         req_json = request.get_json(force=True, silent=True)
         if req_json is None:
             return jsonify({"error": "invalid_json"}), 400
-        analysis_uri: str | None = req_json.get("analysis_path")
-        insights_uri: str | None = req_json.get("insights_path")
+        
+        message_data = _parse_pubsub_push(req_json)
+        analysis_uri: str | None = message_data.get("analysis_path")
+        insights_uri: str | None = message_data.get("insights_path")
         if not analysis_uri or not insights_uri:
             return jsonify({"error": "missing_fields"}), 400
     except Exception as exc:  # pylint: disable=broad-except
@@ -237,12 +247,12 @@ def handle_request():
 
             plot_info = generate_all_visuals(analysis_data, insights_data, tmp)
 
-            # Upload all PNGs in tmp
-            basename = local_analysis.stem.replace("_results_enhanced", "")
+            # CORRECTED: Use the run_id from the GCS path directly.
+            run_id = analysis_uri.split('/')[3]
             uploaded = []
             captions: Dict[str, str] = {}
             for p, cap in plot_info:
-                dest_blob = f"{basename}/visuals/{p.name}"
+                dest_blob = f"{run_id}/visuals/{p.name}"
                 uploaded.append(_gcs_upload(p, dest_blob))
                 if cap:
                     captions[p.name] = cap
@@ -250,9 +260,9 @@ def handle_request():
             if captions:
                 cap_file = tmp / "captions.json"
                 json.dump(captions, cap_file.open("w", encoding="utf-8"))
-                _gcs_upload(cap_file, f"{basename}/visuals/captions.json")
+                _gcs_upload(cap_file, f"{run_id}/visuals/captions.json")
             LOGGER.info("Uploaded visuals: %s", uploaded)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
             return jsonify({"error": "internal_error"}), 500
-    return jsonify({"visuals_prefix": f"gs://{ANALYZED_DATA_BUCKET}/{basename}/visuals/"}), 200
+    return jsonify({"visuals_prefix": f"gs://{ANALYZED_DATA_BUCKET}/{run_id}/visuals/"}), 200

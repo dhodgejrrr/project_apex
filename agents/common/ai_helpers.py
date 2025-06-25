@@ -58,28 +58,30 @@ _aiplatform_inited = False
 def _init_vertex() -> None:
     """Initialises Vertex AI using environment variables just-in-time."""
     global _aiplatform_inited  # pylint: disable=global-statement
-    if not _aiplatform_inited:
-        # Use google.auth.default() to robustly find the credentials and project.
-        # This is the standard and most reliable way to authenticate.
-        try:
-            credentials, project_id = google.auth.default()
-        except google.auth.exceptions.DefaultCredentialsError as e:
-            LOGGER.error(
-                "Authentication failed. Please run `gcloud auth application-default login`"
-            )
-            raise e
+    if _aiplatform_inited:
+        return
 
-        # Use found project_id if not explicitly set, and get location from env.
-        project_id = project_id or os.environ.get("GOOGLE_CLOUD_PROJECT")
-        location = os.environ.get("VERTEX_LOCATION", "us-central1")
+    # Use google.auth.default() to robustly find the credentials and project.
+    # This is the standard and most reliable way to authenticate.
+    try:
+        credentials, project_id = google.auth.default()
+    except google.auth.exceptions.DefaultCredentialsError as e:
+        LOGGER.error(
+            "Authentication failed. Please run `gcloud auth application-default login`"
+        )
+        raise e
 
-        if not project_id:
-            raise ValueError(
-                "Could not determine Project ID. Please set GOOGLE_CLOUD_PROJECT."
-            )
+    # Use found project_id if not explicitly set, and get location from env.
+    project_id = project_id or os.environ.get("GOOGLE_CLOUD_PROJECT")
+    location = os.environ.get("VERTEX_LOCATION", "us-central1")
 
-        vertexai.init(project=project_id, location=location, credentials=credentials)
-        _aiplatform_inited = True
+    if not project_id:
+        raise ValueError(
+            "Could not determine Project ID. Please set GOOGLE_CLOUD_PROJECT."
+        )
+
+    vertexai.init(project=project_id, location=location, credentials=credentials)
+    _aiplatform_inited = True
 
 
 # ---------------------------------------------------------------------------

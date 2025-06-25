@@ -23,6 +23,7 @@ FROM python:3.11-slim
 ARG AGENT_NAME
 
 ENV PYTHONUNBUFFERED=true
+ENV PYTHONPATH=/app
 WORKDIR /app/agents/${AGENT_NAME}
 
 # Copy the pre-built dependencies from the 'builder' stage.
@@ -30,6 +31,18 @@ COPY --from=builder /install /usr/local
 
 # Copy the entire 'agents' source code.
 COPY --from=builder /app/agents /app/agents
+
+# Install WeasyPrint system dependencies ONLY for the scribe agent
+RUN if [ "$AGENT_NAME" = "scribe" ]; then \
+        apt-get update && apt-get install -y --no-install-recommends \
+        libpango-1.0-0 \
+        libharfbuzz0b \
+        libpangoft2-1.0-0 \
+        libpangocairo-1.0-0 \
+        libgdk-pixbuf-2.0-0 \
+        libcairo2 && \
+        rm -rf /var/lib/apt/lists/*; \
+    fi
 
 ENV PORT 8080
 CMD gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app

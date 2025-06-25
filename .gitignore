@@ -1,1 +1,34 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+docker-compose.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Local run artifacts
+out_local/
+*.egg-info/
+
+# Test files and harnesses
+tests/
+run_local_e2e.py
+dry_run_harness.py
+full_pipeline_local.py
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Environment files
 .env

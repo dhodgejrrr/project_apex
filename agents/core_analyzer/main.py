@@ -55,7 +55,7 @@ class ComparisonRequest(TypedDict):
 # Configuration
 # ---------------------------------------------------------------------------
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
-ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
+ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data-project-apex-v1")
 
 
 # ---------------------------------------------------------------------------

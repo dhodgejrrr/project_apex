@@ -11,6 +11,7 @@ import logging
 import os
 import pathlib
 import tempfile
+import base64
 
 # AI helpers
 from agents.common import ai_helpers
@@ -66,6 +67,13 @@ def _gcs_upload(local_path: pathlib.Path, dest_blob: str) -> str:
     blob = _storage().bucket(ANALYZED_DATA_BUCKET).blob(dest_blob)
     blob.upload_from_filename(local_path)
     return f"gs://{ANALYZED_DATA_BUCKET}/{dest_blob}"
+
+def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
+    """Decodes the data field from a Pub/Sub push message."""
+    if "message" not in req_json or "data" not in req_json["message"]:
+        raise ValueError("Invalid Pub/Sub push payload")
+    decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
+    return json.loads(decoded)
 
 # ---------------------------------------------------------------------------
 # Insight selection
@@ -175,8 +183,12 @@ def handle_request():
         req_json = request.get_json(force=True, silent=True)
         if req_json is None:
             return jsonify({"error": "invalid_json"}), 400
-        analysis_uri: str | None = req_json.get("analysis_path")
-        insights_uri: str | None = req_json.get("insights_path")
+
+        # MODIFIED: Parse the Pub/Sub message
+        message_data = _parse_pubsub_push(req_json)
+        analysis_uri: str | None = message_data.get("analysis_path")
+        insights_uri: str | None = message_data.get("insights_path")
+        
         if not analysis_uri or not insights_uri:
             return jsonify({"error": "missing_fields"}), 400
     except Exception as exc:  # pylint: disable=broad-except
@@ -201,8 +213,9 @@ def handle_request():
             output_json = tmp / "social_media_posts.json"
             json.dump({"posts": tweets}, output_json.open("w", encoding="utf-8"))
 
-            basename = pathlib.Path(insights_uri).stem.replace("_insights", "")
-            out_uri = _gcs_upload(output_json, f"{basename}/social/social_media_posts.json")
+            # CORRECTED: Use the run_id from the GCS path directly.
+            run_id = analysis_uri.split('/')[3]
+            out_uri = _gcs_upload(output_json, f"{run_id}/social/social_media_posts.json")
             LOGGER.info("Uploaded social media posts to %s", out_uri)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)

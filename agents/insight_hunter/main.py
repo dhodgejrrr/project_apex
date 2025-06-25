@@ -18,6 +18,7 @@ import tempfile
 from collections import defaultdict
 from statistics import mean
 from typing import Any, Dict, List, Optional
+import base64
 
 # AI helper utils - Assuming this is a local utility
 from agents.common import ai_helpers
@@ -29,7 +30,7 @@ from google.cloud import pubsub_v1, storage
 # Environment configuration & Logging
 # ----------------------------------------------------------------------------
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or os.getenv("GCP_PROJECT")
-ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
+ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data-project-apex-v1")
 VIS_TOPIC_ID = os.getenv("VISUALIZATION_REQUESTS_TOPIC", "visualization-requests")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
@@ -48,7 +49,11 @@ def _init_clients() -> tuple[storage.Client, pubsub_v1.PublisherClient]:
     if _storage_client is None:
         _storage_client = storage.Client()
     if _publisher is None:
-        _publisher = pubsub_v1.PublisherClient()
+        if os.getenv("PUBSUB_EMULATOR_HOST"):
+            from google.auth.credentials import AnonymousCredentials
+            _publisher = pubsub_v1.PublisherClient(credentials=AnonymousCredentials())
+        else:
+            _publisher = pubsub_v1.PublisherClient()
     return _storage_client, _publisher
 
 def _gcs_download(gcs_uri: str, dest_path: pathlib.Path) -> None:
@@ -66,10 +71,17 @@ def _gcs_upload(local_path: pathlib.Path, bucket: str, blob_name: str) -> str:
 
 def _publish_visualization_request(analysis_uri: str, insights_uri: str) -> None:
     _, publisher = _init_clients()
-    topic_path = publisher.topic_path(PROJECT_ID, VIS_TOPIC_ID)
+    # When using the emulator, all topics are created under the 'local-dev' project.
+    # In a real environment, the service will use the configured GOOGLE_CLOUD_PROJECT.
+    project_id = "local-dev" if os.getenv("PUBSUB_EMULATOR_HOST") else PROJECT_ID
+    if not project_id:
+        raise ValueError("Project ID not found for Pub/Sub publishing.")
+        
+    topic_path = publisher.topic_path(project_id, VIS_TOPIC_ID)
     message = {"analysis_path": analysis_uri, "insights_path": insights_uri}
-    publisher.publish(topic_path, json.dumps(message).encode("utf-8"))
-    LOGGER.info("Published visualization request: %s", message)
+    future = publisher.publish(topic_path, json.dumps(message).encode("utf-8"))
+    future.result() # Make call blocking to ensure message is sent for local test
+    LOGGER.info("Published visualization request to %s: %s", topic_path, message)
 
 def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
     if "message" not in req_json or "data" not in req_json["message"]:
@@ -222,7 +234,7 @@ def _rank_drivers_by_traffic_management(traffic_data: List[Dict]) -> List[Dict]:
     if not traffic_data: return []
     
     # The data is already ranked in the source file, so we just need to add context.
-    all_lost_times = [_time_str_to_seconds(d.get("avg_time_lost_total_sec")) for d in traffic_data]
+    all_lost_times = [d.get("avg_time_lost_total_sec") for d in traffic_data]
     valid_lost_times = [t for t in all_lost_times if t is not None]
     if not valid_lost_times: return []
 
@@ -230,7 +242,7 @@ def _rank_drivers_by_traffic_management(traffic_data: List[Dict]) -> List[Dict]:
     
     contextual_list = []
     for item in traffic_data:
-        time_lost = _time_str_to_seconds(item.get("avg_time_lost_total_sec"))
+        time_lost = item.get("avg_time_lost_total_sec")
         if time_lost is not None:
             new_item = item.copy()
             new_item["performance_vs_avg"] = f"{((time_lost / field_avg_lost_time) - 1) * 100:+.1f}%"
@@ -277,7 +289,7 @@ def derive_insights(data: Dict[str, Any]) -> Dict[str, Any]:
             enhanced_data, "manufacturer", ["tire_degradation_model", "deg_coeff_a"], higher_is_better=False, value_is_time=False
         ),
         "manufacturer_pit_cycle_ranking": _rank_by_metric(
-            pit_cycle_data, "manufacturer", ["average_cycle_loss"], higher_is_better=False, value_is_time=True
+            pit_cycle_data, "team", ["average_cycle_loss"], higher_is_better=False, value_is_time=True
         ),
         "car_untapped_potential_ranking": _rank_cars_by_untapped_potential(
             data.get("fastest_by_car_number", [])
@@ -332,7 +344,10 @@ def handle_request():
         req_json = request.get_json(force=True, silent=True)
         if req_json is None:
             return jsonify({"error": "invalid_json"}), 400
-        analysis_uri: str | None = req_json.get("analysis_path")
+        
+        message_data = _parse_pubsub_push(req_json)
+        analysis_uri: str | None = message_data.get("analysis_path")
+
         if not analysis_uri:
             return jsonify({"error": "missing_analysis_path"}), 400
     except Exception as exc:
@@ -341,6 +356,7 @@ def handle_request():
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = pathlib.Path(tmpdir)
+        run_id = analysis_uri.split('/')[3]
         local_analysis_path = tmp / "analysis_data.json"
         try:
             LOGGER.info("Downloading analysis file: %s", analysis_uri)
@@ -355,14 +371,14 @@ def handle_request():
                 LOGGER.info("Enriching insights with AI...")
                 insights = enrich_insights_with_ai(insights)
 
-            basename = pathlib.Path(analysis_uri).stem.replace("_enhanced", "")
-            insights_filename = f"{basename}_insights.json"
+            insights_filename = f"{run_id}_insights.json"
             local_insights_path = tmp / insights_filename
             with local_insights_path.open("w", encoding="utf-8") as fp:
                 json.dump(insights, fp, indent=2)
             LOGGER.info("Successfully generated insights file: %s", insights_filename)
 
-            insights_uri = _gcs_upload(local_insights_path, ANALYZED_DATA_BUCKET, insights_filename)
+            insights_gcs_path = f"{run_id}/{insights_filename}"
+            insights_uri = _gcs_upload(local_insights_path, ANALYZED_DATA_BUCKET, insights_gcs_path)
             LOGGER.info("Uploaded insights to: %s", insights_uri)
 
             _publish_visualization_request(analysis_uri, insights_uri)

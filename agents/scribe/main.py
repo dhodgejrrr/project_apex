@@ -11,6 +11,7 @@ import logging
 import os
 import pathlib
 import tempfile
+import base64
 
 # AI helpers
 from agents.common import ai_helpers
@@ -55,6 +56,13 @@ def _storage() -> storage.Client:
 # ---------------------------------------------------------------------------
 # Utility helpers
 # ---------------------------------------------------------------------------
+
+def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
+    """Decodes the data field from a Pub/Sub push message."""
+    if "message" not in req_json or "data" not in req_json["message"]:
+        raise ValueError("Invalid Pub/Sub push payload")
+    decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
+    return json.loads(decoded)
 
 def _gcs_download(gcs_uri: str, dest: pathlib.Path) -> None:
     if not gcs_uri.startswith("gs://"):
@@ -137,8 +145,12 @@ def handle_request():
         req_json = request.get_json(force=True, silent=True)
         if req_json is None:
             return jsonify({"error": "invalid_json"}), 400
-        analysis_uri: str | None = req_json.get("analysis_path")
-        insights_uri: str | None = req_json.get("insights_path")
+        
+        # MODIFIED: Parse the Pub/Sub message
+        message_data = _parse_pubsub_push(req_json)
+        analysis_uri: str | None = message_data.get("analysis_path")
+        insights_uri: str | None = message_data.get("insights_path")
+        
         if not analysis_uri or not insights_uri:
             return jsonify({"error": "missing_fields"}), 400
     except Exception as exc:  # pylint: disable=broad-except
@@ -159,8 +171,9 @@ def handle_request():
             narrative = _generate_narrative(insights_data, analysis_data)
             _render_report(analysis_data, insights_data, narrative, pdf_path)
 
-            basename = local_analysis.stem.replace("_results_enhanced", "")
-            out_uri = _gcs_upload(pdf_path, f"{basename}/reports/race_report.pdf")
+            # CORRECTED: Use the run_id from the GCS path directly.
+            run_id = analysis_uri.split('/')[3]
+            out_uri = _gcs_upload(pdf_path, f"{run_id}/reports/race_report.pdf")
             LOGGER.info("Uploaded PDF report to %s", out_uri)
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
