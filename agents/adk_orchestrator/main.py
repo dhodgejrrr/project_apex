@@ -16,7 +16,7 @@ from typing import Dict, Any
 import requests
 from flask import Flask, request, jsonify
 from google.auth.transport import requests as grequests
-from google.auth import id_token
+from google.oauth2 import id_token
 
 # ADK imports – assuming the library follows the public preview interface.
 try:

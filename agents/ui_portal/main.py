@@ -97,7 +97,7 @@ def upload_page():
 
                 trigger_orchestration(run_id, csv_gcs_path, pit_gcs_path)
                 st.session_state['run_id'] = run_id
-                st.experimental_rerun()
+                st.rerun()
 
 def results_page():
     # Page config is now set in app.py
@@ -106,7 +106,7 @@ def results_page():
     st.title(f"📊 Results for Run: `{run_id}`")
     
     if st.button("Check for Updates"):
-        st.experimental_rerun()
+        st.rerun()
 
     storage_client = get_gcs_client()
     bucket = storage_client.bucket(ANALYZED_BUCKET_NAME)
