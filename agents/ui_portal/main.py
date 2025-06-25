@@ -15,7 +15,7 @@ if not PROJECT_ID:
     raise ValueError("GOOGLE_CLOUD_PROJECT or GCP_PROJECT environment variable must be set")
 
 RAW_BUCKET_NAME = os.getenv("RAW_DATA_BUCKET")
-if not RAW_DATA_BUCKET:
+if not RAW_BUCKET_NAME:
     raise ValueError("RAW_DATA_BUCKET environment variable must be set")
     
 ANALYZED_BUCKET_NAME = os.getenv("ANALYZED_DATA_BUCKET")
