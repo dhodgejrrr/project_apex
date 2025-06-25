@@ -25,6 +25,7 @@ from google.cloud import storage
 
 # Third-party analysis module provided separately in this repository.
 from imsa_analyzer import IMSADataAnalyzer  # type: ignore
+from agents.common.request_utils import parse_request_payload, validate_required_fields
 
 # ---------------------------------------------------------------------------
 # Types
@@ -185,29 +186,36 @@ def analyze_strategy() -> Response:
 @app.route("/analyze/compare", methods=["POST"])
 def compare_analyses() -> Response:
     """Compare multiple analysis results."""
-    req_json = request.get_json(force=True, silent=True)
-    if not req_json:
-        return jsonify({"error": "invalid_json"}), 400
-
     try:
-        comparison = _compare_analyses(req_json["analysis_paths"])
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["analysis_paths"])
+        
+        comparison = _compare_analyses(payload["analysis_paths"])
         return jsonify(comparison), 200
+        
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
     except Exception as exc:
         LOGGER.exception("Comparison failed: %s", exc)
         return jsonify({"error": "comparison_failed"}), 500
 
 def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
-    """Handle analysis requests with common logic."""
-    req_json = request.get_json(force=True, silent=True)
-    if req_json is None:
-        return jsonify({"error": "invalid_json"}), 400
-
-    run_id = req_json.get("run_id")
-    csv_uri = req_json.get("csv_path")
-    pit_uri = req_json.get("pit_json_path")
-
-    if not all([run_id, csv_uri, pit_uri]):
-        return jsonify({"error": "missing_required_fields"}), 400
+    """Handle analysis requests with common logic for both HTTP and Pub/Sub formats."""
+    try:
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["run_id", "csv_path", "pit_json_path"])
+        
+        run_id = payload["run_id"]
+        csv_uri = payload["csv_path"]
+        pit_uri = payload["pit_json_path"]
+        
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        LOGGER.error(f"Request parsing failed: {e}")
+        return jsonify({"error": "invalid_request"}), 400
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = pathlib.Path(tmpdir)

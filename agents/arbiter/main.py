@@ -2,12 +2,15 @@ import os
 import json
 import base64
 import logging
+import pathlib
+import tempfile
 from typing import Dict, Any
 
 from flask import Flask, request, jsonify
 from google.cloud import storage
 
 from agents.common import ai_helpers
+from agents.common.request_utils import parse_request_payload, validate_required_fields
 
 # Configuration
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
@@ -44,9 +47,19 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def handle_request():
-    payload = request.get_json(force=True)
-    insights_path = payload['insights_path']
-    historical_path = payload.get('historical_path') # May be null
+    try:
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["insights_path"])
+        
+        insights_path = payload["insights_path"]
+        historical_path = payload.get("historical_path")  # May be null
+        
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        LOGGER.error(f"Request parsing failed: {e}")
+        return jsonify({"error": "invalid_request"}), 400
 
     try:
         tactical_insights = _gcs_download_json(insights_path)

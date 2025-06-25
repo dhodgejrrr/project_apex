@@ -22,6 +22,7 @@ import seaborn as sns
 
 # AI helpers
 from agents.common import ai_helpers
+from agents.common.request_utils import parse_request_payload, validate_required_fields
 from flask import Flask, request, jsonify
 from google.cloud import storage
 
@@ -206,13 +207,6 @@ def generate_all_visuals(analysis: Dict[str, Any], insights: Dict[str, List[Dict
         outputs.append((p, caption))
     return outputs
 
-def _parse_pubsub_push(req_json: Dict[str, Any]) -> Dict[str, Any]:
-    """Decodes the data field from a Pub/Sub push message."""
-    if "message" not in req_json or "data" not in req_json["message"]:
-        raise ValueError("Invalid Pub/Sub push payload")
-    decoded = base64.b64decode(req_json["message"]["data"]).decode("utf-8")
-    return json.loads(decoded)
-
 # ---------------------------------------------------------------------------
 # Flask application
 # ---------------------------------------------------------------------------
@@ -222,15 +216,15 @@ app = Flask(__name__)
 @app.route("/", methods=["POST"])
 def handle_request():
     try:
-        req_json = request.get_json(force=True, silent=True)
-        if req_json is None:
-            return jsonify({"error": "invalid_json"}), 400
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["analysis_path", "insights_path"])
         
-        message_data = _parse_pubsub_push(req_json)
-        analysis_uri: str | None = message_data.get("analysis_path")
-        insights_uri: str | None = message_data.get("insights_path")
-        if not analysis_uri or not insights_uri:
-            return jsonify({"error": "missing_fields"}), 400
+        analysis_uri = payload["analysis_path"]
+        insights_uri = payload["insights_path"]
+        
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.exception("Bad request: %s", exc)
         return jsonify({"error": "bad_request"}), 400
