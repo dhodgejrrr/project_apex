@@ -171,3 +171,22 @@ def handle_request():
             LOGGER.exception("Processing failed: %s", exc)
             return jsonify({"error": "internal_error"}), 500
     return jsonify({"report_path": out_uri}), 200
+
+
+@app.route("/health")
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "service": "scribe"}), 200
+
+
+if __name__ == "__main__":
+    # Register with Tool Registry at startup
+    try:
+        from agents.common.tool_caller import register_agent_with_registry
+        port = int(os.environ.get("PORT", 8080))
+        base_url = os.getenv("SCRIBE_URL", f"http://localhost:{port}")
+        register_agent_with_registry("scribe", base_url)
+    except Exception as e:
+        LOGGER.warning(f"Failed to register with Tool Registry: {e}")
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)

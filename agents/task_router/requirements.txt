@@ -1,0 +1,4 @@
+flask>=2.3.0
+requests>=2.31.0
+google-auth>=2.22.0
+google-cloud-core>=2.3.0

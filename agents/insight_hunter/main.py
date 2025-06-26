@@ -340,6 +340,7 @@ def handle_request():
         validate_required_fields(payload, ["analysis_path"])
         
         analysis_uri = payload["analysis_path"]
+        use_autonomous = payload.get("use_autonomous", True)  # Default to autonomous mode
         
     except ValueError as e:
         LOGGER.error(f"Request validation failed: {e}")
@@ -358,12 +359,17 @@ def handle_request():
             with local_analysis_path.open("r", encoding="utf-8") as fp:
                 analysis_data = json.load(fp)
 
-            LOGGER.info("Deriving ranked insights from analysis data...")
-            insights = derive_insights(analysis_data)
-            
-            if USE_AI_ENHANCED:
-                LOGGER.info("Enriching insights with AI...")
-                insights = enrich_insights_with_ai(insights)
+            # Choose between autonomous and traditional insight generation
+            if use_autonomous and USE_AI_ENHANCED:
+                LOGGER.info("Using autonomous insight generation workflow...")
+                insights = generate_insights_autonomously(analysis_data, run_id)
+            else:
+                LOGGER.info("Using traditional rule-based insight generation...")
+                insights = derive_insights(analysis_data)
+                
+                if USE_AI_ENHANCED:
+                    LOGGER.info("Enriching traditional insights with AI...")
+                    insights = enrich_insights_with_ai(insights)
 
             insights_filename = f"{run_id}_insights.json"
             local_insights_path = tmp / insights_filename
@@ -380,4 +386,259 @@ def handle_request():
             LOGGER.exception("Processing failed: %s", exc)
             return jsonify({"error": "internal_error"}), 500
 
-    return jsonify({"insights_path": insights_uri}), 200
+    return jsonify({
+        "insights_path": insights_uri,
+        "generation_method": "autonomous" if (use_autonomous and USE_AI_ENHANCED) else "traditional"
+    }), 200
+
+@app.route("/health")
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "service": "insight_hunter"}), 200
+
+# ----------------------------------------------------------------------------
+# Autonomous Investigation Workflow (Phase 2)
+# ----------------------------------------------------------------------------
+
+def generate_investigation_plan(analysis_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Step 1: Generate an investigation plan using LLM to identify anomalies and 
+    specify which CoreAnalyzer tools to call for deeper analysis.
+    """
+    # Extract high-level summary for the prompt
+    race_summary = analysis_data.get("race_summary", {})
+    enhanced_strategy = analysis_data.get("enhanced_strategy_analysis", [])
+    
+    # Limit data to prevent token overflow
+    summary_data = {
+        "race_summary": race_summary,
+        "car_count": len(enhanced_strategy),
+        "sample_cars": enhanced_strategy[:5] if enhanced_strategy else []
+    }
+    
+    prompt = f"""
+You are an expert race strategist analyzing IMSA race data. Create a detailed investigation plan to find the most interesting and actionable insights.
+
+High-Level Race Data:
+{json.dumps(summary_data, indent=2)}
+
+Available CoreAnalyzer Tools:
+1. "driver_deltas" - Get performance gaps between drivers in the same car
+   Parameters: {{"run_id": str, "car_number": optional str}}
+   
+2. "trend_analysis" - Get historical performance trends for a manufacturer at this track
+   Parameters: {{"track": str, "session": str, "manufacturer": str, "num_years": optional int}}
+   
+3. "stint_analysis" - Get detailed stint and tire degradation analysis
+   Parameters: {{"run_id": str, "car_number": optional str}}
+   
+4. "sector_analysis" - Get sector-by-sector performance breakdown
+   Parameters: {{"run_id": str, "car_number": optional str}}
+
+Instructions:
+1. Identify 3-5 interesting findings from the high-level data
+2. For each finding, specify which tool would provide deeper analysis
+3. Explain your hypothesis about what the deeper analysis might reveal
+4. Focus on actionable insights for teams and strategists
+
+Return JSON format:
+{{
+  "investigation_tasks": [
+    {{
+      "finding": "Brief description of what caught your attention",
+      "hypothesis": "What you expect to discover with deeper analysis",
+      "tool": "tool_name",
+      "parameters": {{"param": "value"}},
+      "priority": "high|medium|low"
+    }}
+  ]
+}}
+"""
+    
+    try:
+        plan = ai_helpers.generate_json_adaptive(prompt, temperature=0.7, max_output_tokens=8000)
+        LOGGER.info(f"Generated investigation plan with {len(plan.get('investigation_tasks', []))} tasks")
+        return plan
+    except Exception as e:
+        LOGGER.error(f"Failed to generate investigation plan: {e}")
+        return {"investigation_tasks": []}
+
+
+def execute_investigation_plan(plan: Dict[str, Any], run_id: str) -> List[Dict[str, Any]]:
+    """
+    Step 2: Execute the investigation plan by calling CoreAnalyzer tools
+    and collecting detailed data for each investigation task.
+    """
+    results = []
+    
+    for task in plan.get("investigation_tasks", []):
+        try:
+            tool_name = task.get("tool")
+            parameters = task.get("parameters", {})
+            
+            # Ensure run_id is included for tools that need it
+            if "run_id" in parameters or tool_name in ["driver_deltas", "stint_analysis", "sector_analysis"]:
+                parameters["run_id"] = run_id
+            
+            LOGGER.info(f"Executing tool: {tool_name} with params: {parameters}")
+            
+            # Call the CoreAnalyzer tool
+            from agents.common.tool_caller import tool_caller
+            tool_result = tool_caller.call_core_analyzer_tool(tool_name, **parameters)
+            
+            results.append({
+                "finding": task.get("finding"),
+                "hypothesis": task.get("hypothesis"),
+                "tool": tool_name,
+                "tool_result": tool_result,
+                "status": "success",
+                "priority": task.get("priority", "medium")
+            })
+            
+            LOGGER.info(f"Successfully executed {tool_name}")
+            
+        except Exception as e:
+            LOGGER.error(f"Tool execution failed for {task.get('tool')}: {e}")
+            results.append({
+                "finding": task.get("finding"),
+                "hypothesis": task.get("hypothesis"),
+                "tool": task.get("tool"),
+                "status": "failed",
+                "error": str(e),
+                "priority": task.get("priority", "medium")
+            })
+    
+    return results
+
+
+def synthesize_final_insights(investigation_results: List[Dict[str, Any]], original_analysis: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Step 3: Synthesize final insights by combining initial hypotheses with 
+    detailed tool results using LLM to create rich, actionable insights.
+    """
+    # Prepare data for synthesis prompt
+    synthesis_data = []
+    
+    for result in investigation_results:
+        if result.get("status") == "success":
+            synthesis_data.append({
+                "finding": result.get("finding"),
+                "hypothesis": result.get("hypothesis"),
+                "detailed_data": result.get("tool_result"),
+                "priority": result.get("priority")
+            })
+    
+    if not synthesis_data:
+        LOGGER.warning("No successful tool results to synthesize")
+        return {"autonomous_insights": [], "investigation_summary": "No successful investigations"}
+    
+    prompt = f"""
+You are an expert race analyst creating final insights by combining initial observations with detailed analysis data.
+
+For each investigation result, create a rich, actionable insight that:
+1. Combines the initial finding with the detailed tool data
+2. Provides specific, actionable recommendations
+3. Explains the strategic implications
+4. Includes relevant data points as evidence
+
+Investigation Results:
+{json.dumps(synthesis_data, indent=2)}
+
+Return JSON format:
+{{
+  "autonomous_insights": [
+    {{
+      "category": "Strategic category (e.g., 'Driver Performance', 'Tire Strategy')",
+      "type": "Specific insight type",
+      "priority": "high|medium|low",
+      "summary": "One-sentence summary of the insight",
+      "detailed_analysis": "Comprehensive analysis with evidence",
+      "actionable_recommendations": ["List of specific recommendations"],
+      "supporting_data": {{"key_metrics": "Relevant numbers and comparisons"}},
+      "confidence_level": "high|medium|low"
+    }}
+  ],
+  "investigation_summary": {{
+    "total_investigations": number,
+    "successful_investigations": number,
+    "key_discoveries": ["List of major discoveries"],
+    "methodology": "Brief explanation of autonomous approach used"
+  }}
+}}
+"""
+    
+    try:
+        synthesis = ai_helpers.generate_json_adaptive(prompt, temperature=0.6, max_output_tokens=12000)
+        
+        # Enhance with investigation metadata
+        synthesis["investigation_summary"]["methodology"] = "Autonomous LLM-driven investigation using CoreAnalyzer toolbox"
+        synthesis["investigation_summary"]["total_investigations"] = len(investigation_results)
+        synthesis["investigation_summary"]["successful_investigations"] = len(synthesis_data)
+        
+        LOGGER.info(f"Synthesized {len(synthesis.get('autonomous_insights', []))} final insights")
+        return synthesis
+        
+    except Exception as e:
+        LOGGER.error(f"Failed to synthesize insights: {e}")
+        return {
+            "autonomous_insights": [],
+            "investigation_summary": {
+                "total_investigations": len(investigation_results),
+                "successful_investigations": len(synthesis_data),
+                "error": str(e)
+            }
+        }
+
+
+def generate_insights_autonomously(analysis_data: Dict[str, Any], run_id: str) -> Dict[str, Any]:
+    """
+    Main autonomous insight generation workflow that replaces the traditional rule-based approach.
+    
+    Workflow:
+    1. LLM analyzes high-level data and creates investigation plan
+    2. Execute plan by calling CoreAnalyzer tools for detailed data
+    3. LLM synthesizes final insights combining hypotheses with detailed results
+    """
+    LOGGER.info("Starting autonomous insight generation workflow...")
+    
+    # Step 1: Generate investigation plan
+    LOGGER.info("Step 1: Generating investigation plan...")
+    plan = generate_investigation_plan(analysis_data)
+    
+    if not plan.get("investigation_tasks"):
+        LOGGER.warning("No investigation tasks generated, falling back to traditional insights")
+        return derive_insights(analysis_data)
+    
+    # Step 2: Execute investigation plan
+    LOGGER.info("Step 2: Executing investigation plan...")
+    investigation_results = execute_investigation_plan(plan, run_id)
+    
+    # Step 3: Synthesize final insights
+    LOGGER.info("Step 3: Synthesizing final insights...")
+    final_insights = synthesize_final_insights(investigation_results, analysis_data)
+    
+    # Combine autonomous insights with traditional insights for completeness
+    traditional_insights = derive_insights(analysis_data)
+    
+    combined_insights = {
+        "autonomous_insights": final_insights.get("autonomous_insights", []),
+        "investigation_summary": final_insights.get("investigation_summary", {}),
+        "traditional_insights": traditional_insights,
+        "generation_method": "autonomous_investigation_workflow"
+    }
+    
+    LOGGER.info("Autonomous insight generation completed successfully")
+    return combined_insights
+
+if __name__ == "__main__":
+    # Register with Tool Registry at startup
+    try:
+        from agents.common.tool_caller import register_agent_with_registry
+        port = int(os.environ.get("PORT", 8080))
+        base_url = os.getenv("INSIGHT_HUNTER_URL", f"http://localhost:{port}")
+        register_agent_with_registry("insight_hunter", base_url)
+    except Exception as e:
+        LOGGER.warning(f"Failed to register with Tool Registry: {e}")
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)

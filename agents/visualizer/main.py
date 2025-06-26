@@ -213,8 +213,170 @@ def generate_all_visuals(analysis: Dict[str, Any], insights: Dict[str, List[Dict
 app = Flask(__name__)
 
 
+# ---------------------------------------------------------------------------
+# Tool Endpoints for Individual Plot Generation
+# ---------------------------------------------------------------------------
+
+@app.route("/tools/capabilities", methods=["GET"])
+def get_tool_capabilities():
+    """Return information about available plotting tools."""
+    capabilities = {
+        "tools": [
+            {
+                "name": "pit_times",
+                "endpoint": "/plot/pit_times",
+                "description": "Generate pit stop stationary times comparison chart",
+                "required_params": ["analysis_path"],
+                "optional_params": []
+            },
+            {
+                "name": "consistency",
+                "endpoint": "/plot/consistency", 
+                "description": "Generate driver consistency analysis chart",
+                "required_params": ["analysis_path"],
+                "optional_params": []
+            },
+            {
+                "name": "stint_falloff",
+                "endpoint": "/plot/stint_falloff",
+                "description": "Generate stint pace falloff chart for a specific car",
+                "required_params": ["analysis_path", "car_number"],
+                "optional_params": []
+            }
+        ]
+    }
+    return jsonify(capabilities), 200
+
+
+@app.route("/plot/pit_times", methods=["POST"])
+def plot_pit_times_tool():
+    """Generate pit stop stationary times chart."""
+    try:
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["analysis_path"])
+        
+        analysis_path = payload["analysis_path"]
+        
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = pathlib.Path(tmpdir)
+            local_analysis = tmp / "analysis.json"
+            
+            # Download analysis data
+            _gcs_download(analysis_path, local_analysis)
+            analysis_data = json.loads(local_analysis.read_text())
+            
+            # Generate plot
+            plot_file = tmp / "pit_stationary_times.png"
+            plot_pit_stationary_times(analysis_data, plot_file)
+            
+            # Upload to GCS
+            run_id = analysis_path.split('/')[3]
+            dest_blob = f"{run_id}/visuals/pit_stationary_times.png"
+            gcs_path = _gcs_upload(plot_file, dest_blob)
+            
+            return jsonify({
+                "image_gcs_path": gcs_path,
+                "chart_type": "pit_times"
+            }), 200
+            
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as exc:
+        LOGGER.exception("Pit times plotting failed: %s", exc)
+        return jsonify({"error": "plotting_failed"}), 500
+
+
+@app.route("/plot/consistency", methods=["POST"])
+def plot_consistency_tool():
+    """Generate driver consistency chart."""
+    try:
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["analysis_path"])
+        
+        analysis_path = payload["analysis_path"]
+        
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = pathlib.Path(tmpdir)
+            local_analysis = tmp / "analysis.json"
+            
+            # Download analysis data
+            _gcs_download(analysis_path, local_analysis)
+            analysis_data = json.loads(local_analysis.read_text())
+            
+            # Generate plot
+            plot_file = tmp / "driver_consistency.png"
+            plot_driver_consistency(analysis_data, plot_file)
+            
+            # Upload to GCS
+            run_id = analysis_path.split('/')[3]
+            dest_blob = f"{run_id}/visuals/driver_consistency.png"
+            gcs_path = _gcs_upload(plot_file, dest_blob)
+            
+            return jsonify({
+                "image_gcs_path": gcs_path,
+                "chart_type": "consistency"
+            }), 200
+            
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as exc:
+        LOGGER.exception("Consistency plotting failed: %s", exc)
+        return jsonify({"error": "plotting_failed"}), 500
+
+
+@app.route("/plot/stint_falloff", methods=["POST"])
+def plot_stint_falloff_tool():
+    """Generate stint pace falloff chart for a specific car."""
+    try:
+        payload = parse_request_payload(request)
+        validate_required_fields(payload, ["analysis_path", "car_number"])
+        
+        analysis_path = payload["analysis_path"]
+        car_number = payload["car_number"]
+        
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = pathlib.Path(tmpdir)
+            local_analysis = tmp / "analysis.json"
+            
+            # Download analysis data
+            _gcs_download(analysis_path, local_analysis)
+            analysis_data = json.loads(local_analysis.read_text())
+            
+            # Generate plot
+            plot_file = tmp / f"stint_pace_car_{car_number}.png"
+            plot_stint_pace_falloff(analysis_data, str(car_number), plot_file)
+            
+            # Upload to GCS
+            run_id = analysis_path.split('/')[3]
+            dest_blob = f"{run_id}/visuals/stint_pace_car_{car_number}.png"
+            gcs_path = _gcs_upload(plot_file, dest_blob)
+            
+            return jsonify({
+                "image_gcs_path": gcs_path,
+                "chart_type": "stint_falloff",
+                "car_number": car_number
+            }), 200
+            
+    except ValueError as e:
+        LOGGER.error(f"Request validation failed: {e}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as exc:
+        LOGGER.exception("Stint falloff plotting failed: %s", exc)
+        return jsonify({"error": "plotting_failed"}), 500
+
+
+# ---------------------------------------------------------------------------
+# Legacy Endpoint (for backward compatibility)
+# ---------------------------------------------------------------------------
+
+@app.route("/", methods=["POST"])
 @app.route("/", methods=["POST"])
 def handle_request():
+    """Legacy endpoint for backward compatibility. Use individual /plot/* endpoints instead."""
+    LOGGER.warning("Using deprecated monolithic visualization endpoint. Consider migrating to individual /plot/* endpoints.")
+    
     try:
         payload = parse_request_payload(request)
         validate_required_fields(payload, ["analysis_path", "insights_path"])
@@ -259,4 +421,25 @@ def handle_request():
         except Exception as exc:  # pylint: disable=broad-except
             LOGGER.exception("Processing failed: %s", exc)
             return jsonify({"error": "internal_error"}), 500
-    return jsonify({"visuals_prefix": f"gs://{ANALYZED_DATA_BUCKET}/{run_id}/visuals/"}), 200
+    return jsonify({
+        "visuals_prefix": f"gs://{ANALYZED_DATA_BUCKET}/{run_id}/visuals/",
+        "warning": "This endpoint is deprecated. Use individual /plot/* endpoints for better control."
+    }), 200
+
+@app.route("/health")
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "service": "visualizer"}), 200
+
+
+if __name__ == "__main__":
+    # Register with Tool Registry at startup
+    try:
+        from agents.common.tool_caller import register_agent_with_registry
+        port = int(os.environ.get("PORT", 8080))
+        base_url = os.getenv("VISUALIZER_URL", f"http://localhost:{port}")
+        register_agent_with_registry("visualizer", base_url)
+    except Exception as e:
+        LOGGER.warning(f"Failed to register with Tool Registry: {e}")
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)

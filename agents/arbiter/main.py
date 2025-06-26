@@ -4,6 +4,8 @@ import base64
 import logging
 import pathlib
 import tempfile
+import time
+from datetime import datetime
 from typing import Dict, Any
 
 from flask import Flask, request, jsonify
@@ -88,5 +90,165 @@ def handle_request():
         LOGGER.error(f"Arbiter agent failed: {e}", exc_info=True)
         return "Internal Server Error", 500
 
+@app.route("/health")
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "service": "arbiter"}), 200
+
+@app.route("/tools/capabilities", methods=["GET"])
+def get_tool_capabilities():
+    """Return information about available coordination tools."""
+    capabilities = {
+        "tools": [
+            {
+                "name": "coordinate",
+                "endpoint": "/coordinate",
+                "description": "Coordinate multiple agents and tasks",
+                "required_params": ["slaves", "task_distribution"],
+                "optional_params": ["timeout_seconds", "coordination_strategy"],
+                "category": "coordination"
+            },
+            {
+                "name": "aggregate_votes",
+                "endpoint": "/aggregate_votes",
+                "description": "Aggregate votes for consensus decision making",
+                "required_params": ["decision_key", "voters", "threshold"],
+                "optional_params": ["voting_strategy"],
+                "category": "coordination"
+            },
+            {
+                "name": "resolve_conflict",
+                "endpoint": "/resolve_conflict",
+                "description": "Resolve conflicts between agents",
+                "required_params": ["conflict_data", "resolution_strategy"],
+                "optional_params": ["priority_agents"],
+                "category": "coordination"
+            }
+        ]
+    }
+    return jsonify(capabilities), 200
+
+@app.route("/coordinate", methods=["POST"])
+def coordinate_agents():
+    """Coordinate multiple agents in a master-slave pattern."""
+    try:
+        payload = request.get_json()
+        slaves = payload["slaves"]
+        task_distribution = payload["task_distribution"]
+        timeout_seconds = payload.get("timeout_seconds", 300)
+        
+        # Simple coordination logic
+        coordination_result = {
+            "coordination_id": f"coord_{int(time.time())}",
+            "master_agent": "arbiter",
+            "slave_agents": slaves,
+            "task_assignments": task_distribution,
+            "status": "coordinated",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        LOGGER.info(f"Coordinated {len(slaves)} agents with task distribution")
+        
+        return jsonify(coordination_result), 200
+        
+    except Exception as e:
+        LOGGER.error(f"Coordination failed: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/aggregate_votes", methods=["POST"])
+def aggregate_votes():
+    """Aggregate votes for consensus decision making."""
+    try:
+        payload = request.get_json()
+        decision_key = payload["decision_key"]
+        voters = payload["voters"]
+        threshold = payload["threshold"]
+        
+        # Mock vote aggregation (in real implementation, would fetch from state manager)
+        votes = {}
+        for voter in voters:
+            # Simulate vote retrieval
+            votes[voter] = {"decision": "approve", "weight": 1.0, "timestamp": datetime.now().isoformat()}
+        
+        # Calculate consensus
+        approve_votes = sum(1 for vote in votes.values() if vote["decision"] == "approve")
+        total_votes = len(votes)
+        consensus_ratio = approve_votes / total_votes if total_votes > 0 else 0
+        
+        consensus_result = {
+            "decision_key": decision_key,
+            "votes": votes,
+            "consensus_ratio": consensus_ratio,
+            "threshold": threshold,
+            "consensus_reached": consensus_ratio >= threshold,
+            "final_decision": "approved" if consensus_ratio >= threshold else "rejected",
+            "aggregated_at": datetime.now().isoformat()
+        }
+        
+        LOGGER.info(f"Aggregated {total_votes} votes, consensus: {consensus_ratio:.2%}")
+        
+        return jsonify(consensus_result), 200
+        
+    except Exception as e:
+        LOGGER.error(f"Vote aggregation failed: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/resolve_conflict", methods=["POST"])
+def resolve_conflict():
+    """Resolve conflicts between agents."""
+    try:
+        payload = request.get_json()
+        conflict_data = payload["conflict_data"]
+        resolution_strategy = payload["resolution_strategy"]
+        priority_agents = payload.get("priority_agents", [])
+        
+        # Simple conflict resolution logic
+        if resolution_strategy == "priority_based":
+            # Give precedence to priority agents
+            resolution = {
+                "strategy": "priority_based",
+                "winner": priority_agents[0] if priority_agents else "arbiter",
+                "reasoning": "Resolved based on agent priority"
+            }
+        elif resolution_strategy == "timestamp_based":
+            # Use first-come-first-served
+            resolution = {
+                "strategy": "timestamp_based", 
+                "winner": "earliest_submitter",
+                "reasoning": "Resolved based on submission timestamp"
+            }
+        else:
+            # Default to arbiter decision
+            resolution = {
+                "strategy": "arbiter_decision",
+                "winner": "arbiter_choice",
+                "reasoning": "Resolved by arbiter using domain knowledge"
+            }
+        
+        conflict_resolution = {
+            "conflict_id": f"conflict_{int(time.time())}",
+            "conflict_data": conflict_data,
+            "resolution": resolution,
+            "resolved_at": datetime.now().isoformat(),
+            "resolved_by": "arbiter"
+        }
+        
+        LOGGER.info(f"Resolved conflict using {resolution_strategy} strategy")
+        
+        return jsonify(conflict_resolution), 200
+        
+    except Exception as e:
+        LOGGER.error(f"Conflict resolution failed: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
+    # Register with Tool Registry at startup
+    try:
+        from agents.common.tool_caller import register_agent_with_registry
+        port = int(os.getenv("PORT", 8080))
+        base_url = os.getenv("ARBITER_URL", f"http://localhost:{port}")
+        register_agent_with_registry("arbiter", base_url)
+    except Exception as e:
+        print(f"Failed to register with Tool Registry: {e}")
+    
+    app.run(host="0.0.0.0", port=port)

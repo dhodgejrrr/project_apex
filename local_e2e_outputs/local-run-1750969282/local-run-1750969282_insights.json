@@ -1,0 +1,613 @@
+{
+  "autonomous_insights": [
+    {
+      "category": "Pit Strategy & Operations",
+      "type": "Pit Stop Anomaly & Efficiency",
+      "priority": "high",
+      "summary": "Car #10 (Audi) experienced an anomalous 6:30.181 average pit stationary time, indicating a major operational failure that severely hampered its race performance.",
+      "detailed_analysis": "The average pit stationary time of 6 minutes, 30.181 seconds for Car #10 (Audi) is an extreme outlier, far exceeding typical pit stop durations (which are usually under 2 minutes). This suggests a severe incident occurred during one or more pit stops, such as significant mechanical repairs, collision damage repair, or serving a major penalty (e.g., stop-and-go). Such a prolonged stop would have cost the team multiple laps, effectively ending any competitive aspirations for that race. The strategic implication is a complete loss of track position and potential points. Without addressing the root cause, this remains a critical vulnerability for Rockwell Autosport Development.",
+      "actionable_recommendations": [
+        "Conduct an immediate post-race debrief with the pit crew, engineers, and driver to pinpoint the exact cause of the 6:30.181 pit stop.",
+        "Review onboard footage and radio communications from the specific pit stop(s) to identify procedural errors, equipment failures, or specific repair needs.",
+        "Implement corrective actions based on the root cause analysis, which could include revised training protocols, equipment maintenance schedules, or emergency repair procedures.",
+        "Benchmark pit stop efficiency against competitors to identify areas for overall improvement beyond this incident."
+      ],
+      "supporting_data": {
+        "car_number": "10",
+        "manufacturer": "Audi",
+        "team": "Rockwell Autosport Development",
+        "avg_pit_stationary_time": "6:30.181",
+        "avg_green_pace_fuel_corrected": "2:03.776",
+        "race_pace_consistency_stdev": 2.752
+      },
+      "confidence_level": "high"
+    },
+    {
+      "category": "Performance Analysis & Tire Management",
+      "type": "High Pace, Poor Consistency & Degradation",
+      "priority": "high",
+      "summary": "Car #13 (Ford) showed the fastest average green pace but was severely hampered by extremely poor race pace consistency and high tire degradation, indicating potential issues with setup or driver management.",
+      "detailed_analysis": "Car #13 (Ford) achieved an impressive fastest average green pace of 2:00.794, suggesting strong raw speed potential. However, this potential was undermined by an alarming race pace consistency standard deviation of 11.544 seconds and very high tire degradation, losing 2.201 seconds per lap by the end of stints. This combination points to either an overly aggressive car setup that overstresses the tires, or inconsistent driver performance/tire management. The driver delta data shows that while Jenson Altzman was slightly faster on average, the overall delta between Jenson Altzman and Chad McCumbee was only 0.014 seconds, suggesting that driver differences might not be the primary cause of the overall 11.544s consistency issue, but rather inconsistency within each driver's stint or specific setup choices impacting both. The strategic implication is that the car is fast over a single lap or early in a stint, but cannot sustain competitive performance, leading to significant time loss over a race distance.",
+      "actionable_recommendations": [
+        "Conduct a deeper analysis of individual stint data for Car #13 to identify specific laps or sections of the track where the pace drops off or tire degradation accelerates.",
+        "Review car setup (suspension, aero balance, tire pressures) to identify if it's contributing to excessive tire wear and poor consistency. Consider a more conservative setup to improve longevity.",
+        "Analyze driver telemetry for both Jenson Altzman and Chad McCumbee to identify differences in driving style, braking points, throttle application, and cornering lines that might impact tire wear and consistency. Provide targeted coaching if driver technique is a significant factor.",
+        "Experiment with different tire management strategies during practice sessions to find a balance between outright pace and sustained performance."
+      ],
+      "supporting_data": {
+        "car_number": "13",
+        "manufacturer": "Ford",
+        "avg_green_pace": "2:00.794",
+        "race_pace_consistency_stdev": 11.544,
+        "end_of_stint_deg_rate_s_per_lap": 2.201,
+        "driver_deltas_to_fastest": "0.014",
+        "fastest_driver_best_lap": "1:56.488"
+      },
+      "confidence_level": "medium"
+    },
+    {
+      "category": "Benchmark Performance & Optimization",
+      "type": "Optimal Race Performance",
+      "priority": "medium",
+      "summary": "Car #12 (Toyota) serves as a benchmark for optimal race performance, exhibiting a strong average green pace of 2:01.317, exceptional consistency (1.572s stdev), efficient pit stops (1:31.400s), and remarkably low tire degradation (0.138s/lap).",
+      "detailed_analysis": "Car #12 (Toyota) showcased a near-ideal race profile, combining competitive average green pace (2:01.317) with outstanding consistency (1.572s standard deviation), indicating minimal fluctuations in lap times throughout stints. Their pit stops were highly efficient, averaging 1:31.400, contributing to strong track position retention. Crucially, their tire degradation rate was exceptionally low at 0.138 seconds per lap by the end of the stint, suggesting either a superior car/tire package, a perfectly optimized setup, or masterful driver tire management. This allows them to maintain pace deep into stints and potentially run longer stints or push harder without significant performance drop-off, providing a significant strategic advantage for RAFA Racing over competitors.",
+      "actionable_recommendations": [
+        "Conduct a detailed competitive analysis of Car #12's setup parameters if possible, focusing on suspension, aerodynamics, and tire pressure strategies.",
+        "Analyze Car #12's driver telemetry and onboard footage to identify specific techniques for tire preservation (e.g., smooth inputs, specific cornering lines).",
+        "Benchmark pit stop procedures against Car #12's 1:31.400 average to identify best practices for efficiency.",
+        "Investigate the interaction between Car #12's chassis and tire choice, if specific tire compounds or constructions are available, to understand how they achieve such low degradation."
+      ],
+      "supporting_data": {
+        "car_number": "12",
+        "manufacturer": "Toyota",
+        "team": "RAFA Racing",
+        "avg_green_pace_fuel_corrected": "2:01.317",
+        "race_pace_consistency_stdev": 1.572,
+        "avg_pit_stationary_time": "1:31.400",
+        "end_of_stint_deg_rate_s_per_lap": 0.13884299999999994
+      },
+      "confidence_level": "high"
+    },
+    {
+      "category": "Performance Anomaly & Setup Optimization",
+      "type": "Negative Tire Degradation Phenomenon",
+      "priority": "high",
+      "summary": "Car #16 (Porsche) displayed a highly unusual negative tire degradation rate (-0.325 s/lap), suggesting they paradoxically became faster towards the end of their stints, which warrants immediate investigation as a potential competitive advantage or data anomaly.",
+      "detailed_analysis": "The observed negative tire degradation rate of -0.325 seconds per lap for Car #16 (Porsche) is highly unconventional and merits deep investigation. Typically, tires degrade over a stint, leading to slower lap times. This anomaly could indicate several possibilities: 1. Data Modeling Error: The degradation model might be misinterpreting certain data points, or there could be an underlying issue with the data collection itself. 2. Unique Car Characteristic: The car might have an extremely slow tire warm-up characteristic, meaning tires only reach optimal performance late in a stint. 3. Exceptional Fuel Burn Effect: The reduction in fuel load over a stint might be so significant that it outweighs the normal tire degradation, making the car lighter and faster, thus masking actual tire wear. 4. Unconventional Setup/Strategy: The team might be running a highly aggressive setup that only comes alive later in a stint, or they have a unique tire management strategy that allows them to 'turn on' the tires late. If legitimate, this represents a significant competitive advantage, allowing Car #16 to push harder and maintain or gain pace relative to competitors towards the end of stints. Their average green pace of 2:01.439 and consistency of 2.011s stdev are respectable, making this degradation anomaly even more intriguing for CSM.",
+      "actionable_recommendations": [
+        "Verify the accuracy of the tire degradation model and underlying data for Car #16. Cross-reference with raw lap time data, fuel consumption, and track conditions throughout stints.",
+        "Analyze sector times within stints to pinpoint where the car gains time late in runs.",
+        "Review Car #16's setup sheets and driver feedback to understand any unique characteristics or strategies that could explain this phenomenon (e.g., very high initial tire pressures, specific damper settings).",
+        "If confirmed as legitimate, study the implications for race strategy, such as optimizing stint length or pushing harder in the final laps."
+      ],
+      "supporting_data": {
+        "car_number": "16",
+        "manufacturer": "Porsche",
+        "team": "CSM",
+        "avg_green_pace_fuel_corrected": "2:01.439",
+        "race_pace_consistency_stdev": 2.011,
+        "avg_pit_stationary_time": "1:52.996",
+        "end_of_stint_deg_rate_s_per_lap": -0.325372,
+        "predicted_final_5_laps_loss_s": -1.62686
+      },
+      "confidence_level": "high"
+    }
+  ],
+  "investigation_summary": {
+    "total_investigations": 4,
+    "successful_investigations": 4,
+    "key_discoveries": [
+      "Car #10 (Audi) suffered a critical pit stop failure, resulting in an extreme 6:30.181 average stationary time.",
+      "Car #13 (Ford) exhibited high raw pace but was severely hampered by poor consistency (11.544s stdev) and high tire degradation (2.201s/lap), despite minimal driver deltas.",
+      "Car #12 (Toyota) established itself as a benchmark for balanced performance, demonstrating strong pace, excellent consistency (1.572s stdev), efficient pit stops, and remarkably low tire degradation (0.138s/lap).",
+      "Car #16 (Porsche) displayed an anomalous negative tire degradation rate (-0.325s/lap), suggesting an unusual characteristic where the car becomes faster towards the end of stints."
+    ],
+    "methodology": "Autonomous LLM-driven investigation using CoreAnalyzer toolbox"
+  },
+  "traditional_insights": {
+    "manufacturer_pace_ranking": [
+      {
+        "rank": 1,
+        "manufacturer": "BMW",
+        "average_value": "+119.862",
+        "delta_from_field_avg": "-1.387"
+      },
+      {
+        "rank": 2,
+        "manufacturer": "Ford",
+        "average_value": "+120.262",
+        "delta_from_field_avg": "-0.987"
+      },
+      {
+        "rank": 3,
+        "manufacturer": "Aston Martin",
+        "average_value": "+120.703",
+        "delta_from_field_avg": "-0.547"
+      },
+      {
+        "rank": 4,
+        "manufacturer": "Cupra",
+        "average_value": "+120.742",
+        "delta_from_field_avg": "-0.507"
+      },
+      {
+        "rank": 5,
+        "manufacturer": "McLaren",
+        "average_value": "+120.833",
+        "delta_from_field_avg": "-0.416"
+      },
+      {
+        "rank": 6,
+        "manufacturer": "Porsche",
+        "average_value": "+120.917",
+        "delta_from_field_avg": "-0.332"
+      },
+      {
+        "rank": 7,
+        "manufacturer": "Honda",
+        "average_value": "+121.094",
+        "delta_from_field_avg": "-0.155"
+      },
+      {
+        "rank": 8,
+        "manufacturer": "Mercedes-AMG",
+        "average_value": "+121.515",
+        "delta_from_field_avg": "+0.266"
+      },
+      {
+        "rank": 9,
+        "manufacturer": "Hyundai",
+        "average_value": "+122.293",
+        "delta_from_field_avg": "+1.044"
+      },
+      {
+        "rank": 10,
+        "manufacturer": "Toyota",
+        "average_value": "+122.714",
+        "delta_from_field_avg": "+1.465"
+      },
+      {
+        "rank": 11,
+        "manufacturer": "Audi",
+        "average_value": "+122.805",
+        "delta_from_field_avg": "+1.556"
+      }
+    ],
+    "manufacturer_tire_wear_ranking": [
+      {
+        "rank": 1,
+        "manufacturer": "Toyota",
+        "average_value": "-0.0193",
+        "delta_from_field_avg": "-0.0531"
+      },
+      {
+        "rank": 2,
+        "manufacturer": "Aston Martin",
+        "average_value": "0.0038",
+        "delta_from_field_avg": "-0.0300"
+      },
+      {
+        "rank": 3,
+        "manufacturer": "Cupra",
+        "average_value": "0.0053",
+        "delta_from_field_avg": "-0.0284"
+      },
+      {
+        "rank": 4,
+        "manufacturer": "Hyundai",
+        "average_value": "0.0062",
+        "delta_from_field_avg": "-0.0276"
+      },
+      {
+        "rank": 5,
+        "manufacturer": "McLaren",
+        "average_value": "0.0062",
+        "delta_from_field_avg": "-0.0276"
+      },
+      {
+        "rank": 6,
+        "manufacturer": "BMW",
+        "average_value": "0.0086",
+        "delta_from_field_avg": "-0.0252"
+      },
+      {
+        "rank": 7,
+        "manufacturer": "Porsche",
+        "average_value": "0.0117",
+        "delta_from_field_avg": "-0.0220"
+      },
+      {
+        "rank": 8,
+        "manufacturer": "Ford",
+        "average_value": "0.0217",
+        "delta_from_field_avg": "-0.0121"
+      },
+      {
+        "rank": 9,
+        "manufacturer": "Honda",
+        "average_value": "0.0261",
+        "delta_from_field_avg": "-0.0077"
+      },
+      {
+        "rank": 10,
+        "manufacturer": "Mercedes-AMG",
+        "average_value": "0.0722",
+        "delta_from_field_avg": "+0.0385"
+      },
+      {
+        "rank": 11,
+        "manufacturer": "Audi",
+        "average_value": "0.2289",
+        "delta_from_field_avg": "+0.1952"
+      }
+    ],
+    "manufacturer_pit_cycle_ranking": [
+      {
+        "rank": 1,
+        "team": "CarBahn",
+        "average_value": "+45.509",
+        "delta_from_field_avg": "-67.930"
+      },
+      {
+        "rank": 2,
+        "team": "Rebel Rock Racing",
+        "average_value": "+46.635",
+        "delta_from_field_avg": "-66.805"
+      },
+      {
+        "rank": 3,
+        "team": "Turner Motorsport",
+        "average_value": "+47.876",
+        "delta_from_field_avg": "-65.563"
+      },
+      {
+        "rank": 4,
+        "team": "Stephen Cameron Racing",
+        "average_value": "+69.601",
+        "delta_from_field_avg": "-43.839"
+      },
+      {
+        "rank": 5,
+        "team": "KOHR MOTORSPORTS",
+        "average_value": "+72.754",
+        "delta_from_field_avg": "-40.686"
+      },
+      {
+        "rank": 6,
+        "team": "CSM",
+        "average_value": "+74.893",
+        "delta_from_field_avg": "-38.546"
+      },
+      {
+        "rank": 7,
+        "team": "van der Steur Racing",
+        "average_value": "+77.838",
+        "delta_from_field_avg": "-35.601"
+      },
+      {
+        "rank": 8,
+        "team": "Winward Racing",
+        "average_value": "+80.375",
+        "delta_from_field_avg": "-33.064"
+      },
+      {
+        "rank": 9,
+        "team": "Precision Racing LA",
+        "average_value": "+86.882",
+        "delta_from_field_avg": "-26.557"
+      },
+      {
+        "rank": 10,
+        "team": "Auto Technic Racing",
+        "average_value": "+87.219",
+        "delta_from_field_avg": "-26.220"
+      },
+      {
+        "rank": 11,
+        "team": "Panam Motorsport",
+        "average_value": "+91.776",
+        "delta_from_field_avg": "-21.664"
+      },
+      {
+        "rank": 12,
+        "team": "Gou Racing",
+        "average_value": "+92.490",
+        "delta_from_field_avg": "-20.949"
+      },
+      {
+        "rank": 13,
+        "team": "CarBahn with Peregrine racing",
+        "average_value": "+92.971",
+        "delta_from_field_avg": "-20.468"
+      },
+      {
+        "rank": 14,
+        "team": "KMW Motorsports with TMR Engineering",
+        "average_value": "+94.062",
+        "delta_from_field_avg": "-19.377"
+      },
+      {
+        "rank": 15,
+        "team": "McCumbee McAleer Racing with Aerosport",
+        "average_value": "+100.385",
+        "delta_from_field_avg": "-13.055"
+      },
+      {
+        "rank": 16,
+        "team": "Ibiza Farm Motorsports",
+        "average_value": "+112.210",
+        "delta_from_field_avg": "-1.229"
+      },
+      {
+        "rank": 17,
+        "team": "RS1",
+        "average_value": "+114.297",
+        "delta_from_field_avg": "+0.857"
+      },
+      {
+        "rank": 18,
+        "team": "Team TGM",
+        "average_value": "+116.116",
+        "delta_from_field_avg": "+2.677"
+      },
+      {
+        "rank": 19,
+        "team": "Victor Gonzalez Racing",
+        "average_value": "+119.129",
+        "delta_from_field_avg": "+5.690"
+      },
+      {
+        "rank": 20,
+        "team": "Unitronic/JDC Miller MotorSports",
+        "average_value": "+124.643",
+        "delta_from_field_avg": "+11.204"
+      },
+      {
+        "rank": 21,
+        "team": "Bryan Herta Autosport with Curb Agajanian",
+        "average_value": "+125.600",
+        "delta_from_field_avg": "+12.161"
+      },
+      {
+        "rank": 22,
+        "team": "Victor Gonzalez Racing Team",
+        "average_value": "+127.136",
+        "delta_from_field_avg": "+13.697"
+      },
+      {
+        "rank": 23,
+        "team": "RAFA Racing",
+        "average_value": "+139.197",
+        "delta_from_field_avg": "+25.758"
+      },
+      {
+        "rank": 24,
+        "team": "HART",
+        "average_value": "+139.361",
+        "delta_from_field_avg": "+25.921"
+      },
+      {
+        "rank": 25,
+        "team": "MMG",
+        "average_value": "+139.938",
+        "delta_from_field_avg": "+26.498"
+      },
+      {
+        "rank": 26,
+        "team": "Pegram Racing",
+        "average_value": "+140.569",
+        "delta_from_field_avg": "+27.130"
+      },
+      {
+        "rank": 27,
+        "team": "Bryan Herta Autosport w Curb Agajanian",
+        "average_value": "+156.226",
+        "delta_from_field_avg": "+42.786"
+      },
+      {
+        "rank": 28,
+        "team": "Baker Racing",
+        "average_value": "+165.207",
+        "delta_from_field_avg": "+51.768"
+      },
+      {
+        "rank": 29,
+        "team": "RVA Graphics Motorsports By Speed Syndicate",
+        "average_value": "+197.299",
+        "delta_from_field_avg": "+83.860"
+      },
+      {
+        "rank": 30,
+        "team": "Rockwell Autosport Development",
+        "average_value": "+324.984",
+        "delta_from_field_avg": "+211.544"
+      }
+    ],
+    "car_untapped_potential_ranking": [
+      {
+        "rank": 1,
+        "car_number": "98",
+        "driver_name": "Harry Gottsacker",
+        "time_left_on_track": "+0.735s"
+      },
+      {
+        "rank": 2,
+        "car_number": "59",
+        "driver_name": "Billy Johnson",
+        "time_left_on_track": "+0.688s"
+      },
+      {
+        "rank": 3,
+        "car_number": "55",
+        "driver_name": "Eddie Gou",
+        "time_left_on_track": "+0.674s"
+      },
+      {
+        "rank": 4,
+        "car_number": "37",
+        "driver_name": "Ron Tomlinson",
+        "time_left_on_track": "+0.567s"
+      },
+      {
+        "rank": 5,
+        "car_number": "95",
+        "driver_name": "Dillon Machavern",
+        "time_left_on_track": "+0.441s"
+      },
+      {
+        "rank": 6,
+        "car_number": "93",
+        "driver_name": "Karl Wittmer",
+        "time_left_on_track": "+0.437s"
+      },
+      {
+        "rank": 7,
+        "car_number": "13",
+        "driver_name": "Jenson Altzman",
+        "time_left_on_track": "+0.427s"
+      },
+      {
+        "rank": 8,
+        "car_number": "72",
+        "driver_name": "Larry Pegram",
+        "time_left_on_track": "+0.410s"
+      },
+      {
+        "rank": 9,
+        "car_number": "67",
+        "driver_name": "Morgan Burkhard",
+        "time_left_on_track": "+0.349s"
+      },
+      {
+        "rank": 10,
+        "car_number": "17",
+        "driver_name": "Mikey Taylor",
+        "time_left_on_track": "+0.335s"
+      },
+      {
+        "rank": 11,
+        "car_number": "89",
+        "driver_name": "CHAD GILSINGER",
+        "time_left_on_track": "+0.332s"
+      },
+      {
+        "rank": 12,
+        "car_number": "33",
+        "driver_name": "Mark Wilkins",
+        "time_left_on_track": "+0.331s"
+      },
+      {
+        "rank": 13,
+        "car_number": "76",
+        "driver_name": "Denis Dupont",
+        "time_left_on_track": "+0.331s"
+      },
+      {
+        "rank": 14,
+        "car_number": "19",
+        "driver_name": "Gregory Liefooghe",
+        "time_left_on_track": "+0.305s"
+      },
+      {
+        "rank": 15,
+        "car_number": "99",
+        "driver_name": "Tyler Gonzalez",
+        "time_left_on_track": "+0.291s"
+      },
+      {
+        "rank": 16,
+        "car_number": "46",
+        "driver_name": "Paul Holton",
+        "time_left_on_track": "+0.288s"
+      },
+      {
+        "rank": 17,
+        "car_number": "54",
+        "driver_name": "Werner Neugebauer",
+        "time_left_on_track": "+0.265s"
+      },
+      {
+        "rank": 18,
+        "car_number": "39",
+        "driver_name": "Sean McAlister",
+        "time_left_on_track": "+0.258s"
+      },
+      {
+        "rank": 19,
+        "car_number": "4",
+        "driver_name": "Aaron Povoledo",
+        "time_left_on_track": "+0.221s"
+      },
+      {
+        "rank": 20,
+        "car_number": "27",
+        "driver_name": "Stevan McAleer",
+        "time_left_on_track": "+0.191s"
+      },
+      {
+        "rank": 21,
+        "car_number": "10",
+        "driver_name": "Eric Rockwell",
+        "time_left_on_track": "+0.181s"
+      },
+      {
+        "rank": 22,
+        "car_number": "18",
+        "driver_name": "Jon Miller",
+        "time_left_on_track": "+0.174s"
+      },
+      {
+        "rank": 23,
+        "car_number": "64",
+        "driver_name": "Hugh Plumb",
+        "time_left_on_track": "+0.164s"
+      },
+      {
+        "rank": 24,
+        "car_number": "28",
+        "driver_name": "Jan Heylen",
+        "time_left_on_track": "+0.147s"
+      },
+      {
+        "rank": 25,
+        "car_number": "56",
+        "driver_name": "Dean Baker",
+        "time_left_on_track": "+0.139s"
+      },
+      {
+        "rank": 26,
+        "car_number": "57",
+        "driver_name": "Daniel Morad",
+        "time_left_on_track": "+0.132s"
+      },
+      {
+        "rank": 27,
+        "car_number": "7",
+        "driver_name": "Ryan Eversley",
+        "time_left_on_track": "+0.131s"
+      },
+      {
+        "rank": 28,
+        "car_number": "2",
+        "driver_name": "Robert Megennis",
+        "time_left_on_track": "+0.119s"
+      },
+      {
+        "rank": 29,
+        "car_number": "96",
+        "driver_name": "Patrick Gallagher",
+        "time_left_on_track": "+0.112s"
+      }
+    ],
+    "driver_traffic_meister_ranking": [],
+    "individual_outliers": [
+      {
+        "category": "Driver Performance",
+        "type": "Largest Teammate Pace Gap",
+        "car_number": "44",
+        "details": "Car #44 has the largest pace difference between its drivers, with an average gap of 6.787s in best lap times."
+      }
+    ]
+  },
+  "generation_method": "autonomous_investigation_workflow"
+}

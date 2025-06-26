@@ -57,43 +57,90 @@ LOGGER = logging.getLogger(__name__)
 
 def invoke_cloud_run(service_url: str, payload: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Invokes another Cloud Run service. In a real GCP environment, it uses an
-    identity token. In a local emulator environment, it makes a simple
-    unauthenticated HTTP request.
+    Invokes another Cloud Run service with robust retry logic. In a real GCP environment, 
+    it uses an identity token. In a local emulator environment, it makes a simple
+    unauthenticated HTTP request with retries.
     """
-    # Check if running in a local/emulated environment by looking for the emulator host var
-    if os.getenv("PUBSUB_EMULATOR_HOST"):
-        LOGGER.info(f"Invoking {service_url} via simple HTTP (local)...")
-        
-        # Wrap payload in Pub/Sub push message format for local testing
-        import base64
-        message_data = base64.b64encode(json.dumps(payload).encode("utf-8")).decode("utf-8")
-        pubsub_payload = {
-            "message": {
-                "data": message_data,
-                "messageId": f"local-message-{int(time.time())}"
-            },
-            "subscription": "projects/local-dev/subscriptions/local-trigger"
-        }
-        
-        resp = requests.post(service_url, json=pubsub_payload, timeout=900)
-        resp.raise_for_status()
-        return resp.json()
-    else:
-        # Production path: use authenticated request
-        LOGGER.info(f"Invoking {service_url} via authenticated request (production)...")
-        auth_req = grequests.Request()
-        id_token_credentials = id_token.fetch_id_token(auth_req, service_url)
+    max_retries = 3
+    base_delay = 2  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            # Check if running in a local/emulated environment by looking for the emulator host var
+            if os.getenv("PUBSUB_EMULATOR_HOST"):
+                LOGGER.info(f"Invoking {service_url} via simple HTTP (local) - attempt {attempt + 1}/{max_retries}...")
+                
+                # Wrap payload in Pub/Sub push message format for local testing
+                import base64
+                message_data = base64.b64encode(json.dumps(payload).encode("utf-8")).decode("utf-8")
+                pubsub_payload = {
+                    "message": {
+                        "data": message_data,
+                        "messageId": f"local-message-{int(time.time())}"
+                    },
+                    "subscription": "projects/local-dev/subscriptions/local-trigger"
+                }
+                
+                resp = requests.post(service_url, json=pubsub_payload, timeout=900)
+                resp.raise_for_status()
+                LOGGER.info(f"Successfully invoked {service_url}")
+                return resp.json()
+            else:
+                # Production path: use authenticated request
+                LOGGER.info(f"Invoking {service_url} via authenticated request (production) - attempt {attempt + 1}/{max_retries}...")
+                auth_req = grequests.Request()
+                id_token_credentials = id_token.fetch_id_token(auth_req, service_url)
 
-        headers = {
-            "Authorization": f"Bearer {id_token_credentials}",
-            "Content-Type": "application/json",
-            "User-Agent": "project-apex-adk-orchestrator/1.0",
-        }
+                headers = {
+                    "Authorization": f"Bearer {id_token_credentials}",
+                    "Content-Type": "application/json",
+                    "User-Agent": "project-apex-adk-orchestrator/1.0",
+                }
 
-        resp = requests.post(service_url, json=payload, headers=headers, timeout=900)
-        resp.raise_for_status()
-        return resp.json()
+                resp = requests.post(service_url, json=payload, headers=headers, timeout=900)
+                resp.raise_for_status()
+                LOGGER.info(f"Successfully invoked {service_url}")
+                return resp.json()
+                
+        except requests.exceptions.ConnectionError as e:
+            LOGGER.warning(f"Connection error when calling {service_url} (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)  # Exponential backoff
+                LOGGER.info(f"Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                LOGGER.error(f"Failed to connect to {service_url} after {max_retries} attempts")
+                raise
+        except requests.exceptions.Timeout as e:
+            LOGGER.warning(f"Timeout when calling {service_url} (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                LOGGER.info(f"Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                LOGGER.error(f"Timeout calling {service_url} after {max_retries} attempts")
+                raise
+        except requests.exceptions.HTTPError as e:
+            # For HTTP errors (4xx, 5xx), we might want to retry 5xx but not 4xx
+            if e.response.status_code >= 500 and attempt < max_retries - 1:
+                LOGGER.warning(f"Server error {e.response.status_code} when calling {service_url} (attempt {attempt + 1}/{max_retries}): {e}")
+                delay = base_delay * (2 ** attempt)
+                LOGGER.info(f"Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                LOGGER.error(f"HTTP error when calling {service_url}: {e}")
+                raise
+        except Exception as e:
+            LOGGER.error(f"Unexpected error when calling {service_url} (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                LOGGER.info(f"Retrying in {delay} seconds...")
+                time.sleep(delay)
+            else:
+                raise
+    
+    # Should never reach here due to the raise statements above
+    raise RuntimeError(f"Failed to invoke {service_url} after {max_retries} attempts")
 
 
 # ---------------------------------------------------------------------------
@@ -215,6 +262,12 @@ def generate_outputs(state: Dict[str, Any]) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Flask entry-point for Pub/Sub push subscription
 # ---------------------------------------------------------------------------
+
+@app.route("/health", methods=["GET"])
+def health_check():
+    """Health check endpoint for container readiness."""
+    return jsonify({"status": "healthy", "service": "adk-orchestrator"}), 200
+
 
 @app.route("/", methods=["POST"])
 def handle_pubsub_push():

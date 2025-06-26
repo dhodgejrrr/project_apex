@@ -49,6 +49,10 @@ _usage_calls: list[Dict[str, int | str]] = []
 LOGGER = logging.getLogger("apex.ai_helpers")
 
 
+# Enhanced logging configuration
+DEBUG_AI_RESPONSES = os.getenv("DEBUG_AI_RESPONSES", "false").lower() == "true"
+LOG_PROMPT_CONTENT = os.getenv("LOG_PROMPT_CONTENT", "false").lower() == "true"
+
 # ---------------------------------------------------------------------------
 # Vertex AI initialisation
 # ---------------------------------------------------------------------------
@@ -182,7 +186,7 @@ def get_usage_summary() -> Dict[str, Any]:  # type: ignore[override]
 # Generation helpers
 # ---------------------------------------------------------------------------
 @retry(wait=wait_exponential(multiplier=1, min=2, max=10), stop=stop_after_attempt(3))
-def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int = 25000) -> Any:
+def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int = 50000) -> Any:
     """Calls Gemini to generate JSON and parses the result.
 
     If parsing fails, raises ValueError to trigger retry.
@@ -211,18 +215,49 @@ def generate_json(prompt: str, temperature: float = 0.7, max_output_tokens: int 
         )
         # Track token usage metadata
         _record_usage(model_name, getattr(response, "usage_metadata", None))
+        
+        # Check if response has candidates and content before proceeding
+        if not response.candidates:
+            raise ValueError("No candidates in response")
+            
+        candidate = response.candidates[0]
+        finish_reason = getattr(candidate, 'finish_reason', None)
+        
+        # Handle MAX_TOKENS scenario specifically
+        if finish_reason == 2 or str(finish_reason) == "MAX_TOKENS":
+            LOGGER.warning("Response truncated due to MAX_TOKENS limit. Consider increasing max_output_tokens.")
+            # Check if we have any partial content
+            if hasattr(candidate, 'content') and candidate.content and hasattr(candidate.content, 'parts'):
+                parts = candidate.content.parts
+                if parts and hasattr(parts[0], 'text') and parts[0].text:
+                    text = parts[0].text.strip()
+                    LOGGER.info("Attempting to parse partial response due to token limit")
+                    try:
+                        return json.loads(text)
+                    except json.JSONDecodeError:
+                        LOGGER.warning("Partial response is not valid JSON, treating as error")
+                        raise ValueError("Response truncated and not valid JSON")
+            raise ValueError("Response truncated due to token limit with no usable content")
+        
+        # Log successful response details for comparison with errors (if debug enabled)
+        if DEBUG_AI_RESPONSES:
+            LOGGER.info("=== SUCCESSFUL GEMINI RESPONSE ===")
+            LOGGER.info("Model: %s", model_name)
+            LOGGER.info("Finish Reason: %s (%s)", finish_reason, _explain_finish_reason(finish_reason))
+            LOGGER.info("Response Text Length: %d", len(response.text) if response.text else 0)
+            
         LOGGER.debug("Full AI Response: %s", response)
+        
         text = response.text.strip()
-        return json.loads(text)
+        parsed_json = json.loads(text)
+        
+        if DEBUG_AI_RESPONSES:
+            LOGGER.info("JSON parsing successful")
+            
+        return parsed_json
     except (ValueError, json.JSONDecodeError, TypeError) as exc:
-        # ValueError is raised by response.text if the candidate is empty/blocked.
-        log_message = "Gemini response not valid JSON or was blocked/truncated."
-        if response:
-            log_message += (
-                f" Prompt Feedback: {response.prompt_feedback}. "
-                f"Finish Reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}."
-            )
-        LOGGER.warning(log_message)
+        # Enhanced logging for debugging API issues
+        _log_detailed_api_error(response, exc, model_name, prompt)
         raise ValueError("Invalid JSON or empty response from Gemini") from exc
 
 
@@ -260,12 +295,178 @@ def summarize(text: str, **kwargs: Any) -> str:
             raise ValueError("Empty response from Gemini.")
         return response.text.strip()
     except (ValueError, AttributeError) as exc:
-        log_message = "Summarization failed or was blocked/truncated."
-        if response:
-            log_message += (
-                f" Prompt Feedback: {response.prompt_feedback}. "
-                f"Finish Reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}."
-            )
-        LOGGER.warning(log_message)
+        # Enhanced logging for debugging API issues
+        _log_detailed_api_error(response, exc, model_name, prompt)
+        LOGGER.warning("Summarization failed - returning empty string")
         # Return empty string on failure to avoid breaking callers
         return ""
+
+
+def _log_detailed_api_error(response: Any, exc: Exception, model_name: str, prompt: str) -> None:
+    """Log detailed information about API errors for debugging.
+    
+    This function provides comprehensive logging when Gemini API calls fail,
+    including response metadata, error details, and prompt information.
+    """
+    # Always log basic error info
+    LOGGER.error("GEMINI API ERROR: %s - %s", type(exc).__name__, str(exc))
+    LOGGER.error("Model: %s", model_name)
+    
+    # Detailed logging only if DEBUG_AI_RESPONSES is enabled
+    if not DEBUG_AI_RESPONSES:
+        LOGGER.error("Enable DEBUG_AI_RESPONSES=true for detailed error analysis")
+        return
+        
+    LOGGER.error("=== DETAILED GEMINI API ERROR ANALYSIS ===")
+    
+    # Log prompt details (only if LOG_PROMPT_CONTENT is enabled)
+    if LOG_PROMPT_CONTENT:
+        prompt_preview = prompt[:500] + "..." if len(prompt) > 500 else prompt
+        LOGGER.error("Prompt (first 500 chars): %s", prompt_preview)
+    LOGGER.error("Prompt Length: %d characters", len(prompt))
+    
+    if response is None:
+        LOGGER.error("Response: None (API call failed completely)")
+        return
+    
+    # Log response metadata
+    LOGGER.error("Response Object Type: %s", type(response).__name__)
+    
+    # Check if response has prompt_feedback
+    try:
+        prompt_feedback = getattr(response, 'prompt_feedback', None)
+        if prompt_feedback:
+            LOGGER.error("Prompt Feedback: %s", prompt_feedback)
+            # Log safety ratings if available
+            if hasattr(prompt_feedback, 'safety_ratings'):
+                LOGGER.error("Safety Ratings: %s", prompt_feedback.safety_ratings)
+            if hasattr(prompt_feedback, 'block_reason'):
+                LOGGER.error("Block Reason: %s", prompt_feedback.block_reason)
+        else:
+            LOGGER.error("Prompt Feedback: None")
+    except Exception as e:
+        LOGGER.error("Error accessing prompt_feedback: %s", e)
+    
+    # Check candidates
+    try:
+        candidates = getattr(response, 'candidates', [])
+        LOGGER.error("Number of Candidates: %d", len(candidates))
+        
+        for i, candidate in enumerate(candidates):
+            LOGGER.error("--- Candidate %d ---", i)
+            
+            # Finish reason
+            finish_reason = getattr(candidate, 'finish_reason', 'UNKNOWN')
+            LOGGER.error("Finish Reason: %s (%s)", finish_reason, _explain_finish_reason(finish_reason))
+            
+            # Safety ratings
+            safety_ratings = getattr(candidate, 'safety_ratings', [])
+            if safety_ratings:
+                LOGGER.error("Safety Ratings:")
+                for rating in safety_ratings:
+                    category = getattr(rating, 'category', 'UNKNOWN')
+                    probability = getattr(rating, 'probability', 'UNKNOWN')
+                    LOGGER.error("  %s: %s", category, probability)
+            
+            # Content (if any)
+            try:
+                content = getattr(candidate, 'content', None)
+                if content:
+                    parts = getattr(content, 'parts', [])
+                    for j, part in enumerate(parts):
+                        text = getattr(part, 'text', '')
+                        if text:
+                            text_preview = text[:200] + "..." if len(text) > 200 else text
+                            LOGGER.error("Content Part %d (first 200 chars): %s", j, text_preview)
+                            LOGGER.error("Content Part %d Length: %d characters", j, len(text))
+                            
+                            # Try to parse as JSON to see if it's malformed
+                            if isinstance(exc, json.JSONDecodeError):
+                                LOGGER.error("JSON Parse Error Details:")
+                                LOGGER.error("  Error: %s", exc.msg)
+                                LOGGER.error("  Position: line %d column %d (char %d)", exc.lineno, exc.colno, exc.pos)
+                                # Show context around the error
+                                if exc.pos < len(text):
+                                    start = max(0, exc.pos - 50)
+                                    end = min(len(text), exc.pos + 50)
+                                    context = text[start:end]
+                                    LOGGER.error("  Context around error: %s", repr(context))
+                                if LOG_PROMPT_CONTENT:
+                                    LOGGER.error("  Full Content for JSON Analysis: %s", repr(text))
+                        else:
+                            LOGGER.error("Content Part %d: Empty", j)
+                else:
+                    LOGGER.error("No content in candidate")
+            except Exception as e:
+                LOGGER.error("Error accessing candidate content: %s", e)
+                
+    except Exception as e:
+        LOGGER.error("Error accessing candidates: %s", e)
+    
+    # Usage metadata
+    try:
+        usage_metadata = getattr(response, 'usage_metadata', None)
+        if usage_metadata:
+            LOGGER.error("Usage Metadata: %s", usage_metadata)
+        else:
+            LOGGER.error("Usage Metadata: None")
+    except Exception as e:
+        LOGGER.error("Error accessing usage_metadata: %s", e)
+    
+    # Raw response representation (last resort)
+    if LOG_PROMPT_CONTENT:
+        try:
+            LOGGER.error("Raw Response Representation: %s", repr(response))
+        except Exception as e:
+            LOGGER.error("Error getting raw response representation: %s", e)
+    
+    LOGGER.error("=== END DETAILED ANALYSIS ===")
+
+
+def _explain_finish_reason(finish_reason: Any) -> str:
+    """Provide human-readable explanation of finish reasons."""
+    explanations = {
+        1: "STOP - Natural completion",
+        2: "MAX_TOKENS - Reached token limit", 
+        3: "SAFETY - Blocked by safety filters",
+        4: "RECITATION - Blocked for potential copyright issues",
+        5: "OTHER - Other reason",
+        "STOP": "Natural completion",
+        "MAX_TOKENS": "Reached token limit",
+        "SAFETY": "Blocked by safety filters", 
+        "RECITATION": "Blocked for potential copyright issues",
+        "OTHER": "Other reason",
+        "FINISH_REASON_UNSPECIFIED": "Unspecified reason"
+    }
+    return explanations.get(finish_reason, f"Unknown reason: {finish_reason}")
+
+
+def generate_json_adaptive(prompt: str, temperature: float = 0.7, max_output_tokens: int = 50000, 
+                          adaptive_retry: bool = True) -> Any:
+    """
+    Calls Gemini to generate JSON with adaptive token limit adjustment.
+    
+    If the first attempt hits MAX_TOKENS, automatically retries with a higher limit.
+    """
+    try:
+        return generate_json(prompt, temperature, max_output_tokens)
+    except ValueError as e:
+        if not adaptive_retry:
+            raise
+            
+        error_msg = str(e).lower()
+        if "token limit" in error_msg or "max_tokens" in error_msg:
+            # Try with doubled token limit
+            new_limit = min(max_output_tokens * 2, 100000)  # Cap at 100k tokens
+            LOGGER.info("Retrying with increased token limit: %d -> %d", max_output_tokens, new_limit)
+            try:
+                return generate_json(prompt, temperature, new_limit)
+            except ValueError as e2:
+                if "token limit" in str(e2).lower():
+                    # If still hitting limits, try to truncate the prompt
+                    if len(prompt) > 2000:
+                        truncated_prompt = prompt[:1500] + "\n\n[...content truncated due to length...]\n\n" + prompt[-500:]
+                        LOGGER.info("Retrying with truncated prompt: %d -> %d chars", len(prompt), len(truncated_prompt))
+                        return generate_json(truncated_prompt, temperature, new_limit)
+                raise e2
+        raise e

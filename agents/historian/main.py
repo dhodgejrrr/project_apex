@@ -251,3 +251,22 @@ def handle_request():
             return jsonify({"error": "internal_error"}), 500
 
     return jsonify({"message": "no_content"}), 204
+
+
+@app.route("/health")
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "service": "historian"}), 200
+
+
+if __name__ == "__main__":
+    # Register with Tool Registry at startup
+    try:
+        from agents.common.tool_caller import register_agent_with_registry
+        port = int(os.environ.get("PORT", 8080))
+        base_url = os.getenv("HISTORIAN_URL", f"http://localhost:{port}")
+        register_agent_with_registry("historian", base_url)
+    except Exception as e:
+        LOGGER.warning(f"Failed to register with Tool Registry: {e}")
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)

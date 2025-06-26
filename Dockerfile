@@ -45,4 +45,5 @@ RUN if [ "$AGENT_NAME" = "scribe" ]; then \
     fi
 
 ENV PORT 8080
-CMD gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+ENV AGENT_NAME=${AGENT_NAME}
+CMD python /app/agents/startup.py
