@@ -38,6 +38,10 @@ ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data")
 TEAM_CAR_NUMBER = os.getenv("TEAM_CAR_NUMBER")  # optional override
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
+# Load prompt template at startup
+PROMPT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "prompt_template.md"
+PROMPT_TEMPLATE = PROMPT_TEMPLATE_PATH.read_text()
+
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
@@ -175,14 +179,37 @@ def _generate_caption(plot_path: pathlib.Path, insights: Dict[str, List[Dict[str
     """Generate a caption via Gemini for a given plot image."""
     if not USE_AI_ENHANCED:
         return None
+    
+    # Prepare context for the template
     all_insights = [insight for insight_list in insights.values() for insight in insight_list]
-    prompt = (
-        "You are a data visualization expert. Write a one-sentence caption (max 25 words) for the chart saved as '" + plot_path.name + "'. "
-        "Base your description on the following race insights JSON for context.\n\nInsights:\n" + json.dumps(all_insights[:10], indent=2) + "\n\nCaption:"
-    )
+    chart_name = plot_path.name
+    
+    # Determine chart type and focus based on filename
+    if "pit_stationary" in chart_name:
+        chart_type = "bar chart"
+        primary_focus = "pit stop efficiency"
+        key_metrics = "average stationary time by car"
+    elif "driver_consistency" in chart_name:
+        chart_type = "scatter plot"
+        primary_focus = "driver consistency"
+        key_metrics = "lap time standard deviation"
+    else:
+        chart_type = "chart"
+        primary_focus = "performance analysis"
+        key_metrics = "race performance data"
+    
     try:
+        prompt = PROMPT_TEMPLATE.format(
+            chart_type=chart_type,
+            primary_focus=primary_focus,
+            key_metrics=key_metrics,
+            chart_data=json.dumps(all_insights[:10], indent=2),
+            context=f"This visualization shows {primary_focus} data from race analysis."
+        )
         return ai_helpers.summarize(
-            prompt, temperature=0.6, max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
+            prompt,
+            temperature=0.6,
+            max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
         )
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.warning("Caption generation failed: %s", exc)

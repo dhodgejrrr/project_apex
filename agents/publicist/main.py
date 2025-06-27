@@ -31,9 +31,15 @@ LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 MODEL_NAME = os.getenv("VERTEX_MODEL", "gemini-1.0-pro")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
-# --- NEW: Load the prompt template from the file on startup ---
+# --- NEW: Load the prompt templates from files on startup ---
 PROMPT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "prompt_template.md"
 PROMPT_TEMPLATE = PROMPT_TEMPLATE_PATH.read_text()
+
+POSTS_WITH_VISUALS_TEMPLATE_PATH = pathlib.Path(__file__).parent / "posts_with_visuals_template.md"
+POSTS_WITH_VISUALS_TEMPLATE = POSTS_WITH_VISUALS_TEMPLATE_PATH.read_text()
+
+POSTS_CRITIQUE_TEMPLATE_PATH = pathlib.Path(__file__).parent / "posts_critique_template.md"
+POSTS_CRITIQUE_TEMPLATE = POSTS_CRITIQUE_TEMPLATE_PATH.read_text()
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -312,42 +318,25 @@ def generate_posts_with_visuals(briefing_data: Dict[str, Any], analysis_data: Di
     Generate social media posts with autonomous visual decision making.
     LLM decides which posts need visuals and what type of visual to generate.
     """
-    prompt = f"""
-You are a social media manager for a professional racing team. Create engaging social media posts from this race briefing data.
-
-For each post you create, decide if a visual would enhance it and specify which type.
-
-Available visualization tools:
-- "pit_times": Pit stop efficiency comparison chart
-- "consistency": Driver consistency analysis chart  
-- "stint_falloff": Tire degradation patterns for a specific car
-
-Race Briefing Data:
-{json.dumps(briefing_data, indent=2)}
-
-Instructions:
-1. Create 3-5 engaging social media posts
-2. Each post should be under 280 characters
-3. Include relevant hashtags (#IMSA, #Motorsport, etc.)
-4. For each post, decide if it needs a visual and which type
-5. If visual is needed, specify car_number if applicable
-
-Return JSON format:
-{{
-  "posts": [
-    {{
-      "text": "The actual social media post text",
-      "needs_visual": true/false,
-      "visual_type": "pit_times|consistency|stint_falloff|null",
-      "visual_params": {{"car_number": "optional for stint_falloff"}},
-      "priority": "high|medium|low"
-    }}
-  ]
-}}
-"""
+    # Handle previous feedback if available
+    previous_feedback_text = ""
+    if "previous_feedback" in briefing_data:
+        previous_feedback_text = f"Previous attempt feedback:\n{json.dumps(briefing_data['previous_feedback'], indent=2)}\n\nUse this feedback to improve the current generation."
+    else:
+        previous_feedback_text = "This is the first generation attempt."
     
     try:
-        response = ai_helpers.generate_json_adaptive(prompt, temperature=0.8, max_output_tokens=6000)
+        # Use the direct template approach like other working agents
+        prompt = POSTS_WITH_VISUALS_TEMPLATE.format(
+            briefing_data_json=json.dumps(briefing_data, indent=2),
+            previous_feedback=previous_feedback_text
+        )
+        
+        response = ai_helpers.generate_json_adaptive(
+            prompt,
+            temperature=0.8,
+            max_output_tokens=6000
+        )
         LOGGER.info(f"Generated {len(response.get('posts', []))} posts with visual decisions")
         return response
     except Exception as e:
@@ -400,35 +389,18 @@ def critique_posts(posts: List[Dict[str, Any]], briefing_data: Dict[str, Any]) -
             "priority": post.get("priority")
         })
     
-    prompt = f"""
-You are a demanding marketing manager reviewing social media posts for a professional racing team.
-
-Evaluate these posts for:
-1. Engagement potential
-2. Clarity and accuracy
-3. Appropriate use of visuals
-4. Brand consistency
-5. Actionable insights for fans
-
-Posts to Review:
-{json.dumps(posts_for_review, indent=2)}
-
-Original Briefing Data:
-{json.dumps(briefing_data, indent=2)}
-
-Return JSON format:
-{{
-  "approved": true/false,
-  "overall_score": 1-10,
-  "feedback": "Detailed feedback on what works and what doesn't",
-  "specific_issues": ["List of specific issues to fix"],
-  "suggestions": ["List of specific improvement suggestions"],
-  "reasoning": "Explanation of approval/rejection decision"
-}}
-"""
-    
     try:
-        critique = ai_helpers.generate_json_adaptive(prompt, temperature=0.5, max_output_tokens=5000)
+        # Use the direct template approach like other working agents
+        prompt = POSTS_CRITIQUE_TEMPLATE.format(
+            posts_for_review_json=json.dumps(posts_for_review, indent=2),
+            briefing_data_json=json.dumps(briefing_data, indent=2)
+        )
+        
+        critique = ai_helpers.generate_json_adaptive(
+            prompt,
+            temperature=0.5,
+            max_output_tokens=5000
+        )
         LOGGER.info(f"Critique completed: {critique.get('approved')} (score: {critique.get('overall_score')})")
         return critique
     except Exception as e:

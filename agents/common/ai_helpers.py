@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import pathlib
 from typing import Any, Dict
 from collections import defaultdict
 
@@ -470,3 +471,156 @@ def generate_json_adaptive(prompt: str, temperature: float = 0.7, max_output_tok
                         return generate_json(truncated_prompt, temperature, new_limit)
                 raise e2
         raise e
+
+
+# ---------------------------------------------------------------------------
+# Template Loading & Formatting Utilities
+# ---------------------------------------------------------------------------
+
+def load_prompt_template(template_path: str | pathlib.Path) -> str:
+    """Load a markdown prompt template from file.
+    
+    Args:
+        template_path: Path to the markdown template file
+        
+    Returns:
+        Template content as string
+        
+    Raises:
+        FileNotFoundError: If template file doesn't exist
+        IOError: If template file can't be read
+    """
+    path = pathlib.Path(template_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Template file not found: {path}")
+    
+    try:
+        return path.read_text(encoding='utf-8')
+    except Exception as e:
+        raise IOError(f"Could not read template file {path}: {e}") from e
+
+
+def format_prompt_template(template: str, **kwargs) -> str:
+    """Format a template with provided variables.
+    
+    Args:
+        template: Template string with {variable} placeholders
+        **kwargs: Variables to substitute in template
+        
+    Returns:
+        Formatted template string
+        
+    Raises:
+        KeyError: If required template variable is missing
+        ValueError: If template formatting fails
+    """
+    try:
+        return template.format(**kwargs)
+    except KeyError as e:
+        raise KeyError(f"Missing required template variable: {e}") from e
+    except Exception as e:
+        raise ValueError(f"Template formatting failed: {e}") from e
+
+
+def generate_json_with_template(
+    template_path: str | pathlib.Path, 
+    template_vars: Dict[str, Any],
+    temperature: float = 0.7, 
+    max_output_tokens: int = 50000
+) -> Any:
+    """Generate JSON using a markdown template file.
+    
+    Args:
+        template_path: Path to markdown template file
+        template_vars: Variables to substitute in template
+        temperature: Generation temperature (0.0-1.0)
+        max_output_tokens: Maximum tokens in response
+        
+    Returns:
+        Parsed JSON response
+    """
+    template = load_prompt_template(template_path)
+    prompt = format_prompt_template(template, **template_vars)
+    return generate_json(prompt, temperature, max_output_tokens)
+
+
+def generate_json_adaptive_with_template(
+    template_path: str | pathlib.Path,
+    template_vars: Dict[str, Any], 
+    temperature: float = 0.7,
+    max_output_tokens: int = 50000,
+    adaptive_retry: bool = True
+) -> Any:
+    """Generate JSON using a template with adaptive token limits.
+    
+    Args:
+        template_path: Path to markdown template file
+        template_vars: Variables to substitute in template
+        temperature: Generation temperature (0.0-1.0)
+        max_output_tokens: Maximum tokens in response
+        adaptive_retry: Whether to retry with higher token limits
+        
+    Returns:
+        Parsed JSON response
+    """
+    template = load_prompt_template(template_path)
+    prompt = format_prompt_template(template, **template_vars)
+    return generate_json_adaptive(prompt, temperature, max_output_tokens, adaptive_retry)
+
+
+def summarize_with_template(
+    template_path: str | pathlib.Path,
+    template_vars: Dict[str, Any],
+    **kwargs
+) -> str:
+    """Summarize using a markdown template file.
+    
+    Args:
+        template_path: Path to markdown template file  
+        template_vars: Variables to substitute in template
+        **kwargs: Additional arguments passed to underlying AI call
+        
+    Returns:
+        Summary text
+    """
+    template = load_prompt_template(template_path)
+    prompt = format_prompt_template(template, **template_vars)
+    
+    # For summarization, we use the existing generate_json or a simple text generation
+    # Depending on template structure, it might return JSON or plain text
+    # Let's use the model directly for text-only summarization
+    _init_vertex()
+    model_name = os.environ.get("VERTEX_MODEL", "gemini-2.5-flash")
+    LOGGER.info("Using Vertex AI model for template-based summarization: %s", model_name)
+    LOGGER.debug("Prompt for template-based summarization:\n%s", prompt)
+    
+    model = GenerativeModel(model_name)
+    
+    safety_settings = {
+        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+    }
+
+    response = None
+    try:
+        response = model.generate_content(
+            prompt, safety_settings=safety_settings
+        )
+        _record_usage(model_name, getattr(response, "usage_metadata", None))
+        LOGGER.debug("Full AI Response: %s", response)
+        if not response.text:
+            raise ValueError("Empty response from Gemini.")
+        return response.text.strip()
+    except (ValueError, AttributeError) as exc:
+        # Enhanced logging for debugging API issues
+        _log_detailed_api_error(response, exc, model_name, prompt)
+        LOGGER.warning("Template-based summarization failed - returning empty string")
+        # Return empty string on failure to avoid breaking callers
+        return ""
+
+
+# ---------------------------------------------------------------------------
+# Configuration & Cost Tracking
+# ---------------------------------------------------------------------------

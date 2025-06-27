@@ -33,6 +33,10 @@ BQ_DATASET = os.getenv("BQ_DATASET", "imsa_history")
 BQ_TABLE = os.getenv("BQ_TABLE", "race_analyses")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
+# Load prompt template at startup
+PROMPT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "prompt_template.md"
+PROMPT_TEMPLATE = PROMPT_TEMPLATE_PATH.read_text()
+
 # ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
@@ -153,11 +157,11 @@ def _narrative_summary(insights: List[Dict[str, Any]]) -> str | None:
     """Generate a concise narrative summary of YoY insights via Gemini."""
     if not USE_AI_ENHANCED or not insights:
         return None
-    prompt = (
-        "You are a racing data analyst AI. Craft a concise paragraph (<=120 words) summarizing the following year-over-year insights.\n"
-        "Focus on key trends and notable changes.\n\nInsights JSON:\n" + json.dumps(insights, indent=2) + "\n\nSummary:"
-    )
+    
     try:
+        prompt = PROMPT_TEMPLATE.format(
+            insights_json=json.dumps(insights, indent=2)
+        )
         return ai_helpers.summarize(prompt, temperature=0.5, max_output_tokens=128)
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.warning("Narrative generation failed: %s", exc)

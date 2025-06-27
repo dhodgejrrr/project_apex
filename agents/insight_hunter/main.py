@@ -35,6 +35,16 @@ ANALYZED_DATA_BUCKET = os.getenv("ANALYZED_DATA_BUCKET", "imsa-analyzed-data-pro
 VIS_TOPIC_ID = os.getenv("VISUALIZATION_REQUESTS_TOPIC", "visualization-requests")
 USE_AI_ENHANCED = os.getenv("USE_AI_ENHANCED", "true").lower() == "true"
 
+# Load prompt templates at startup
+PACE_ENHANCEMENT_TEMPLATE_PATH = pathlib.Path(__file__).parent / "pace_enhancement_template.md"
+PACE_ENHANCEMENT_TEMPLATE = PACE_ENHANCEMENT_TEMPLATE_PATH.read_text()
+
+ANALYSIS_PLANNING_TEMPLATE_PATH = pathlib.Path(__file__).parent / "analysis_planning_template.md" 
+ANALYSIS_PLANNING_TEMPLATE = ANALYSIS_PLANNING_TEMPLATE_PATH.read_text()
+
+SYNTHESIS_TEMPLATE_PATH = pathlib.Path(__file__).parent / "synthesis_template.md"
+SYNTHESIS_TEMPLATE = SYNTHESIS_TEMPLATE_PATH.read_text()
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 LOGGER = logging.getLogger("insight_hunter")
 
@@ -308,17 +318,13 @@ def enrich_insights_with_ai(insights: Dict[str, Any]) -> Dict[str, Any]:
     # Example for one ranking list, can be expanded to others
     pace_ranking = insights.get("manufacturer_pace_ranking")
     if pace_ranking:
-        prompt = (
-            "You are a professional motorsport strategist AI. I will provide a JSON list of manufacturers ranked by their average race pace. "
-            "Your task is to add a new key, 'llm_commentary', to each object in the list. "
-            "This commentary should be a concise, professional one-sentence analysis about their performance relative to the field. "
-            "You should provide an insightful commentary about the relative performance of each manufacturer, outlining how and where they compare relative to the field. "
-            "Return only the updated JSON list, with no other text.\n\n"
-            f"Pace Ranking:\n{json.dumps(pace_ranking, indent=2)}\n"
-        )
         try:
+            prompt = PACE_ENHANCEMENT_TEMPLATE.format(
+                pace_ranking_json=json.dumps(pace_ranking, indent=2)
+            )
             enriched_pace = ai_helpers.generate_json(
-                prompt, max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
+                prompt,
+                max_output_tokens=int(os.getenv("MAX_OUTPUT_TOKENS", 25000))
             )
             if isinstance(enriched_pace, list) and len(enriched_pace) == len(pace_ranking):
                 enriched_insights["manufacturer_pace_ranking"] = enriched_pace
@@ -434,47 +440,15 @@ def generate_investigation_plan(analysis_data: Dict[str, Any]) -> Dict[str, Any]
         "sample_cars": enhanced_strategy[:5] if enhanced_strategy else []
     }
     
-    prompt = f"""
-You are an expert race strategist analyzing IMSA race data. Create a detailed investigation plan to find the most interesting and actionable insights.
-
-High-Level Race Data:
-{json.dumps(summary_data, indent=2)}
-
-Available CoreAnalyzer Tools:
-1. "driver_deltas" - Get performance gaps between drivers in the same car
-   Parameters: {{"run_id": str, "car_number": optional str}}
-   
-2. "trend_analysis" - Get historical performance trends for a manufacturer at this track
-   Parameters: {{"track": str, "session": str, "manufacturer": str, "num_years": optional int}}
-   
-3. "stint_analysis" - Get detailed stint and tire degradation analysis
-   Parameters: {{"run_id": str, "car_number": optional str}}
-   
-4. "sector_analysis" - Get sector-by-sector performance breakdown
-   Parameters: {{"run_id": str, "car_number": optional str}}
-
-Instructions:
-1. Identify 3-5 interesting findings from the high-level data
-2. For each finding, specify which tool would provide deeper analysis
-3. Explain your hypothesis about what the deeper analysis might reveal
-4. Focus on actionable insights for teams and strategists
-
-Return JSON format:
-{{
-  "investigation_tasks": [
-    {{
-      "finding": "Brief description of what caught your attention",
-      "hypothesis": "What you expect to discover with deeper analysis",
-      "tool": "tool_name",
-      "parameters": {{"param": "value"}},
-      "priority": "high|medium|low"
-    }}
-  ]
-}}
-"""
-    
     try:
-        plan = ai_helpers.generate_json_adaptive(prompt, temperature=0.7, max_output_tokens=8000)
+        prompt = ANALYSIS_PLANNING_TEMPLATE.format(
+            analysis_data_json=json.dumps(summary_data, indent=2)
+        )
+        plan = ai_helpers.generate_json_adaptive(
+            prompt,
+            temperature=0.7,
+            max_output_tokens=8000
+        )
         LOGGER.info(f"Generated investigation plan with {len(plan.get('investigation_tasks', []))} tasks")
         return plan
     except Exception as e:
@@ -550,43 +524,15 @@ def synthesize_final_insights(investigation_results: List[Dict[str, Any]], origi
         LOGGER.warning("No successful tool results to synthesize")
         return {"autonomous_insights": [], "investigation_summary": "No successful investigations"}
     
-    prompt = f"""
-You are an expert race analyst creating final insights by combining initial observations with detailed analysis data.
-
-For each investigation result, create a rich, actionable insight that:
-1. Combines the initial finding with the detailed tool data
-2. Provides specific, actionable recommendations
-3. Explains the strategic implications
-4. Includes relevant data points as evidence
-
-Investigation Results:
-{json.dumps(synthesis_data, indent=2)}
-
-Return JSON format:
-{{
-  "autonomous_insights": [
-    {{
-      "category": "Strategic category (e.g., 'Driver Performance', 'Tire Strategy')",
-      "type": "Specific insight type",
-      "priority": "high|medium|low",
-      "summary": "One-sentence summary of the insight",
-      "detailed_analysis": "Comprehensive analysis with evidence",
-      "actionable_recommendations": ["List of specific recommendations"],
-      "supporting_data": {{"key_metrics": "Relevant numbers and comparisons"}},
-      "confidence_level": "high|medium|low"
-    }}
-  ],
-  "investigation_summary": {{
-    "total_investigations": number,
-    "successful_investigations": number,
-    "key_discoveries": ["List of major discoveries"],
-    "methodology": "Brief explanation of autonomous approach used"
-  }}
-}}
-"""
-    
     try:
-        synthesis = ai_helpers.generate_json_adaptive(prompt, temperature=0.6, max_output_tokens=12000)
+        prompt = SYNTHESIS_TEMPLATE.format(
+            investigation_results_json=json.dumps(synthesis_data, indent=2)
+        )
+        synthesis = ai_helpers.generate_json_adaptive(
+            prompt,
+            temperature=0.6,
+            max_output_tokens=12000
+        )
         
         # Enhance with investigation metadata
         synthesis["investigation_summary"]["methodology"] = "Autonomous LLM-driven investigation using CoreAnalyzer toolbox"
