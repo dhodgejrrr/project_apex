@@ -399,7 +399,7 @@ def critique_posts(posts: List[Dict[str, Any]], briefing_data: Dict[str, Any]) -
         
         critique = ai_helpers.generate_json_adaptive(
             prompt,
-            temperature=0.5,
+            temperature=0.8,
             max_output_tokens=10000
         )
         LOGGER.info(f"Critique completed: {critique.get('approved')} (score: {critique.get('overall_score')})")
