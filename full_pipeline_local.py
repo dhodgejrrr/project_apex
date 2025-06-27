@@ -74,6 +74,11 @@ def run_pipeline(csv_path: pathlib.Path, pit_json: pathlib.Path, fuel_json: path
         )
         analysis_data: Dict[str, Any] = analyzer.run_all_analyses()
         (out_dir / "analysis_enhanced.json").write_text(json.dumps(analysis_data, indent=2))
+        
+        # Also generate comprehensive analysis file for consistency with cloud pipeline
+        LOGGER.info("Generating comprehensive analysis export...")
+        comprehensive_path = out_dir / "comprehensive_analysis.json"
+        analyzer.export_to_json_file(analysis_data, str(comprehensive_path))
 
         # 2. Insight Hunter
         LOGGER.info("Deriving insights …")

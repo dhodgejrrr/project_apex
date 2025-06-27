@@ -372,7 +372,6 @@ def plot_stint_falloff_tool():
 # ---------------------------------------------------------------------------
 
 @app.route("/", methods=["POST"])
-@app.route("/", methods=["POST"])
 def handle_request():
     """Legacy endpoint for backward compatibility. Use individual /plot/* endpoints instead."""
     LOGGER.warning("Using deprecated monolithic visualization endpoint. Consider migrating to individual /plot/* endpoints.")
@@ -383,6 +382,7 @@ def handle_request():
         
         analysis_uri = payload["analysis_path"]
         insights_uri = payload["insights_path"]
+        comprehensive_analysis_uri = payload.get("comprehensive_analysis_path")  # Optional comprehensive analysis
         
     except ValueError as e:
         LOGGER.error(f"Request validation failed: {e}")
@@ -400,6 +400,19 @@ def handle_request():
             _gcs_download(insights_uri, local_insights)
             analysis_data = json.loads(local_analysis.read_text())
             insights_data = json.loads(local_insights.read_text())
+
+            # Use comprehensive analysis for richer visualizations if available
+            if comprehensive_analysis_uri:
+                LOGGER.info("Using comprehensive analysis for enhanced visualizations")
+                local_comprehensive = tmp / "comprehensive_analysis.json"
+                try:
+                    _gcs_download(comprehensive_analysis_uri, local_comprehensive)
+                    comprehensive_data = json.loads(local_comprehensive.read_text())
+                    # Merge comprehensive data to provide richer visualization context
+                    analysis_data.update(comprehensive_data)
+                    LOGGER.info("Successfully integrated comprehensive analysis into visualizations")
+                except Exception as e:
+                    LOGGER.warning("Could not load comprehensive analysis, using standard analysis: %s", e)
 
             plot_info = generate_all_visuals(analysis_data, insights_data, tmp)
 

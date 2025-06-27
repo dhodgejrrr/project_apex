@@ -340,6 +340,7 @@ def handle_request():
         validate_required_fields(payload, ["analysis_path"])
         
         analysis_uri = payload["analysis_path"]
+        comprehensive_analysis_uri = payload.get("comprehensive_analysis_path")  # Optional comprehensive analysis
         use_autonomous = payload.get("use_autonomous", True)  # Default to autonomous mode
         
     except ValueError as e:
@@ -353,19 +354,36 @@ def handle_request():
         tmp = pathlib.Path(tmpdir)
         run_id = analysis_uri.split('/')[3]
         local_analysis_path = tmp / "analysis_data.json"
+        comprehensive_analysis_data = None
+        
         try:
             LOGGER.info("Downloading analysis file: %s", analysis_uri)
             _gcs_download(analysis_uri, local_analysis_path)
             with local_analysis_path.open("r", encoding="utf-8") as fp:
                 analysis_data = json.load(fp)
 
+            # Also download comprehensive analysis if available for deeper insights
+            if comprehensive_analysis_uri:
+                LOGGER.info("Downloading comprehensive analysis file: %s", comprehensive_analysis_uri)
+                local_comprehensive_path = tmp / "comprehensive_analysis.json"
+                try:
+                    _gcs_download(comprehensive_analysis_uri, local_comprehensive_path)
+                    with local_comprehensive_path.open("r", encoding="utf-8") as fp:
+                        comprehensive_analysis_data = json.load(fp)
+                    LOGGER.info("Successfully loaded comprehensive analysis for deeper insights")
+                except Exception as e:
+                    LOGGER.warning("Could not load comprehensive analysis, using standard analysis only: %s", e)
+
+            # Use comprehensive analysis for autonomous insight generation if available
+            analysis_for_insights = comprehensive_analysis_data if comprehensive_analysis_data else analysis_data
+
             # Choose between autonomous and traditional insight generation
             if use_autonomous and USE_AI_ENHANCED:
                 LOGGER.info("Using autonomous insight generation workflow...")
-                insights = generate_insights_autonomously(analysis_data, run_id)
+                insights = generate_insights_autonomously(analysis_for_insights, run_id)
             else:
                 LOGGER.info("Using traditional rule-based insight generation...")
-                insights = derive_insights(analysis_data)
+                insights = derive_insights(analysis_for_insights)
                 
                 if USE_AI_ENHANCED:
                     LOGGER.info("Enriching traditional insights with AI...")

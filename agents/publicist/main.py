@@ -181,6 +181,7 @@ def handle_request():
             # New autonomous workflow with Arbiter briefing
             briefing_uri = payload["briefing_path"]
             analysis_uri = payload.get("analysis_path")  # Optional for visual generation
+            comprehensive_analysis_uri = payload.get("comprehensive_analysis_path")  # Optional comprehensive analysis
             use_autonomous = payload.get("use_autonomous", True)
             validate_required_fields(payload, ["briefing_path"])
         else:
@@ -188,6 +189,7 @@ def handle_request():
             briefing_uri = None
             analysis_uri = payload["analysis_path"]
             insights_uri = payload["insights_path"] 
+            comprehensive_analysis_uri = payload.get("comprehensive_analysis_path")  # Optional comprehensive analysis
             use_autonomous = False
             validate_required_fields(payload, ["analysis_path", "insights_path"])
         
@@ -217,6 +219,19 @@ def handle_request():
                     local_analysis = tmp / "analysis.json"
                     _gcs_download(analysis_uri, local_analysis)
                     analysis_data = json.loads(local_analysis.read_text())
+                    
+                    # Use comprehensive analysis for richer social content if available
+                    if comprehensive_analysis_uri:
+                        LOGGER.info("Using comprehensive analysis for enhanced social content")
+                        local_comprehensive = tmp / "comprehensive_analysis.json"
+                        try:
+                            _gcs_download(comprehensive_analysis_uri, local_comprehensive)
+                            comprehensive_data = json.loads(local_comprehensive.read_text())
+                            # Merge comprehensive data for richer social media content
+                            analysis_data.update(comprehensive_data)
+                            LOGGER.info("Successfully integrated comprehensive analysis into social content")
+                        except Exception as e:
+                            LOGGER.warning("Could not load comprehensive analysis, using standard analysis: %s", e)
                 
                 # Generate posts with autonomous workflow
                 result = generate_posts_with_correction(
@@ -241,6 +256,19 @@ def handle_request():
                 # Load JSON content
                 analysis_data = json.loads(local_analysis.read_text())
                 insights_data = json.loads(local_insights.read_text())
+
+                # Use comprehensive analysis for richer social content if available
+                if comprehensive_analysis_uri:
+                    LOGGER.info("Using comprehensive analysis for enhanced legacy social content")
+                    local_comprehensive = tmp / "comprehensive_analysis.json"
+                    try:
+                        _gcs_download(comprehensive_analysis_uri, local_comprehensive)
+                        comprehensive_data = json.loads(local_comprehensive.read_text())
+                        # Merge comprehensive data for richer social media content
+                        analysis_data.update(comprehensive_data)
+                        LOGGER.info("Successfully integrated comprehensive analysis into legacy social content")
+                    except Exception as e:
+                        LOGGER.warning("Could not load comprehensive analysis, using standard analysis: %s", e)
 
                 # Generate tweets using legacy method
                 tweets = _gen_tweets(insights_data, analysis_data)

@@ -160,6 +160,12 @@ def analyze_data(state: Dict[str, Any]) -> Dict[str, Any]:
     LOGGER.info(f"Calling Core Analyzer with payload: {payload}")
     response = invoke_cloud_run(service_url, payload)
     state["analysis_path"] = response["analysis_path"]
+    
+    # Store comprehensive analysis path if available (for FULL analysis)
+    if "comprehensive_analysis_path" in response:
+        state["comprehensive_analysis_path"] = response["comprehensive_analysis_path"]
+        LOGGER.info("Comprehensive analysis available at: %s", state["comprehensive_analysis_path"])
+    
     return state
 
 
@@ -211,7 +217,8 @@ def generate_outputs(state: Dict[str, Any]) -> Dict[str, Any]:
         payload = {
             "analysis_path": state.get("analysis_path"),
             "insights_path": state.get("insights_path"),
-            "briefing_path": state.get("briefing_path")
+            "briefing_path": state.get("briefing_path"),
+            "comprehensive_analysis_path": state.get("comprehensive_analysis_path")
         }
         
         # Call visualizer
@@ -248,7 +255,8 @@ def generate_outputs(state: Dict[str, Any]) -> Dict[str, Any]:
         message_payload = {
             "analysis_path": state.get("analysis_path"),
             "insights_path": state.get("insights_path"),
-            "briefing_path": state.get("briefing_path")
+            "briefing_path": state.get("briefing_path"),
+            "comprehensive_analysis_path": state.get("comprehensive_analysis_path")
         }
         message_data = json.dumps(message_payload).encode("utf-8")
         

@@ -141,6 +141,7 @@ def handle_request():
         
         analysis_uri = payload["analysis_path"]
         insights_uri = payload["insights_path"]
+        comprehensive_analysis_uri = payload.get("comprehensive_analysis_path")  # Optional comprehensive analysis
         
     except ValueError as e:
         LOGGER.error(f"Request validation failed: {e}")
@@ -158,6 +159,19 @@ def handle_request():
             _gcs_download(insights_uri, local_insights)
             analysis_data = json.loads(local_analysis.read_text())
             insights_data = json.loads(local_insights.read_text())
+
+            # Use comprehensive analysis for richer report content if available
+            if comprehensive_analysis_uri:
+                LOGGER.info("Using comprehensive analysis for enhanced report generation")
+                local_comprehensive = tmp / "comprehensive_analysis.json"
+                try:
+                    _gcs_download(comprehensive_analysis_uri, local_comprehensive)
+                    comprehensive_data = json.loads(local_comprehensive.read_text())
+                    # Use comprehensive data for report generation to include deeper insights
+                    analysis_data.update(comprehensive_data)
+                    LOGGER.info("Successfully integrated comprehensive analysis into report")
+                except Exception as e:
+                    LOGGER.warning("Could not load comprehensive analysis, using standard analysis: %s", e)
 
             pdf_path = tmp / "race_report.pdf"
             narrative = _generate_narrative(insights_data, analysis_data)

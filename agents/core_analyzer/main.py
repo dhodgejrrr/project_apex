@@ -393,10 +393,31 @@ def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
             dest_blob_name = f"{run_id}/{output_filename}"
             gcs_uri = _upload_file(local_out, ANALYZED_DATA_BUCKET, dest_blob_name)
             
-            return jsonify({
+            # For FULL analysis, also create a comprehensive analysis file using the analyzer's export method
+            # This ensures the deep analysis insights are preserved and accessible to other agents
+            if analysis_type == AnalysisType.FULL:
+                LOGGER.info("Creating comprehensive analysis export for other agents and final output")
+                comprehensive_filename = f"{run_id}_comprehensive_analysis.json"
+                local_comprehensive = tmp_path / comprehensive_filename
+                
+                # Use the analyzer's built-in export method to ensure all analysis features are captured
+                analyzer.export_to_json_file(results, str(local_comprehensive))
+                
+                # Upload comprehensive file to GCS for other agents to access
+                comprehensive_dest_blob = f"{run_id}/{comprehensive_filename}"
+                comprehensive_gcs_uri = _upload_file(local_comprehensive, ANALYZED_DATA_BUCKET, comprehensive_dest_blob)
+                LOGGER.info("Uploaded comprehensive analysis to: %s", comprehensive_gcs_uri)
+            
+            response_data = {
                 "analysis_path": gcs_uri,
                 "analysis_type": analysis_type.value
-            }), 200
+            }
+            
+            # Include comprehensive analysis path for FULL analysis
+            if analysis_type == AnalysisType.FULL:
+                response_data["comprehensive_analysis_path"] = comprehensive_gcs_uri
+            
+            return jsonify(response_data), 200
 
         except Exception as exc:
             LOGGER.exception("Analysis failed: %s", exc)
