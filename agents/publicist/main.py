@@ -329,13 +329,14 @@ def generate_posts_with_visuals(briefing_data: Dict[str, Any], analysis_data: Di
         # Use the direct template approach like other working agents
         prompt = POSTS_WITH_VISUALS_TEMPLATE.format(
             briefing_data_json=json.dumps(briefing_data, indent=2),
-            previous_feedback=previous_feedback_text
+            previous_feedback=previous_feedback_text,
+            analysis_enhanced_json=json.dumps(analysis_data, indent=2),
         )
         
         response = ai_helpers.generate_json_adaptive(
             prompt,
             temperature=0.8,
-            max_output_tokens=6000
+            max_output_tokens=10000
         )
         LOGGER.info(f"Generated {len(response.get('posts', []))} posts with visual decisions")
         return response
@@ -399,7 +400,7 @@ def critique_posts(posts: List[Dict[str, Any]], briefing_data: Dict[str, Any]) -
         critique = ai_helpers.generate_json_adaptive(
             prompt,
             temperature=0.5,
-            max_output_tokens=5000
+            max_output_tokens=10000
         )
         LOGGER.info(f"Critique completed: {critique.get('approved')} (score: {critique.get('overall_score')})")
         return critique
