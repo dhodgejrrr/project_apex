@@ -46,8 +46,8 @@ Provide a comprehensive evaluation in JSON format with:
 - **suggestions**: Array of specific improvement recommendations
 - **reasoning**: Clear explanation of your approval/rejection decision
 
-*   **For any post scored below 7.5, `approved` must be `false` and a `suggested_rewrite` is mandatory.** The rewrite should be a polished, ready-to-publish alternative.
-*   **You must identify at least one major missed story.** Your job is to find the gold in the data that the social media team overlooked.
+*   **For any post scored below 7.5, `approved` must be `false` and `suggestions` is mandatory.** The rewrite should be a polished, ready-to-publish alternative.
+*   **You must identify at least one major missed story.** Your job is to find the gold in the data that the social media team overlooked, this can be included in one or multiple suggestions of other proposed post as well as in the reasoning field.
 
 
 ## Output Format
