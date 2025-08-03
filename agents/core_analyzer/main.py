@@ -358,17 +358,26 @@ def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
         csv_uri = payload["csv_path"]
         pit_uri = payload["pit_json_path"]
         
+        # Additional validation for URI values
+        if not csv_uri or not isinstance(csv_uri, str) or not csv_uri.strip():
+            raise ValueError("csv_path must be a non-empty string")
+        if not pit_uri or not isinstance(pit_uri, str) or not pit_uri.strip():
+            raise ValueError("pit_json_path must be a non-empty string")
+        
     except ValueError as e:
         LOGGER.error(f"Request validation failed: {e}")
         return jsonify({"error": str(e)}), 400
     except Exception as e:
         LOGGER.error(f"Request parsing failed: {e}")
         return jsonify({"error": "invalid_request"}), 400
-
+    
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = pathlib.Path(tmpdir)
-        local_csv = tmp_path / pathlib.Path(csv_uri).name
-        local_pit = tmp_path / pathlib.Path(pit_uri).name
+        try:
+            local_csv = tmp_path / pathlib.Path(csv_uri).name
+            local_pit = tmp_path / pathlib.Path(pit_uri).name
+        except (TypeError, ValueError) as e:
+            raise ValueError(f"Invalid file paths provided: csv_path='{csv_uri}', pit_json_path='{pit_uri}'") from e
 
         try:
             # Download inputs

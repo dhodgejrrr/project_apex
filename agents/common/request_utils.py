@@ -39,8 +39,13 @@ def parse_request_payload(request: Request) -> Dict[str, Any]:
 
 def validate_required_fields(payload: Dict[str, Any], required_fields: list) -> None:
     """
-    Validate that all required fields are present in the payload.
+    Validate that all required fields are present in the payload and not None.
     """
     missing_fields = [field for field in required_fields if field not in payload]
     if missing_fields:
         raise ValueError(f"Missing required fields: {missing_fields}")
+    
+    # Also check for None values
+    null_fields = [field for field in required_fields if payload.get(field) is None]
+    if null_fields:
+        raise ValueError(f"Required fields cannot be null: {null_fields}")

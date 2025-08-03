@@ -1,0 +1,938 @@
+[
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "6fd22d79-45fb-4de3-847b-7611def197c8",
+        "run.googleapis.com/urls": "[\"https://arbiter-service-206614242467.us-central1.run.app\",\"https://arbiter-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:11:39.365301Z",
+      "generation": 3,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "arbiter-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pF+iidM",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/arbiter-service",
+      "uid": "9051959e-2ef6-4edc-ae22-eb5c0f08fe06"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "sinywxdgvq",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "arbiter"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/arbiter:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://arbiter-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:34:50.543571Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:34:50.194372Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:34:50.506460Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "arbiter-service-00003-kfb",
+      "latestReadyRevisionName": "arbiter-service-00003-kfb",
+      "observedGeneration": 3,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "arbiter-service-00003-kfb"
+        }
+      ],
+      "url": "https://arbiter-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "b2fddafb-fed6-4806-97a0-43239822f7a0",
+        "run.googleapis.com/urls": "[\"https://core-analyzer-service-206614242467.us-central1.run.app\",\"https://core-analyzer-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:13:04.916090Z",
+      "generation": 4,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "core-analyzer-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pGN+RWg",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/core-analyzer-service",
+      "uid": "d317762d-219b-447d-89d3-b06a5c67c07c"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "lagqbgrskw",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "core_analyzer"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/core-analyzer:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://core-analyzer-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:35:55.275624Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:35:54.085279Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:35:55.248198Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "core-analyzer-service-00004-c78",
+      "latestReadyRevisionName": "core-analyzer-service-00004-c78",
+      "observedGeneration": 4,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "core-analyzer-service-00004-c78"
+        }
+      ],
+      "url": "https://core-analyzer-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "3cdede04-e650-44fc-88ed-9ec11d8a3c3a",
+        "run.googleapis.com/urls": "[\"https://historian-service-206614242467.us-central1.run.app\",\"https://historian-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:49:07.056239Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "historian-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pGeT8NI",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/historian-service",
+      "uid": "8ef87c99-262a-4763-8731-7f44b1866160"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "kummijxfjl",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "historian"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/historian:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://historian-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:37:03.804626Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:37:02.538006Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:37:03.769632Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "historian-service-00002-m22",
+      "latestReadyRevisionName": "historian-service-00002-m22",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "historian-service-00002-m22"
+        }
+      ],
+      "url": "https://historian-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "1cb0c8b4-9573-41b8-a7ad-d0f0f2d1679d",
+        "run.googleapis.com/urls": "[\"https://insight-hunter-service-206614242467.us-central1.run.app\",\"https://insight-hunter-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:50:34.031261Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "insight-hunter-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pG2NmAw",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/insight-hunter-service",
+      "uid": "24f0a848-3f77-4ff1-84fd-d6cf35af5f19"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "omubnfupfn",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "insight_hunter"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/insight-hunter:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://insight-hunter-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:38:44.051980Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:38:43.171564Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:38:44.014295Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "insight-hunter-service-00002-n92",
+      "latestReadyRevisionName": "insight-hunter-service-00002-n92",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "insight-hunter-service-00002-n92"
+        }
+      ],
+      "url": "https://insight-hunter-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "2a73f19b-6d27-4f07-891c-d12d67401092",
+        "run.googleapis.com/urls": "[\"https://publicist-service-206614242467.us-central1.run.app\",\"https://publicist-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:51:58.722139Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "publicist-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pHFeljM",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/publicist-service",
+      "uid": "237a6c5b-e439-4c0f-a03d-fd0b214cc4d0"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "kloqolapqy",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "publicist"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/publicist:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://publicist-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:39:48.080179Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:39:47.424163Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:39:48.047681Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "publicist-service-00002-7fs",
+      "latestReadyRevisionName": "publicist-service-00002-7fs",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "publicist-service-00002-7fs"
+        }
+      ],
+      "url": "https://publicist-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "3e7defca-3be1-46be-93ed-769a0b2cb793",
+        "run.googleapis.com/urls": "[\"https://scribe-service-206614242467.us-central1.run.app\",\"https://scribe-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:53:44.284230Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "scribe-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pHUvpM0",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/scribe-service",
+      "uid": "94e00962-730e-486e-a6bd-1c4de76675d4"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "ccjxriwekm",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "scribe"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/scribe:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://scribe-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:40:52.112589Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:40:50.837013Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:40:52.082698Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "scribe-service-00002-7kl",
+      "latestReadyRevisionName": "scribe-service-00002-7kl",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "scribe-service-00002-7kl"
+        }
+      ],
+      "url": "https://scribe-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "7009e31e-74fa-4241-8a0e-8acf506c85fc",
+        "run.googleapis.com/urls": "[\"https://ui-portal-service-206614242467.us-central1.run.app\",\"https://ui-portal-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:56:15.887022Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "ui-portal-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pHWst4E",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/ui-portal-service",
+      "uid": "a8e3e844-6dd5-412e-910a-3d5effae803d"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "oqoiqguapc",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "ui_portal"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/ui-portal:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://ui-portal-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:41:00.309377Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:40:59.058742Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:41:00.277587Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "ui-portal-service-00002-llz",
+      "latestReadyRevisionName": "ui-portal-service-00002-llz",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "ui-portal-service-00002-llz"
+        }
+      ],
+      "url": "https://ui-portal-service-sp2i3xtjna-uc.a.run.app"
+    }
+  },
+  {
+    "apiVersion": "serving.knative.dev/v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "run.googleapis.com/client-name": "gcloud",
+        "run.googleapis.com/client-version": "527.0.0",
+        "run.googleapis.com/ingress": "all",
+        "run.googleapis.com/ingress-status": "all",
+        "run.googleapis.com/operation-id": "a7f067f4-5e31-43d6-8346-31bb2d75624b",
+        "run.googleapis.com/urls": "[\"https://visualizer-service-206614242467.us-central1.run.app\",\"https://visualizer-service-sp2i3xtjna-uc.a.run.app\"]",
+        "serving.knative.dev/creator": "dh06irl@gmail.com",
+        "serving.knative.dev/lastModifier": "dh06irl@gmail.com"
+      },
+      "creationTimestamp": "2025-06-28T01:57:51.909482Z",
+      "generation": 2,
+      "labels": {
+        "cloud.googleapis.com/location": "us-central1"
+      },
+      "name": "visualizer-service",
+      "namespace": "206614242467",
+      "resourceVersion": "AAY4pHl7srE",
+      "selfLink": "/apis/serving.knative.dev/v1/namespaces/206614242467/services/visualizer-service",
+      "uid": "bedfb8b0-3d2b-4544-b9d3-3033df2bac92"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "527.0.0",
+            "run.googleapis.com/startup-cpu-boost": "true"
+          },
+          "labels": {
+            "client.knative.dev/nonce": "ykbhzkzkqi",
+            "run.googleapis.com/startupProbeType": "Default"
+          }
+        },
+        "spec": {
+          "containerConcurrency": 160,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "AGENT_NAME",
+                  "value": "visualizer"
+                }
+              ],
+              "image": "us-central1-docker.pkg.dev/pelagic-pod-463419-m4/apex-agent-repo/visualizer:latest",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "2Gi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "apex-agent-runner@pelagic-pod-463419-m4.iam.gserviceaccount.com",
+          "timeoutSeconds": 900
+        }
+      },
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100
+        }
+      ]
+    },
+    "status": {
+      "address": {
+        "url": "https://visualizer-service-sp2i3xtjna-uc.a.run.app"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2025-06-28T16:42:04.205745Z",
+          "status": "True",
+          "type": "Ready"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:42:02.907464Z",
+          "status": "True",
+          "type": "ConfigurationsReady"
+        },
+        {
+          "lastTransitionTime": "2025-06-28T16:42:04.176694Z",
+          "status": "True",
+          "type": "RoutesReady"
+        }
+      ],
+      "latestCreatedRevisionName": "visualizer-service-00002-lsh",
+      "latestReadyRevisionName": "visualizer-service-00002-lsh",
+      "observedGeneration": 2,
+      "traffic": [
+        {
+          "latestRevision": true,
+          "percent": 100,
+          "revisionName": "visualizer-service-00002-lsh"
+        }
+      ],
+      "url": "https://visualizer-service-sp2i3xtjna-uc.a.run.app"
+    }
+  }
+]

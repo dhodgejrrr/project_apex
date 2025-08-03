@@ -32,10 +32,18 @@ get_service_name() {
     echo "${name//_/-}-service" | tr '[:upper:]' '[:lower:]'
 }
 
+# Function to get the correct image name for an agent
+get_image_name() {
+    local agent_name=$1
+    # Convert underscores to hyphens for image names
+    echo "${agent_name//_/-}"
+}
+
 # Function to deploy a single agent
 deploy_agent() {
     local agent_name=$1
-    local image_tag="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT}/${AR_REPO}/${agent_name}:latest"
+    local image_name=$(get_image_name "${agent_name}")
+    local image_tag="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT}/${AR_REPO}/${image_name}:latest"
     local service_name=$(get_service_name "${agent_name}")
     
     echo "🚀 Deploying ${agent_name}..."
