@@ -13,6 +13,10 @@ class IMSADataAnalyzer:
     This class combines the original user-defined race analysis methods with
     new, enhanced strategic analysis capabilities, including traffic-based lap
     categorization and a predictive polynomial tire degradation model.
+    
+    <<< MODIFIED >>> This version can now auto-detect single-manufacturer races
+    and group by 'CLASS' instead, while maintaining 'manufacturer' in the output
+    for compatibility with downstream systems.
     """
 
     # <<< MODIFIED __init__ >>>
@@ -26,7 +30,6 @@ class IMSADataAnalyzer:
         self.config = default_config
         if config: self.config.update(config)
 
-        # <<< NEW: Load manufacturer-specific fuel capacities >>>
         self.fuel_capacities = None
         if fuel_capacity_json_filepath:
             try:
@@ -37,7 +40,6 @@ class IMSADataAnalyzer:
                 print(f"Loaded manufacturer fuel capacities from {fuel_capacity_json_filepath}.")
             except Exception as e:
                 print(f"WARNING: Failed to load fuel capacity JSON {fuel_capacity_json_filepath}: {e}. Will use default value.")
-        # <<< END NEW >>>
 
         self.pit_data_df = None
         if pit_json_filepath:
@@ -50,23 +52,17 @@ class IMSADataAnalyzer:
             self.df = pd.read_csv(csv_filepath, sep=';'); self.df.columns = self.df.columns.str.strip(); print(f"CSV loaded successfully. Shape: {self.df.shape}")
         except FileNotFoundError: raise FileNotFoundError(f"Error: The file {csv_filepath} was not found.")
         if self.df.empty: raise ValueError("CSV file is empty or not parsed correctly.")
-
-        # <<< NEW: Filter rows based on allowed classes from environment variable >>>
-        # env_classes = os.getenv('IMSA_CLASSES') or os.getenv('ALLOWED_CLASSES')
-        # if env_classes:
-        #     try:
-        #         allowed_classes = json.loads(env_classes)
-        #         if isinstance(allowed_classes, str):
-        #             allowed_classes = [allowed_classes]
-        #     except json.JSONDecodeError:
-        #         allowed_classes = [c.strip() for c in env_classes.split(',')]
-        #     allowed_classes = [c.upper().strip() for c in allowed_classes if c.strip()]
-        #     if 'CLASS' in self.df.columns and allowed_classes:
-        #         before_rows = len(self.df)
-        #         self.df = self.df[self.df['CLASS'].str.upper().isin(allowed_classes)].copy()
-        #         print(f"Applied class filter {allowed_classes}: rows {before_rows} -> {len(self.df)}.")
-        # else:
-        #     print("No class filter applied.")
+        
+        # <<< NEW: Auto-detect single-make mode >>>
+        # We check for <= 1 to correctly handle datasets with one manufacturer or even empty/bad manufacturer data.
+        self.is_single_make_mode = self.df['MANUFACTURER'].nunique(dropna=False) <= 1
+        if self.is_single_make_mode:
+            print("\nINFO: Single-manufacturer mode activated. 'Manufacturer' analyses will group by 'CLASS'.")
+            # Ensure the CLASS column exists and has values to group by
+            if 'CLASS' not in self.df.columns or self.df['CLASS'].nunique(dropna=False) < 1:
+                 print("WARNING: Single-make mode activated, but 'CLASS' column is missing or empty. Analyses may fail.")
+        else:
+            print("\nINFO: Multi-manufacturer mode activated. Analyses will group by 'MANUFACTURER'.")
         # <<< END NEW >>>
 
         self._preprocess_data()
@@ -89,7 +85,6 @@ class IMSADataAnalyzer:
         if minutes > 0: return f"{sign}{minutes}:{seconds_part:06.3f}"
         return f"{sign}{total_seconds:.3f}"
         
-    # <<< MODIFIED _preprocess_data >>>
     def _preprocess_data(self):
         print("\n--- Starting Master Preprocessing ---"); df = self.df; time_cols = ['LAP_TIME', 'S1', 'S2', 'S3', 'PIT_TIME']
         for col in time_cols:
@@ -106,10 +101,8 @@ class IMSADataAnalyzer:
         df['stint_id_num'] = df.groupby('NUMBER')['is_stint_start'].cumsum(); df['stint_id'] = df['NUMBER'] + "_S" + df['stint_id_num'].astype(str)
         df['lap_in_stint'] = df.groupby('stint_id').cumcount() + 1
         
-        # <<< NEW: Use manufacturer-specific fuel loads if available >>>
         if self.fuel_capacities:
             print("Applying manufacturer-specific fuel capacities.")
-            # Map manufacturer to its fuel capacity, use default if not found
             df['max_fuel_load'] = df['MANUFACTURER'].str.lower().str.strip().map(self.fuel_capacities)
             df['max_fuel_load'].fillna(self.config['max_fuel_load_kg'], inplace=True)
         else:
@@ -117,7 +110,6 @@ class IMSADataAnalyzer:
             df['max_fuel_load'] = self.config['max_fuel_load_kg']
 
         df['fuel_load_kg'] = df['max_fuel_load'] - ((df['lap_in_stint'] - 1) * self.config['fuel_burn_rate_kg_per_lap'])
-        # <<< END NEW >>>
 
         df['fuel_correction_s'] = df['fuel_load_kg'] * self.config['fuel_weight_penalty_s_per_kg']; df['LAP_TIME_FUEL_CORRECTED_SEC'] = df['LAP_TIME_SEC'] + df['fuel_correction_s']
         self.df = df; print("Categorizing laps for traffic..."); self._categorize_laps_for_traffic(); print("--- Master Preprocessing Finished ---")
@@ -203,19 +195,25 @@ class IMSADataAnalyzer:
             results.append({"car_number": car_no, "fastest_lap": {"time": fastest_lap_row.get('LAP_TIME'), "driver_name": fastest_lap_row.get('DRIVER_NAME'), "lap_number": fastest_lap_row.get('LAP_NUMBER')}, "best_s1": {"time": best_s1_row.get('S1'), "driver_name": best_s1_row.get('DRIVER_NAME'), "lap_number": best_s1_row.get('LAP_NUMBER')}, "best_s2": {"time": best_s2_row.get('S2'), "driver_name": best_s2_row.get('DRIVER_NAME'), "lap_number": best_s2_row.get('LAP_NUMBER')}, "best_s3": {"time": best_s3_row.get('S3'), "driver_name": best_s3_row.get('DRIVER_NAME'), "lap_number": best_s3_row.get('LAP_NUMBER')}, "optimal_lap_time": self._format_seconds_to_ms_str(optimal_lap_time_sec)})
         return results
 
+    # <<< MODIFIED get_fastest_by_manufacturer >>>
     def get_fastest_by_manufacturer(self):
         results = [];
-        for manufacturer, group in self.df.groupby('MANUFACTURER'):
-            if not manufacturer: continue
+        # <<< NEW: Dynamically choose grouping column >>>
+        grouping_col = 'CLASS' if self.is_single_make_mode else 'MANUFACTURER'
+        
+        for group_name, group in self.df.groupby(grouping_col):
+            if not group_name: continue
             fastest_lap_row = self._get_row_at_min_time(group, 'LAP_TIME_SEC', 'LAP_TIME');
             if pd.isna(fastest_lap_row['LAP_TIME_SEC']): continue
             best_s1_row = self._get_row_at_min_time(group, 'S1_SEC', 'S1'); best_s2_row = self._get_row_at_min_time(group, 'S2_SEC', 'S2'); best_s3_row = self._get_row_at_min_time(group, 'S3_SEC', 'S3')
             optimal_lap_time_sec = np.nan
             if pd.notna(best_s1_row.get('S1_SEC')) and pd.notna(best_s2_row.get('S2_SEC')) and pd.notna(best_s3_row.get('S3_SEC')):
                 optimal_lap_time_sec = best_s1_row['S1_SEC'] + best_s2_row['S2_SEC'] + best_s3_row['S3_SEC']
-            results.append({"manufacturer": manufacturer, "fastest_lap": {"time": fastest_lap_row.get('LAP_TIME'), "driver_name": fastest_lap_row.get('DRIVER_NAME'), "team": fastest_lap_row.get('TEAM'), "car_number": fastest_lap_row.get('NUMBER'), "lap_number": fastest_lap_row.get('LAP_NUMBER')}, "best_s1": {"time": best_s1_row.get('S1'), "driver_name": best_s1_row.get('DRIVER_NAME'), "team": best_s1_row.get('TEAM'), "car_number": best_s1_row.get('NUMBER'), "lap_number": best_s1_row.get('LAP_NUMBER')}, "best_s2": {"time": best_s2_row.get('S2'), "driver_name": best_s2_row.get('DRIVER_NAME'), "team": best_s2_row.get('TEAM'), "car_number": best_s2_row.get('NUMBER'), "lap_number": best_s2_row.get('LAP_NUMBER')}, "best_s3": {"time": best_s3_row.get('S3'), "driver_name": best_s3_row.get('DRIVER_NAME'), "team": best_s3_row.get('TEAM'), "car_number": best_s3_row.get('NUMBER'), "lap_number": best_s3_row.get('LAP_NUMBER')}, "optimal_lap_time": self._format_seconds_to_ms_str(optimal_lap_time_sec)})
+            # The output key remains "manufacturer" for compatibility
+            results.append({"manufacturer": group_name, "fastest_lap": {"time": fastest_lap_row.get('LAP_TIME'), "driver_name": fastest_lap_row.get('DRIVER_NAME'), "team": fastest_lap_row.get('TEAM'), "car_number": fastest_lap_row.get('NUMBER'), "lap_number": fastest_lap_row.get('LAP_NUMBER')}, "best_s1": {"time": best_s1_row.get('S1'), "driver_name": best_s1_row.get('DRIVER_NAME'), "team": best_s1_row.get('TEAM'), "car_number": best_s1_row.get('NUMBER'), "lap_number": best_s1_row.get('LAP_NUMBER')}, "best_s2": {"time": best_s2_row.get('S2'), "driver_name": best_s2_row.get('DRIVER_NAME'), "team": best_s2_row.get('TEAM'), "car_number": best_s2_row.get('NUMBER'), "lap_number": best_s2_row.get('LAP_NUMBER')}, "best_s3": {"time": best_s3_row.get('S3'), "driver_name": best_s3_row.get('DRIVER_NAME'), "team": best_s3_row.get('TEAM'), "car_number": best_s3_row.get('NUMBER'), "lap_number": best_s3_row.get('LAP_NUMBER')}, "optimal_lap_time": self._format_seconds_to_ms_str(optimal_lap_time_sec)})
         return results
 
+    # <<< MODIFIED get_longest_stints_by_manufacturer >>>
     def get_longest_stints_by_manufacturer(self):
         results = []; stint_df = self.df
         if 'stint_id' not in stint_df.columns or stint_df['stint_id'].isna().all(): return results
@@ -228,7 +226,6 @@ class IMSADataAnalyzer:
             if racing_laps_for_stint_df.empty:
                 continue
 
-            # --- NEW: find the longest consecutive segment of valid green-flag laps ---
             stint_sorted = racing_laps_for_stint_df.sort_values('LAP_NUMBER').copy()
             stint_sorted['is_green_valid'] = (stint_sorted['FLAG_AT_FL'] == 'GF') & (stint_sorted['LAP_TIME_SEC'].notna())
             stint_sorted['segment_id'] = (stint_sorted['is_green_valid'] != stint_sorted['is_green_valid'].shift()).cumsum()
@@ -237,21 +234,27 @@ class IMSADataAnalyzer:
             best_segment_df = pd.DataFrame()
             for seg_id, seg_df in stint_sorted.groupby('segment_id'):
                 if not seg_df.iloc[0]['is_green_valid']:
-                    continue  # skip non-green segments
+                    continue
                 seg_len = len(seg_df)
                 if seg_len > longest_seg_len:
                     longest_seg_len = seg_len
                     best_segment_df = seg_df.copy()
 
             if longest_seg_len > 0:
+                # <<< NEW: Dynamically choose the value for the 'manufacturer' key >>>
+                # In single-make mode, we put the CLASS name here. Otherwise, the MANUFACTURER name.
+                grouping_value = best_segment_df['CLASS'].iloc[0] if self.is_single_make_mode else best_segment_df['MANUFACTURER'].iloc[0]
+                
                 stints_data.append({
                     'stint_id': stint_id_val,
-                    'manufacturer': best_segment_df['MANUFACTURER'].iloc[0],
+                    'manufacturer': grouping_value, # This key is used for grouping later
                     'num_green_laps': longest_seg_len,
                     'laps_data_for_metrics': best_segment_df,
                 })
+
         if not stints_data: return results
         all_valid_green_stints_df = pd.DataFrame(stints_data)
+        # The grouping here will now correctly use either manufacturer or class names because we set it above.
         for manufacturer_name, manu_stints_df in all_valid_green_stints_df.groupby('manufacturer'): 
             if manu_stints_df.empty or manufacturer_name == "": continue
             longest_stint_len = manu_stints_df['num_green_laps'].max()
@@ -266,6 +269,7 @@ class IMSADataAnalyzer:
                     fastest_lap_in_chosen_stint_sec = min_lap_time_sec_this_stint; chosen_stint_laps_df = current_stint_green_laps.copy() 
             if chosen_stint_laps_df is None or chosen_stint_laps_df.empty: continue
             best_lap_row_stint = self._get_row_at_min_time(chosen_stint_laps_df, 'LAP_TIME_SEC', 'LAP_TIME')
+            # The output key remains "manufacturer" for compatibility.
             results.append({"manufacturer": manufacturer_name, "longest_green_stint_laps": len(chosen_stint_laps_df), "stint_details": {"car_number": best_lap_row_stint.get('NUMBER'), "driver_at_best_lap": best_lap_row_stint.get('DRIVER_NAME'), "stint_id_debug": chosen_stint_laps_df['stint_id'].iloc[0], "start_lap_number_race": int(chosen_stint_laps_df['LAP_NUMBER'].min()), "end_lap_number_race": int(chosen_stint_laps_df['LAP_NUMBER'].max()), "best_lap_time": best_lap_row_stint.get('LAP_TIME'), "best_lap_position_in_stint": int(best_lap_row_stint.get('lap_in_stint')), "best_s1_in_stint": self._get_row_at_min_time(chosen_stint_laps_df, 'S1_SEC')['S1'], "best_s2_in_stint": self._get_row_at_min_time(chosen_stint_laps_df, 'S2_SEC')['S2'], "best_s3_in_stint": self._get_row_at_min_time(chosen_stint_laps_df, 'S3_SEC')['S3'], "average_lap_time_in_stint": self._format_seconds_to_ms_str(chosen_stint_laps_df['LAP_TIME_SEC'].mean())}})
         return results
 
@@ -336,9 +340,13 @@ class IMSADataAnalyzer:
         } for i, res in enumerate(results[:top_n])]
         return ranked
 
+    # <<< MODIFIED get_manufacturer_driver_pace_gap >>>
     def get_manufacturer_driver_pace_gap(self):
         lap_gaps, s1_gaps, s2_gaps, s3_gaps = [], [], [], []
-        for manu_name, manu_df in self.df.groupby('MANUFACTURER'):
+        # <<< NEW: Dynamically choose grouping column >>>
+        grouping_col = 'CLASS' if self.is_single_make_mode else 'MANUFACTURER'
+
+        for manu_name, manu_df in self.df.groupby(grouping_col):
             if not manu_name or manu_df.empty or manu_df['DRIVER_NAME'].nunique() < 2:
                 continue
             driver_bests = []
@@ -350,6 +358,7 @@ class IMSADataAnalyzer:
                 best_s3_row = self._get_row_at_min_time(driver_df, 'S3_SEC', 'S3')
                 driver_bests.append({'driver_name': driver_name, 'lap_time_sec': best_lap_row['LAP_TIME_SEC'], 'LAP_TIME': best_lap_row['LAP_TIME'], 's1_sec': best_s1_row['S1_SEC'], 'S1': best_s1_row['S1'], 's2_sec': best_s2_row['S2_SEC'], 'S2': best_s2_row['S2'], 's3_sec': best_s3_row['S3_SEC'], 'S3': best_s3_row['S3']})
             driver_bests_df = pd.DataFrame(driver_bests)
+            # The _process_metric_gap method will use the group name (manu_name) which is now either a class or manufacturer
             if (lap_result := self._process_metric_gap(manu_name, driver_bests_df, 'lap_time_sec', 'LAP_TIME')): lap_gaps.append(lap_result)
             if (s1_result := self._process_metric_gap(manu_name, driver_bests_df, 's1_sec', 'S1')): s1_gaps.append(s1_result)
             if (s2_result := self._process_metric_gap(manu_name, driver_bests_df, 's2_sec', 'S2')): s2_gaps.append(s2_result)
@@ -383,6 +392,7 @@ class IMSADataAnalyzer:
         if fastest_perf['driver_name'] == slowest_perf['driver_name']: return None
         gap_sec = slowest_perf[metric_sec] - fastest_perf[metric_sec]
         if gap_sec <= 0: return None
+        # The output key remains "manufacturer" for compatibility. `manu_name` will contain the class if in single-make mode.
         return {"manufacturer": manu_name, "gap_seconds": gap_sec, "gap_formatted": self._format_seconds_to_ms_str(gap_sec), "fastest_driver": {"name": fastest_perf['driver_name'], "time": fastest_perf[metric_str]}, "slowest_driver": {"name": slowest_perf['driver_name'], "time": slowest_perf[metric_str]}}
         
     def _get_pit_stop_details_original(self, car_df, driver_changes):
@@ -600,17 +610,31 @@ class IMSADataAnalyzer:
         ranking.sort(key=lambda x: x['perfection_pct'], reverse=True)
         return [{'rank': i + 1, **res} for i, res in enumerate(ranking)]
 
+    # <<< MODIFIED _get_manufacturer_showdown >>>
     def _get_manufacturer_showdown(self, race_strategy, enhanced_strategy):
         car_info = {c['car_number']: {'manufacturer': c.get('manufacturer'), 'team': c.get('team')} for c in enhanced_strategy}
         best_stints, min_laps = {}, self.config['min_laps_for_manu_showdown']
         for car in race_strategy:
-            info = car_info.get(car['car_number'])
-            if not info or not info.get('manufacturer'): continue
+            car_num = car['car_number']
+            info = car_info.get(car_num)
+            if not info: continue
+
+            # <<< NEW: Determine the grouping key (class or manufacturer) >>>
+            if self.is_single_make_mode:
+                # In single-make mode, we need the car's class. We look it up from the main dataframe.
+                car_class_series = self.df.loc[self.df['NUMBER'] == car_num, 'CLASS']
+                grouping_key = car_class_series.iloc[0] if not car_class_series.empty else None
+            else:
+                # In normal mode, we use the manufacturer.
+                grouping_key = info.get('manufacturer')
+
+            if not grouping_key: continue
+            
             for stint in car.get('stints', []):
                 avg_time = self._parse_time_to_seconds(stint.get('avg_green_time_formatted')) 
-                if pd.notna(avg_time) and stint.get('green_laps', 0) >= min_laps and (info['manufacturer'] not in best_stints or avg_time < best_stints[info['manufacturer']]['best_avg_stint_pace_sec']):
-                    best_stints[info['manufacturer']] = {
-                        'manufacturer': info['manufacturer'], 
+                if pd.notna(avg_time) and stint.get('green_laps', 0) >= min_laps and (grouping_key not in best_stints or avg_time < best_stints[grouping_key]['best_avg_stint_pace_sec']):
+                    best_stints[grouping_key] = {
+                        'manufacturer': grouping_key, # Use the dynamic key, but label it 'manufacturer'
                         'best_avg_stint_pace_sec': avg_time, 
                         'car_number': car['car_number'], 
                         'team': info['team'], 
@@ -661,12 +685,12 @@ class IMSADataAnalyzer:
         except TypeError as e: print(f"ERROR: TypeError during JSON export: {e}.")
         except Exception as e: print(f"ERROR: An unexpected error occurred during JSON export: {e}")
 
-# <<< MODIFIED Main Execution Block >>>
+# The main execution block remains unchanged
 if __name__ == '__main__':
     csv_file = '2025_impc_mido.csv'
     pit_json_file = '2025_mido_race_pits.json'
     output_json_file = '2025_mido_race_results_FINAL_with_all_features.json'
-    fuel_file = '2025_mido_fuel.json' # <<< NEW FILE
+    fuel_file = '2025_mido_fuel.json'
     try:
         # Pass the new fuel capacity file to the analyzer
         analyzer = IMSADataAnalyzer(
