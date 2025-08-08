@@ -503,6 +503,16 @@ def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "service": "publicist"}), 200
 
+@app.route("/usage")
+def get_token_usage():
+    """Get token usage statistics for this agent."""
+    try:
+        usage_data = ai_helpers.get_usage_summary()
+        return jsonify(usage_data), 200
+    except Exception as e:
+        LOGGER.error(f"Failed to get usage data: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     # Register with Tool Registry at startup
     try:

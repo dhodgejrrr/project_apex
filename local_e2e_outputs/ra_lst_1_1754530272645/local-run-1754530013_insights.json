@@ -1,0 +1,601 @@
+{
+  "manufacturer_pace_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Cadillac",
+      "average_value": "+115.581",
+      "delta_from_field_avg": "-11.673"
+    },
+    {
+      "rank": 2,
+      "manufacturer": "Acura",
+      "average_value": "+118.191",
+      "delta_from_field_avg": "-9.063"
+    },
+    {
+      "rank": 3,
+      "manufacturer": "Gibson",
+      "average_value": "+119.484",
+      "delta_from_field_avg": "-7.770"
+    },
+    {
+      "rank": 4,
+      "manufacturer": "Aston Martin",
+      "average_value": "+124.258",
+      "delta_from_field_avg": "-2.997"
+    },
+    {
+      "rank": 5,
+      "manufacturer": "Porsche",
+      "average_value": "+124.877",
+      "delta_from_field_avg": "-2.377"
+    },
+    {
+      "rank": 6,
+      "manufacturer": "BMW",
+      "average_value": "+127.858",
+      "delta_from_field_avg": "+0.604"
+    },
+    {
+      "rank": 7,
+      "manufacturer": "Mercedes-AMG",
+      "average_value": "+130.460",
+      "delta_from_field_avg": "+3.206"
+    },
+    {
+      "rank": 8,
+      "manufacturer": "Ford",
+      "average_value": "+130.725",
+      "delta_from_field_avg": "+3.471"
+    },
+    {
+      "rank": 9,
+      "manufacturer": "Lamborghini",
+      "average_value": "+131.712",
+      "delta_from_field_avg": "+4.458"
+    },
+    {
+      "rank": 10,
+      "manufacturer": "Chevrolet",
+      "average_value": "+132.479",
+      "delta_from_field_avg": "+5.225"
+    },
+    {
+      "rank": 11,
+      "manufacturer": "Lexus",
+      "average_value": "+132.773",
+      "delta_from_field_avg": "+5.519"
+    },
+    {
+      "rank": 12,
+      "manufacturer": "Ferrari",
+      "average_value": "+138.651",
+      "delta_from_field_avg": "+11.397"
+    }
+  ],
+  "manufacturer_tire_wear_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Lamborghini",
+      "average_value": "-0.0049",
+      "delta_from_field_avg": "-0.0849"
+    },
+    {
+      "rank": 2,
+      "manufacturer": "Aston Martin",
+      "average_value": "0.0086",
+      "delta_from_field_avg": "-0.0714"
+    },
+    {
+      "rank": 3,
+      "manufacturer": "Cadillac",
+      "average_value": "0.0126",
+      "delta_from_field_avg": "-0.0674"
+    },
+    {
+      "rank": 4,
+      "manufacturer": "Ferrari",
+      "average_value": "0.0283",
+      "delta_from_field_avg": "-0.0516"
+    },
+    {
+      "rank": 5,
+      "manufacturer": "Mercedes-AMG",
+      "average_value": "0.0521",
+      "delta_from_field_avg": "-0.0279"
+    },
+    {
+      "rank": 6,
+      "manufacturer": "Ford",
+      "average_value": "0.0580",
+      "delta_from_field_avg": "-0.0219"
+    },
+    {
+      "rank": 7,
+      "manufacturer": "BMW",
+      "average_value": "0.0682",
+      "delta_from_field_avg": "-0.0118"
+    },
+    {
+      "rank": 8,
+      "manufacturer": "Lexus",
+      "average_value": "0.0782",
+      "delta_from_field_avg": "-0.0017"
+    },
+    {
+      "rank": 9,
+      "manufacturer": "Porsche",
+      "average_value": "0.1102",
+      "delta_from_field_avg": "+0.0302"
+    },
+    {
+      "rank": 10,
+      "manufacturer": "Acura",
+      "average_value": "0.1143",
+      "delta_from_field_avg": "+0.0344"
+    },
+    {
+      "rank": 11,
+      "manufacturer": "Chevrolet",
+      "average_value": "0.1668",
+      "delta_from_field_avg": "+0.0868"
+    },
+    {
+      "rank": 12,
+      "manufacturer": "Gibson",
+      "average_value": "0.2673",
+      "delta_from_field_avg": "+0.1873"
+    }
+  ],
+  "manufacturer_pit_cycle_ranking": [
+    {
+      "rank": 1,
+      "team": "Heart of Racing Team",
+      "average_value": "+172.999",
+      "delta_from_field_avg": "-159.437"
+    },
+    {
+      "rank": 2,
+      "team": "Pfaff Motorsports",
+      "average_value": "+185.976",
+      "delta_from_field_avg": "-146.459"
+    },
+    {
+      "rank": 3,
+      "team": "Turner Motorsport",
+      "average_value": "+199.277",
+      "delta_from_field_avg": "-133.159"
+    },
+    {
+      "rank": 4,
+      "team": "Paul Miller Racing",
+      "average_value": "+211.835",
+      "delta_from_field_avg": "-120.601"
+    },
+    {
+      "rank": 5,
+      "team": "Corvette Racing by Pratt Miller Motorsports",
+      "average_value": "+219.059",
+      "delta_from_field_avg": "-113.377"
+    },
+    {
+      "rank": 6,
+      "team": "Triarsi Competizione",
+      "average_value": "+240.702",
+      "delta_from_field_avg": "-91.733"
+    },
+    {
+      "rank": 7,
+      "team": "DXDT Racing",
+      "average_value": "+251.688",
+      "delta_from_field_avg": "-80.748"
+    },
+    {
+      "rank": 8,
+      "team": "Forte Racing",
+      "average_value": "+252.205",
+      "delta_from_field_avg": "-80.231"
+    },
+    {
+      "rank": 9,
+      "team": "Wright Motorsports",
+      "average_value": "+253.673",
+      "delta_from_field_avg": "-78.763"
+    },
+    {
+      "rank": 10,
+      "team": "Team Tonis",
+      "average_value": "+254.524",
+      "delta_from_field_avg": "-77.912"
+    },
+    {
+      "rank": 11,
+      "team": "Conquest Racing",
+      "average_value": "+254.591",
+      "delta_from_field_avg": "-77.845"
+    },
+    {
+      "rank": 12,
+      "team": "Af Corse",
+      "average_value": "+257.947",
+      "delta_from_field_avg": "-74.489"
+    },
+    {
+      "rank": 13,
+      "team": "AWA",
+      "average_value": "+261.288",
+      "delta_from_field_avg": "-71.148"
+    },
+    {
+      "rank": 14,
+      "team": "Winward Racing",
+      "average_value": "+263.056",
+      "delta_from_field_avg": "-69.380"
+    },
+    {
+      "rank": 15,
+      "team": "BMW M Team RLL",
+      "average_value": "+265.002",
+      "delta_from_field_avg": "-67.434"
+    },
+    {
+      "rank": 16,
+      "team": "Vasser Sullivan Racing",
+      "average_value": "+266.465",
+      "delta_from_field_avg": "-65.971"
+    },
+    {
+      "rank": 17,
+      "team": "AO Racing",
+      "average_value": "+282.814",
+      "delta_from_field_avg": "-49.622"
+    },
+    {
+      "rank": 18,
+      "team": "DragonSpeed",
+      "average_value": "+285.942",
+      "delta_from_field_avg": "-46.494"
+    },
+    {
+      "rank": 19,
+      "team": "Ford Multimatic Motorsports",
+      "average_value": "+294.952",
+      "delta_from_field_avg": "-37.483"
+    },
+    {
+      "rank": 20,
+      "team": "JDC-Miller MotorSports",
+      "average_value": "+299.793",
+      "delta_from_field_avg": "-32.643"
+    },
+    {
+      "rank": 21,
+      "team": "Gradient Racing",
+      "average_value": "+305.408",
+      "delta_from_field_avg": "-27.027"
+    },
+    {
+      "rank": 22,
+      "team": "Riley",
+      "average_value": "+314.562",
+      "delta_from_field_avg": "-17.874"
+    },
+    {
+      "rank": 23,
+      "team": "Era Motorsport",
+      "average_value": "+316.065",
+      "delta_from_field_avg": "-16.370"
+    },
+    {
+      "rank": 24,
+      "team": "Porsche Penske Motorsport",
+      "average_value": "+318.400",
+      "delta_from_field_avg": "-14.036"
+    },
+    {
+      "rank": 25,
+      "team": "Inter Europol Competition",
+      "average_value": "+318.518",
+      "delta_from_field_avg": "-13.917"
+    },
+    {
+      "rank": 26,
+      "team": "Pratt Miller Motorsports",
+      "average_value": "+318.540",
+      "delta_from_field_avg": "-13.896"
+    },
+    {
+      "rank": 27,
+      "team": "Wayne Taylor Racing",
+      "average_value": "+319.741",
+      "delta_from_field_avg": "-12.695"
+    },
+    {
+      "rank": 28,
+      "team": "TDS RACING",
+      "average_value": "+320.990",
+      "delta_from_field_avg": "-11.446"
+    },
+    {
+      "rank": 29,
+      "team": "Tower Motorsports",
+      "average_value": "+328.236",
+      "delta_from_field_avg": "-4.200"
+    },
+    {
+      "rank": 30,
+      "team": "PR1 Mathiasen Motorsports",
+      "average_value": "+332.165",
+      "delta_from_field_avg": "-0.271"
+    },
+    {
+      "rank": 31,
+      "team": "Acura Meyer Shank Racing w/Curb Agajanian",
+      "average_value": "+334.990",
+      "delta_from_field_avg": "+2.554"
+    },
+    {
+      "rank": 32,
+      "team": "JDC Miller MotorSports",
+      "average_value": "+337.612",
+      "delta_from_field_avg": "+5.177"
+    },
+    {
+      "rank": 33,
+      "team": "Cadillac Whelen",
+      "average_value": "+344.576",
+      "delta_from_field_avg": "+12.140"
+    },
+    {
+      "rank": 34,
+      "team": "ASTON MARTIN THOR Team",
+      "average_value": "+349.957",
+      "delta_from_field_avg": "+17.521"
+    },
+    {
+      "rank": 35,
+      "team": "Crowdstrike Racing by APR",
+      "average_value": "+438.635",
+      "delta_from_field_avg": "+106.199"
+    },
+    {
+      "rank": 36,
+      "team": "United Autosports USA",
+      "average_value": "+1995.506",
+      "delta_from_field_avg": "+1663.070"
+    }
+  ],
+  "car_untapped_potential_ranking": [
+    {
+      "rank": 1,
+      "car_number": "70",
+      "driver_name": "Brendan Iribe",
+      "time_left_on_track": "+5.184s"
+    },
+    {
+      "rank": 2,
+      "car_number": "77",
+      "driver_name": "Laurin Heinrich",
+      "time_left_on_track": "+0.676s"
+    },
+    {
+      "rank": 3,
+      "car_number": "21",
+      "driver_name": "Kenton Koch",
+      "time_left_on_track": "+0.661s"
+    },
+    {
+      "rank": 4,
+      "car_number": "57",
+      "driver_name": "Philip Ellis",
+      "time_left_on_track": "+0.588s"
+    },
+    {
+      "rank": 5,
+      "car_number": "13",
+      "driver_name": "Matthew Bell",
+      "time_left_on_track": "+0.456s"
+    },
+    {
+      "rank": 6,
+      "car_number": "25",
+      "driver_name": "Marco Wittmann",
+      "time_left_on_track": "+0.431s"
+    },
+    {
+      "rank": 7,
+      "car_number": "4",
+      "driver_name": "Malthe Jakobsen",
+      "time_left_on_track": "+0.399s"
+    },
+    {
+      "rank": 8,
+      "car_number": "7",
+      "driver_name": "Nick Tandy",
+      "time_left_on_track": "+0.396s"
+    },
+    {
+      "rank": 9,
+      "car_number": "34",
+      "driver_name": "Daniel Serra",
+      "time_left_on_track": "+0.356s"
+    },
+    {
+      "rank": 10,
+      "car_number": "31",
+      "driver_name": "Earl Bamber",
+      "time_left_on_track": "+0.345s"
+    },
+    {
+      "rank": 11,
+      "car_number": "60",
+      "driver_name": "Tom Blomqvist",
+      "time_left_on_track": "+0.329s"
+    },
+    {
+      "rank": 12,
+      "car_number": "22",
+      "driver_name": "Daniel Goldburg",
+      "time_left_on_track": "+0.322s"
+    },
+    {
+      "rank": 13,
+      "car_number": "3",
+      "driver_name": "Alexander Sims",
+      "time_left_on_track": "+0.305s"
+    },
+    {
+      "rank": 14,
+      "car_number": "93",
+      "driver_name": "Nick Yelloly",
+      "time_left_on_track": "+0.275s"
+    },
+    {
+      "rank": 15,
+      "car_number": "81",
+      "driver_name": "Albert Costa",
+      "time_left_on_track": "+0.254s"
+    },
+    {
+      "rank": 16,
+      "car_number": "88",
+      "driver_name": "Matias Perez Companc",
+      "time_left_on_track": "+0.254s"
+    },
+    {
+      "rank": 17,
+      "car_number": "24",
+      "driver_name": "Philipp Eng",
+      "time_left_on_track": "+0.252s"
+    },
+    {
+      "rank": 18,
+      "car_number": "78",
+      "driver_name": "Misha Goikhberg",
+      "time_left_on_track": "+0.241s"
+    },
+    {
+      "rank": 19,
+      "car_number": "65",
+      "driver_name": "Christopher Mies",
+      "time_left_on_track": "+0.240s"
+    },
+    {
+      "rank": 20,
+      "car_number": "11",
+      "driver_name": "Mikkel Jensen",
+      "time_left_on_track": "+0.237s"
+    },
+    {
+      "rank": 21,
+      "car_number": "10",
+      "driver_name": "Ricky Taylor",
+      "time_left_on_track": "+0.228s"
+    },
+    {
+      "rank": 22,
+      "car_number": "48",
+      "driver_name": "Max Hesse",
+      "time_left_on_track": "+0.184s"
+    },
+    {
+      "rank": 23,
+      "car_number": "120",
+      "driver_name": "Elliott Skeer",
+      "time_left_on_track": "+0.178s"
+    },
+    {
+      "rank": 24,
+      "car_number": "52",
+      "driver_name": "Naveen Rao",
+      "time_left_on_track": "+0.173s"
+    },
+    {
+      "rank": 25,
+      "car_number": "18",
+      "driver_name": "Kaku Ohta",
+      "time_left_on_track": "+0.166s"
+    },
+    {
+      "rank": 26,
+      "car_number": "79",
+      "driver_name": "Scott Andrews",
+      "time_left_on_track": "+0.158s"
+    },
+    {
+      "rank": 27,
+      "car_number": "8",
+      "driver_name": "Sebastien Bourdais",
+      "time_left_on_track": "+0.135s"
+    },
+    {
+      "rank": 28,
+      "car_number": "1",
+      "driver_name": "Madison Snow",
+      "time_left_on_track": "+0.134s"
+    },
+    {
+      "rank": 29,
+      "car_number": "14",
+      "driver_name": "Aaron Telitz",
+      "time_left_on_track": "+0.134s"
+    },
+    {
+      "rank": 30,
+      "car_number": "6",
+      "driver_name": "Mathieu Jaminet",
+      "time_left_on_track": "+0.134s"
+    },
+    {
+      "rank": 31,
+      "car_number": "73",
+      "driver_name": "Pietro Fittipaldi",
+      "time_left_on_track": "+0.131s"
+    },
+    {
+      "rank": 32,
+      "car_number": "99",
+      "driver_name": "Dane Cameron",
+      "time_left_on_track": "+0.131s"
+    },
+    {
+      "rank": 33,
+      "car_number": "64",
+      "driver_name": "Sebastian Priaulx",
+      "time_left_on_track": "+0.128s"
+    },
+    {
+      "rank": 34,
+      "car_number": "61",
+      "driver_name": "Matt Brabham",
+      "time_left_on_track": "+0.125s"
+    },
+    {
+      "rank": 35,
+      "car_number": "43",
+      "driver_name": "Connor De Phillippi",
+      "time_left_on_track": "+0.111s"
+    },
+    {
+      "rank": 36,
+      "car_number": "45",
+      "driver_name": "Danny Formal",
+      "time_left_on_track": "+0.107s"
+    },
+    {
+      "rank": 37,
+      "car_number": "40",
+      "driver_name": "Jordan Taylor",
+      "time_left_on_track": "+0.100s"
+    }
+  ],
+  "driver_traffic_meister_ranking": [],
+  "individual_outliers": [
+    {
+      "category": "Driver Performance",
+      "type": "Largest Teammate Pace Gap",
+      "car_number": "77",
+      "details": "Car #77 has the largest pace difference between its drivers, with an average gap of 7.700s in best lap times."
+    }
+  ]
+}

@@ -222,22 +222,24 @@ def get_analyzer(run_id: str) -> IMSADataAnalyzer:
         if not csv_found:
             raise ValueError(f"Could not find CSV file for run_id {run_id}")
         
-        # Try to find and download pit file
-        pit_found = False
+        # Try to find and download pit file (optional)
+        local_pit = None
         for pit_pattern in pit_patterns:
             try:
                 local_pit = tmp_path / "pit_data.json"
                 _download_blob(pit_pattern, local_pit)
-                pit_found = True
+                LOGGER.info(f"Found pit data at {pit_pattern}")
                 break
             except Exception:
+                local_pit = None
                 continue
         
-        if not pit_found:
-            raise ValueError(f"Could not find pit JSON file for run_id {run_id}")
+        if local_pit is None:
+            LOGGER.info(f"No pit data found for run_id {run_id} - some race series don't have pit data")
         
         # Create and cache analyzer
-        analyzer = IMSADataAnalyzer(str(local_csv), str(local_pit))
+        pit_filepath = str(local_pit) if local_pit is not None else None
+        analyzer = IMSADataAnalyzer(str(local_csv), pit_filepath)
         ANALYZER_CACHE[run_id] = analyzer
         
         LOGGER.info("Successfully cached analyzer for %s", run_id)
@@ -352,17 +354,20 @@ def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
     """Handle analysis requests with common logic for both HTTP and Pub/Sub formats."""
     try:
         payload = parse_request_payload(request)
-        validate_required_fields(payload, ["run_id", "csv_path", "pit_json_path"])
+        validate_required_fields(payload, ["run_id", "csv_path"])
         
         run_id = payload["run_id"]
         csv_uri = payload["csv_path"]
-        pit_uri = payload["pit_json_path"]
+        pit_uri = payload.get("pit_json_path")  # Optional field
         
         # Additional validation for URI values
         if not csv_uri or not isinstance(csv_uri, str) or not csv_uri.strip():
             raise ValueError("csv_path must be a non-empty string")
-        if not pit_uri or not isinstance(pit_uri, str) or not pit_uri.strip():
-            raise ValueError("pit_json_path must be a non-empty string")
+        # pit_uri is optional - some race series don't have pit data
+        if pit_uri is not None and not isinstance(pit_uri, str):
+            raise ValueError("pit_json_path must be a string or None")
+        if pit_uri is not None and not pit_uri.strip():
+            raise ValueError("pit_json_path must be a non-empty string if provided")
         
     except ValueError as e:
         LOGGER.error(f"Request validation failed: {e}")
@@ -375,17 +380,21 @@ def _handle_analysis_request(request, analysis_type: AnalysisType) -> Response:
         tmp_path = pathlib.Path(tmpdir)
         try:
             local_csv = tmp_path / pathlib.Path(csv_uri).name
-            local_pit = tmp_path / pathlib.Path(pit_uri).name
+            local_pit = None
+            if pit_uri and pit_uri.strip():
+                local_pit = tmp_path / pathlib.Path(pit_uri).name
         except (TypeError, ValueError) as e:
             raise ValueError(f"Invalid file paths provided: csv_path='{csv_uri}', pit_json_path='{pit_uri}'") from e
 
         try:
             # Download inputs
             _download_blob(csv_uri, local_csv)
-            _download_blob(pit_uri, local_pit)
+            if local_pit is not None:
+                _download_blob(pit_uri, local_pit)
 
             # Create analyzer and cache it for future tool calls
-            analyzer = IMSADataAnalyzer(str(local_csv), str(local_pit))
+            pit_filepath = str(local_pit) if local_pit is not None else None
+            analyzer = IMSADataAnalyzer(str(local_csv), pit_filepath)
             ANALYZER_CACHE[run_id] = analyzer
             LOGGER.info("Cached analyzer for run_id: %s", run_id)
             

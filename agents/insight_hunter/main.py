@@ -420,6 +420,16 @@ def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "service": "insight_hunter"}), 200
 
+@app.route("/usage")
+def get_token_usage():
+    """Get token usage statistics for this agent."""
+    try:
+        usage_data = ai_helpers.get_usage_summary()
+        return jsonify(usage_data), 200
+    except Exception as e:
+        LOGGER.error(f"Failed to get usage data: {e}")
+        return jsonify({"error": str(e)}), 500
+
 # ----------------------------------------------------------------------------
 # Autonomous Investigation Workflow (Phase 2)
 # ----------------------------------------------------------------------------
@@ -604,5 +614,4 @@ if __name__ == "__main__":
     except Exception as e:
         LOGGER.warning(f"Failed to register with Tool Registry: {e}")
     
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)), debug=True)

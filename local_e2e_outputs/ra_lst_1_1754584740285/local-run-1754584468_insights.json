@@ -1,0 +1,22 @@
+{
+  "manufacturer_pace_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Porsche",
+      "average_value": "+92.802",
+      "delta_from_field_avg": "+0.000"
+    }
+  ],
+  "manufacturer_tire_wear_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Porsche",
+      "average_value": "0.0044",
+      "delta_from_field_avg": "+0.0000"
+    }
+  ],
+  "manufacturer_pit_cycle_ranking": [],
+  "car_untapped_potential_ranking": [],
+  "driver_traffic_meister_ranking": [],
+  "individual_outliers": []
+}

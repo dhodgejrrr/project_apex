@@ -1,0 +1,132 @@
+{
+  "visualizer": {
+    "_calls": [
+      {
+        "completion_tokens": 67,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 832,
+        "total_tokens": 1035
+      },
+      {
+        "completion_tokens": 69,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 829,
+        "total_tokens": 1344
+      },
+      {
+        "completion_tokens": 71,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 827,
+        "total_tokens": 1174
+      }
+    ],
+    "_overall": {
+      "completion_tokens": 207,
+      "estimated_cost_usd": 0.001264,
+      "prompt_tokens": 2488,
+      "total_tokens": 3553
+    },
+    "gemini-2.5-flash": {
+      "completion_tokens": 207,
+      "estimated_cost_usd": 0.001264,
+      "prompt_tokens": 2488,
+      "total_tokens": 3553
+    }
+  },
+  "scribe": {
+    "_calls": [
+      {
+        "completion_tokens": 805,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 260969,
+        "total_tokens": 264195
+      }
+    ],
+    "_overall": {
+      "completion_tokens": 805,
+      "estimated_cost_usd": 0.080303,
+      "prompt_tokens": 260969,
+      "total_tokens": 264195
+    },
+    "gemini-2.5-flash": {
+      "completion_tokens": 805,
+      "estimated_cost_usd": 0.080303,
+      "prompt_tokens": 260969,
+      "total_tokens": 264195
+    }
+  },
+  "publicist": {
+    "_calls": [
+      {
+        "completion_tokens": 781,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 255780,
+        "total_tokens": 262132
+      },
+      {
+        "completion_tokens": 939,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 2926,
+        "total_tokens": 9223
+      },
+      {
+        "completion_tokens": 826,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 257356,
+        "total_tokens": 261389
+      },
+      {
+        "completion_tokens": 1156,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 3036,
+        "total_tokens": 8478
+      },
+      {
+        "completion_tokens": 680,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 259434,
+        "total_tokens": 263294
+      },
+      {
+        "completion_tokens": 1617,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 2642,
+        "total_tokens": 9888
+      }
+    ],
+    "_overall": {
+      "completion_tokens": 5999,
+      "estimated_cost_usd": 0.24935,
+      "prompt_tokens": 781174,
+      "total_tokens": 814404
+    },
+    "gemini-2.5-flash": {
+      "completion_tokens": 5999,
+      "estimated_cost_usd": 0.24935,
+      "prompt_tokens": 781174,
+      "total_tokens": 814404
+    }
+  },
+  "arbiter": {
+    "_calls": [
+      {
+        "completion_tokens": 206,
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 6005,
+        "total_tokens": 7452
+      }
+    ],
+    "_overall": {
+      "completion_tokens": 206,
+      "estimated_cost_usd": 0.002316,
+      "prompt_tokens": 6005,
+      "total_tokens": 7452
+    },
+    "gemini-2.5-flash": {
+      "completion_tokens": 206,
+      "estimated_cost_usd": 0.002316,
+      "prompt_tokens": 6005,
+      "total_tokens": 7452
+    }
+  }
+}

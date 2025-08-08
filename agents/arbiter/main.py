@@ -95,6 +95,17 @@ def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "service": "arbiter"}), 200
 
+
+@app.route("/usage")
+def get_token_usage():
+    """Get token usage statistics."""
+    try:
+        usage_data = ai_helpers.get_usage_summary()
+        return jsonify(usage_data), 200
+    except Exception as e:
+        LOGGER.error(f"Failed to get token usage: {e}")
+        return jsonify({"error": "Failed to retrieve token usage"}), 500
+
 @app.route("/tools/capabilities", methods=["GET"])
 def get_tool_capabilities():
     """Return information about available coordination tools."""

@@ -1,0 +1,235 @@
+{
+  "manufacturer_pace_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Lamborghini",
+      "average_value": "+140.569",
+      "delta_from_field_avg": "+0.000"
+    }
+  ],
+  "manufacturer_tire_wear_ranking": [
+    {
+      "rank": 1,
+      "manufacturer": "Lamborghini",
+      "average_value": "0.0915",
+      "delta_from_field_avg": "+0.0000"
+    }
+  ],
+  "manufacturer_pit_cycle_ranking": [
+    {
+      "rank": 1,
+      "team": "Flying Lizard Motorsports",
+      "average_value": "+148.543",
+      "delta_from_field_avg": "-52.534"
+    },
+    {
+      "rank": 2,
+      "team": "Alliance Racing",
+      "average_value": "+177.528",
+      "delta_from_field_avg": "-23.549"
+    },
+    {
+      "rank": 3,
+      "team": "World Speed",
+      "average_value": "+178.204",
+      "delta_from_field_avg": "-22.872"
+    },
+    {
+      "rank": 4,
+      "team": "MLT Motorsports",
+      "average_value": "+180.906",
+      "delta_from_field_avg": "-20.171"
+    },
+    {
+      "rank": 5,
+      "team": "Wayne Taylor Racing",
+      "average_value": "+182.003",
+      "delta_from_field_avg": "-19.073"
+    },
+    {
+      "rank": 6,
+      "team": "ANSA MOTORSPORTS",
+      "average_value": "+190.260",
+      "delta_from_field_avg": "-10.816"
+    },
+    {
+      "rank": 7,
+      "team": "Forte Racing",
+      "average_value": "+190.331",
+      "delta_from_field_avg": "-10.745"
+    },
+    {
+      "rank": 8,
+      "team": "TR3 Racing",
+      "average_value": "+210.147",
+      "delta_from_field_avg": "+9.070"
+    },
+    {
+      "rank": 9,
+      "team": "Forty7 Motorsports",
+      "average_value": "+217.090",
+      "delta_from_field_avg": "+16.014"
+    },
+    {
+      "rank": 10,
+      "team": "Precision Performance Motorsports",
+      "average_value": "+222.931",
+      "delta_from_field_avg": "+21.854"
+    },
+    {
+      "rank": 11,
+      "team": "RAFA Racing",
+      "average_value": "+233.127",
+      "delta_from_field_avg": "+32.051"
+    },
+    {
+      "rank": 12,
+      "team": "One Motorsports",
+      "average_value": "+235.153",
+      "delta_from_field_avg": "+34.076"
+    },
+    {
+      "rank": 13,
+      "team": "Kaizen Autosport",
+      "average_value": "+247.772",
+      "delta_from_field_avg": "+46.695"
+    }
+  ],
+  "car_untapped_potential_ranking": [
+    {
+      "rank": 1,
+      "car_number": "41",
+      "driver_name": "Paul Nemschoff",
+      "time_left_on_track": "+2.865s"
+    },
+    {
+      "rank": 2,
+      "car_number": "14",
+      "driver_name": "Andy Lee",
+      "time_left_on_track": "+2.107s"
+    },
+    {
+      "rank": 3,
+      "car_number": "65",
+      "driver_name": "Ray Shahi",
+      "time_left_on_track": "+0.743s"
+    },
+    {
+      "rank": 4,
+      "car_number": "26",
+      "driver_name": "Avery Towns",
+      "time_left_on_track": "+0.560s"
+    },
+    {
+      "rank": 5,
+      "car_number": "46",
+      "driver_name": "Sebastian Carazo",
+      "time_left_on_track": "+0.489s"
+    },
+    {
+      "rank": 6,
+      "car_number": "88",
+      "driver_name": "Mo Dadkhah",
+      "time_left_on_track": "+0.388s"
+    },
+    {
+      "rank": 7,
+      "car_number": "4",
+      "driver_name": "Colin Queen",
+      "time_left_on_track": "+0.284s"
+    },
+    {
+      "rank": 8,
+      "car_number": "66",
+      "driver_name": "Christopher Tasca",
+      "time_left_on_track": "+0.268s"
+    },
+    {
+      "rank": 9,
+      "car_number": "28",
+      "driver_name": "Ernie Francis",
+      "time_left_on_track": "+0.262s"
+    },
+    {
+      "rank": 10,
+      "car_number": "44",
+      "driver_name": "Wyatt Foster",
+      "time_left_on_track": "+0.261s"
+    },
+    {
+      "rank": 11,
+      "car_number": "11",
+      "driver_name": "Darius Trinka",
+      "time_left_on_track": "+0.228s"
+    },
+    {
+      "rank": 12,
+      "car_number": "2",
+      "driver_name": "Jem Hepworth",
+      "time_left_on_track": "+0.218s"
+    },
+    {
+      "rank": 13,
+      "car_number": "99",
+      "driver_name": "Rocky T Bolduc",
+      "time_left_on_track": "+0.213s"
+    },
+    {
+      "rank": 14,
+      "car_number": "70",
+      "driver_name": "Dean Neuls",
+      "time_left_on_track": "+0.199s"
+    },
+    {
+      "rank": 15,
+      "car_number": "12",
+      "driver_name": "Anthony Bullock",
+      "time_left_on_track": "+0.196s"
+    },
+    {
+      "rank": 16,
+      "car_number": "22",
+      "driver_name": "Scott Huffaker",
+      "time_left_on_track": "+0.193s"
+    },
+    {
+      "rank": 17,
+      "car_number": "29",
+      "driver_name": "Will Bamber",
+      "time_left_on_track": "+0.177s"
+    },
+    {
+      "rank": 18,
+      "car_number": "57",
+      "driver_name": "Nick Groat",
+      "time_left_on_track": "+0.169s"
+    },
+    {
+      "rank": 19,
+      "car_number": "48",
+      "driver_name": "David Staab",
+      "time_left_on_track": "+0.166s"
+    },
+    {
+      "rank": 20,
+      "car_number": "68",
+      "driver_name": "Kiko Porto",
+      "time_left_on_track": "+0.124s"
+    },
+    {
+      "rank": 21,
+      "car_number": "30",
+      "driver_name": "Nicky Hays",
+      "time_left_on_track": "+0.106s"
+    }
+  ],
+  "driver_traffic_meister_ranking": [],
+  "individual_outliers": [
+    {
+      "category": "Driver Performance",
+      "type": "Largest Teammate Pace Gap",
+      "car_number": "46",
+      "details": "Car #46 has the largest pace difference between its drivers, with an average gap of 22.048s in best lap times."
+    }
+  ]
+}

@@ -229,9 +229,13 @@ def generate_all_visuals(analysis: Dict[str, Any], insights: Dict[str, List[Dict
         plot_stint_pace_falloff(analysis, car_num, stint_path)
         paths.append(stint_path)
 
+    # Only include paths for files that actually exist
     for p in paths:
-        caption = _generate_caption(p, insights)
-        outputs.append((p, caption))
+        if p.exists():
+            caption = _generate_caption(p, insights)
+            outputs.append((p, caption))
+        else:
+            LOGGER.warning(f"Plot file not created: {p.name}")
     return outputs
 
 # ---------------------------------------------------------------------------
@@ -296,6 +300,13 @@ def plot_pit_times_tool():
             plot_file = tmp / "pit_stationary_times.png"
             plot_pit_stationary_times(analysis_data, plot_file)
             
+            # Check if plot was actually created
+            if not plot_file.exists():
+                return jsonify({
+                    "error": "No pit stationary time data available to plot",
+                    "chart_type": "pit_times"
+                }), 200
+            
             # Upload to GCS
             run_id = analysis_path.split('/')[3]
             dest_blob = f"{run_id}/visuals/pit_stationary_times.png"
@@ -334,6 +345,13 @@ def plot_consistency_tool():
             # Generate plot
             plot_file = tmp / "driver_consistency.png"
             plot_driver_consistency(analysis_data, plot_file)
+            
+            # Check if plot was actually created
+            if not plot_file.exists():
+                return jsonify({
+                    "error": "No consistency data available to plot",
+                    "chart_type": "consistency"
+                }), 200
             
             # Upload to GCS
             run_id = analysis_path.split('/')[3]
@@ -374,6 +392,14 @@ def plot_stint_falloff_tool():
             # Generate plot
             plot_file = tmp / f"stint_pace_car_{car_number}.png"
             plot_stint_pace_falloff(analysis_data, str(car_number), plot_file)
+            
+            # Check if plot was actually created
+            if not plot_file.exists():
+                return jsonify({
+                    "error": f"No stint data available for car {car_number} to plot",
+                    "chart_type": "stint_falloff",
+                    "car_number": car_number
+                }), 200
             
             # Upload to GCS
             run_id = analysis_path.split('/')[3]
@@ -470,6 +496,17 @@ def handle_request():
 def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "service": "visualizer"}), 200
+
+
+@app.route("/usage")
+def get_token_usage():
+    """Get token usage statistics."""
+    try:
+        usage_data = ai_helpers.get_usage_summary()
+        return jsonify(usage_data), 200
+    except Exception as e:
+        LOGGER.error(f"Failed to get token usage: {e}")
+        return jsonify({"error": "Failed to retrieve token usage"}), 500
 
 
 if __name__ == "__main__":

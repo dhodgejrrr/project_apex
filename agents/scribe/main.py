@@ -193,6 +193,17 @@ def health_check():
     return jsonify({"status": "healthy", "service": "scribe"}), 200
 
 
+@app.route("/usage")
+def get_token_usage():
+    """Get token usage statistics."""
+    try:
+        usage_data = ai_helpers.get_usage_summary()
+        return jsonify(usage_data), 200
+    except Exception as e:
+        LOGGER.error(f"Failed to get token usage: {e}")
+        return jsonify({"error": "Failed to retrieve token usage"}), 500
+
+
 if __name__ == "__main__":
     # Register with Tool Registry at startup
     try:
