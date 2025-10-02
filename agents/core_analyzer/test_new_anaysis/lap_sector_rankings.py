@@ -4,8 +4,8 @@ import numpy as np
 
 class RaceReportGenerator:
     """
-    Processes race timing data to generate a report with dynamically calculated,
-    data-driven license adjustment factors for performance handicap ranking.
+    Processes race timing data to generate a report with a globally calculated,
+    data-driven license adjustment factor for performance handicap ranking.
     """
     STINT_LAP_PENALTY = 0.0001
 
@@ -14,7 +14,7 @@ class RaceReportGenerator:
         self.raw_data = None
         self.driver_stats = []
         self.final_report = {}
-        # This will hold our dynamically generated license factors
+        # This will hold our globally generated license factors
         self.dynamic_license_factors = {}
 
     def _load_data(self):
@@ -132,42 +132,34 @@ class RaceReportGenerator:
 
     def _calculate_dynamic_license_factors(self):
         """
-        NEW: Calculates license adjustment factors based on the actual performance
-        data from the session.
+        Calculates a single, global adjustment factor for each license class
+        based on the overall performance data from the session.
         """
         df = pd.DataFrame(self.driver_stats)
-        # Extract the best 5 lap average for each driver to use as the pace metric
         df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
-        df = df.dropna(subset=['pace', 'vehicle', 'license'])
+        df = df.dropna(subset=['pace', 'license'])
 
         if df.empty:
             print("Not enough data to calculate dynamic license factors.")
             return
 
-        # --- Step 1: Create Global Fallback ---
-        global_silver_pace = df[df['license'] == 'Silver']['pace'].mean()
-        if pd.isna(global_silver_pace):
-            print("Warning: No Silver drivers found in data. Cannot create dynamic weights.")
-            return # Abort if no baseline is possible
+        # --- Step 1: Calculate the Global Silver Baseline Pace ---
+        silver_drivers = df[df['license'] == 'Silver']
+        if silver_drivers.empty:
+            print("Warning: No Silver drivers found. Cannot create dynamic weights.")
+            return
+        global_silver_pace = silver_drivers['pace'].mean()
 
-        # --- Step 2: Calculate Vehicle-Specific Averages ---
-        vehicle_license_pace = df.groupby(['vehicle', 'license'])['pace'].mean().unstack()
+        # --- Step 2: Calculate Global Average Pace for All Licenses ---
+        license_avg_paces = df.groupby('license')['pace'].mean()
 
-        # --- Step 3: Generate Factors for Each Vehicle ---
-        for vehicle, row in vehicle_license_pace.iterrows():
-            # Use vehicle-specific Silver pace, or the global fallback
-            baseline = row.get('Silver', global_silver_pace)
-            if pd.isna(baseline): baseline = global_silver_pace
-
-            self.dynamic_license_factors[vehicle] = {}
-            for license_class, avg_pace in row.items():
-                if pd.notna(avg_pace):
-                    deviation = (avg_pace - baseline) / baseline
-                    # The factor is the inverse of the deviation
-                    self.dynamic_license_factors[vehicle][license_class] = 1.0 - deviation
+        # --- Step 3: Generate a Single Global Factor for Each License ---
+        for license_class, avg_pace in license_avg_paces.items():
+            deviation = (avg_pace - global_silver_pace) / global_silver_pace
+            self.dynamic_license_factors[license_class] = 1.0 - deviation
         
-        print("Successfully generated dynamic license adjustment factors.")
-        # print(json.dumps(self.dynamic_license_factors, indent=2)) # Uncomment for debugging
+        print("Successfully generated global dynamic license adjustment factors.")
+        print(json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_stint_adjusted_scores(self):
         """Adds new stint-adjusted scores to each driver's stats."""
@@ -181,16 +173,14 @@ class RaceReportGenerator:
         print("Generated new stint-adjusted scores.")
 
     def _add_license_adjusted_scores(self):
-        """Adds new license-adjusted scores using the dynamic factors."""
+        """Adds new license-adjusted scores using the global dynamic factors."""
         if not self.dynamic_license_factors:
             print("Skipping license adjustment; no dynamic factors were calculated.")
             return
 
         for driver in self.driver_stats:
-            vehicle = driver['vehicle']
             license = driver['license']
-            # Get the dynamic factor for this driver's vehicle and license
-            factor = self.dynamic_license_factors.get(vehicle, {}).get(license, 1.0)
+            factor = self.dynamic_license_factors.get(license, 1.0) # Simplified lookup
 
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
@@ -198,7 +188,7 @@ class RaceReportGenerator:
                 stats['license_adjusted_fastest'] = stats['fastest'] * factor
                 stats['license_adjusted_best_3_avg'] = stats['best_3_avg'] * factor
                 stats['license_adjusted_best_5_avg'] = stats['best_5_avg'] * factor
-        print("Generated new license-adjusted scores using dynamic factors.")
+        print("Generated new license-adjusted scores using global dynamic factors.")
 
     def _generate_rankings(self):
         """Generates a comprehensive set of rankings for all calculated metrics."""
@@ -238,13 +228,13 @@ class RaceReportGenerator:
         self._load_data()
         laps_df = self._process_data()
         self._calculate_all_driver_stats(laps_df)
-        self._calculate_dynamic_license_factors() # New step
+        self._calculate_dynamic_license_factors()
         self._add_stint_adjusted_scores()
         self._add_license_adjusted_scores()
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings(),
-            'dynamic_license_factors_used': self.dynamic_license_factors # Added for transparency
+            'dynamic_license_factors_used': self.dynamic_license_factors
         }
         print("Final report has been generated.")
         return self.final_report
@@ -261,7 +251,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v11.json"
+    OUTPUT_FILE = "race_report_output_v12.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
