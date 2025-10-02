@@ -5,13 +5,15 @@ import numpy as np
 class RaceReportGenerator:
     """
     Processes race timing data to generate a report with dynamically calculated,
-    outlier-filtered license adjustment factors for performance handicap ranking.
+    percentile-based license adjustment factors for performance handicap ranking.
     """
     STINT_LAP_PENALTY = 0.0001
-    # This factor controls the aggressiveness of the outlier filter.
-    # 1.5 is the standard for identifying mild outliers. Increase to 2.0 or 3.0
-    # to be less aggressive and include more drivers in the calculation.
-    OUTLIER_FILTER_THRESHOLD = 1.25
+    # This factor defines the "competitive group". 0.75 means we will calculate
+    # the average pace based on the fastest 75% of drivers in each license class,
+    # effectively ignoring the slowest 25%.
+    # Lower this value (e.g., 0.6) to be more exclusive and focus on the elite.
+    # Raise it (e.g., 0.9) to be more inclusive.
+    COMPETITIVE_PACE_PERCENTILE = 0.75
 
     def __init__(self, filepath):
         self.filepath = filepath
@@ -135,8 +137,8 @@ class RaceReportGenerator:
 
     def _calculate_dynamic_license_factors(self):
         """
-        Calculates global license factors after filtering out performance outliers
-        from each license class to create a more representative average.
+        Calculates global license factors based on the average pace of the
+        'competitive group' within each license class.
         """
         df = pd.DataFrame(self.driver_stats)
         df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
@@ -146,47 +148,33 @@ class RaceReportGenerator:
             print("Not enough data to calculate dynamic license factors.")
             return
 
-        # --- Step 1: Filter Outliers from Each License Group ---
-        filtered_drivers = []
+        # --- Step 1: Calculate Pace for the Competitive Group in Each Class ---
+        competitive_paces = {}
         for license_class in df['license'].unique():
             class_df = df[df['license'] == license_class]
             
-            # Don't filter small groups, as the stats can be unstable
-            if len(class_df) < 5:
-                filtered_drivers.append(class_df)
-                continue
-
-            Q1 = class_df['pace'].quantile(0.25)
-            Q3 = class_df['pace'].quantile(0.75)
-            IQR = Q3 - Q1
-            # We only care about slow outliers, so we only define an upper bound
-            upper_bound = Q3 + self.OUTLIER_FILTER_THRESHOLD * IQR
+            # Find the pace cutoff for the competitive group
+            cutoff_pace = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
             
-            # Keep drivers who are within the competitive range
-            non_outliers = class_df[class_df['pace'] <= upper_bound]
-            filtered_drivers.append(non_outliers)
+            # Filter to only include drivers at or faster than the cutoff
+            competitive_group = class_df[class_df['pace'] <= cutoff_pace]
             
-            num_excluded = len(class_df) - len(non_outliers)
-            if num_excluded > 0:
-                print(f"Filtered {num_excluded} outlier(s) from the '{license_class}' class.")
+            if not competitive_group.empty:
+                competitive_paces[license_class] = competitive_group['pace'].mean()
+                print(f"'{license_class}' competitive pace ({self.COMPETITIVE_PACE_PERCENTILE*100} percentile): {competitive_paces[license_class]:.3f}s from {len(competitive_group)} drivers.")
 
-        filtered_df = pd.concat(filtered_drivers)
-
-        # --- Step 2: Calculate Baselines Using the Filtered Data ---
-        silver_drivers = filtered_df[filtered_df['license'] == 'Silver']
-        if silver_drivers.empty:
-            print("Warning: No Silver drivers remain after filtering. Cannot create dynamic weights.")
+        # --- Step 2: Establish the Silver Baseline from its Competitive Group ---
+        if 'Silver' not in competitive_paces:
+            print("Warning: No competitive Silver drivers found. Cannot create dynamic weights.")
             return
-        global_silver_pace = silver_drivers['pace'].mean()
-
-        license_avg_paces = filtered_df.groupby('license')['pace'].mean()
+        global_silver_pace = competitive_paces['Silver']
 
         # --- Step 3: Generate Global Factors ---
-        for license_class, avg_pace in license_avg_paces.items():
+        for license_class, avg_pace in competitive_paces.items():
             deviation = (avg_pace - global_silver_pace) / global_silver_pace
             self.dynamic_license_factors[license_class] = 1.0 - deviation
         
-        print("Successfully generated global dynamic license adjustment factors from filtered data.")
+        print("\nSuccessfully generated global dynamic license adjustment factors from competitive groups.")
         print(json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_stint_adjusted_scores(self):
@@ -279,7 +267,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v14.json"
+    OUTPUT_FILE = "race_report_output_v15.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
