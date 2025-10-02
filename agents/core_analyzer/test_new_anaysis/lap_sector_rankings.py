@@ -4,7 +4,7 @@ import pandas as pd
 class RaceReportGenerator:
     """
     Processes race timing data from a JSON file to generate a detailed
-    performance report and rankings for each driver.
+    performance report and rankings for each driver, including 3-lap and 5-lap averages.
     """
     def __init__(self, filepath):
         """
@@ -67,7 +67,6 @@ class RaceReportGenerator:
             }
 
             for lap in participant.get('laps', []):
-                # Process only valid laps with complete data
                 if lap.get('is_valid') and 'sector_times' in lap and len(lap['sector_times']) >= 3:
                     driver_details = driver_map.get(lap.get('driver_number'))
                     if driver_details:
@@ -94,20 +93,38 @@ class RaceReportGenerator:
     @staticmethod
     def _calculate_stats(series):
         """
-        Calculates fastest time, average of the best 5 times, and the deviation
-        between them for a given series of times.
+        Calculates fastest time, averages of the best 3 and 5 times, and their
+        respective deviations from the fastest time.
         """
         sorted_times = sorted(series.dropna())
         if not sorted_times:
-            return {'fastest': None, 'best_5_avg': None, 'deviation': None}
+            return {
+                'fastest': None,
+                'best_3_avg': None, 'best_5_avg': None,
+                'deviation_3_lap': None, 'deviation_5_lap': None
+            }
 
         fastest = sorted_times[0]
-        num_laps_for_avg = min(5, len(sorted_times))
-        best_laps = sorted_times[:num_laps_for_avg]
-        best_avg = sum(best_laps) / len(best_laps) if best_laps else None
-        deviation = best_avg - fastest if best_avg is not None else None
 
-        return {'fastest': fastest, 'best_5_avg': best_avg, 'deviation': deviation}
+        # Calculate 3-lap average and deviation
+        num_laps_for_3_avg = min(3, len(sorted_times))
+        best_3_laps = sorted_times[:num_laps_for_3_avg]
+        best_3_avg = sum(best_3_laps) / len(best_3_laps) if best_3_laps else None
+        deviation_3_lap = best_3_avg - fastest if best_3_avg is not None else None
+
+        # Calculate 5-lap average and deviation
+        num_laps_for_5_avg = min(5, len(sorted_times))
+        best_5_laps = sorted_times[:num_laps_for_5_avg]
+        best_5_avg = sum(best_5_laps) / len(best_5_laps) if best_5_laps else None
+        deviation_5_lap = best_5_avg - fastest if best_5_avg is not None else None
+
+        return {
+            'fastest': fastest,
+            'best_3_avg': best_3_avg,
+            'best_5_avg': best_5_avg,
+            'deviation_3_lap': deviation_3_lap,
+            'deviation_5_lap': deviation_5_lap
+        }
 
     def _calculate_all_driver_stats(self, laps_df):
         """
@@ -152,7 +169,10 @@ class RaceReportGenerator:
                 'lap': 'lap_times', 's1': 'sector_1_times',
                 's2': 'sector_2_times', 's3': 'sector_3_times'
             }
-            for metric in ['best_5_avg', 'fastest', 'deviation']:
+            # Expanded list of metrics to rank by
+            metrics_to_rank = ['fastest', 'best_3_avg', 'best_5_avg', 'deviation_3_lap', 'deviation_5_lap']
+            
+            for metric in metrics_to_rank:
                 for name, key in time_metrics.items():
                     rankings[f'by_{metric}_{name}'] = create_ranking(stats, key, metric)
             return rankings
@@ -210,7 +230,7 @@ if __name__ == "__main__":
     # Replace 'race_data.json' with the actual name of your input file.
     INPUT_FILE = "test_2025_data.json"
     # The name of the output file that will be created.
-    OUTPUT_FILE = "race_report_output.json"
+    OUTPUT_FILE = "race_report_output_v2.json"
 
     # --- EXECUTION ---
     try:
