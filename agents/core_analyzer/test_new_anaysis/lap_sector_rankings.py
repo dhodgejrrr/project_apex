@@ -5,14 +5,9 @@ import numpy as np
 class RaceReportGenerator:
     """
     Processes race timing data to generate a report with dynamically calculated,
-    percentile-based license adjustment factors for performance handicap ranking.
+    percentile-based license adjustment factors, restricted to valid license classes.
     """
     STINT_LAP_PENALTY = 0.0001
-    # This factor defines the "competitive group". 0.75 means we will calculate
-    # the average pace based on the fastest 75% of drivers in each license class,
-    # effectively ignoring the slowest 25%.
-    # Lower this value (e.g., 0.6) to be more exclusive and focus on the elite.
-    # Raise it (e.g., 0.9) to be more inclusive.
     COMPETITIVE_PACE_PERCENTILE = 0.75
 
     def __init__(self, filepath):
@@ -137,39 +132,37 @@ class RaceReportGenerator:
 
     def _calculate_dynamic_license_factors(self):
         """
-        Calculates global license factors based on the average pace of the
-        'competitive group' within each license class.
+        Calculates global license factors based on the competitive group within
+        only the valid, official license classes.
         """
         df = pd.DataFrame(self.driver_stats)
         df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
         df = df.dropna(subset=['pace', 'license'])
 
+        # --- NEW: Filter to only include official license classes for this calculation ---
+        valid_licenses = ['Bronze', 'Silver', 'Gold', 'Platinum']
+        df = df[df['license'].isin(valid_licenses)]
+        # --------------------------------------------------------------------------------
+
         if df.empty:
-            print("Not enough data to calculate dynamic license factors.")
+            print("Not enough data from valid license classes to calculate dynamic factors.")
             return
 
-        # --- Step 1: Calculate Pace for the Competitive Group in Each Class ---
         competitive_paces = {}
         for license_class in df['license'].unique():
             class_df = df[df['license'] == license_class]
-            
-            # Find the pace cutoff for the competitive group
             cutoff_pace = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
-            
-            # Filter to only include drivers at or faster than the cutoff
             competitive_group = class_df[class_df['pace'] <= cutoff_pace]
             
             if not competitive_group.empty:
                 competitive_paces[license_class] = competitive_group['pace'].mean()
                 print(f"'{license_class}' competitive pace ({self.COMPETITIVE_PACE_PERCENTILE*100} percentile): {competitive_paces[license_class]:.3f}s from {len(competitive_group)} drivers.")
 
-        # --- Step 2: Establish the Silver Baseline from its Competitive Group ---
         if 'Silver' not in competitive_paces:
             print("Warning: No competitive Silver drivers found. Cannot create dynamic weights.")
             return
         global_silver_pace = competitive_paces['Silver']
 
-        # --- Step 3: Generate Global Factors ---
         for license_class, avg_pace in competitive_paces.items():
             deviation = (avg_pace - global_silver_pace) / global_silver_pace
             self.dynamic_license_factors[license_class] = 1.0 - deviation
@@ -196,6 +189,7 @@ class RaceReportGenerator:
 
         for driver in self.driver_stats:
             license = driver['license']
+            # .get() will safely return the default (1.0) for licenses not in our dict (like "N/A")
             factor = self.dynamic_license_factors.get(license, 1.0)
 
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
@@ -267,7 +261,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v15.json"
+    OUTPUT_FILE = "race_report_output_v16.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
