@@ -1,32 +1,21 @@
 import json
 import pandas as pd
+import numpy as np
 
 class RaceReportGenerator:
     """
-    Processes race timing data to generate a detailed performance report, including
-    pure-time, stint-adjusted, and new license-adjusted rankings.
+    Processes race timing data to generate a report with dynamically calculated,
+    data-driven license adjustment factors for performance handicap ranking.
     """
-    # --- CONFIGURABLE ADJUSTMENT FACTORS ---
-    # Penalty for each lap into a stint (adds a small time penalty for later laps)
-    STINT_LAP_PENALTY = 0.0002
-
-    # Multiplier for raw times based on driver license.
-    # < 1.0 gives a time credit (rewards strong performance for the class).
-    # > 1.0 gives a time handicap (normalizes against expected performance).
-    LICENSE_ADJUSTMENT_FACTORS = {
-        'Platinum': 1.0065,  # 2% time handicap
-        'Gold':     1.0045,  # 1% time handicap
-        'Silver':   1.0,   # Baseline
-        'Bronze':   0.9915   # 1% time credit
-    }
-    # Default factor for any unlisted or missing license values.
-    DEFAULT_LICENSE_FACTOR = 1.0
+    STINT_LAP_PENALTY = 0.0001
 
     def __init__(self, filepath):
         self.filepath = filepath
         self.raw_data = None
         self.driver_stats = []
         self.final_report = {}
+        # This will hold our dynamically generated license factors
+        self.dynamic_license_factors = {}
 
     def _load_data(self):
         """Loads the race data from the specified JSON file."""
@@ -141,29 +130,76 @@ class RaceReportGenerator:
             })
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
 
+    def _calculate_dynamic_license_factors(self):
+        """
+        NEW: Calculates license adjustment factors based on the actual performance
+        data from the session.
+        """
+        df = pd.DataFrame(self.driver_stats)
+        # Extract the best 5 lap average for each driver to use as the pace metric
+        df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
+        df = df.dropna(subset=['pace', 'vehicle', 'license'])
+
+        if df.empty:
+            print("Not enough data to calculate dynamic license factors.")
+            return
+
+        # --- Step 1: Create Global Fallback ---
+        global_silver_pace = df[df['license'] == 'Silver']['pace'].mean()
+        if pd.isna(global_silver_pace):
+            print("Warning: No Silver drivers found in data. Cannot create dynamic weights.")
+            return # Abort if no baseline is possible
+
+        # --- Step 2: Calculate Vehicle-Specific Averages ---
+        vehicle_license_pace = df.groupby(['vehicle', 'license'])['pace'].mean().unstack()
+
+        # --- Step 3: Generate Factors for Each Vehicle ---
+        for vehicle, row in vehicle_license_pace.iterrows():
+            # Use vehicle-specific Silver pace, or the global fallback
+            baseline = row.get('Silver', global_silver_pace)
+            if pd.isna(baseline): baseline = global_silver_pace
+
+            self.dynamic_license_factors[vehicle] = {}
+            for license_class, avg_pace in row.items():
+                if pd.notna(avg_pace):
+                    deviation = (avg_pace - baseline) / baseline
+                    # The factor is the inverse of the deviation
+                    self.dynamic_license_factors[vehicle][license_class] = 1.0 - deviation
+        
+        print("Successfully generated dynamic license adjustment factors.")
+        # print(json.dumps(self.dynamic_license_factors, indent=2)) # Uncomment for debugging
+
     def _add_stint_adjusted_scores(self):
         """Adds new stint-adjusted scores to each driver's stats."""
         for driver in self.driver_stats:
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
                 if not stats or 'fastest' not in stats: continue
-                stats['stint_adjusted_fastest'] = stats['fastest'] + (stats['fastest_stint_lap'] * self.STINT_LAP_PENALTY)
-                stats['stint_adjusted_best_3_avg'] = stats['best_3_avg'] + (stats['avg_stint_lap_for_best_3'] * self.STINT_LAP_PENALTY)
-                stats['stint_adjusted_best_5_avg'] = stats['best_5_avg'] + (stats['avg_stint_lap_for_best_5'] * self.STINT_LAP_PENALTY)
+                stats['stint_adjusted_fastest'] = stats['fastest'] + (stats.get('fastest_stint_lap', 0) * self.STINT_LAP_PENALTY)
+                stats['stint_adjusted_best_3_avg'] = stats['best_3_avg'] + (stats.get('avg_stint_lap_for_best_3', 0) * self.STINT_LAP_PENALTY)
+                stats['stint_adjusted_best_5_avg'] = stats['best_5_avg'] + (stats.get('avg_stint_lap_for_best_5', 0) * self.STINT_LAP_PENALTY)
         print("Generated new stint-adjusted scores.")
 
     def _add_license_adjusted_scores(self):
-        """Adds new license-adjusted scores to each driver's stats."""
+        """Adds new license-adjusted scores using the dynamic factors."""
+        if not self.dynamic_license_factors:
+            print("Skipping license adjustment; no dynamic factors were calculated.")
+            return
+
         for driver in self.driver_stats:
-            factor = self.LICENSE_ADJUSTMENT_FACTORS.get(driver['license'], self.DEFAULT_LICENSE_FACTOR)
+            vehicle = driver['vehicle']
+            license = driver['license']
+            # Get the dynamic factor for this driver's vehicle and license
+            factor = self.dynamic_license_factors.get(vehicle, {}).get(license, 1.0)
+
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
                 if not stats or 'fastest' not in stats: continue
                 stats['license_adjusted_fastest'] = stats['fastest'] * factor
                 stats['license_adjusted_best_3_avg'] = stats['best_3_avg'] * factor
                 stats['license_adjusted_best_5_avg'] = stats['best_5_avg'] * factor
-        print("Generated new license-adjusted scores.")
-    
+        print("Generated new license-adjusted scores using dynamic factors.")
+
     def _generate_rankings(self):
         """Generates a comprehensive set of rankings for all calculated metrics."""
         def create_ranking(stats, time_key, metric_key):
@@ -202,11 +238,13 @@ class RaceReportGenerator:
         self._load_data()
         laps_df = self._process_data()
         self._calculate_all_driver_stats(laps_df)
+        self._calculate_dynamic_license_factors() # New step
         self._add_stint_adjusted_scores()
-        self._add_license_adjusted_scores() # New step to add license scores
+        self._add_license_adjusted_scores()
         self.final_report = {
             'driver_performance': self.driver_stats,
-            'rankings': self._generate_rankings()
+            'rankings': self._generate_rankings(),
+            'dynamic_license_factors_used': self.dynamic_license_factors # Added for transparency
         }
         print("Final report has been generated.")
         return self.final_report
@@ -223,7 +261,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v10.json"
+    OUTPUT_FILE = "race_report_output_v11.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
