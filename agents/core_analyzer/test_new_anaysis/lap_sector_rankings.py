@@ -4,17 +4,12 @@ import numpy as np
 
 class RaceReportGenerator:
     """
-    Processes race timing data with an advanced handicap system that applies a
-    "Pace Leader Bonus" to classes with wide skill variations.
+    Processes race timing data with an advanced, multi-layered handicap system,
+    producing raw, stint-adjusted, license-adjusted, and combined rankings.
     """
-    STINT_LAP_PENALTY = 0.0002
+    STINT_LAP_PENALTY = 0.0003
     COMPETITIVE_PACE_PERCENTILE = 0.75
-
-    # --- NEW: Parameters to control the Pace Leader Bonus for Bronze drivers ---
-    # Defines what slice of the class are considered "Pace Leaders".
     PACE_LEADER_PERCENTILE = 0.25
-    # How heavily to weigh the Pace Leaders when creating the blended average.
-    # 0.7 means the final pace is 70% from the leaders and 30% from the pack.
     PACE_LEADER_WEIGHT = 0.7
 
     def __init__(self, filepath):
@@ -23,7 +18,6 @@ class RaceReportGenerator:
         self.driver_stats = []
         self.final_report = {}
         self.dynamic_license_factors = {}
-        self.handicap_strength_used = 0.5 # Fallback value
 
     def _load_data(self):
         """Loads the race data from the specified JSON file."""
@@ -154,35 +148,26 @@ class RaceReportGenerator:
             print("Not enough data to calculate dynamic license factors.")
             return
 
-        # --- Calculate Pace for each class ---
         class_paces = {}
         for license_class in valid_licenses:
             if license_class not in df['license'].unique(): continue
-
             class_df = df[df['license'] == license_class].copy()
             
-            # Use a simple competitive percentile for Pro classes (Silver, Gold, Plat)
             if license_class != 'Bronze':
                 cutoff = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
                 competitive_group = class_df[class_df['pace'] <= cutoff]
                 if not competitive_group.empty:
                     class_paces[license_class] = competitive_group['pace'].mean()
             else:
-                # --- SPECIAL LOGIC FOR BRONZE ---
-                # 1. Isolate the Pace Leaders
                 leader_cutoff = class_df['pace'].quantile(self.PACE_LEADER_PERCENTILE)
                 leaders = class_df[class_df['pace'] <= leader_cutoff]
-                
-                # 2. Isolate the rest of the competitive pack
                 competitive_cutoff = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
                 pack = class_df[(class_df['pace'] > leader_cutoff) & (class_df['pace'] <= competitive_cutoff)]
-                
                 if leaders.empty:
                     class_paces['Bronze'] = pack['pace'].mean() if not pack.empty else None
                 elif pack.empty:
                     class_paces['Bronze'] = leaders['pace'].mean()
                 else:
-                    # 3. Create the Blended Average
                     leader_avg = leaders['pace'].mean()
                     pack_avg = pack['pace'].mean()
                     blended_avg = (leader_avg * self.PACE_LEADER_WEIGHT) + (pack_avg * (1 - self.PACE_LEADER_WEIGHT))
@@ -195,11 +180,9 @@ class RaceReportGenerator:
 
         global_silver_pace = class_paces['Silver']
         
-        # --- Generate Factors from the (potentially blended) paces ---
         for license_class, avg_pace in class_paces.items():
             if avg_pace is None: continue
             deviation = (avg_pace - global_silver_pace) / global_silver_pace
-            # We revert to a simple 100% strength correction, as the blending now handles the nuance
             self.dynamic_license_factors[license_class] = 1.0 - deviation
         
         print("\nSuccessfully generated license adjustment factors with Pace Leader Bonus.")
@@ -225,7 +208,6 @@ class RaceReportGenerator:
         for driver in self.driver_stats:
             license = driver['license']
             factor = self.dynamic_license_factors.get(license, 1.0)
-
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
                 if not stats or 'fastest' not in stats: continue
@@ -233,6 +215,26 @@ class RaceReportGenerator:
                 stats['license_adjusted_best_3_avg'] = stats['best_3_avg'] * factor
                 stats['license_adjusted_best_5_avg'] = stats['best_5_avg'] * factor
         print("Generated new license-adjusted scores using global dynamic factors.")
+
+    def _add_combined_adjusted_scores(self):
+        """
+        NEW: Adds a final combined score adjusted for both stint and license.
+        """
+        if not self.dynamic_license_factors:
+            print("Skipping combined adjustment; no license factors available.")
+            return
+
+        for driver in self.driver_stats:
+            license = driver['license']
+            factor = self.dynamic_license_factors.get(license, 1.0)
+            for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
+                stats = driver[time_key]
+                if not stats or 'stint_adjusted_fastest' not in stats: continue
+                # Apply license factor to the already-calculated stint score
+                stats['combo_adjusted_fastest'] = stats['stint_adjusted_fastest'] * factor
+                stats['combo_adjusted_best_3_avg'] = stats['stint_adjusted_best_3_avg'] * factor
+                stats['combo_adjusted_best_5_avg'] = stats['stint_adjusted_best_5_avg'] * factor
+        print("Generated new combined stint+license adjusted scores.")
 
     def _generate_rankings(self):
         """Generates a comprehensive set of rankings for all calculated metrics."""
@@ -248,9 +250,15 @@ class RaceReportGenerator:
             time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}
             
             metrics_to_rank = [
+                # Group 1: Raw Performance
                 'fastest', 'best_3_avg', 'best_5_avg', 'deviation_3_lap', 'deviation_5_lap',
+                # Group 2: Stint-Adjusted Performance
                 'stint_adjusted_fastest', 'stint_adjusted_best_3_avg', 'stint_adjusted_best_5_avg',
+                # Group 3: License-Adjusted Performance
                 'license_adjusted_fastest', 'license_adjusted_best_3_avg', 'license_adjusted_best_5_avg',
+                # Group 4: NEW Combined Stint + License Adjusted Performance
+                'combo_adjusted_fastest', 'combo_adjusted_best_3_avg', 'combo_adjusted_best_5_avg',
+                # Group 5: Raw Stint Data
                 'fastest_stint_lap', 'avg_stint_lap_for_best_3', 'avg_stint_lap_for_best_5'
             ]
 
@@ -275,6 +283,7 @@ class RaceReportGenerator:
         self._calculate_dynamic_license_factors()
         self._add_stint_adjusted_scores()
         self._add_license_adjusted_scores()
+        self._add_combined_adjusted_scores() # New step in the workflow
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings(),
@@ -295,7 +304,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v19.json"
+    OUTPUT_FILE = "race_report_output_v21.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
