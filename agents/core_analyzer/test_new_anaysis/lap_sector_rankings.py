@@ -4,14 +4,18 @@ import numpy as np
 
 class RaceReportGenerator:
     """
-    Processes race timing data to generate a report with a fully dynamic handicap
-    system where the strength of the adjustment is derived from the performance
-    overlap between license classes.
+    Processes race timing data with an advanced handicap system that applies a
+    "Pace Leader Bonus" to classes with wide skill variations.
     """
     STINT_LAP_PENALTY = 0.0002
-    COMPETITIVE_PACE_PERCENTILE = 0.60
-    # --- NEW: Safe fallback value if the data is insufficient to derive a strength ---
-    DEFAULT_HANDICAP_STRENGTH = 0.5
+    COMPETITIVE_PACE_PERCENTILE = 0.75
+
+    # --- NEW: Parameters to control the Pace Leader Bonus for Bronze drivers ---
+    # Defines what slice of the class are considered "Pace Leaders".
+    PACE_LEADER_PERCENTILE = 0.25
+    # How heavily to weigh the Pace Leaders when creating the blended average.
+    # 0.7 means the final pace is 70% from the leaders and 30% from the pack.
+    PACE_LEADER_WEIGHT = 0.7
 
     def __init__(self, filepath):
         self.filepath = filepath
@@ -19,7 +23,7 @@ class RaceReportGenerator:
         self.driver_stats = []
         self.final_report = {}
         self.dynamic_license_factors = {}
-        self.handicap_strength_used = self.DEFAULT_HANDICAP_STRENGTH
+        self.handicap_strength_used = 0.5 # Fallback value
 
     def _load_data(self):
         """Loads the race data from the specified JSON file."""
@@ -133,45 +137,11 @@ class RaceReportGenerator:
                 'sector_3_times': self._calculate_stats(group_df, 's3_time')
             })
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
-    
-    def _calculate_handicap_strength(self, df):
-        """
-        NEW: Calculates handicap strength based on the performance overlap
-        between Bronze and Silver drivers.
-        """
-        silver_paces = df.loc[df['license'] == 'Silver', 'pace'].dropna()
-        bronze_paces = df.loc[df['license'] == 'Bronze', 'pace'].dropna()
-
-        # Require a minimum number of drivers in each class for a reliable calculation
-        if len(silver_paces) < 5 or len(bronze_paces) < 5:
-            print(f"Insufficient driver data to derive handicap strength. Using default: {self.DEFAULT_HANDICAP_STRENGTH*100}%")
-            return self.DEFAULT_HANDICAP_STRENGTH
-
-        # Get the pace range of the "competitive pack" for each class
-        silver_25th, silver_75th = silver_paces.quantile(0.25), silver_paces.quantile(0.75)
-        bronze_25th = bronze_paces.quantile(0.25)
-        
-        silver_iqr = silver_75th - silver_25th
-        if silver_iqr == 0: # Avoid division by zero
-            return self.DEFAULT_HANDICAP_STRENGTH
-
-        # Measure the gap between the slowest competitive Silvers and fastest competitive Bronzes
-        separation_gap = silver_75th - bronze_25th
-        
-        # Normalize this gap by the spread of the Silver class itself
-        # This score indicates how "separate" the classes are.
-        separation_score = separation_gap / silver_iqr
-        
-        # Clamp the score to a reasonable range (e.g., 20% to 90%) to create the strength
-        # A higher separation score means a stronger, more confident handicap.
-        strength = np.clip(separation_score, 0.2, 0.9)
-        
-        print(f"Class Separation Score: {separation_score:.2f}. Derived Handicap Strength: {strength:.2f}")
-        return strength
 
     def _calculate_dynamic_license_factors(self):
         """
-        Calculates license factors using a dynamically calculated handicap strength.
+        Calculates license factors using a blended average pace that gives a
+        bonus to the pace-setting drivers in the Bronze class.
         """
         df = pd.DataFrame(self.driver_stats)
         df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
@@ -184,29 +154,55 @@ class RaceReportGenerator:
             print("Not enough data to calculate dynamic license factors.")
             return
 
-        # --- DYNAMIC STRENGTH CALCULATION ---
-        self.handicap_strength_used = self._calculate_handicap_strength(df)
+        # --- Calculate Pace for each class ---
+        class_paces = {}
+        for license_class in valid_licenses:
+            if license_class not in df['license'].unique(): continue
 
-        competitive_paces = {}
-        for license_class in df['license'].unique():
-            class_df = df[df['license'] == license_class]
-            cutoff_pace = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
-            competitive_group = class_df[class_df['pace'] <= cutoff_pace]
+            class_df = df[df['license'] == license_class].copy()
             
-            if not competitive_group.empty:
-                competitive_paces[license_class] = competitive_group['pace'].mean()
+            # Use a simple competitive percentile for Pro classes (Silver, Gold, Plat)
+            if license_class != 'Bronze':
+                cutoff = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
+                competitive_group = class_df[class_df['pace'] <= cutoff]
+                if not competitive_group.empty:
+                    class_paces[license_class] = competitive_group['pace'].mean()
+            else:
+                # --- SPECIAL LOGIC FOR BRONZE ---
+                # 1. Isolate the Pace Leaders
+                leader_cutoff = class_df['pace'].quantile(self.PACE_LEADER_PERCENTILE)
+                leaders = class_df[class_df['pace'] <= leader_cutoff]
+                
+                # 2. Isolate the rest of the competitive pack
+                competitive_cutoff = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
+                pack = class_df[(class_df['pace'] > leader_cutoff) & (class_df['pace'] <= competitive_cutoff)]
+                
+                if leaders.empty:
+                    class_paces['Bronze'] = pack['pace'].mean() if not pack.empty else None
+                elif pack.empty:
+                    class_paces['Bronze'] = leaders['pace'].mean()
+                else:
+                    # 3. Create the Blended Average
+                    leader_avg = leaders['pace'].mean()
+                    pack_avg = pack['pace'].mean()
+                    blended_avg = (leader_avg * self.PACE_LEADER_WEIGHT) + (pack_avg * (1 - self.PACE_LEADER_WEIGHT))
+                    class_paces['Bronze'] = blended_avg
+                    print(f"Bronze Pace: Leaders ({len(leaders)} drivers) avg {leader_avg:.3f}s, Pack ({len(pack)} drivers) avg {pack_avg:.3f}s. Blended Pace: {blended_avg:.3f}s")
 
-        if 'Silver' not in competitive_paces:
-            print("Warning: No competitive Silver drivers found. Cannot create dynamic weights.")
+        if 'Silver' not in class_paces or class_paces['Silver'] is None:
+            print("Warning: Could not establish Silver baseline pace. Aborting handicap calculation.")
             return
-        global_silver_pace = competitive_paces['Silver']
 
-        for license_class, avg_pace in competitive_paces.items():
-            deviation = (avg_pace - global_silver_pace) / global_silver_pace
-            adjusted_deviation = deviation * self.handicap_strength_used
-            self.dynamic_license_factors[license_class] = 1.0 - adjusted_deviation
+        global_silver_pace = class_paces['Silver']
         
-        print(f"\nSuccessfully generated {self.handicap_strength_used*100:.0f}% strength license adjustment factors.")
+        # --- Generate Factors from the (potentially blended) paces ---
+        for license_class, avg_pace in class_paces.items():
+            if avg_pace is None: continue
+            deviation = (avg_pace - global_silver_pace) / global_silver_pace
+            # We revert to a simple 100% strength correction, as the blending now handles the nuance
+            self.dynamic_license_factors[license_class] = 1.0 - deviation
+        
+        print("\nSuccessfully generated license adjustment factors with Pace Leader Bonus.")
         print(json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_stint_adjusted_scores(self):
@@ -282,8 +278,7 @@ class RaceReportGenerator:
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings(),
-            'dynamic_license_factors_used': self.dynamic_license_factors,
-            'handicap_strength_used': self.handicap_strength_used
+            'dynamic_license_factors_used': self.dynamic_license_factors
         }
         print("Final report has been generated.")
         return self.final_report
@@ -300,7 +295,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v18.json"
+    OUTPUT_FILE = "race_report_output_v19.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
