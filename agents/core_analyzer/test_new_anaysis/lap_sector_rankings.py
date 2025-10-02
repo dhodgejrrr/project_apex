@@ -3,16 +3,12 @@ import pandas as pd
 
 class RaceReportGenerator:
     """
-    Processes race timing data from a JSON file to generate a detailed
-    performance report, including stint analysis for each driver.
+    Processes race timing data to generate a detailed performance report,
+    including both pure-time rankings and new stint-adjusted score rankings.
     """
-    def __init__(self, filepath):
-        """
-        Initializes the report generator with the path to the input JSON file.
+    STINT_LAP_PENALTY = 0.0001
 
-        Args:
-            filepath (str): The path to the race data JSON file.
-        """
+    def __init__(self, filepath):
         self.filepath = filepath
         self.raw_data = None
         self.driver_stats = []
@@ -60,7 +56,6 @@ class RaceReportGenerator:
                 } for d in participant.get('drivers', [])
             }
 
-            # Process laps chronologically to track stints
             all_laps_for_car = sorted(participant.get('laps', []), key=lambda x: x.get('number', 0))
             driver_stint_counters = {num: 1 for num in driver_map.keys()}
 
@@ -88,9 +83,8 @@ class RaceReportGenerator:
                             'stint_lap_number': current_stint_lap
                         })
 
-                # After processing lap, update stint counter for the next lap
                 if lap.get('crossing_pit_finish_lane', False):
-                    driver_stint_counters[driver_num] = 1  # Reset counter after a pit stop
+                    driver_stint_counters[driver_num] = 1
                 else:
                     driver_stint_counters[driver_num] += 1
 
@@ -99,43 +93,24 @@ class RaceReportGenerator:
 
     @staticmethod
     def _calculate_stats(df_slice, time_column):
-        """
-        Calculates a full suite of performance and stint metrics for a given
-        set of times (e.g., lap_time, s1_time).
-        """
+        """Calculates performance and stint metrics for a given set of times."""
         df = df_slice[[time_column, 'stint_lap_number']].dropna().sort_values(by=time_column)
         if df.empty:
-            return {
-                'fastest': None, 'fastest_stint_lap': None,
-                'best_3_avg': None, 'avg_stint_lap_for_best_3': None,
-                'best_5_avg': None, 'avg_stint_lap_for_best_5': None,
-                'deviation_3_lap': None, 'deviation_5_lap': None
-            }
+            return {}
 
-        # Fastest time stats
         fastest_row = df.iloc[0]
-        fastest_time = fastest_row[time_column]
-        fastest_stint_lap = int(fastest_row['stint_lap_number'])
-
-        # 3-lap average stats
         best_3_laps = df.head(3)
-        best_3_avg = best_3_laps[time_column].mean()
-        avg_stint_lap_for_best_3 = best_3_laps['stint_lap_number'].mean()
-
-        # 5-lap average stats
         best_5_laps = df.head(5)
-        best_5_avg = best_5_laps[time_column].mean()
-        avg_stint_lap_for_best_5 = best_5_laps['stint_lap_number'].mean()
 
         return {
-            'fastest': fastest_time,
-            'fastest_stint_lap': fastest_stint_lap,
-            'best_3_avg': best_3_avg,
-            'avg_stint_lap_for_best_3': round(avg_stint_lap_for_best_3, 2),
-            'best_5_avg': best_5_avg,
-            'avg_stint_lap_for_best_5': round(avg_stint_lap_for_best_5, 2),
-            'deviation_3_lap': best_3_avg - fastest_time,
-            'deviation_5_lap': best_5_avg - fastest_time
+            'fastest': fastest_row[time_column],
+            'fastest_stint_lap': int(fastest_row['stint_lap_number']),
+            'best_3_avg': best_3_laps[time_column].mean(),
+            'avg_stint_lap_for_best_3': round(best_3_laps['stint_lap_number'].mean(), 2),
+            'best_5_avg': best_5_laps[time_column].mean(),
+            'avg_stint_lap_for_best_5': round(best_5_laps['stint_lap_number'].mean(), 2),
+            'deviation_3_lap': best_3_laps[time_column].mean() - fastest_row[time_column],
+            'deviation_5_lap': best_5_laps[time_column].mean() - fastest_row[time_column]
         }
 
     def _calculate_all_driver_stats(self, laps_df):
@@ -152,24 +127,53 @@ class RaceReportGenerator:
             })
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
 
+    def _add_stint_adjusted_scores(self):
+        """
+        Calculates and adds the stint-adjusted scores to each driver's stats.
+        This step *adds new keys* and does not modify the original stats.
+        """
+        for driver in self.driver_stats:
+            for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
+                stats = driver[time_key]
+                if not stats: continue
+
+                if 'fastest' in stats and 'fastest_stint_lap' in stats:
+                    stats['stint_adjusted_fastest'] = stats['fastest'] + (stats['fastest_stint_lap'] * self.STINT_LAP_PENALTY)
+                
+                if 'best_3_avg' in stats and 'avg_stint_lap_for_best_3' in stats:
+                    stats['stint_adjusted_best_3_avg'] = stats['best_3_avg'] + (stats['avg_stint_lap_for_best_3'] * self.STINT_LAP_PENALTY)
+
+                if 'best_5_avg' in stats and 'avg_stint_lap_for_best_5' in stats:
+                     stats['stint_adjusted_best_5_avg'] = stats['best_5_avg'] + (stats['avg_stint_lap_for_best_5'] * self.STINT_LAP_PENALTY)
+        print("Generated new stint-adjusted scores for all drivers.")
+
     def _generate_rankings(self):
-        """Generates all rankings based on the calculated driver statistics."""
+        """Generates a comprehensive set of rankings for all calculated metrics."""
         def create_ranking(stats, time_key, metric_key):
             ranked_list = [
-                {'driver_name': d['driver_name'], 'license': d['license'],
-                 'vehicle': d['vehicle'], 'value': d.get(time_key, {}).get(metric_key)}
+                {'driver_name': d['driver_name'], 'license': d['license'], 'vehicle': d['vehicle'], 'value': d.get(time_key, {}).get(metric_key)}
                 for d in stats if d.get(time_key, {}).get(metric_key) is not None
             ]
             return sorted(ranked_list, key=lambda x: x['value'])
 
         def generate_rankings_for_group(stats):
             rankings = {}
-            time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times',
-                            's2': 'sector_2_times', 's3': 'sector_3_times'}
+            time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}
+            
+            # This list defines every ranking to be created.
+            # It includes the original pure-time metrics AND the new stint-adjusted scores.
             metrics_to_rank = [
-                'fastest', 'best_3_avg', 'best_5_avg', 'deviation_3_lap', 'deviation_5_lap',
+                # --- Original Pure-Time Rankings ---
+                'fastest', 'best_3_avg', 'best_5_avg',
+                'deviation_3_lap', 'deviation_5_lap',
+                
+                # --- New Stint-Adjusted Score Rankings ---
+                'stint_adjusted_fastest', 'stint_adjusted_best_3_avg', 'stint_adjusted_best_5_avg',
+                
+                # --- Original Stint Lap Number Rankings ---
                 'fastest_stint_lap', 'avg_stint_lap_for_best_3', 'avg_stint_lap_for_best_5'
             ]
+
             for metric in metrics_to_rank:
                 for name, key in time_metrics.items():
                     rankings[f'by_{metric}_{name}'] = create_ranking(stats, key, metric)
@@ -188,6 +192,7 @@ class RaceReportGenerator:
         self._load_data()
         laps_df = self._process_data()
         self._calculate_all_driver_stats(laps_df)
+        self._add_stint_adjusted_scores() # This step adds the new scores
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings()
@@ -207,7 +212,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v3.json"
+    OUTPUT_FILE = "race_report_output_v5.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
