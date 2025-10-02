@@ -3,10 +3,24 @@ import pandas as pd
 
 class RaceReportGenerator:
     """
-    Processes race timing data to generate a detailed performance report,
-    including both pure-time rankings and new stint-adjusted score rankings.
+    Processes race timing data to generate a detailed performance report, including
+    pure-time, stint-adjusted, and new license-adjusted rankings.
     """
-    STINT_LAP_PENALTY = 0.0001
+    # --- CONFIGURABLE ADJUSTMENT FACTORS ---
+    # Penalty for each lap into a stint (adds a small time penalty for later laps)
+    STINT_LAP_PENALTY = 0.0002
+
+    # Multiplier for raw times based on driver license.
+    # < 1.0 gives a time credit (rewards strong performance for the class).
+    # > 1.0 gives a time handicap (normalizes against expected performance).
+    LICENSE_ADJUSTMENT_FACTORS = {
+        'Platinum': 1.0065,  # 2% time handicap
+        'Gold':     1.0045,  # 1% time handicap
+        'Silver':   1.0,   # Baseline
+        'Bronze':   0.9915   # 1% time credit
+    }
+    # Default factor for any unlisted or missing license values.
+    DEFAULT_LICENSE_FACTOR = 1.0
 
     def __init__(self, filepath):
         self.filepath = filepath
@@ -128,25 +142,28 @@ class RaceReportGenerator:
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
 
     def _add_stint_adjusted_scores(self):
-        """
-        Calculates and adds the stint-adjusted scores to each driver's stats.
-        This step *adds new keys* and does not modify the original stats.
-        """
+        """Adds new stint-adjusted scores to each driver's stats."""
         for driver in self.driver_stats:
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
-                if not stats: continue
+                if not stats or 'fastest' not in stats: continue
+                stats['stint_adjusted_fastest'] = stats['fastest'] + (stats['fastest_stint_lap'] * self.STINT_LAP_PENALTY)
+                stats['stint_adjusted_best_3_avg'] = stats['best_3_avg'] + (stats['avg_stint_lap_for_best_3'] * self.STINT_LAP_PENALTY)
+                stats['stint_adjusted_best_5_avg'] = stats['best_5_avg'] + (stats['avg_stint_lap_for_best_5'] * self.STINT_LAP_PENALTY)
+        print("Generated new stint-adjusted scores.")
 
-                if 'fastest' in stats and 'fastest_stint_lap' in stats:
-                    stats['stint_adjusted_fastest'] = stats['fastest'] + (stats['fastest_stint_lap'] * self.STINT_LAP_PENALTY)
-                
-                if 'best_3_avg' in stats and 'avg_stint_lap_for_best_3' in stats:
-                    stats['stint_adjusted_best_3_avg'] = stats['best_3_avg'] + (stats['avg_stint_lap_for_best_3'] * self.STINT_LAP_PENALTY)
-
-                if 'best_5_avg' in stats and 'avg_stint_lap_for_best_5' in stats:
-                     stats['stint_adjusted_best_5_avg'] = stats['best_5_avg'] + (stats['avg_stint_lap_for_best_5'] * self.STINT_LAP_PENALTY)
-        print("Generated new stint-adjusted scores for all drivers.")
-
+    def _add_license_adjusted_scores(self):
+        """Adds new license-adjusted scores to each driver's stats."""
+        for driver in self.driver_stats:
+            factor = self.LICENSE_ADJUSTMENT_FACTORS.get(driver['license'], self.DEFAULT_LICENSE_FACTOR)
+            for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
+                stats = driver[time_key]
+                if not stats or 'fastest' not in stats: continue
+                stats['license_adjusted_fastest'] = stats['fastest'] * factor
+                stats['license_adjusted_best_3_avg'] = stats['best_3_avg'] * factor
+                stats['license_adjusted_best_5_avg'] = stats['best_5_avg'] * factor
+        print("Generated new license-adjusted scores.")
+    
     def _generate_rankings(self):
         """Generates a comprehensive set of rankings for all calculated metrics."""
         def create_ranking(stats, time_key, metric_key):
@@ -160,17 +177,10 @@ class RaceReportGenerator:
             rankings = {}
             time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}
             
-            # This list defines every ranking to be created.
-            # It includes the original pure-time metrics AND the new stint-adjusted scores.
             metrics_to_rank = [
-                # --- Original Pure-Time Rankings ---
-                'fastest', 'best_3_avg', 'best_5_avg',
-                'deviation_3_lap', 'deviation_5_lap',
-                
-                # --- New Stint-Adjusted Score Rankings ---
+                'fastest', 'best_3_avg', 'best_5_avg', 'deviation_3_lap', 'deviation_5_lap',
                 'stint_adjusted_fastest', 'stint_adjusted_best_3_avg', 'stint_adjusted_best_5_avg',
-                
-                # --- Original Stint Lap Number Rankings ---
+                'license_adjusted_fastest', 'license_adjusted_best_3_avg', 'license_adjusted_best_5_avg',
                 'fastest_stint_lap', 'avg_stint_lap_for_best_3', 'avg_stint_lap_for_best_5'
             ]
 
@@ -192,7 +202,8 @@ class RaceReportGenerator:
         self._load_data()
         laps_df = self._process_data()
         self._calculate_all_driver_stats(laps_df)
-        self._add_stint_adjusted_scores() # This step adds the new scores
+        self._add_stint_adjusted_scores()
+        self._add_license_adjusted_scores() # New step to add license scores
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings()
@@ -212,7 +223,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v5.json"
+    OUTPUT_FILE = "race_report_output_v10.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
