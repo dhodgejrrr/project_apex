@@ -4,11 +4,14 @@ import numpy as np
 
 class RaceReportGenerator:
     """
-    Processes race timing data to generate a report with dynamically calculated,
-    percentile-based license adjustment factors, restricted to valid license classes.
+    Processes race timing data to generate a report with a fully dynamic handicap
+    system where the strength of the adjustment is derived from the performance
+    overlap between license classes.
     """
-    STINT_LAP_PENALTY = 0.0001
-    COMPETITIVE_PACE_PERCENTILE = 0.75
+    STINT_LAP_PENALTY = 0.0002
+    COMPETITIVE_PACE_PERCENTILE = 0.60
+    # --- NEW: Safe fallback value if the data is insufficient to derive a strength ---
+    DEFAULT_HANDICAP_STRENGTH = 0.5
 
     def __init__(self, filepath):
         self.filepath = filepath
@@ -16,6 +19,7 @@ class RaceReportGenerator:
         self.driver_stats = []
         self.final_report = {}
         self.dynamic_license_factors = {}
+        self.handicap_strength_used = self.DEFAULT_HANDICAP_STRENGTH
 
     def _load_data(self):
         """Loads the race data from the specified JSON file."""
@@ -129,24 +133,59 @@ class RaceReportGenerator:
                 'sector_3_times': self._calculate_stats(group_df, 's3_time')
             })
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
+    
+    def _calculate_handicap_strength(self, df):
+        """
+        NEW: Calculates handicap strength based on the performance overlap
+        between Bronze and Silver drivers.
+        """
+        silver_paces = df.loc[df['license'] == 'Silver', 'pace'].dropna()
+        bronze_paces = df.loc[df['license'] == 'Bronze', 'pace'].dropna()
+
+        # Require a minimum number of drivers in each class for a reliable calculation
+        if len(silver_paces) < 5 or len(bronze_paces) < 5:
+            print(f"Insufficient driver data to derive handicap strength. Using default: {self.DEFAULT_HANDICAP_STRENGTH*100}%")
+            return self.DEFAULT_HANDICAP_STRENGTH
+
+        # Get the pace range of the "competitive pack" for each class
+        silver_25th, silver_75th = silver_paces.quantile(0.25), silver_paces.quantile(0.75)
+        bronze_25th = bronze_paces.quantile(0.25)
+        
+        silver_iqr = silver_75th - silver_25th
+        if silver_iqr == 0: # Avoid division by zero
+            return self.DEFAULT_HANDICAP_STRENGTH
+
+        # Measure the gap between the slowest competitive Silvers and fastest competitive Bronzes
+        separation_gap = silver_75th - bronze_25th
+        
+        # Normalize this gap by the spread of the Silver class itself
+        # This score indicates how "separate" the classes are.
+        separation_score = separation_gap / silver_iqr
+        
+        # Clamp the score to a reasonable range (e.g., 20% to 90%) to create the strength
+        # A higher separation score means a stronger, more confident handicap.
+        strength = np.clip(separation_score, 0.2, 0.9)
+        
+        print(f"Class Separation Score: {separation_score:.2f}. Derived Handicap Strength: {strength:.2f}")
+        return strength
 
     def _calculate_dynamic_license_factors(self):
         """
-        Calculates global license factors based on the competitive group within
-        only the valid, official license classes.
+        Calculates license factors using a dynamically calculated handicap strength.
         """
         df = pd.DataFrame(self.driver_stats)
         df['pace'] = df['lap_times'].apply(lambda x: x.get('best_5_avg'))
         df = df.dropna(subset=['pace', 'license'])
 
-        # --- NEW: Filter to only include official license classes for this calculation ---
         valid_licenses = ['Bronze', 'Silver', 'Gold', 'Platinum']
         df = df[df['license'].isin(valid_licenses)]
-        # --------------------------------------------------------------------------------
 
         if df.empty:
-            print("Not enough data from valid license classes to calculate dynamic factors.")
+            print("Not enough data to calculate dynamic license factors.")
             return
+
+        # --- DYNAMIC STRENGTH CALCULATION ---
+        self.handicap_strength_used = self._calculate_handicap_strength(df)
 
         competitive_paces = {}
         for license_class in df['license'].unique():
@@ -156,7 +195,6 @@ class RaceReportGenerator:
             
             if not competitive_group.empty:
                 competitive_paces[license_class] = competitive_group['pace'].mean()
-                print(f"'{license_class}' competitive pace ({self.COMPETITIVE_PACE_PERCENTILE*100} percentile): {competitive_paces[license_class]:.3f}s from {len(competitive_group)} drivers.")
 
         if 'Silver' not in competitive_paces:
             print("Warning: No competitive Silver drivers found. Cannot create dynamic weights.")
@@ -165,9 +203,10 @@ class RaceReportGenerator:
 
         for license_class, avg_pace in competitive_paces.items():
             deviation = (avg_pace - global_silver_pace) / global_silver_pace
-            self.dynamic_license_factors[license_class] = 1.0 - deviation
+            adjusted_deviation = deviation * self.handicap_strength_used
+            self.dynamic_license_factors[license_class] = 1.0 - adjusted_deviation
         
-        print("\nSuccessfully generated global dynamic license adjustment factors from competitive groups.")
+        print(f"\nSuccessfully generated {self.handicap_strength_used*100:.0f}% strength license adjustment factors.")
         print(json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_stint_adjusted_scores(self):
@@ -189,7 +228,6 @@ class RaceReportGenerator:
 
         for driver in self.driver_stats:
             license = driver['license']
-            # .get() will safely return the default (1.0) for licenses not in our dict (like "N/A")
             factor = self.dynamic_license_factors.get(license, 1.0)
 
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
@@ -244,7 +282,8 @@ class RaceReportGenerator:
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings(),
-            'dynamic_license_factors_used': self.dynamic_license_factors
+            'dynamic_license_factors_used': self.dynamic_license_factors,
+            'handicap_strength_used': self.handicap_strength_used
         }
         print("Final report has been generated.")
         return self.final_report
@@ -261,7 +300,7 @@ class RaceReportGenerator:
 # --- Example Usage ---
 if __name__ == "__main__":
     INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v16.json"
+    OUTPUT_FILE = "race_report_output_v18.json"
     try:
         report_generator = RaceReportGenerator(INPUT_FILE)
         report_generator.generate_report()
