@@ -1,0 +1,312 @@
+{
+  "session": {
+    "championship_name": "IMSA Michelin Pilot Challenge",
+    "event_name": "OReilly Auto Parts 4 Hours Of Mid-Ohio",
+    "session_name": "Race",
+    "report_mark": "",
+    "revised_mark": "",
+    "report_message": "Car #60 - Discontinued participation",
+    "session_type": "Race",
+    "session_date": "08/06/2025 12:00",
+    "creation_date": "08/06/2025 04:02:55",
+    "circuit": {
+      "name": "Mid-Ohio Sports Car Course",
+      "length": 3633.89,
+      "country": "United States"
+    },
+    "weather": {
+      "air_temperature": "21.75 ºC",
+      "track_temperature": "34.30 ºC",
+      "track_status": "Dry"
+    },
+    "finalize_type": {
+      "type": "By Time",
+      "time_in_seconds": 14400
+    }
+  },
+  "participants": [
+    {
+      "number": "2",
+      "team": "CSM",
+      "class": "GS",
+      "group": "",
+      "division": "",
+      "vehicle": "Porsche 718 GT4 RS CS",
+      "tires": "M",
+      "manufacturer": "Porsche",
+      "manufacturer_country": "",
+      "imsa_carid": "",
+      "imsa_teamid": "",
+      "imsa_classid": "",
+      "imsa_cartypeid": "",
+      "imsa_manufacturerid": "",
+      "imsa_tireid": "",
+      "imsa_sponsorid": "",
+      "imsa_evententryid": "",
+      "*extra_9": "",
+      "*extra_10": "",
+      "drivers": [
+        {
+          "number": 1,
+          "firstname": "Phil",
+          "surname": "Fayer",
+          "license": "Bronze",
+          "hometown": "Montreal, Canada",
+          "country": "CAN",
+          "short_name": "",
+          "imsa_driverid": "",
+          "imsa_driverplugid": "",
+          "imsa_driverratinglong": "",
+          "*extra_4": "",
+          "*extra_5": ""
+        },
+        {
+          "number": 2,
+          "firstname": "Robert",
+          "surname": "Megennis",
+          "license": "Silver",
+          "hometown": "New York City, NY",
+          "country": "USA",
+          "short_name": "",
+          "imsa_driverid": "",
+          "imsa_driverplugid": "",
+          "imsa_driverratinglong": "",
+          "*extra_4": "",
+          "*extra_5": ""
+        }
+      ],
+      "laps": [
+        {
+          "number": 1,
+          "driver_number": "1",
+          "time": "2:10.101",
+          "is_session_best": false,
+          "is_personal_best": false,
+          "top_speed_kph": "",
+          "session_elapsed": "2:10.101",
+          "hour": "12:01:39.413",
+          "average_speed_kph": "62.480",
+          "is_valid": false,
+          "manually_invalidated": false,
+          "s1_manually_invalidated": false,
+          "s2_manually_invalidated": false,
+          "s3_manually_invalidated": false,
+          "s4_manually_invalidated": false,
+          "tl_invalidated": false,
+          "s1_tl_invalidated": false,
+          "s2_tl_invalidated": false,
+          "s3_tl_invalidated": false,
+          "s4_tl_invalidated": false,
+          "crossing_pit_finish_lane": false,
+          "sector_times": [
+            {
+              "index": 1,
+              "time": "36.162",
+              "hour": "12:00:05.474",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 2,
+              "time": "44.521",
+              "hour": "12:00:49.995",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 3,
+              "time": "49.418",
+              "hour": "12:01:39.413",
+              "is_session_best": false,
+              "is_personal_best": false
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "driver_number": "1",
+          "time": "1:35.531",
+          "is_session_best": false,
+          "is_personal_best": false,
+          "top_speed_kph": "",
+          "session_elapsed": "3:45.632",
+          "hour": "12:03:14.944",
+          "average_speed_kph": "85.090",
+          "is_valid": true,
+          "manually_invalidated": false,
+          "s1_manually_invalidated": false,
+          "s2_manually_invalidated": false,
+          "s3_manually_invalidated": false,
+          "s4_manually_invalidated": false,
+          "tl_invalidated": false,
+          "s1_tl_invalidated": false,
+          "s2_tl_invalidated": false,
+          "s3_tl_invalidated": false,
+          "s4_tl_invalidated": false,
+          "crossing_pit_finish_lane": false,
+          "sector_times": [
+            {
+              "index": 1,
+              "time": "15.175",
+              "hour": "12:01:54.588",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 2,
+              "time": "34.151",
+              "hour": "12:02:28.739",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 3,
+              "time": "46.205",
+              "hour": "12:03:14.944",
+              "is_session_best": false,
+              "is_personal_best": false
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "driver_number": "1",
+          "time": "1:33.799",
+          "is_session_best": false,
+          "is_personal_best": false,
+          "top_speed_kph": "",
+          "session_elapsed": "5:19.431",
+          "hour": "12:04:48.743",
+          "average_speed_kph": "86.661",
+          "is_valid": true,
+          "manually_invalidated": false,
+          "s1_manually_invalidated": false,
+          "s2_manually_invalidated": false,
+          "s3_manually_invalidated": false,
+          "s4_manually_invalidated": false,
+          "tl_invalidated": false,
+          "s1_tl_invalidated": false,
+          "s2_tl_invalidated": false,
+          "s3_tl_invalidated": false,
+          "s4_tl_invalidated": false,
+          "crossing_pit_finish_lane": false,
+          "sector_times": [
+            {
+              "index": 1,
+              "time": "14.958",
+              "hour": "12:03:29.902",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 2,
+              "time": "33.638",
+              "hour": "12:04:03.540",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 3,
+              "time": "45.203",
+              "hour": "12:04:48.743",
+              "is_session_best": false,
+              "is_personal_best": false
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "driver_number": "1",
+          "time": "1:32.943",
+          "is_session_best": false,
+          "is_personal_best": false,
+          "top_speed_kph": "",
+          "session_elapsed": "6:52.374",
+          "hour": "12:06:21.686",
+          "average_speed_kph": "87.459",
+          "is_valid": true,
+          "manually_invalidated": false,
+          "s1_manually_invalidated": false,
+          "s2_manually_invalidated": false,
+          "s3_manually_invalidated": false,
+          "s4_manually_invalidated": false,
+          "tl_invalidated": false,
+          "s1_tl_invalidated": false,
+          "s2_tl_invalidated": false,
+          "s3_tl_invalidated": false,
+          "s4_tl_invalidated": false,
+          "crossing_pit_finish_lane": false,
+          "sector_times": [
+            {
+              "index": 1,
+              "time": "15.124",
+              "hour": "12:05:03.867",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 2,
+              "time": "33.518",
+              "hour": "12:05:37.385",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 3,
+              "time": "44.301",
+              "hour": "12:06:21.686",
+              "is_session_best": false,
+              "is_personal_best": false
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "driver_number": "1",
+          "time": "1:36.547",
+          "is_session_best": false,
+          "is_personal_best": false,
+          "top_speed_kph": "",
+          "session_elapsed": "8:28.921",
+          "hour": "12:07:58.233",
+          "average_speed_kph": "84.195",
+          "is_valid": true,
+          "manually_invalidated": false,
+          "s1_manually_invalidated": false,
+          "s2_manually_invalidated": false,
+          "s3_manually_invalidated": false,
+          "s4_manually_invalidated": false,
+          "tl_invalidated": false,
+          "s1_tl_invalidated": false,
+          "s2_tl_invalidated": false,
+          "s3_tl_invalidated": false,
+          "s4_tl_invalidated": false,
+          "crossing_pit_finish_lane": false,
+          "sector_times": [
+            {
+              "index": 1,
+              "time": "16.560",
+              "hour": "12:06:38.246",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 2,
+              "time": "34.144",
+              "hour": "12:07:12.390",
+              "is_session_best": false,
+              "is_personal_best": false
+            },
+            {
+              "index": 3,
+              "time": "45.843",
+              "hour": "12:07:58.233",
+              "is_session_best": false,
+              "is_personal_best": false
+            }
+          ]
+        }
+      ]
+    }
+  ] 
+}
