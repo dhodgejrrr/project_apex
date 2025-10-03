@@ -189,7 +189,7 @@ class RaceReportGenerator:
         print(f"Report saved to '{output_filepath}'")
 
 if __name__ == "__main__":
-    INPUT_FILE = "test_2025_data.json"
+    INPUT_FILE = "vp_vir_r1.json"
     try:
         print(f"Loading full dataset from '{INPUT_FILE}'...")
         with open(INPUT_FILE, 'r') as f: full_data = json.load(f)
@@ -203,7 +203,7 @@ if __name__ == "__main__":
             if not class_data['participants']: continue
             report_generator = RaceReportGenerator(class_data)
             report_generator.generate_report()
-            report_generator.save_report(f"race_report_mido_v3_{race_class}.json")
+            report_generator.save_report(f"race_report_vp_vir_r1_{race_class}.json")
             print("-" * 50)
     except FileNotFoundError: print(f"FATAL ERROR: Input file '{INPUT_FILE}' not found.")
     except Exception as e: print(f"An unexpected error occurred: {e}")
