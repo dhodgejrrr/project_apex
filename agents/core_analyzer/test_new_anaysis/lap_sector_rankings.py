@@ -5,24 +5,23 @@ import copy
 
 class RaceReportGenerator:
     """
-    Processes race timing data with a fully dynamic handicap system where both the
-    baseline and the strength of the handicap are derived from the data.
+    Processes race timing data with a fully autonomous, data-driven handicap system.
     """
     STINT_LAP_PENALTY = 0.0001
     COMPETITIVE_PACE_PERCENTILE = 0.75
     PACE_LEADER_PERCENTILE = 0.25
     PACE_LEADER_WEIGHT = 0.7
-    # A new tuning parameter: how many standard deviations of spread are
-    # considered a "strong signal" for a confident handicap. Lowering this
-    # will make the strength calculation more aggressive.
     CONFIDENCE_DIVISOR = 2.0
+    # A final sensitivity knob for the defensive factor calculation.
+    DEFENSIVE_FACTOR_SENSITIVITY = 0.2
 
     def __init__(self, data):
         self.raw_data = data
         self.driver_stats = []
         self.final_report = {}
         self.dynamic_license_factors = {}
-        self.handicap_strength_used = 0.5 # Default fallback
+        self.handicap_strength_used = 0.5
+        self.apex_defensive_factor_used = 0.999
 
     @staticmethod
     def _time_to_seconds(time_str):
@@ -84,21 +83,17 @@ class RaceReportGenerator:
         df = df[df['license'].isin(valid_licenses)]
         if df.empty: return
 
-        # --- Calculate Competitive Pace for each class ---
         competitive_paces, competitive_groups = {}, {}
         for license_class in valid_licenses:
             if license_class not in df['license'].unique(): continue
             class_df = df[df['license'] == license_class].copy()
-            
             cutoff = class_df['pace'].quantile(self.COMPETITIVE_PACE_PERCENTILE)
             comp_group = class_df[class_df['pace'] <= cutoff]
             if comp_group.empty: continue
-            
             competitive_groups[license_class] = comp_group
             if license_class == 'Bronze':
                 leader_cutoff = class_df['pace'].quantile(self.PACE_LEADER_PERCENTILE)
-                leaders = class_df[class_df['pace'] <= leader_cutoff]
-                pack = class_df[(class_df['pace'] > leader_cutoff) & (class_df['pace'] <= cutoff)]
+                leaders, pack = class_df[class_df['pace'] <= leader_cutoff], class_df[(class_df['pace'] > leader_cutoff) & (class_df['pace'] <= cutoff)]
                 if leaders.empty: competitive_paces['Bronze'] = pack['pace'].mean() if not pack.empty else None
                 elif pack.empty: competitive_paces['Bronze'] = leaders['pace'].mean()
                 else: competitive_paces['Bronze'] = (leaders['pace'].mean() * self.PACE_LEADER_WEIGHT) + (pack['pace'].mean() * (1 - self.PACE_LEADER_WEIGHT))
@@ -106,33 +101,40 @@ class RaceReportGenerator:
                 competitive_paces[license_class] = comp_group['pace'].mean()
         if not competitive_paces: return
 
-        # --- Dynamic Baseline and Handicap Strength Calculation ---
         baseline_class = min(competitive_paces, key=lambda k: competitive_paces.get(k, float('inf')))
         baseline_pace = competitive_paces[baseline_class]
         self.baseline_license_class_used = baseline_class
         print(f"\nIdentified '{baseline_class}' as the performance baseline (Pace: {baseline_pace:.3f}s).")
         
-        # Calculate Signal-to-Noise based strength
+        # --- DYNAMIC STRENGTH AND DEFENSIVE FACTOR CALCULATION ---
         if baseline_class in competitive_groups:
-            baseline_spread = competitive_groups[baseline_class]['pace'].std()
+            baseline_group = competitive_groups[baseline_class]
+            baseline_spread = baseline_group['pace'].std()
+            # Calculate Handicap Strength
             if baseline_spread > 0:
-                # Use Bronze vs Baseline for the main gap calculation
                 non_baseline_class = 'Bronze' if baseline_class != 'Bronze' else 'Silver'
                 if non_baseline_class in competitive_paces:
                     raw_pace_gap = abs(competitive_paces[non_baseline_class] - baseline_pace)
                     signal_to_noise = raw_pace_gap / baseline_spread
                     self.handicap_strength_used = np.clip(signal_to_noise / self.CONFIDENCE_DIVISOR, 0.2, 0.9)
-                    print(f"Pace gap vs. '{non_baseline_class}' is {raw_pace_gap:.3f}s; Baseline spread is {baseline_spread:.3f}s. Signal-to-Noise: {signal_to_noise:.2f}.")
-        
-        print(f"Derived Handicap Strength: {self.handicap_strength_used*100:.0f}%")
+                    print(f"Pace gap vs. '{non_baseline_class}' is {raw_pace_gap:.3f}s; Baseline spread is {baseline_spread:.3f}s. S/N: {signal_to_noise:.2f}.")
+            print(f"Derived Handicap Strength: {self.handicap_strength_used*100:.0f}%")
 
-        # --- Generate Final Factors ---
+            # Calculate Defensive Factor
+            if baseline_spread > 0 and baseline_pace > 0:
+                coeff_of_variation = baseline_spread / baseline_pace
+                defensive_credit = coeff_of_variation * self.DEFENSIVE_FACTOR_SENSITIVITY
+                self.apex_defensive_factor_used = np.clip(1.0 - defensive_credit, 0.998, 0.9999)
+                print(f"Baseline internal spread (CV) is {coeff_of_variation:.4f}. Derived Defensive Factor: {self.apex_defensive_factor_used:.4f}")
+
         for license_class, avg_pace in competitive_paces.items():
             if avg_pace is None: continue
             deviation = (avg_pace - baseline_pace) / baseline_pace
             adjusted_deviation = deviation * self.handicap_strength_used
             self.dynamic_license_factors[license_class] = 1.0 - adjusted_deviation
-        print(f"Generated {self.handicap_strength_used*100:.0f}% strength license adjustment factors.", json.dumps(self.dynamic_license_factors, indent=2))
+        
+        self.dynamic_license_factors[baseline_class] = self.apex_defensive_factor_used
+        print(f"Generated final license adjustment factors.", json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_adjusted_scores(self):
         for driver in self.driver_stats:
@@ -176,7 +178,8 @@ class RaceReportGenerator:
         self.final_report = {'driver_performance': self.driver_stats, 'rankings': self._generate_rankings(),
                              'dynamic_license_factors_used': self.dynamic_license_factors,
                              'baseline_license_class_used': getattr(self, 'baseline_license_class_used', 'N/A'),
-                             'handicap_strength_used': self.handicap_strength_used}
+                             'handicap_strength_used': self.handicap_strength_used,
+                             'apex_defensive_factor_used': self.apex_defensive_factor_used}
         print("Final report generated.")
         return self.final_report
 
@@ -200,7 +203,7 @@ if __name__ == "__main__":
             if not class_data['participants']: continue
             report_generator = RaceReportGenerator(class_data)
             report_generator.generate_report()
-            report_generator.save_report(f"race_reportmido_v2_{race_class}.json")
+            report_generator.save_report(f"race_report_mido_v3_{race_class}.json")
             print("-" * 50)
     except FileNotFoundError: print(f"FATAL ERROR: Input file '{INPUT_FILE}' not found.")
     except Exception as e: print(f"An unexpected error occurred: {e}")
