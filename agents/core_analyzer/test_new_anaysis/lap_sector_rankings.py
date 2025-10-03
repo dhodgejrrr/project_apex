@@ -1,36 +1,26 @@
 import json
 import pandas as pd
 import numpy as np
+import copy
 
 class RaceReportGenerator:
     """
-    Processes race timing data with an advanced, multi-layered handicap system,
-    producing raw, stint-adjusted, license-adjusted, and combined rankings.
+    Processes a given dictionary of race timing data to generate a complete
+    performance report with advanced, multi-layered handicap rankings.
     """
-    STINT_LAP_PENALTY = 0.0003
+    STINT_LAP_PENALTY = 0.0001
     COMPETITIVE_PACE_PERCENTILE = 0.75
     PACE_LEADER_PERCENTILE = 0.25
     PACE_LEADER_WEIGHT = 0.7
 
-    def __init__(self, filepath):
-        self.filepath = filepath
-        self.raw_data = None
+    def __init__(self, data):
+        """
+        Initializes the generator with a dictionary of race data, not a filepath.
+        """
+        self.raw_data = data
         self.driver_stats = []
         self.final_report = {}
         self.dynamic_license_factors = {}
-
-    def _load_data(self):
-        """Loads the race data from the specified JSON file."""
-        try:
-            with open(self.filepath, 'r') as f:
-                self.raw_data = json.load(f)
-            print(f"Successfully loaded data from '{self.filepath}'")
-        except FileNotFoundError:
-            print(f"Error: The file '{self.filepath}' was not found.")
-            raise
-        except json.JSONDecodeError:
-            print(f"Error: Could not decode JSON from the file '{self.filepath}'.")
-            raise
 
     @staticmethod
     def _time_to_seconds(time_str):
@@ -217,9 +207,7 @@ class RaceReportGenerator:
         print("Generated new license-adjusted scores using global dynamic factors.")
 
     def _add_combined_adjusted_scores(self):
-        """
-        NEW: Adds a final combined score adjusted for both stint and license.
-        """
+        """Adds a final combined score adjusted for both stint and license."""
         if not self.dynamic_license_factors:
             print("Skipping combined adjustment; no license factors available.")
             return
@@ -230,7 +218,6 @@ class RaceReportGenerator:
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver[time_key]
                 if not stats or 'stint_adjusted_fastest' not in stats: continue
-                # Apply license factor to the already-calculated stint score
                 stats['combo_adjusted_fastest'] = stats['stint_adjusted_fastest'] * factor
                 stats['combo_adjusted_best_3_avg'] = stats['stint_adjusted_best_3_avg'] * factor
                 stats['combo_adjusted_best_5_avg'] = stats['stint_adjusted_best_5_avg'] * factor
@@ -248,20 +235,13 @@ class RaceReportGenerator:
         def generate_rankings_for_group(stats):
             rankings = {}
             time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}
-            
             metrics_to_rank = [
-                # Group 1: Raw Performance
                 'fastest', 'best_3_avg', 'best_5_avg', 'deviation_3_lap', 'deviation_5_lap',
-                # Group 2: Stint-Adjusted Performance
                 'stint_adjusted_fastest', 'stint_adjusted_best_3_avg', 'stint_adjusted_best_5_avg',
-                # Group 3: License-Adjusted Performance
                 'license_adjusted_fastest', 'license_adjusted_best_3_avg', 'license_adjusted_best_5_avg',
-                # Group 4: NEW Combined Stint + License Adjusted Performance
                 'combo_adjusted_fastest', 'combo_adjusted_best_3_avg', 'combo_adjusted_best_5_avg',
-                # Group 5: Raw Stint Data
                 'fastest_stint_lap', 'avg_stint_lap_for_best_3', 'avg_stint_lap_for_best_5'
             ]
-
             for metric in metrics_to_rank:
                 for name, key in time_metrics.items():
                     rankings[f'by_{metric}_{name}'] = create_ranking(stats, key, metric)
@@ -277,13 +257,13 @@ class RaceReportGenerator:
 
     def generate_report(self):
         """Executes the full workflow to generate the final report."""
-        self._load_data()
+        # No longer loads data, assumes it's passed in during __init__
         laps_df = self._process_data()
         self._calculate_all_driver_stats(laps_df)
         self._calculate_dynamic_license_factors()
         self._add_stint_adjusted_scores()
         self._add_license_adjusted_scores()
-        self._add_combined_adjusted_scores() # New step in the workflow
+        self._add_combined_adjusted_scores()
         self.final_report = {
             'driver_performance': self.driver_stats,
             'rankings': self._generate_rankings(),
@@ -301,13 +281,54 @@ class RaceReportGenerator:
             json.dump(self.final_report, f, indent=2)
         print(f"Report successfully saved to '{output_filepath}'")
 
-# --- Example Usage ---
+
+# --- Main Execution Block (Orchestrator) ---
 if __name__ == "__main__":
-    INPUT_FILE = "test_2025_data.json"
-    OUTPUT_FILE = "race_report_output_v21.json"
+    INPUT_FILE = "test_wts_data.json"
+
     try:
-        report_generator = RaceReportGenerator(INPUT_FILE)
-        report_generator.generate_report()
-        report_generator.save_report(OUTPUT_FILE)
+        # 1. Load the full dataset once
+        print(f"Loading full dataset from '{INPUT_FILE}'...")
+        with open(INPUT_FILE, 'r') as f:
+            full_data = json.load(f)
+
+        # 2. Discover all unique race classes
+        participants = full_data.get('participants', [])
+        if not participants:
+            raise ValueError("No participants found in the data file.")
+        
+        unique_classes = sorted({p.get('class') for p in participants if p.get('class')})
+        print(f"Found unique classes: {unique_classes}\n")
+
+        # 3. Loop through each class and generate a separate report
+        for race_class in unique_classes:
+            print(f"--- Generating report for class: {race_class} ---")
+
+            # Create a deep copy of the session data
+            class_data = {
+                'session': copy.deepcopy(full_data['session']),
+                'participants': []
+            }
+            
+            # Filter participants to include only those in the current class
+            class_data['participants'] = [p for p in participants if p.get('class') == race_class]
+
+            if not class_data['participants']:
+                print(f"Skipping class '{race_class}' as it has no participants.")
+                continue
+
+            # Create a new generator instance with the filtered data
+            report_generator = RaceReportGenerator(class_data)
+            
+            # Run the full analysis pipeline
+            report_generator.generate_report()
+            
+            # Define a unique output file name and save the report
+            output_filename = f"race_report_{race_class}.json"
+            report_generator.save_report(output_filename)
+            print("-" * 50)
+
+    except FileNotFoundError:
+        print(f"FATAL ERROR: The input file '{INPUT_FILE}' was not found.")
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"An unexpected error occurred during orchestration: {e}")
