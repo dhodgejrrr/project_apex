@@ -216,22 +216,195 @@ class RaceReportGenerator:
         with open(output_filepath, 'w') as f: json.dump(self.final_report, f, indent=2)
         print(f"Report saved to '{output_filepath}'")
 
+class RaceTimelineGenerator:
+    """
+    Generates a chronological, lap-by-lap report of race performance, including
+    both raw and weighted (combo-adjusted) rankings.
+    """
+    STINT_LAP_PENALTY = 0.0001 # Must be consistent with RaceReportGenerator
+
+    def __init__(self, data, license_factors):
+        self.raw_data = data
+        self.final_report = {}
+        # This is the crucial dependency from the first generator
+        self.dynamic_license_factors = license_factors
+
+    @staticmethod
+    def _time_to_seconds(time_str):
+        if not time_str: return None
+        try:
+            if ':' in time_str:
+                parts = time_str.split(':')
+                return int(parts[0]) * 60 + float(parts[1])
+            return float(time_str)
+        except (ValueError, TypeError):
+            return None
+
+    def _process_all_laps(self):
+        """
+        Processes every valid lap for every driver, pre-calculating all raw and
+        weighted values needed for chronological ranking.
+        """
+        all_laps_flat = []
+        if not self.raw_data: return pd.DataFrame()
+
+        for participant in self.raw_data.get('participants', []):
+            driver_map = {str(d.get('number')): {'full_name': d.get('firstname', '') + ' ' + d.get('surname', ''), 'license': d.get('license')}
+                          for d in participant.get('drivers', [])}
+            
+            all_laps_for_car = sorted(participant.get('laps', []), key=lambda x: x.get('number', 0))
+            driver_stint_counters = {num: 1 for num in driver_map.keys()}
+
+            for lap in all_laps_for_car:
+                driver_num = lap.get('driver_number')
+                if not driver_num or driver_num not in driver_map: continue
+
+                current_stint_lap = driver_stint_counters[driver_num]
+                
+                if lap.get('is_valid') and 'sector_times' in lap and len(lap['sector_times']) >= 3:
+                    lap_data = {
+                        'lap_number': lap.get('number'),
+                        'driver_name': driver_map[driver_num]['full_name'],
+                        'license': driver_map[driver_num]['license'],
+                        'vehicle': participant.get('vehicle')
+                    }
+                    
+                    times = {
+                        'lap_time': self._time_to_seconds(lap.get('time')),
+                        's1_time': self._time_to_seconds(lap['sector_times'][0].get('time')),
+                        's2_time': self._time_to_seconds(lap['sector_times'][1].get('time')),
+                        's3_time': self._time_to_seconds(lap['sector_times'][2].get('time')),
+                    }
+
+                    if not all(times.values()): continue # Skip if any time is invalid
+
+                    license_factor = self.dynamic_license_factors.get(lap_data['license'], 1.0)
+                    
+                    # Calculate and add raw and weighted values for each metric
+                    for key, raw_time in times.items():
+                        stint_adjusted = raw_time + (current_stint_lap * self.STINT_LAP_PENALTY)
+                        combo_adjusted = stint_adjusted * license_factor
+                        lap_data[f"raw_{key}"] = raw_time
+                        lap_data[f"weighted_{key}"] = combo_adjusted
+                    
+                    all_laps_flat.append(lap_data)
+
+                if lap.get('crossing_pit_finish_lane', False): driver_stint_counters[driver_num] = 1
+                else: driver_stint_counters[driver_num] += 1
+        
+        print(f"Timeline: Processed {len(all_laps_flat)} laps for chronological analysis.")
+        return pd.DataFrame(all_laps_flat)
+
+    def _generate_timeline(self, all_laps_df):
+        """
+        Groups all laps by lap number and generates the Top 15 rankings for each
+        raw and weighted metric.
+        """
+        if all_laps_df.empty: return {}, 0
+        
+        timeline = {}
+        grouped_by_lap = all_laps_df.groupby('lap_number')
+        max_lap = all_laps_df['lap_number'].max()
+
+        metrics_to_rank = [
+            {'key': 'raw_lap_time', 'name': 'by_raw_lap_time', 'time_col': 'raw_lap_time'},
+            {'key': 'weighted_lap_time', 'name': 'by_weighted_lap_time', 'time_col': 'raw_lap_time'},
+            {'key': 'raw_s1_time', 'name': 'by_raw_s1_time', 'time_col': 'raw_s1_time'},
+            {'key': 'weighted_s1_time', 'name': 'by_weighted_s1_time', 'time_col': 'raw_s1_time'},
+            {'key': 'raw_s2_time', 'name': 'by_raw_s2_time', 'time_col': 'raw_s2_time'},
+            {'key': 'weighted_s2_time', 'name': 'by_weighted_s2_time', 'time_col': 'raw_s2_time'},
+            {'key': 'raw_s3_time', 'name': 'by_raw_s3_time', 'time_col': 'raw_s3_time'},
+            {'key': 'weighted_s3_time', 'name': 'by_weighted_s3_time', 'time_col': 'raw_s3_time'},
+        ]
+
+        for lap_num, group in grouped_by_lap:
+            lap_key = str(lap_num)
+            timeline[lap_key] = {}
+            for config in metrics_to_rank:
+                sorted_group = group.sort_values(by=config['key']).head(15)
+                ranking_data = []
+                for i, row in enumerate(sorted_group.iterrows(), 1):
+                    entry = {
+                        'rank': i,
+                        'driver_name': row[1]['driver_name'],
+                        'license': row[1]['license'],
+                        'vehicle': row[1]['vehicle']
+                    }
+                    if 'weighted' in config['key']:
+                        entry['value'] = row[1][config['key']]
+                        entry['raw_time'] = row[1][config['time_col']]
+                    else: # It's a raw ranking
+                        # Use the key as the column name, e.g., 'raw_lap_time' -> 'lap_time'
+                        entry[config['key'].replace('raw_', '')] = row[1][config['key']]
+                    ranking_data.append(entry)
+                timeline[lap_key][config['name']] = ranking_data
+        
+        return timeline, max_lap
+
+    def generate_report(self):
+        all_laps_df = self._process_all_laps()
+        timeline_data, total_laps = self._generate_timeline(all_laps_df)
+        self.final_report = {
+            'session_details': {'session_name': self.raw_data['session'].get('session_name'), 
+                                'event_name': self.raw_data['session'].get('event_name'),
+                                'total_laps': int(total_laps) if pd.notna(total_laps) else 0},
+            'timeline': timeline_data
+        }
+        print("Timeline: Final report generated.")
+        return self.final_report
+
+    def save_report(self, output_filepath):
+        if not self.final_report: return
+        with open(output_filepath, 'w') as f: json.dump(self.final_report, f, indent=2)
+        print(f"Timeline: Report successfully saved to '{output_filepath}'")
+
+    def save_report(self, output_filepath):
+        if not self.final_report: return
+        with open(output_filepath, 'w') as f: json.dump(self.final_report, f, indent=2)
+        print(f"Timeline: Report successfully saved to '{output_filepath}'")
+
+# --- MAIN ORCHESTRATOR SCRIPT ---
 if __name__ == "__main__":
-    INPUT_FILE = "vp_vir_r1.json"
+    # This block now runs both generators in sequence.
+    # The full, final code for RaceReportGenerator is assumed to be defined above this.
+    INPUT_FILE = "test_2025_data.json"
+    
     try:
         print(f"Loading full dataset from '{INPUT_FILE}'...")
         with open(INPUT_FILE, 'r') as f: full_data = json.load(f)
+        
         participants = full_data.get('participants', [])
         if not participants: raise ValueError("No participants found.")
+        
         unique_classes = sorted({p.get('class') for p in participants if p.get('class')})
         print(f"Found unique classes: {unique_classes}\n")
+
         for race_class in unique_classes:
-            print(f"--- Generating report for class: {race_class} ---")
+            print(f"--- Generating reports for class: {race_class} ---")
+            
             class_data = {'session': copy.deepcopy(full_data['session']), 'participants': [p for p in participants if p.get('class') == race_class]}
             if not class_data['participants']: continue
+
+            # --- 1. Run the Main Performance Report Generator ---
+            print("Generating main driver performance report...")
             report_generator = RaceReportGenerator(class_data)
             report_generator.generate_report()
-            report_generator.save_report(f"race_report_vp_vir_r1_v2_{race_class}.json")
+            report_generator.save_report(f"race_report_mido_v6_{race_class}.json")
+            
+            # --- 2. Extract the calculated factors (the critical handoff) ---
+            license_factors = report_generator.dynamic_license_factors
+            if not license_factors:
+                print("Skipping timeline generation as no license factors were created.")
+                print("-" * 50)
+                continue
+
+            # --- 3. Run the New Timeline Report Generator ---
+            print("\nGenerating chronological race timeline report...")
+            timeline_generator = RaceTimelineGenerator(class_data, license_factors)
+            timeline_generator.generate_report()
+            timeline_generator.save_report(f"race_timeline_mido_v6_{race_class}.json")
+            
             print("-" * 50)
+            
     except FileNotFoundError: print(f"FATAL ERROR: Input file '{INPUT_FILE}' not found.")
     except Exception as e: print(f"An unexpected error occurred: {e}")
