@@ -469,7 +469,7 @@ class RaceTimelineGenerator:
 if __name__ == "__main__":
     # This block now runs both generators in sequence.
     # The full, final code for RaceReportGenerator is assumed to be defined above this.
-    INPUT_FILE = "test_2025_data.json"
+    INPUT_FILE = "vp_vir_r1.json"
     
     try:
         print(f"Loading full dataset from '{INPUT_FILE}'...")
@@ -491,7 +491,7 @@ if __name__ == "__main__":
             print("Generating main driver performance report...")
             report_generator = RaceReportGenerator(class_data)
             report_generator.generate_report()
-            report_generator.save_report(f"race_report_mido_v17_{race_class}.json")
+            report_generator.save_report(f"race_report_vp_vir_r1_v3_{race_class}.json")
             
             # --- 2. Extract the calculated factors (the critical handoff) ---
             license_factors = report_generator.dynamic_license_factors
@@ -504,7 +504,7 @@ if __name__ == "__main__":
             print("\nGenerating chronological race timeline report...")
             timeline_generator = RaceTimelineGenerator(class_data, license_factors)
             timeline_generator.generate_report()
-            timeline_generator.save_report(f"race_timeline_mido_v17_{race_class}.json")
+            timeline_generator.save_report(f"race_timeline_vp_vir_r1_v3_{race_class}.json")
             
             print("-" * 50)
             
