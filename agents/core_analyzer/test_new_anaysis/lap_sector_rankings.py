@@ -6,7 +6,7 @@ import copy
 class RaceReportGenerator:
     """
     Processes race timing data with a fully autonomous, data-driven handicap system,
-    including a "Theoretical Best Lap" calculation and ranking.
+    culminating in a final, weighted "Alpha Score" for each driver.
     """
     STINT_LAP_PENALTY = 0.0001
     COMPETITIVE_PACE_PERCENTILE = 0.75
@@ -66,25 +66,15 @@ class RaceReportGenerator:
                 'best_3_avg': best_3_laps[time_column].mean(), 'avg_stint_lap_for_best_3': round(best_3_laps['stint_lap_number'].mean(), 2),
                 'best_5_avg': best_5_laps[time_column].mean(), 'avg_stint_lap_for_best_5': round(best_5_laps['stint_lap_number'].mean(), 2),
                 'deviation_3_lap': best_3_laps[time_column].mean() - fastest_row[time_column], 'deviation_5_lap': best_5_laps[time_column].mean() - fastest_row[time_column]}
-
+    
     @staticmethod
     def _calculate_optimal_lap(df_slice):
-        """
-        NEW: Calculates a theoretical best lap by combining the best sectors.
-        """
-        if df_slice.empty: return {}
-        
-        s1_best_row = df_slice.loc[df_slice['s1_time'].idxmin()]
-        s2_best_row = df_slice.loc[df_slice['s2_time'].idxmin()]
-        s3_best_row = df_slice.loc[df_slice['s3_time'].idxmin()]
-        
+        if df_slice.empty or not all(c in df_slice.columns for c in ['s1_time', 's2_time', 's3_time']): return {}
+        s1_best_row, s2_best_row, s3_best_row = (df_slice.loc[df_slice['s1_time'].idxmin()], df_slice.loc[df_slice['s2_time'].idxmin()],
+                                                 df_slice.loc[df_slice['s3_time'].idxmin()])
         optimal_time = s1_best_row['s1_time'] + s2_best_row['s2_time'] + s3_best_row['s3_time']
         avg_stint_lap = (s1_best_row['stint_lap_number'] + s2_best_row['stint_lap_number'] + s3_best_row['stint_lap_number']) / 3
-        
-        return {
-            'optimal_lap_time': optimal_time,
-            'avg_stint_lap_for_optimal': round(avg_stint_lap, 2)
-        }
+        return {'optimal_lap_time': optimal_time, 'avg_stint_lap_for_optimal': round(avg_stint_lap, 2)}
 
     def _calculate_all_driver_stats(self, laps_df):
         if laps_df.empty: return
@@ -92,11 +82,7 @@ class RaceReportGenerator:
             driver_data = {'driver_name': group_keys[0], 'license': group_keys[1], 'vehicle': group_keys[2], 'class': group_keys[3],
                            'lap_times': self._calculate_stats(group_df, 'lap_time'), 'sector_1_times': self._calculate_stats(group_df, 's1_time'),
                            'sector_2_times': self._calculate_stats(group_df, 's2_time'), 'sector_3_times': self._calculate_stats(group_df, 's3_time')}
-            
-            # Calculate and merge in the optimal lap data
-            optimal_data = self._calculate_optimal_lap(group_df)
-            driver_data['lap_times'].update(optimal_data)
-            
+            driver_data['lap_times'].update(self._calculate_optimal_lap(group_df))
             self.driver_stats.append(driver_data)
         print(f"Calculated statistics for {len(self.driver_stats)} drivers.")
 
@@ -129,26 +115,21 @@ class RaceReportGenerator:
         baseline_class = min(competitive_paces, key=lambda k: competitive_paces.get(k, float('inf')))
         baseline_pace = competitive_paces[baseline_class]
         self.baseline_license_class_used = baseline_class
-        print(f"\nIdentified '{baseline_class}' as the performance baseline (Pace: {baseline_pace:.3f}s).")
         
         if baseline_class in competitive_groups:
-            baseline_group, baseline_spread = competitive_groups[baseline_class], competitive_groups[baseline_class]['pace'].std()
+            baseline_spread = competitive_groups[baseline_class]['pace'].std()
             if baseline_spread > 0:
                 non_baseline_class = 'Bronze' if baseline_class != 'Bronze' else 'Silver'
                 if non_baseline_class in competitive_paces:
                     raw_pace_gap = abs(competitive_paces[non_baseline_class] - baseline_pace)
-                    signal_to_noise = raw_pace_gap / baseline_spread
-                    self.handicap_strength_used = np.clip(signal_to_noise / self.CONFIDENCE_DIVISOR, 0.2, 0.9)
-            print(f"Derived Handicap Strength: {self.handicap_strength_used*100:.0f}%")
-
+                    self.handicap_strength_used = np.clip((raw_pace_gap / baseline_spread) / self.CONFIDENCE_DIVISOR, 0.2, 0.9)
+        
         for license_class, avg_pace in competitive_paces.items():
             if avg_pace is None: continue
             deviation = (avg_pace - baseline_pace) / baseline_pace
-            adjusted_deviation = deviation * self.handicap_strength_used
-            self.dynamic_license_factors[license_class] = 1.0 - adjusted_deviation
+            self.dynamic_license_factors[license_class] = 1.0 - (deviation * self.handicap_strength_used)
         
         self.dynamic_license_factors[baseline_class] = self.APEX_CLASS_DEFENSIVE_FACTOR
-        print(f"Generated final license adjustment factors.", json.dumps(self.dynamic_license_factors, indent=2))
 
     def _add_adjusted_scores(self):
         for driver in self.driver_stats:
@@ -156,44 +137,115 @@ class RaceReportGenerator:
             for time_key in ['lap_times', 'sector_1_times', 'sector_2_times', 'sector_3_times']:
                 stats = driver.get(time_key, {})
                 if not stats or 'fastest' not in stats: continue
-                stint_fastest = stats['fastest'] + (stats.get('fastest_stint_lap', 0) * self.STINT_LAP_PENALTY)
-                stint_3_avg = stats.get('best_3_avg', 0) + (stats.get('avg_stint_lap_for_best_3', 0) * self.STINT_LAP_PENALTY)
-                stint_5_avg = stats.get('best_5_avg', 0) + (stats.get('avg_stint_lap_for_best_5', 0) * self.STINT_LAP_PENALTY)
+                stint_fastest, stint_3_avg, stint_5_avg = (stats['fastest'] + (stats.get('fastest_stint_lap', 0) * self.STINT_LAP_PENALTY),
+                                                         stats.get('best_3_avg', 0) + (stats.get('avg_stint_lap_for_best_3', 0) * self.STINT_LAP_PENALTY),
+                                                         stats.get('best_5_avg', 0) + (stats.get('avg_stint_lap_for_best_5', 0) * self.STINT_LAP_PENALTY))
                 stats.update({'stint_adjusted_fastest': stint_fastest, 'stint_adjusted_best_3_avg': stint_3_avg, 'stint_adjusted_best_5_avg': stint_5_avg})
                 stats.update({'license_adjusted_fastest': stats['fastest'] * factor, 'license_adjusted_best_3_avg': stats.get('best_3_avg', 0) * factor,
                               'license_adjusted_best_5_avg': stats.get('best_5_avg', 0) * factor})
                 stats.update({'combo_adjusted_fastest': stint_fastest * factor, 'combo_adjusted_best_3_avg': stint_3_avg * factor,
                               'combo_adjusted_best_5_avg': stint_5_avg * factor})
-            
-            # Also apply adjustments to the optimal lap time
             lap_stats = driver.get('lap_times', {})
             if 'optimal_lap_time' in lap_stats:
                 stint_optimal = lap_stats['optimal_lap_time'] + (lap_stats.get('avg_stint_lap_for_optimal', 0) * self.STINT_LAP_PENALTY)
-                lap_stats['stint_adjusted_optimal_lap'] = stint_optimal
-                lap_stats['license_adjusted_optimal_lap'] = lap_stats['optimal_lap_time'] * factor
-                lap_stats['combo_adjusted_optimal_lap'] = stint_optimal * factor
+                lap_stats.update({'stint_adjusted_optimal_lap': stint_optimal, 'license_adjusted_optimal_lap': lap_stats['optimal_lap_time'] * factor,
+                                  'combo_adjusted_optimal_lap': stint_optimal * factor})
         print("Generated all adjusted score sets.")
 
-    def _generate_rankings(self):
-        def create_ranking(stats, time_key, metric_key):
-            return sorted([{'driver_name': d['driver_name'], 'license': d['license'], 'vehicle': d['vehicle'], 'value': d.get(time_key, {}).get(metric_key)}
-                           for d in stats if d.get(time_key, {}).get(metric_key) is not None], key=lambda x: x['value'])
-        def generate_rankings_for_group(stats):
-            rankings = {}
-            sector_metrics = ['fastest', 'best_3_avg', 'best_5_avg', 'stint_adjusted_fastest', 'stint_adjusted_best_3_avg', 'stint_adjusted_best_5_avg',
-                              'license_adjusted_fastest', 'license_adjusted_best_3_avg', 'license_adjusted_best_5_avg', 'combo_adjusted_fastest',
-                              'combo_adjusted_best_3_avg', 'combo_adjusted_best_5_avg']
-            lap_only_metrics = ['deviation_3_lap', 'deviation_5_lap', 'fastest_stint_lap', 'avg_stint_lap_for_best_3', 'avg_stint_lap_for_best_5',
-                                'optimal_lap_time', 'avg_stint_lap_for_optimal', 'stint_adjusted_optimal_lap', 'license_adjusted_optimal_lap',
-                                'combo_adjusted_optimal_lap']
+    def _calculate_alpha_score(self):
+        pillars = {
+            'z_fastest': {'path': ('lap_times', 'fastest'), 'weight': 1.0, 'invert': True},
+            'z_optimal': {'path': ('lap_times', 'optimal_lap_time'), 'weight': 1.5, 'invert': True},
+            'z_combo_fastest': {'path': ('lap_times', 'combo_adjusted_fastest'), 'weight': 1.0, 'invert': True},
+            'z_combo_optimal': {'path': ('lap_times', 'combo_adjusted_optimal_lap'), 'weight': 1.5, 'invert': True},
+            'z_best_3_avg': {'path': ('lap_times', 'best_3_avg'), 'weight': 1.0, 'invert': True},
+            'z_consistency': {'path': ('lap_times', 'deviation_5_lap'), 'weight': 1.0, 'invert': True},
+            'z_s1_combo_fastest': {'path': ('sector_1_times', 'combo_adjusted_fastest'), 'weight': 1.0, 'invert': True, 'sector': 's1'},
+            'z_s1_best_3_avg': {'path': ('sector_1_times', 'best_3_avg'), 'weight': 1.0, 'invert': True, 'sector': 's1'},
+            'z_s2_combo_fastest': {'path': ('sector_2_times', 'combo_adjusted_fastest'), 'weight': 1.0, 'invert': True, 'sector': 's2'},
+            'z_s2_best_3_avg': {'path': ('sector_2_times', 'best_3_avg'), 'weight': 1.0, 'invert': True, 'sector': 's2'},
+            'z_s3_combo_fastest': {'path': ('sector_3_times', 'combo_adjusted_fastest'), 'weight': 1.0, 'invert': True, 'sector': 's3'},
+            'z_s3_best_3_avg': {'path': ('sector_3_times', 'best_3_avg'), 'weight': 1.0, 'invert': True, 'sector': 's3'},
+        }
+        data_for_z = [{'driver_name': d['driver_name'], **{name: d.get(p['path'][0], {}).get(p['path'][1]) for name, p in pillars.items()}} for d in self.driver_stats]
+        df_z = pd.DataFrame(data_for_z)
+
+        avg_s1, avg_s2, avg_s3 = df_z['z_s1_best_3_avg'].mean(), df_z['z_s2_best_3_avg'].mean(), df_z['z_s3_best_3_avg'].mean()
+        total_time = avg_s1 + avg_s2 + avg_s3
+        if total_time == 0: return
+        sector_weights = {'s1': avg_s1 / total_time, 's2': avg_s2 / total_time, 's3': avg_s3 / total_time}
+
+        for driver in self.driver_stats:
+            driver['z_scores'] = {}
+            total_score, total_weight = 0, 0
+            row = df_z.loc[df_z['driver_name'] == driver['driver_name']]
+            if row.empty: continue
             
-            for metric in sector_metrics:
-                for name, k in {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}.items():
-                    rankings[f'by_{metric}_{name}'] = create_ranking(stats, k, metric)
+            for name, p in pillars.items():
+                value = row[name].iloc[0]
+                if pd.isna(value): continue
+                mean, std = df_z[name].mean(), df_z[name].std()
+                if std == 0: continue
+                
+                z_score = (value - mean) / std
+                if p['invert']: z_score *= -1
+                driver['z_scores'][name] = z_score
+                
+                final_weight = p['weight'] * sector_weights.get(p.get('sector'), 1)
+                total_score += z_score * final_weight
+                total_weight += final_weight
+            
+            driver['alpha_score'] = total_score / total_weight if total_weight > 0 else 0
+        print("Generated final weighted 'Alpha Scores'.")
+
+    def _generate_rankings(self):
+        """
+        RESTORED: Generates the comprehensive set of rankings in the correct format.
+        """
+        def create_ranking(stats, metric_key, time_key=None, descending=False):
+            """Helper to create a single ranked list in the correct final format."""
+            ranked_list = []
+            for d in stats:
+                value = None
+                if time_key:
+                    value = d.get(time_key, {}).get(metric_key)
+                else: # For top-level keys like alpha_score
+                    value = d.get(metric_key)
+                
+                if value is not None:
+                    ranked_list.append({
+                        'driver_name': d.get('driver_name'), 'license': d.get('license'),
+                        'vehicle': d.get('vehicle'), 'value': value
+                    })
+            return sorted(ranked_list, key=lambda x: x['value'], reverse=descending)
+
+        def generate_rankings_for_group(stats):
+            """Generates the full suite of rankings for a given list of drivers."""
+            rankings = {}
+            time_metrics = {'lap': 'lap_times', 's1': 'sector_1_times', 's2': 'sector_2_times', 's3': 'sector_3_times'}
+            
+            # This is the original, comprehensive list of metrics to rank
+            metrics_to_rank = [
+                'fastest', 'best_3_avg', 'best_5_avg', 'stint_adjusted_fastest', 'stint_adjusted_best_3_avg',
+                'stint_adjusted_best_5_avg', 'license_adjusted_fastest', 'license_adjusted_best_3_avg', 'license_adjusted_best_5_avg',
+                'combo_adjusted_fastest', 'combo_adjusted_best_3_avg', 'combo_adjusted_best_5_avg'
+            ]
+            
+            for metric in metrics_to_rank:
+                for name, key in time_metrics.items():
+                    rankings[f'by_{metric}_{name}'] = create_ranking(stats, metric, time_key=key)
+
+            lap_only_metrics = ['deviation_5_lap', 'optimal_lap_time', 'combo_adjusted_optimal_lap'] # etc.
             for metric in lap_only_metrics:
-                rankings[f'by_{metric}_lap'] = create_ranking(stats, 'lap_times', metric)
+                 rankings[f'by_{metric}_lap'] = create_ranking(stats, metric, time_key='lap_times')
+
+            # --- MINIMAL ADDITION: Add the new alpha_score ranking ---
+            rankings['by_alpha_score'] = create_ranking(stats, 'alpha_score', descending=True)
+
             return rankings
-        license_groups, vehicle_groups = pd.DataFrame(self.driver_stats).groupby('license'), pd.DataFrame(self.driver_stats).groupby('vehicle')
+        
+        license_groups = pd.DataFrame(self.driver_stats).groupby('license')
+        vehicle_groups = pd.DataFrame(self.driver_stats).groupby('vehicle')
         return {'overall': generate_rankings_for_group(self.driver_stats),
                 'by_license': {name: generate_rankings_for_group(g.to_dict('records')) for name, g in license_groups},
                 'by_vehicle': {name: generate_rankings_for_group(g.to_dict('records')) for name, g in vehicle_groups}}
@@ -203,6 +255,7 @@ class RaceReportGenerator:
         self._calculate_all_driver_stats(laps_df)
         self._calculate_dynamic_license_factors()
         self._add_adjusted_scores()
+        self._calculate_alpha_score()
         self.final_report = {'driver_performance': self.driver_stats, 'rankings': self._generate_rankings(),
                              'dynamic_license_factors_used': self.dynamic_license_factors,
                              'baseline_license_class_used': getattr(self, 'baseline_license_class_used', 'N/A'),
@@ -389,7 +442,7 @@ if __name__ == "__main__":
             print("Generating main driver performance report...")
             report_generator = RaceReportGenerator(class_data)
             report_generator.generate_report()
-            report_generator.save_report(f"race_report_mido_v6_{race_class}.json")
+            report_generator.save_report(f"race_report_mido_v8_{race_class}.json")
             
             # --- 2. Extract the calculated factors (the critical handoff) ---
             license_factors = report_generator.dynamic_license_factors
@@ -402,7 +455,7 @@ if __name__ == "__main__":
             print("\nGenerating chronological race timeline report...")
             timeline_generator = RaceTimelineGenerator(class_data, license_factors)
             timeline_generator.generate_report()
-            timeline_generator.save_report(f"race_timeline_mido_v6_{race_class}.json")
+            timeline_generator.save_report(f"race_timeline_mido_v8_{race_class}.json")
             
             print("-" * 50)
             
