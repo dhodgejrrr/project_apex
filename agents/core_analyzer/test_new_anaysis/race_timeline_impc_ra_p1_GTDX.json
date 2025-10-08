@@ -1,0 +1,3387 @@
+{
+  "session_details": {
+    "session_name": "Practice 2",
+    "event_name": "28th Annual Motul Petit Le Mans",
+    "total_laps": 22
+  },
+  "timeline": {
+    "2": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 88.01
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 88.59700000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 91.739
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 86.76085072910575,
+          "raw_time": 88.01
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 88.50860280000002,
+          "raw_time": 88.59700000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 91.6474608,
+          "raw_time": 91.739
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 11.173
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 11.908
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 12.128
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 11.014590778869316,
+          "raw_time": 11.173
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 11.896291799999998,
+          "raw_time": 11.908
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 12.1160718,
+          "raw_time": 12.128
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 46.925
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 47.596
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 50.143
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 46.25907306918326,
+          "raw_time": 46.925
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 47.548603799999995,
+          "raw_time": 47.596
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 50.0930568,
+          "raw_time": 50.143
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.873
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 29.688
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.912
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.8443268,
+          "raw_time": 28.873
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.487581202850997,
+          "raw_time": 29.912
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 29.6585118,
+          "raw_time": 29.688
+        }
+      ]
+    },
+    "3": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 82.863
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.492
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 85.605
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 82.7804367,
+          "raw_time": 82.863
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.4088077,
+          "raw_time": 83.492
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 84.39008950008426,
+          "raw_time": 85.605
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.317
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.394
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.447
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.246747658038998,
+          "raw_time": 10.394
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.306982699999999,
+          "raw_time": 10.317
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.4368527,
+          "raw_time": 10.447
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.207
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 43.717
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 45.231
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.164092700000005,
+          "raw_time": 43.207
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 43.673582700000004,
+          "raw_time": 43.717
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.58921883580995,
+          "raw_time": 45.231
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.829
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.838
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.98
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.800470699999998,
+          "raw_time": 28.829
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.554714488932067,
+          "raw_time": 29.98
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.8084617,
+          "raw_time": 29.838
+        }
+      ]
+    },
+    "4": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 82.583
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.863
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.527
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 82.5008166,
+          "raw_time": 82.583
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.32749083537378,
+          "raw_time": 84.527
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.7795366,
+          "raw_time": 83.863
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.122
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.354
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.978707415962013,
+          "raw_time": 10.122
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.151238600000001,
+          "raw_time": 10.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.3440456,
+          "raw_time": 10.354
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 43.527
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.967
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 45.135
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 43.4838726,
+          "raw_time": 43.527
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.49468018477948,
+          "raw_time": 45.135
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.9224326,
+          "raw_time": 44.967
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.702
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.735
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.27
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.6736976,
+          "raw_time": 28.702
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.7066646,
+          "raw_time": 28.735
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.854891878227942,
+          "raw_time": 29.27
+        }
+      ]
+    },
+    "5": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 82.89099999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.291
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 88.524
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 82.80860849999999,
+          "raw_time": 82.89099999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.2082085,
+          "raw_time": 83.291
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 87.26784998066954,
+          "raw_time": 88.524
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.927
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.051
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.797
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.9175725,
+          "raw_time": 9.927
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.041448500000001,
+          "raw_time": 10.051
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.644224030254668,
+          "raw_time": 10.797
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 44.077
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.964
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 48.574
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 44.0334225,
+          "raw_time": 44.077
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.9195355,
+          "raw_time": 44.964
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 47.8849604220982,
+          "raw_time": 48.574
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.276
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.887
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.153
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.248223499999998,
+          "raw_time": 28.276
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.739651332811246,
+          "raw_time": 29.153
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.8586125,
+          "raw_time": 28.887
+        }
+      ]
+    },
+    "6": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.615
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 83.436
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.505
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.5349844,
+          "raw_time": 80.615
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.30600029739188,
+          "raw_time": 84.505
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 83.35316340000001,
+          "raw_time": 83.436
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.939
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.218
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.219
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.929660400000001,
+          "raw_time": 9.939
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.07354180834085,
+          "raw_time": 10.218
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.2093804,
+          "raw_time": 10.219
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.585
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.903
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 44.164
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.5430144,
+          "raw_time": 42.585
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.280366208352746,
+          "raw_time": 43.903
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 44.1204354,
+          "raw_time": 44.164
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.091
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 29.053
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 30.384
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.0635084,
+          "raw_time": 28.091
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 29.0245464,
+          "raw_time": 29.053
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.953275246091774,
+          "raw_time": 30.384
+        }
+      ]
+    },
+    "7": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.953
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.075
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.8717463,
+          "raw_time": 81.953
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.89639845058834,
+          "raw_time": 83.075
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.004
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.139
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.9946953,
+          "raw_time": 10.004
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.99576183371829,
+          "raw_time": 10.139
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.832
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.99
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.789867300000004,
+          "raw_time": 42.832
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.36622977983089,
+          "raw_time": 43.99
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.946
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 29.117
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.53578696333158,
+          "raw_time": 28.946
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 29.0885823,
+          "raw_time": 29.117
+        }
+      ]
+    },
+    "8": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.09700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 85.919
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.01670220000001,
+          "raw_time": 81.09700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 84.70012501363045,
+          "raw_time": 85.919
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.827
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.471
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.8179722,
+          "raw_time": 9.827
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.323147506369143,
+          "raw_time": 10.471
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.651
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 46.213
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.6091482,
+          "raw_time": 42.651
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 45.55777175173726,
+          "raw_time": 46.213
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.619
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.235
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.5911802,
+          "raw_time": 28.619
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.820783042715387,
+          "raw_time": 29.235
+        }
+      ]
+    },
+    "9": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 82.195
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.104
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.92518394183016,
+          "raw_time": 83.104
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 82.11370409999999,
+          "raw_time": 82.195
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.77
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.138
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.7611291,
+          "raw_time": 9.77
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.994973190122625,
+          "raw_time": 10.138
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 43.765
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.779
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.158422192372896,
+          "raw_time": 43.779
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 43.722134100000005,
+          "raw_time": 43.765
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.66
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.187
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.632239100000003,
+          "raw_time": 28.66
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.773563007424887,
+          "raw_time": 29.187
+        }
+      ]
+    },
+    "10": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.895
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.316
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 82.989
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.8143048,
+          "raw_time": 80.895
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.23568300000001,
+          "raw_time": 81.316
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.81191500540262,
+          "raw_time": 82.989
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.752
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.014
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.127
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.743247,
+          "raw_time": 9.752
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.984227921131676,
+          "raw_time": 10.127
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.004185799999998,
+          "raw_time": 10.014
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.682
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.915
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.868
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.6395178,
+          "raw_time": 42.682
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.873084,
+          "raw_time": 42.915
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.24625737284019,
+          "raw_time": 43.868
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.199
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.649
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.994
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.1710008,
+          "raw_time": 28.199
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.58340132041992,
+          "raw_time": 28.994
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.621350000000003,
+          "raw_time": 28.649
+        }
+      ]
+    },
+    "11": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.975
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.131
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.89432469999998,
+          "raw_time": 80.975
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.9519978240828,
+          "raw_time": 83.131
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.874
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.08
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.8644257,
+          "raw_time": 9.874
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.937993690335755,
+          "raw_time": 10.08
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.496
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.909
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.4538037,
+          "raw_time": 42.496
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.28677393756753,
+          "raw_time": 43.909
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.605
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.142
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.5766947,
+          "raw_time": 28.605
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.72939896606759,
+          "raw_time": 29.142
+        }
+      ]
+    },
+    "12": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.09100000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.236
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.91266422474897,
+          "raw_time": 83.09100000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.1531636,
+          "raw_time": 83.236
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.045
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.507
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.903589113474826,
+          "raw_time": 10.045
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.4968926,
+          "raw_time": 10.507
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.795
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.557
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.17449080563458,
+          "raw_time": 43.795
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.5128426,
+          "raw_time": 44.557
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.172
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.251
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.1442276,
+          "raw_time": 28.172
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.836950236426542,
+          "raw_time": 29.251
+        }
+      ]
+    },
+    "13": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 82.66499999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 82.726
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.311
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 82.5825348,
+          "raw_time": 82.66499999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 82.6437735,
+          "raw_time": 82.726
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.11544428858909,
+          "raw_time": 84.311
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.835
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.903
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.16
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.825364800000001,
+          "raw_time": 9.835
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.893596500000001,
+          "raw_time": 9.903
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.017055210801274,
+          "raw_time": 10.16
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.884
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.491
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.99
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.8413158,
+          "raw_time": 42.884
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.35262575711015,
+          "raw_time": 44.99
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.4470085,
+          "raw_time": 44.491
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.332
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 29.946
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.3041675,
+          "raw_time": 28.332
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.748326412363575,
+          "raw_time": 29.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 29.9162538,
+          "raw_time": 29.946
+        }
+      ]
+    },
+    "14": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.465
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.44800000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.31
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.38513440000001,
+          "raw_time": 80.465
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.3668517,
+          "raw_time": 81.44800000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.11455706454396,
+          "raw_time": 84.31
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.819
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.133
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.136
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.809780400000001,
+          "raw_time": 9.819
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.99349448338075,
+          "raw_time": 10.136
+        },
+        {
+          "rank": 3,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.123166699999999,
+          "raw_time": 10.133
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.505
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.798
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.941
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.4630944,
+          "raw_time": 42.505
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.7555017,
+          "raw_time": 42.798
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.30441991732506,
+          "raw_time": 44.941
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.141
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.517
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.233
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.113458399999995,
+          "raw_time": 28.141
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.488782699999998,
+          "raw_time": 28.517
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.819402916422973,
+          "raw_time": 29.233
+        }
+      ]
+    },
+    "15": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.59100000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 80.883
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.064
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.5111083,
+          "raw_time": 80.59100000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 80.80251659999999,
+          "raw_time": 80.883
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 82.8721477393261,
+          "raw_time": 84.064
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.725
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.821
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.08
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.7156746,
+          "raw_time": 9.725
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.8118783,
+          "raw_time": 9.821
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.938388012133588,
+          "raw_time": 10.08
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.594
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.775
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.857
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.5521053,
+          "raw_time": 42.594
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.732624599999994,
+          "raw_time": 42.775
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.23590642564707,
+          "raw_time": 43.857
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.176
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.383
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 30.127
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.148523299999997,
+          "raw_time": 28.176
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.3550166,
+          "raw_time": 28.383
+        },
+        {
+          "rank": 3,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.700810715029192,
+          "raw_time": 30.127
+        }
+      ]
+    },
+    "16": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.993
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.804
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.91280619999999,
+          "raw_time": 80.993
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.7226955,
+          "raw_time": 81.804
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.747
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.902
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.737752500000001,
+          "raw_time": 9.747
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.892897199999998,
+          "raw_time": 9.902
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.779
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 42.906
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.7370202,
+          "raw_time": 42.779
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 42.8635935,
+          "raw_time": 42.906
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.312
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 29.151
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.284487200000004,
+          "raw_time": 28.312
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 29.122348499999998,
+          "raw_time": 29.151
+        }
+      ]
+    },
+    "17": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.691
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 82.539
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.60990840000001,
+          "raw_time": 81.691
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 82.4573601,
+          "raw_time": 82.539
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.895
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.022
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.8860041,
+          "raw_time": 9.895
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.012577400000001,
+          "raw_time": 10.022
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 43.183
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.369
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 43.1404164,
+          "raw_time": 43.183
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.3255301,
+          "raw_time": 44.369
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.275
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.486
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.2476241,
+          "raw_time": 28.275
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.4581134,
+          "raw_time": 28.486
+        }
+      ]
+    },
+    "18": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 80.94200000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.626
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 80.86205700000001,
+          "raw_time": 80.94200000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.42488831943854,
+          "raw_time": 84.626
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.805
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.184
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.796194,
+          "raw_time": 9.805
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.039630133727211,
+          "raw_time": 10.184
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 42.825
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 45.125
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 42.783174,
+          "raw_time": 42.825
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.48462497893474,
+          "raw_time": 45.125
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.312
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.317
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.284687,
+          "raw_time": 28.312
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.901027528574403,
+          "raw_time": 29.317
+        }
+      ]
+    },
+    "19": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 81.238
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 83.22
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.15786089999999,
+          "raw_time": 81.238
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 82.03894578050497,
+          "raw_time": 83.22
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.872
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.064
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.863226899999999,
+          "raw_time": 9.872
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.92143217482677,
+          "raw_time": 10.064
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.069
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.003
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.0270299,
+          "raw_time": 43.069
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.378650916462625,
+          "raw_time": 44.003
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 28.297
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.153
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jake Walker",
+          "license": "Silver",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.2698019,
+          "raw_time": 28.297
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.739454171912328,
+          "raw_time": 29.153
+        }
+      ]
+    },
+    "20": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 81.667
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 82.705
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 81.53135504624444,
+          "raw_time": 82.705
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 81.58553280000001,
+          "raw_time": 81.667
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 9.845
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 9.964
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.822950305817978,
+          "raw_time": 9.964
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 9.8353548,
+          "raw_time": 9.845
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 43.129
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 43.731
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 43.086070799999995,
+          "raw_time": 43.129
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 43.11061067438564,
+          "raw_time": 43.731
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.693
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.01
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 28.59858270963649,
+          "raw_time": 29.01
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.6645068,
+          "raw_time": 28.693
+        }
+      ]
+    },
+    "21": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "lap_time": 83.657
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 84.55199999999999
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 83.3522345281878,
+          "raw_time": 84.55199999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 83.5736427,
+          "raw_time": 83.657
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 10.063
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s1_time": 10.259
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 9.920643531231105,
+          "raw_time": 10.063
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 10.2490407,
+          "raw_time": 10.259
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s2_time": 44.903
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 44.957
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 44.31930556519326,
+          "raw_time": 44.957
+        },
+        {
+          "rank": 2,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 44.8583967,
+          "raw_time": 44.903
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "s3_time": 28.495
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.532
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Adam Adelson",
+          "license": "Silver",
+          "vehicle": "Porsche 911 GT3 R (992)",
+          "value": 28.4668047,
+          "raw_time": 28.495
+        },
+        {
+          "rank": 2,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.11327123625802,
+          "raw_time": 29.532
+        }
+      ]
+    },
+    "22": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "lap_time": 87.867
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 86.62027500817828,
+          "raw_time": 87.867
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s1_time": 11.03
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 10.87401505794185,
+          "raw_time": 11.03
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s2_time": 47.193
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 46.52366299552921,
+          "raw_time": 47.193
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "s3_time": 29.644
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Samantha Tan",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT3",
+          "value": 29.223779920100714,
+          "raw_time": 29.644
+        }
+      ]
+    }
+  }
+}

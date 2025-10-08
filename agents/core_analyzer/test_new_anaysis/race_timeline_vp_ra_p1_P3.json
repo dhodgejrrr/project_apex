@@ -1,0 +1,5445 @@
+{
+  "session_details": {
+    "session_name": "Practice 1",
+    "event_name": "28th Annual Motul Petit Le Mans",
+    "total_laps": 23
+  },
+  "timeline": {
+    "2": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 97.233
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 97.771
+        },
+        {
+          "rank": 3,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 98.614
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 99.393
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 104.06700000000001
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 111.35900000000001
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 96.43249368726903,
+          "raw_time": 97.233
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 97.67342880000001,
+          "raw_time": 97.771
+        },
+        {
+          "rank": 3,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 98.51558580000001,
+          "raw_time": 98.614
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 99.29380680000001,
+          "raw_time": 99.393
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 103.21021633610499,
+          "raw_time": 104.06700000000001
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 110.44216739775436,
+          "raw_time": 111.35900000000001
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 12.448
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 12.563
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 13.603
+        },
+        {
+          "rank": 4,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 13.847
+        },
+        {
+          "rank": 5,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 14.033
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 14.414
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 12.345690236646147,
+          "raw_time": 12.448
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 12.5506368,
+          "raw_time": 12.563
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 13.491178919614471,
+          "raw_time": 13.603
+        },
+        {
+          "rank": 4,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 13.833352799999998,
+          "raw_time": 13.847
+        },
+        {
+          "rank": 5,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 14.019166799999999,
+          "raw_time": 14.033
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 14.295500410425996,
+          "raw_time": 14.414
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 50.701
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 51.717
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 52.155
+        },
+        {
+          "rank": 4,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 52.753
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 54.329
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 59.3
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 50.28368035750098,
+          "raw_time": 50.701
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 51.6654828,
+          "raw_time": 51.717
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 52.1030448,
+          "raw_time": 52.155
+        },
+        {
+          "rank": 4,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 52.7004468,
+          "raw_time": 52.753
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 53.88180411664304,
+          "raw_time": 54.329
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 58.81186839632749,
+          "raw_time": 59.3
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 32.014
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 33.205
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 33.491
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 34.084
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 36.135
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 37.645
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 31.982185800000003,
+          "raw_time": 32.014
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 33.1719948,
+          "raw_time": 33.205
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 33.4577088,
+          "raw_time": 33.491
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 33.80351979915929,
+          "raw_time": 34.084
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 35.837630005884854,
+          "raw_time": 36.135
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 37.335195297038254,
+          "raw_time": 37.645
+        }
+      ]
+    },
+    "3": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 88.68299999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 93.561
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 94.03
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 95.533
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 88.59461669999999,
+          "raw_time": 88.68299999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 92.79083144052322,
+          "raw_time": 93.561
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 93.9362697,
+          "raw_time": 94.03
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 95.4377667,
+          "raw_time": 95.533
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.403
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.752
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 12.335
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 12.703
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.3918967,
+          "raw_time": 11.403
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.655520908094063,
+          "raw_time": 11.752
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 12.3229647,
+          "raw_time": 12.335
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 12.690596699999999,
+          "raw_time": 12.703
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.575
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 49.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 49.834
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 50.823
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 47.52772470000001,
+          "raw_time": 47.575
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 48.75646129005256,
+          "raw_time": 49.161
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 49.784465700000005,
+          "raw_time": 49.834
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 50.772476700000006,
+          "raw_time": 50.823
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.705
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.872
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.648
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.996
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 29.675594699999998,
+          "raw_time": 29.705
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.8414277,
+          "raw_time": 30.872
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 32.3794443014327,
+          "raw_time": 32.648
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 32.963303700000004,
+          "raw_time": 32.996
+        }
+      ]
+    },
+    "4": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 84.304
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 91.01599999999999
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 92.969
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 92.99799999999999
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 84.22009560000001,
+          "raw_time": 84.304
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 90.92538359999999,
+          "raw_time": 91.01599999999999
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 92.20380568169296,
+          "raw_time": 92.969
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 92.90540159999999,
+          "raw_time": 92.99799999999999
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.652
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.085
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.563
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 12.028
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.6417476,
+          "raw_time": 10.652
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 11.074314600000001,
+          "raw_time": 11.085
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.468176481935869,
+          "raw_time": 11.563
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 12.016371600000001,
+          "raw_time": 12.028
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 44.554
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 48.448
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 48.789
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 50.481
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 44.5098456,
+          "raw_time": 44.554
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 48.387623851787694,
+          "raw_time": 48.789
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 48.3999516,
+          "raw_time": 48.448
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 50.4309186,
+          "raw_time": 50.481
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.098
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.54
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.432
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.617
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 29.0693016,
+          "raw_time": 29.098
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.5098596,
+          "raw_time": 30.54
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 31.400967599999998,
+          "raw_time": 31.432
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 32.34879876004418,
+          "raw_time": 32.617
+        }
+      ]
+    },
+    "5": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 81.526
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 89.285
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 90.004
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 90.673
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 93.551
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 96.437
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 96.637
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 81.4449735,
+          "raw_time": 81.526
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 89.1962145,
+          "raw_time": 89.285
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 89.9144955,
+          "raw_time": 90.004
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 89.92681220357437,
+          "raw_time": 90.673
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 93.45764880000002,
+          "raw_time": 93.551
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 95.64304867285968,
+          "raw_time": 96.437
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 95.8414016915555,
+          "raw_time": 96.637
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.099
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.875
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.094
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.849
+        },
+        {
+          "rank": 5,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 12.022
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 12.268
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 12.814
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.0894005,
+          "raw_time": 10.099
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.864624500000001,
+          "raw_time": 10.875
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.003137829603531,
+          "raw_time": 11.094
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.8373508,
+          "raw_time": 11.849
+        },
+        {
+          "rank": 5,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 12.0104775,
+          "raw_time": 12.022
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 12.167172519819916,
+          "raw_time": 12.268
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 12.708676260859486,
+          "raw_time": 12.814
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 42.987
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.034
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.654
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.719
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 48.99
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 51.13
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 51.547
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 42.9445125,
+          "raw_time": 42.987
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 46.9874655,
+          "raw_time": 47.034
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 47.2620696471983,
+          "raw_time": 47.654
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 47.671780500000004,
+          "raw_time": 47.719
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 48.9412098,
+          "raw_time": 48.99
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 50.7091475826035,
+          "raw_time": 51.13
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 51.122713626584265,
+          "raw_time": 51.547
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.44
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.229
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.41
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.925
+        },
+        {
+          "rank": 5,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 32.076
+        },
+        {
+          "rank": 6,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 32.712
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 33.239
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.4120595,
+          "raw_time": 28.44
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.199270499999997,
+          "raw_time": 30.229
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 31.3790895,
+          "raw_time": 31.41
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.66259649186602,
+          "raw_time": 31.925
+        },
+        {
+          "rank": 5,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 31.812055491453314,
+          "raw_time": 32.076
+        },
+        {
+          "rank": 6,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 32.679487800000004,
+          "raw_time": 32.712
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 32.96547829516947,
+          "raw_time": 33.239
+        }
+      ]
+    },
+    "6": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 85.434
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.071
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.531
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 90.143
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 92.449
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 93.148
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 96.601
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 85.3491654,
+          "raw_time": 85.434
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 85.9855284,
+          "raw_time": 86.071
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 89.44206840000001,
+          "raw_time": 89.531
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 90.0531567,
+          "raw_time": 90.143
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 91.68828618610254,
+          "raw_time": 92.449
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 92.38123245691636,
+          "raw_time": 93.148
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 95.80579732469958,
+          "raw_time": 96.601
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.694
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.794
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.21
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.459
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.637
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.808
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 12.086
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.6839054,
+          "raw_time": 10.694
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.7838054,
+          "raw_time": 10.794
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.118281756956453,
+          "raw_time": 11.21
+        },
+        {
+          "rank": 4,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.4481404,
+          "raw_time": 11.459
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.6256627,
+          "raw_time": 11.637
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.71105975332889,
+          "raw_time": 11.808
+        },
+        {
+          "rank": 7,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 11.986770449316072,
+          "raw_time": 12.086
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.359
+        },
+        {
+          "rank": 2,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.539
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.309
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.362
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 49.172
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 49.791
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 51.052
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.3142404,
+          "raw_time": 45.359
+        },
+        {
+          "rank": 2,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.4940604,
+          "raw_time": 45.539
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 47.2622904,
+          "raw_time": 47.309
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 47.3149377,
+          "raw_time": 47.362
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 48.767668235608866,
+          "raw_time": 49.172
+        },
+        {
+          "rank": 6,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 49.38127329894437,
+          "raw_time": 49.791
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 50.63188908182148,
+          "raw_time": 51.052
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.201
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.253
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 31.144
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 31.271
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.428
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.067
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 33.741
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 29.1723984,
+          "raw_time": 29.201
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 29.224346399999998,
+          "raw_time": 29.253
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 31.013783767712013,
+          "raw_time": 31.271
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 31.113155699999997,
+          "raw_time": 31.144
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 31.397171399999998,
+          "raw_time": 31.428
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.803526311649392,
+          "raw_time": 32.067
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 33.46344354860531,
+          "raw_time": 33.741
+        }
+      ]
+    },
+    "7": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 81.687
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.754
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 88.57
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 89.587
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 91.646
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 92.971
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 93.765
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 81.60601229999999,
+          "raw_time": 81.687
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 86.6679453,
+          "raw_time": 86.754
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 88.4818296,
+          "raw_time": 88.57
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 88.84965613554675,
+          "raw_time": 89.587
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 91.5550533,
+          "raw_time": 91.646
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 92.20608674140796,
+          "raw_time": 92.971
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 92.9932506961023,
+          "raw_time": 93.765
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 9.848
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.874
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.095
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.292
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.31
+        },
+        {
+          "rank": 6,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.491
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.833
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 9.838851300000002,
+          "raw_time": 9.848
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.8638253,
+          "raw_time": 10.874
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.084304600000001,
+          "raw_time": 11.095
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 11.19940814160304,
+          "raw_time": 11.292
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.217557442813707,
+          "raw_time": 11.31
+        },
+        {
+          "rank": 6,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.4802083,
+          "raw_time": 11.491
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.735953057175216,
+          "raw_time": 11.833
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 43.598
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.002
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.055
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.273
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 49.345
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 49.782
+        },
+        {
+          "rank": 7,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 50.058
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 43.555101300000004,
+          "raw_time": 43.598
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 44.95769730000001,
+          "raw_time": 45.002
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 46.88410797007342,
+          "raw_time": 47.273
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 47.0083446,
+          "raw_time": 47.055
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 48.93904524376205,
+          "raw_time": 49.345
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 49.646471284940674,
+          "raw_time": 50.058
+        },
+        {
+          "rank": 7,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 49.7329173,
+          "raw_time": 49.782
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.241
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.261
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.42
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.99
+        },
+        {
+          "rank": 5,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 31.022
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.603
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.587
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.2134583,
+          "raw_time": 28.241
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.231438299999997,
+          "raw_time": 30.261
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.3899796,
+          "raw_time": 30.42
+        },
+        {
+          "rank": 4,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 30.76693343594507,
+          "raw_time": 31.022
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 30.959709299999997,
+          "raw_time": 30.99
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.343446484784454,
+          "raw_time": 31.603
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 32.31904580723982,
+          "raw_time": 32.587
+        }
+      ]
+    },
+    "8": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 79.879
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 83.253
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.135
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 88.352
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.142
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.952
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 91.64
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 79.7999202,
+          "raw_time": 79.879
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 83.1705462,
+          "raw_time": 83.253
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 85.42618220936636,
+          "raw_time": 86.135
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 88.2641475,
+          "raw_time": 88.352
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 89.05365719999999,
+          "raw_time": 89.142
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 89.212047100704,
+          "raw_time": 89.952
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 90.88584904896862,
+          "raw_time": 91.64
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 9.592
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.611
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.636
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.785
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.032
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.099
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.595
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 9.5832072,
+          "raw_time": 9.592
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 10.524115289453142,
+          "raw_time": 10.611
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.626163199999999,
+          "raw_time": 10.636
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.7750142,
+          "raw_time": 10.785
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.00839418459897,
+          "raw_time": 11.099
+        },
+        {
+          "rank": 6,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.0214675,
+          "raw_time": 11.032
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.500012141436546,
+          "raw_time": 11.595
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 42.251
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 44.058
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.758
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 46.766
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.486
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.506
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 48.018
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 42.20954819999999,
+          "raw_time": 42.251
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 44.014741199999996,
+          "raw_time": 44.058
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 45.381683029961984,
+          "raw_time": 45.758
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 46.719733500000004,
+          "raw_time": 46.766
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 47.09575064102185,
+          "raw_time": 47.486
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 47.4592932,
+          "raw_time": 47.506
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 47.62307214122468,
+          "raw_time": 48.018
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.559
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.766
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.554
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.851
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.367
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.027
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.008763200000004,
+          "raw_time": 28.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.531240200000003,
+          "raw_time": 28.559
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 29.521375655044707,
+          "raw_time": 29.766
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.523945499999996,
+          "raw_time": 30.554
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 30.8209482,
+          "raw_time": 30.851
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.109489099232746,
+          "raw_time": 31.367
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.763756531400887,
+          "raw_time": 32.027
+        }
+      ]
+    },
+    "9": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 83.083
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 83.96600000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "lap_time": 85.185
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 87.357
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.904
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 90.053
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 91.215
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 83.0008161,
+          "raw_time": 83.083
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 83.8829331,
+          "raw_time": 83.96600000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 84.48410454707059,
+          "raw_time": 85.185
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 87.2702424,
+          "raw_time": 87.357
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 89.31231455165474,
+          "raw_time": 90.053
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 89.8149951,
+          "raw_time": 89.904
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 90.46444806074938,
+          "raw_time": 91.215
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 9.66
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.34
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.522
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.686
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.793
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.963
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.019
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 9.6512391,
+          "raw_time": 9.66
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 10.255446125629662,
+          "raw_time": 10.34
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.5123771,
+          "raw_time": 10.522
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.6762131,
+          "raw_time": 10.686
+        },
+        {
+          "rank": 5,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.7828064,
+          "raw_time": 10.793
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.873613308395164,
+          "raw_time": 10.963
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.92885462410195,
+          "raw_time": 11.019
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 43.697
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s2_time": 44.919
+        },
+        {
+          "rank": 3,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.325
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 46.122
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.593
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.812
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 48.544
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 43.654202100000006,
+          "raw_time": 43.697
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 44.549691293042386,
+          "raw_time": 44.919
+        },
+        {
+          "rank": 3,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.2805741,
+          "raw_time": 45.325
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 46.0764774,
+          "raw_time": 46.122
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 47.41916523800538,
+          "raw_time": 47.812
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 47.5463061,
+          "raw_time": 47.593
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 48.14483975690401,
+          "raw_time": 48.544
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.098
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.747
+        },
+        {
+          "rank": 3,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "s3_time": 29.926
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.442
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.278
+        },
+        {
+          "rank": 6,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.625
+        },
+        {
+          "rank": 7,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.652
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.0708011,
+          "raw_time": 28.098
+        },
+        {
+          "rank": 2,
+          "driver_name": "Farhan Siddiqi",
+          "license": "Bronze",
+          "vehicle": "Duqueine D08",
+          "value": 29.680157246510706,
+          "raw_time": 29.926
+        },
+        {
+          "rank": 3,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 29.7181521,
+          "raw_time": 29.747
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.412157399999998,
+          "raw_time": 30.442
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.021321182422454,
+          "raw_time": 31.278
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.391943797855582,
+          "raw_time": 31.652
+        },
+        {
+          "rank": 7,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 31.5942741,
+          "raw_time": 31.625
+        }
+      ]
+    },
+    "10": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 79.28399999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 82.049
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.747
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 88.193
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 88.875
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.743
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 79.205715,
+          "raw_time": 79.28399999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 81.96795000000002,
+          "raw_time": 82.049
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 86.66095229999999,
+          "raw_time": 86.747
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 88.105806,
+          "raw_time": 88.193
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 88.14411444804574,
+          "raw_time": 88.875
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 89.00466901965751,
+          "raw_time": 89.743
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 9.524
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.313
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.702
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.727
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.882
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.985
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 9.515474999999999,
+          "raw_time": 9.524
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.303686,
+          "raw_time": 10.313
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.692297,
+          "raw_time": 10.702
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.7169723,
+          "raw_time": 10.727
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.793081982804665,
+          "raw_time": 10.882
+        },
+        {
+          "rank": 6,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.895531316961051,
+          "raw_time": 10.985
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 41.86
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 43.276
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.91
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.006
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.127
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.813
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 41.819139,
+          "raw_time": 41.86
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 43.233723,
+          "raw_time": 43.276
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.8647893,
+          "raw_time": 45.91
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.739905325481566,
+          "raw_time": 47.127
+        },
+        {
+          "rank": 5,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 46.959993,
+          "raw_time": 47.006
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 47.41995865008017,
+          "raw_time": 47.813
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 27.9
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 28.46
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.11
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.485
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.763
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.048
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Oscar Tunjo",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 27.873099,
+          "raw_time": 27.9
+        },
+        {
+          "rank": 2,
+          "driver_name": "Valentino Catalano",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 28.432539000000002,
+          "raw_time": 28.46
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.080589299999996,
+          "raw_time": 30.11
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 30.455514,
+          "raw_time": 30.485
+        },
+        {
+          "rank": 5,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.510661335790083,
+          "raw_time": 30.763
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.793016857903567,
+          "raw_time": 31.048
+        }
+      ]
+    },
+    "11": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.786
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.646
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 86.7000132,
+          "raw_time": 86.786
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 88.9085669820994,
+          "raw_time": 89.646
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.517
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.678
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.507282199999999,
+          "raw_time": 10.517
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.590861080244283,
+          "raw_time": 10.678
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.784
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 46.924
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.7390152,
+          "raw_time": 45.784
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.538378658486614,
+          "raw_time": 46.924
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.485
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 32.044
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.4553142,
+          "raw_time": 30.485
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 31.78091406751807,
+          "raw_time": 32.044
+        }
+      ]
+    },
+    "12": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.25
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 89.283
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 88.51592718159104,
+          "raw_time": 89.25
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 89.1946161,
+          "raw_time": 89.283
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.947
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 11.018
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.857745066899499,
+          "raw_time": 10.947
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 11.0078811,
+          "raw_time": 11.018
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.1
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 47.819
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.713028491448284,
+          "raw_time": 47.1
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 47.772080100000004,
+          "raw_time": 47.819
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.446
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.203
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.416453100000002,
+          "raw_time": 30.446
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.946938800411523,
+          "raw_time": 31.203
+        }
+      ]
+    },
+    "13": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 86.801
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 88.861
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 89.354
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 89.473
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 86.08640023209537,
+          "raw_time": 86.801
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 88.13022973673704,
+          "raw_time": 88.861
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 89.2648458,
+          "raw_time": 89.354
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 89.38452600000001,
+          "raw_time": 89.473
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.553
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.574
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.18
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 11.675
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.487122451466371,
+          "raw_time": 10.574
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.543446,
+          "raw_time": 10.553
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 11.08892551018947,
+          "raw_time": 11.18
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 11.6635248,
+          "raw_time": 11.675
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 45.712
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 46.603
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 46.958
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.615
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 45.3357643061339,
+          "raw_time": 45.712
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 46.557396,
+          "raw_time": 46.603
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.5722970246836,
+          "raw_time": 46.958
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 47.5675848,
+          "raw_time": 47.615
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.064
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.515
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.723
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 32.317
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 30.034135799999998,
+          "raw_time": 30.064
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.263910180532488,
+          "raw_time": 30.515
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.470990732050918,
+          "raw_time": 30.723
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 32.285682,
+          "raw_time": 32.317
+        }
+      ]
+    },
+    "14": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 84.233
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 86.327
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 86.608
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 87.561
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 84.1490667,
+          "raw_time": 84.233
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 85.61640275429563,
+          "raw_time": 86.327
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 86.5224909,
+          "raw_time": 86.608
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 86.84103429172359,
+          "raw_time": 87.561
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.559
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.58
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.604
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.646
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.473138563648316,
+          "raw_time": 10.559
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.493172218536593,
+          "raw_time": 10.58
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.594494899999999,
+          "raw_time": 10.604
+        },
+        {
+          "rank": 4,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.6356537,
+          "raw_time": 10.646
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 44.319
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 45.441
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.691
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 46.429
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 44.27498070000001,
+          "raw_time": 44.319
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 45.06709514231043,
+          "raw_time": 45.441
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.64640790000001,
+          "raw_time": 45.691
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.04775246674253,
+          "raw_time": 46.429
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 29.268
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.306
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.313
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.573
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 29.239031699999998,
+          "raw_time": 29.268
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.05673045250471,
+          "raw_time": 30.306
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.283785899999998,
+          "raw_time": 30.313
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.322325144538407,
+          "raw_time": 30.573
+        }
+      ]
+    },
+    "15": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 82.815
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 87.167
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 87.488
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 88.525
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 82.7325846,
+          "raw_time": 82.815
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 86.76873461640896,
+          "raw_time": 87.488
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 87.0810318,
+          "raw_time": 87.167
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 87.79640160627198,
+          "raw_time": 88.525
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.458
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.481
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.561
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.664
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.395880062866299,
+          "raw_time": 10.481
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.447941600000002,
+          "raw_time": 10.458
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.5516378,
+          "raw_time": 10.561
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.576579662898185,
+          "raw_time": 10.664
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 43.377
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 46.21
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 46.426
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 47.281
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 43.334022600000004,
+          "raw_time": 43.377
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.04487634797143,
+          "raw_time": 46.426
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 46.164988799999996,
+          "raw_time": 46.21
+        },
+        {
+          "rank": 4,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 46.892042090821256,
+          "raw_time": 47.281
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.98
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.396
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.58
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.581
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 28.951419599999998,
+          "raw_time": 28.98
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.32857326462732,
+          "raw_time": 30.58
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Hirshberg",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.330358441795585,
+          "raw_time": 30.581
+        },
+        {
+          "rank": 4,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.366802800000002,
+          "raw_time": 30.396
+        }
+      ]
+    },
+    "16": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "lap_time": 85.98400000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 86.383
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 86.968
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 85.8993147,
+          "raw_time": 85.98400000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 86.25232253223442,
+          "raw_time": 86.968
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 86.2971165,
+          "raw_time": 86.383
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.162
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s1_time": 10.511
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.575
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.152337500000002,
+          "raw_time": 10.162
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.488411746087895,
+          "raw_time": 10.575
+        },
+        {
+          "rank": 3,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 10.5017877,
+          "raw_time": 10.511
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.828
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s2_time": 45.406
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 46.035
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 42.78567150000001,
+          "raw_time": 42.828
+        },
+        {
+          "rank": 2,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 45.3618927,
+          "raw_time": 45.406
+        },
+        {
+          "rank": 3,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 45.65640196085568,
+          "raw_time": 46.035
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "s3_time": 30.067
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 30.358
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 33.393
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Alexzander Kristiansson",
+          "license": "Silver",
+          "vehicle": "Duqueine D08",
+          "value": 30.0382317,
+          "raw_time": 30.067
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 30.108500590384317,
+          "raw_time": 30.358
+        },
+        {
+          "rank": 3,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 33.3601065,
+          "raw_time": 33.393
+        }
+      ]
+    },
+    "17": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 83.4
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 83.3171994,
+          "raw_time": 83.4
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 9.955
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 9.9456444,
+          "raw_time": 9.955
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 43.453
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 43.4101464,
+          "raw_time": 43.453
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 29.992
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 29.9626074,
+          "raw_time": 29.992
+        }
+      ]
+    },
+    "18": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 86.455
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 86.36924429999999,
+          "raw_time": 86.455
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.372
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.3623273,
+          "raw_time": 10.372
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 44.26
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 44.2164393,
+          "raw_time": 44.26
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 31.823
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 31.7918763,
+          "raw_time": 31.823
+        }
+      ]
+    },
+    "19": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 81.065
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 85.053
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 80.98473419999999,
+          "raw_time": 81.065
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 84.35279484869396,
+          "raw_time": 85.053
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.305
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.885
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.2954942,
+          "raw_time": 10.305
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.795561395538362,
+          "raw_time": 10.885
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.31
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 45.096
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 42.2684892,
+          "raw_time": 42.31
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 44.72483700855079,
+          "raw_time": 45.096
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.45
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 29.072
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 28.4223492,
+          "raw_time": 28.45
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 28.83279315064219,
+          "raw_time": 29.072
+        }
+      ]
+    },
+    "20": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 80.84700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 81.777
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 80.76705210000002,
+          "raw_time": 80.84700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 81.10387157896587,
+          "raw_time": 81.777
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 9.738
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 9.78
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 9.699760143753338,
+          "raw_time": 9.78
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 9.729161099999999,
+          "raw_time": 9.738
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.296
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.785
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 42.254603100000004,
+          "raw_time": 42.296
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 42.432967054030016,
+          "raw_time": 42.785
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.813
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 29.212
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 28.7850861,
+          "raw_time": 28.813
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 28.971739440238608,
+          "raw_time": 29.212
+        }
+      ]
+    },
+    "21": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 81.27199999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 81.747
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 81.07421780267084,
+          "raw_time": 81.747
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 81.191727,
+          "raw_time": 81.27199999999999
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.197
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 10.211
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 10.127310075552167,
+          "raw_time": 10.211
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 10.187801999999998,
+          "raw_time": 10.197
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.626
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 43.273
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 42.58437299999999,
+          "raw_time": 42.626
+        },
+        {
+          "rank": 2,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 42.91704759615715,
+          "raw_time": 43.273
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.263
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.449
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 28.030653543036323,
+          "raw_time": 28.263
+        },
+        {
+          "rank": 2,
+          "driver_name": "Lucas Fecury",
+          "license": "Silver",
+          "vehicle": "Ligier JS P320",
+          "value": 28.421550000000003,
+          "raw_time": 28.449
+        }
+      ]
+    },
+    "22": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 80.175
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 79.5152622522311,
+          "raw_time": 80.175
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 9.396
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 9.319120700876073,
+          "raw_time": 9.396
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 42.452
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 42.10290763092018,
+          "raw_time": 42.452
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.327
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 28.09422568552833,
+          "raw_time": 28.327
+        }
+      ]
+    },
+    "23": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "lap_time": 81.474
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 80.80366428516977,
+          "raw_time": 81.474
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s1_time": 9.917
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 9.835929491088015,
+          "raw_time": 9.917
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s2_time": 43.501
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 43.143368390489066,
+          "raw_time": 43.501
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "s3_time": 28.056
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Brian Thienes",
+          "license": "Bronze",
+          "vehicle": "Ligier JS P320",
+          "value": 27.825556521704847,
+          "raw_time": 28.056
+        }
+      ]
+    }
+  }
+}

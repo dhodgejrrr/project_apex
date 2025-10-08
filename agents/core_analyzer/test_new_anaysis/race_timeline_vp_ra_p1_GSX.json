@@ -1,0 +1,5787 @@
+{
+  "session_details": {
+    "session_name": "Practice 1",
+    "event_name": "28th Annual Motul Petit Le Mans",
+    "total_laps": 22
+  },
+  "timeline": {
+    "2": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 97.681
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 100.28399999999999
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 106.608
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 107.60300000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 112.518
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 97.4254085747463,
+          "raw_time": 97.681
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 100.1839158,
+          "raw_time": 100.28399999999999
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 106.3290320186307,
+          "raw_time": 106.608
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 107.32142647664179,
+          "raw_time": 107.60300000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 112.2235558848071,
+          "raw_time": 112.518
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.773
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.945
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 13.725
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 14.644
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 15.254
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.7604268,
+          "raw_time": 12.773
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.911301244065445,
+          "raw_time": 12.945
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 13.68925870863695,
+          "raw_time": 13.725
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 14.605852182920557,
+          "raw_time": 14.644
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 15.214254815470067,
+          "raw_time": 15.254
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 51.705
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 53.34
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 56.051
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 56.658
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 60.499
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 51.569802945080234,
+          "raw_time": 51.705
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 53.2868598,
+          "raw_time": 53.34
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 55.904422356654294,
+          "raw_time": 56.051
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 56.509832845109294,
+          "raw_time": 56.658
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 60.34077466744154,
+          "raw_time": 60.499
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 33.031
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 34.171
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 36.301
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 36.765
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 36.832
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.94470333814654,
+          "raw_time": 33.031
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 34.137028799999996,
+          "raw_time": 34.171
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 36.206140401157846,
+          "raw_time": 36.301
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 36.66892535444141,
+          "raw_time": 36.765
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 36.73574990588537,
+          "raw_time": 36.832
+        }
+      ]
+    },
+    "3": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 92.84700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 97.614
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 104.869
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 105.568
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 107.062
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 92.60416679526911,
+          "raw_time": 92.84700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 97.5166857,
+          "raw_time": 97.614
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 104.59468556331863,
+          "raw_time": 104.869
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 105.29185513733849,
+          "raw_time": 105.568
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 106.78194289640237,
+          "raw_time": 107.062
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.019
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.271
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 13.272
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 14.056
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 14.426
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.987825838364476,
+          "raw_time": 12.019
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.2590287,
+          "raw_time": 12.271
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 13.23754468850306,
+          "raw_time": 13.272
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 14.019491678533905,
+          "raw_time": 14.056
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 14.388522783522953,
+          "raw_time": 14.426
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 48.78
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 51.592
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 54.827
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 55.623
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 56.704
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 48.652562191073585,
+          "raw_time": 48.78
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 51.5407077,
+          "raw_time": 51.592
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 54.68372730423241,
+          "raw_time": 54.827
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 55.47764287064128,
+          "raw_time": 55.623
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 56.55581212602821,
+          "raw_time": 56.704
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.048
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.751
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 35.616
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 36.302
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 36.673
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.964377194649963,
+          "raw_time": 32.048
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.7175487,
+          "raw_time": 33.751
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 35.52303390438218,
+          "raw_time": 35.616
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 36.20723752065917,
+          "raw_time": 36.302
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 36.57726600701305,
+          "raw_time": 36.673
+        }
+      ]
+    },
+    "4": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 91.443
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 93.414
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 96.939
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 101.388
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 103.518
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 105.62
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 91.20394309717688,
+          "raw_time": 91.443
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 93.32078580000001,
+          "raw_time": 93.414
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 96.8424606,
+          "raw_time": 96.939
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 101.12290077046357,
+          "raw_time": 101.388
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 103.24732307756268,
+          "raw_time": 103.518
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 105.34381870644641,
+          "raw_time": 105.62
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.332
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.939
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.021
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.94
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 13.059
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 13.06
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.302724578859136,
+          "raw_time": 11.332
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.927260799999999,
+          "raw_time": 11.939
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.009378600000002,
+          "raw_time": 12.021
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.906513813514238,
+          "raw_time": 12.94
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 13.025202195929634,
+          "raw_time": 13.059
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 13.02619957729447,
+          "raw_time": 13.06
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.984
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.291
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 51.429
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 53.916
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 54.611
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 55.913
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 47.85874636280119,
+          "raw_time": 47.984
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.2419088,
+          "raw_time": 49.291
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 51.3779706,
+          "raw_time": 51.429
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 53.775212619003966,
+          "raw_time": 53.916
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 54.46839266756447,
+          "raw_time": 54.611
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 55.76698320457999,
+          "raw_time": 55.913
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.127
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 32.184
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.489
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 34.532
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 35.847
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 36.648
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.04327006060843,
+          "raw_time": 32.127
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 32.152015799999994,
+          "raw_time": 32.184
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.455910599999996,
+          "raw_time": 33.489
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 34.44197224303723,
+          "raw_time": 34.532
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 35.753528737795605,
+          "raw_time": 35.847
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 36.552431211028654,
+          "raw_time": 36.648
+        }
+      ]
+    },
+    "5": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 90.848
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 92.206
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 96.33
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 101.13900000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 101.503
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 103.419
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.75745169999999,
+          "raw_time": 90.848
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 91.96504481668268,
+          "raw_time": 92.206
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 96.23416950000001,
+          "raw_time": 96.33
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 100.87465254875609,
+          "raw_time": 101.13900000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 101.23769936555611,
+          "raw_time": 101.503
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 103.14868206058048,
+          "raw_time": 103.419
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.503
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.549
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.128
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.784
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 13.065
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 13.343
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.4917967,
+          "raw_time": 11.503
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.51925607316487,
+          "raw_time": 11.549
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.116371500000001,
+          "raw_time": 12.128
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.751022058736421,
+          "raw_time": 12.784
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 13.031286222255128,
+          "raw_time": 13.065
+        },
+        {
+          "rank": 6,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 13.308558241679332,
+          "raw_time": 13.343
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.813
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 48.758
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 50.825
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 53.348
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 54.084
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 55.17
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.765486700000004,
+          "raw_time": 47.813
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 48.63081927732017,
+          "raw_time": 48.758
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 50.7746745,
+          "raw_time": 50.825
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 53.20879974191403,
+          "raw_time": 53.348
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 53.942872426432785,
+          "raw_time": 54.084
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 55.02602858864388,
+          "raw_time": 55.17
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.532
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.899
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.377
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 34.076
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 35.007
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 35.184
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.5007677,
+          "raw_time": 31.532
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.81596684756247,
+          "raw_time": 31.899
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.344122500000005,
+          "raw_time": 33.377
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.987266078808844,
+          "raw_time": 34.076
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 34.91582812947047,
+          "raw_time": 35.007
+        },
+        {
+          "rank": 6,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 35.09236463104631,
+          "raw_time": 35.184
+        }
+      ]
+    },
+    "6": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 90.85
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 90.936
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 101.176
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 101.378
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 101.96600000000001
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 90.61269542410254,
+          "raw_time": 90.85
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.8454636,
+          "raw_time": 90.936
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 100.91165539739147,
+          "raw_time": 101.176
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 101.1131264330882,
+          "raw_time": 101.378
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 101.69958667561134,
+          "raw_time": 101.96600000000001
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.291
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.341
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.689
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.863
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 13.505
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.280108600000002,
+          "raw_time": 11.291
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.311900487415619,
+          "raw_time": 11.341
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.656370567213553,
+          "raw_time": 12.689
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.829914924694888,
+          "raw_time": 12.863
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 13.470233760919129,
+          "raw_time": 13.505
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.951
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.22
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 53.692
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 53.776
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 54.415
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 47.826032254034594,
+          "raw_time": 47.951
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.1721796,
+          "raw_time": 48.22
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 53.55199866955384,
+          "raw_time": 53.692
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 53.63577870420001,
+          "raw_time": 53.776
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 54.27310539632973,
+          "raw_time": 54.415
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.425
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.558
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.898
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 34.769
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 34.913
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.3939746,
+          "raw_time": 31.425
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.475959540290127,
+          "raw_time": 31.558
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.80983193400465,
+          "raw_time": 33.898
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 34.678551102776154,
+          "raw_time": 34.769
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 34.822174019312435,
+          "raw_time": 34.913
+        }
+      ]
+    },
+    "7": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 89.732
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 90.277
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 99.268
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 99.271
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 102.598
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 89.6427675,
+          "raw_time": 89.732
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 90.04129564018841,
+          "raw_time": 90.277
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 99.00875149142226,
+          "raw_time": 99.268
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 99.01174363551677,
+          "raw_time": 99.271
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 102.3300314363237,
+          "raw_time": 102.598
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.058
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.127
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.535
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.905
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.947
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.029741299303723,
+          "raw_time": 11.058
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.1163725,
+          "raw_time": 11.127
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.502873575165406,
+          "raw_time": 12.535
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.871904680154453,
+          "raw_time": 12.905
+        },
+        {
+          "rank": 5,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.913794697477533,
+          "raw_time": 12.947
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.272
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.803
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 52.786
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 53.051
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 55.039
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.2252275,
+          "raw_time": 47.272
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 47.67851955017546,
+          "raw_time": 47.803
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 52.64847089114958,
+          "raw_time": 52.786
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 52.912776952830924,
+          "raw_time": 53.051
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 54.89557110612343,
+          "raw_time": 55.039
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.333
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.416
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.27
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 33.58
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 35.024
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.3021665,
+          "raw_time": 31.333
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.334431124620004,
+          "raw_time": 31.416
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.18357617502459,
+          "raw_time": 33.27
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 33.49276439812351,
+          "raw_time": 33.58
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 34.93298308894564,
+          "raw_time": 35.024
+        }
+      ]
+    },
+    "8": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 89.755
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 90.105
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 97.289
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 98.057
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 89.5207623058809,
+          "raw_time": 89.755
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.01549440000001,
+          "raw_time": 90.105
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 97.03503350854977,
+          "raw_time": 97.289
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 97.80102239674325,
+          "raw_time": 98.057
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 10.907
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.252
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.214
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.357
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 10.879236451350081,
+          "raw_time": 10.907
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.2413474,
+          "raw_time": 11.252
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.18281389518977,
+          "raw_time": 12.214
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.325439430361213,
+          "raw_time": 12.357
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.435
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.545
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 51.828
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 52.411
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 47.31158294605257,
+          "raw_time": 47.435
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.4980544,
+          "raw_time": 47.545
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 51.693079281773876,
+          "raw_time": 51.828
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 52.274552617472835,
+          "raw_time": 52.411
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.308
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.413
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 33.104
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.432
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.2772914,
+          "raw_time": 31.308
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.331538718661985,
+          "raw_time": 31.413
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 33.01811060659841,
+          "raw_time": 33.104
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.34525169426438,
+          "raw_time": 33.432
+        }
+      ]
+    },
+    "9": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 89.56700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 91.257
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 96.3
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 97.73400000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 115.914
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 89.4781323,
+          "raw_time": 89.56700000000001
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 91.01892885399995,
+          "raw_time": 91.257
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 96.04872307686418,
+          "raw_time": 96.3
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 97.47896795403796,
+          "raw_time": 97.73400000000001
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 115.7982858,
+          "raw_time": 115.914
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.055
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.105
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.372
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.544
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.784
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.026948631482183,
+          "raw_time": 11.055
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.0945943,
+          "raw_time": 11.105
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.340499888970225,
+          "raw_time": 12.372
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.51204948372189,
+          "raw_time": 12.544
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.7714158,
+          "raw_time": 12.784
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.344
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 49.013
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 51.455
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 51.529
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 60.523
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.2973553,
+          "raw_time": 47.344
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 48.885550477899095,
+          "raw_time": 49.013
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 51.321155770826806,
+          "raw_time": 51.455
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 51.39496199182462,
+          "raw_time": 51.529
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 60.462676800000004,
+          "raw_time": 60.523
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.118
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.189
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 32.473
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 33.661
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 42.607
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.087581299999997,
+          "raw_time": 31.118
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.10822503107537,
+          "raw_time": 31.189
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 32.38886270352385,
+          "raw_time": 32.473
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 33.57375176494814,
+          "raw_time": 33.661
+        },
+        {
+          "rank": 5,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 42.5645928,
+          "raw_time": 42.607
+        }
+      ]
+    },
+    "10": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 90.389
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 96.39
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 97.122
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 108.205
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 90.15330156745942,
+          "raw_time": 90.389
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 96.2944092,
+          "raw_time": 96.39
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 97.0251777,
+          "raw_time": 97.122
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 107.9218500582726,
+          "raw_time": 108.205
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.042
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.106
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 13.32
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 13.612
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.014082411875808,
+          "raw_time": 11.042
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.0956932,
+          "raw_time": 11.106
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 13.3069797,
+          "raw_time": 13.32
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 13.576554614410567,
+          "raw_time": 13.612
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.825
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 50.164
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 51.07
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 56.931
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 47.700761154611286,
+          "raw_time": 47.825
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 50.1146352,
+          "raw_time": 50.164
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 51.019229700000004,
+          "raw_time": 51.07
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 56.78211795770932,
+          "raw_time": 56.931
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.522
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 32.732
+        },
+        {
+          "rank": 3,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 35.12
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 37.662
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.440452763701995,
+          "raw_time": 31.522
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 32.6995677,
+          "raw_time": 32.732
+        },
+        {
+          "rank": 3,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 35.085679199999994,
+          "raw_time": 35.12
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 37.56357643869864,
+          "raw_time": 37.662
+        }
+      ]
+    },
+    "11": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 89.196
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 93.842
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 94.86699999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 102.72800000000001
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 88.96352533734742,
+          "raw_time": 89.196
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 93.7490571,
+          "raw_time": 93.842
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 94.77253259999999,
+          "raw_time": 94.86699999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 102.45929206120636,
+          "raw_time": 102.72800000000001
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 10.986
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.157
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.874
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.921
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 10.958328793581517,
+          "raw_time": 10.986
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.146742099999999,
+          "raw_time": 11.157
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.862525600000001,
+          "raw_time": 11.874
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.887463829445881,
+          "raw_time": 12.921
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 47.044
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.542
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 50.704
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 53.298
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 46.92190604681143,
+          "raw_time": 47.044
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.493357100000004,
+          "raw_time": 49.542
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 50.6536956,
+          "raw_time": 50.704
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 53.1587311973993,
+          "raw_time": 53.298
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.166
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 32.289
+        },
+        {
+          "rank": 3,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 33.143
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 36.509
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.085484735957127,
+          "raw_time": 31.166
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 32.2571106,
+          "raw_time": 32.289
+        },
+        {
+          "rank": 3,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 33.1107561,
+          "raw_time": 33.143
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 36.41369546318007,
+          "raw_time": 36.509
+        }
+      ]
+    },
+    "12": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 88.548
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 88.876
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 93.34899999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 93.678
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 95.668
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 98.827
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 88.31732195107067,
+          "raw_time": 88.548
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 88.78812300000001,
+          "raw_time": 88.876
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 93.25615049999999,
+          "raw_time": 93.34899999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 93.43289097131074,
+          "raw_time": 93.678
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 95.41767988733292,
+          "raw_time": 95.668
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 98.56860709512047,
+          "raw_time": 98.827
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 10.845
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 10.881
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.721
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.724
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.193
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.399
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 10.835154,
+          "raw_time": 10.845
+        },
+        {
+          "rank": 2,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 10.8537034884103,
+          "raw_time": 10.881
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.690506453507084,
+          "raw_time": 11.721
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.712775500000001,
+          "raw_time": 11.724
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.161270457709328,
+          "raw_time": 12.193
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.366930495138359,
+          "raw_time": 12.399
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 46.8
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.118
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 49.704
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 49.935
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 50.961
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 52.537
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 46.6786447319281,
+          "raw_time": 46.8
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.071881,
+          "raw_time": 47.118
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 49.574042834044874,
+          "raw_time": 49.704
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 49.88556450000001,
+          "raw_time": 49.935
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 50.8277512096428,
+          "raw_time": 50.961
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 52.399823716896144,
+          "raw_time": 52.537
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 30.867
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 30.913
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.69
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 32.253
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 32.514
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 33.891
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Allen Patten",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 30.787367446007867,
+          "raw_time": 30.867
+        },
+        {
+          "rank": 2,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 30.883086000000002,
+          "raw_time": 30.913
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.6588095,
+          "raw_time": 31.69
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 32.168740636304705,
+          "raw_time": 32.253
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 32.42905717252671,
+          "raw_time": 32.514
+        },
+        {
+          "rank": 6,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 33.80265078817783,
+          "raw_time": 33.891
+        }
+      ]
+    },
+    "13": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 89.1
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 91.056
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 93.406
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 95.455
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 97.82300000000001
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 89.0119989,
+          "raw_time": 89.1
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 90.9655434,
+          "raw_time": 91.056
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 93.16170297821202,
+          "raw_time": 93.406
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 95.20533739475947,
+          "raw_time": 95.455
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 97.56733594296236,
+          "raw_time": 97.82300000000001
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 10.947
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.505
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.785
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.123
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.381
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 10.937151899999998,
+          "raw_time": 10.947
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.494094400000002,
+          "raw_time": 11.505
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.754438598993024,
+          "raw_time": 11.785
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.091553500307342,
+          "raw_time": 12.123
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.349077368707809,
+          "raw_time": 12.381
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 47.174
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 48.151
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 49.636
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.915
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 52.06
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 47.127924900000004,
+          "raw_time": 47.174
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 48.103448400000005,
+          "raw_time": 48.151
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 49.50632063937257,
+          "raw_time": 49.636
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.7845900401616,
+          "raw_time": 49.915
+        },
+        {
+          "rank": 5,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 51.92417254400621,
+          "raw_time": 52.06
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 30.979
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.4
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.985
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 33.382
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 33.417
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Justin Di Benedetto",
+          "license": "Silver",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 30.9491199,
+          "raw_time": 30.979
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.369199399999996,
+          "raw_time": 31.4
+        },
+        {
+          "rank": 3,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.901542168665337,
+          "raw_time": 31.985
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 33.29508341161316,
+          "raw_time": 33.382
+        },
+        {
+          "rank": 5,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 33.329792283109434,
+          "raw_time": 33.417
+        }
+      ]
+    },
+    "14": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.539
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 92.191
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 94.22399999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 96.316
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 90.4491603,
+          "raw_time": 90.539
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 91.94998435807366,
+          "raw_time": 92.191
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 93.97766067278374,
+          "raw_time": 94.22399999999999
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 96.0643819642921,
+          "raw_time": 96.316
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.24
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.713
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 12.152
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 12.947
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.2294593,
+          "raw_time": 11.24
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.68272687886137,
+          "raw_time": 11.713
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 12.120577298024049,
+          "raw_time": 12.152
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 12.91369495934105,
+          "raw_time": 12.947
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.859
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 49.05
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.722
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 50.619
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.81184030000001,
+          "raw_time": 47.859
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 48.92195489771558,
+          "raw_time": 49.05
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.59219517488488,
+          "raw_time": 49.722
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 50.48704573541507,
+          "raw_time": 50.619
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.428
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.44
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 32.35
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.75
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.34610048658858,
+          "raw_time": 31.428
+        },
+        {
+          "rank": 2,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.4092593,
+          "raw_time": 31.44
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 32.26568610496669,
+          "raw_time": 32.35
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.66483812717376,
+          "raw_time": 32.75
+        }
+      ]
+    },
+    "15": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 89.928
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 92.69800000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 93.838
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 95.279
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.8388712,
+          "raw_time": 89.928
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 92.45575644818163,
+          "raw_time": 92.69800000000001
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 93.59277120409382,
+          "raw_time": 93.838
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 95.03019722709439,
+          "raw_time": 95.279
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.136
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.301
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.985
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.992
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.1256632,
+          "raw_time": 11.136
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.271905494685726,
+          "raw_time": 11.301
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.954313824506011,
+          "raw_time": 11.985
+        },
+        {
+          "rank": 4,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.961096017786893,
+          "raw_time": 11.992
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.587
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 48.755
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.77
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 50.74
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.5402122,
+          "raw_time": 47.587
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 48.627827133225665,
+          "raw_time": 48.755
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.64016921853346,
+          "raw_time": 49.77
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 50.60782861869663,
+          "raw_time": 50.74
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.205
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 32.076
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.554
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 32.642
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.1745942,
+          "raw_time": 31.205
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.992503349138314,
+          "raw_time": 32.076
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.46945111780254,
+          "raw_time": 32.554
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 32.557021201635074,
+          "raw_time": 32.642
+        }
+      ]
+    },
+    "16": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 92.435
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 92.75
+        },
+        {
+          "rank": 3,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 93.863
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 93.929
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 92.19354488736644,
+          "raw_time": 92.435
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 92.50772001728954,
+          "raw_time": 92.75
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 93.68383212270328,
+          "raw_time": 93.929
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 93.7700361,
+          "raw_time": 93.863
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.058
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.625
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.791
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 12.094
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.0478411,
+          "raw_time": 11.058
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.595156795028833,
+          "raw_time": 11.625
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.760921577864455,
+          "raw_time": 11.791
+        },
+        {
+          "rank": 4,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 12.062928655136572,
+          "raw_time": 12.094
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.71
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 48.837
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.229
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 49.802
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.663189100000004,
+          "raw_time": 47.71
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 48.709712143278644,
+          "raw_time": 48.837
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.10068563829406,
+          "raw_time": 49.229
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 49.67238463661763,
+          "raw_time": 49.802
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.581
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.819
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.336
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 35.095
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.49889931168134,
+          "raw_time": 31.581
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.73627607651213,
+          "raw_time": 31.819
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.25212171840493,
+          "raw_time": 32.336
+        },
+        {
+          "rank": 4,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 35.0608041,
+          "raw_time": 35.095
+        }
+      ]
+    },
+    "17": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 89.723
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.664
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 92.054
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 93.64099999999999
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.634276,
+          "raw_time": 89.723
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 90.42728222837967,
+          "raw_time": 90.664
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 91.81364232550068,
+          "raw_time": 92.054
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 93.3966860277672,
+          "raw_time": 93.64099999999999
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.192
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.363
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.562
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.579
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.181807,
+          "raw_time": 11.192
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.333942615578477,
+          "raw_time": 11.363
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.532421507180695,
+          "raw_time": 11.562
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.549576466655862,
+          "raw_time": 11.579
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.495
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 48.078
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.871
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 49.905
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.44850399999999,
+          "raw_time": 47.495
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.95279942550516,
+          "raw_time": 48.078
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.74372284781953,
+          "raw_time": 48.871
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 49.77521465533215,
+          "raw_time": 49.905
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.223
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.621
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.157
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.005963,
+          "raw_time": 31.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.141936521206798,
+          "raw_time": 31.223
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.538894304411233,
+          "raw_time": 31.621
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.0736901922359,
+          "raw_time": 32.157
+        }
+      ]
+    },
+    "18": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 89.059
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.162
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 91.199
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 92.75399999999999
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 88.9710399,
+          "raw_time": 89.059
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.92669652136885,
+          "raw_time": 90.162
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.96098099670301,
+          "raw_time": 91.199
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 92.51210849529481,
+          "raw_time": 92.75399999999999
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 10.999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.197
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.395
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.584
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 10.9890999,
+          "raw_time": 10.999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.168477047152306,
+          "raw_time": 11.197
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.365958557389689,
+          "raw_time": 11.395
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.55466311161652,
+          "raw_time": 11.584
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.279
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.891
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.553
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 49.236
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.2328199,
+          "raw_time": 47.279
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.76638884841744,
+          "raw_time": 47.891
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.42665531193838,
+          "raw_time": 48.553
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 49.10806626039384,
+          "raw_time": 49.236
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 30.781
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.074
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.251
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.934
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Steven Clemons",
+          "license": "Silver",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 30.7513179,
+          "raw_time": 30.781
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 30.993426435982833,
+          "raw_time": 31.074
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.169962937558672,
+          "raw_time": 31.251
+        },
+        {
+          "rank": 4,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.851373886014127,
+          "raw_time": 31.934
+        }
+      ]
+    },
+    "19": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.181
+        },
+        {
+          "rank": 2,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 93.325
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 93.33500000000001
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.9457465054372,
+          "raw_time": 90.181
+        },
+        {
+          "rank": 2,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 93.08171299275223,
+          "raw_time": 93.325
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 93.09148733012763,
+          "raw_time": 93.33500000000001
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.087
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.45
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.451
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.058864835156912,
+          "raw_time": 11.087
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.420914270592112,
+          "raw_time": 11.45
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.422111128229915,
+          "raw_time": 11.451
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.978
+        },
+        {
+          "rank": 2,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 49.212
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 49.992
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.8532607652946,
+          "raw_time": 47.978
+        },
+        {
+          "rank": 2,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 49.084228845774284,
+          "raw_time": 49.212
+        },
+        {
+          "rank": 3,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 49.861986834072816,
+          "raw_time": 49.992
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.116
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.893
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 32.662
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.035416191442394,
+          "raw_time": 31.116
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.810381511919395,
+          "raw_time": 31.893
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 32.57756725775068,
+          "raw_time": 32.662
+        }
+      ]
+    },
+    "20": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.128
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 91.281
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "lap_time": 92.294
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.89298503123742,
+          "raw_time": 90.128
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 91.04296574489248,
+          "raw_time": 91.281
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 92.05351254374355,
+          "raw_time": 92.294
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.156
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.344
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s1_time": 11.578
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.127783887467029,
+          "raw_time": 11.156
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.315291584056057,
+          "raw_time": 11.344
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 11.548878299700476,
+          "raw_time": 11.578
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.929
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.673
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s2_time": 48.789
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.804488816554155,
+          "raw_time": 47.929
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.54654055199159,
+          "raw_time": 48.673
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 48.662436266585445,
+          "raw_time": 48.789
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.043
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.264
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "s3_time": 31.927
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 30.962707089945905,
+          "raw_time": 31.043
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.183128371574497,
+          "raw_time": 31.264
+        },
+        {
+          "rank": 3,
+          "driver_name": "Roland Krainz",
+          "license": "Bronze",
+          "vehicle": "BMW M4 GT4 EVO",
+          "value": 31.844591692733243,
+          "raw_time": 31.927
+        }
+      ]
+    },
+    "21": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.456
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 90.633
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 90.22022585703986,
+          "raw_time": 90.456
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.3967623586157,
+          "raw_time": 90.633
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 10.956
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.298
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 10.928407352636459,
+          "raw_time": 10.956
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.269511779410118,
+          "raw_time": 11.298
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 48.003
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.185
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.87839477568845,
+          "raw_time": 48.003
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.05991818408847,
+          "raw_time": 48.185
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.15
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.497
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 31.06952663411976,
+          "raw_time": 31.15
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 31.415617967717598,
+          "raw_time": 31.497
+        }
+      ]
+    },
+    "22": {
+      "by_raw_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "lap_time": 90.02799999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "lap_time": 90.595
+        }
+      ],
+      "by_weighted_lap_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 89.79344637102685,
+          "raw_time": 90.02799999999999
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 90.35896160488845,
+          "raw_time": 90.595
+        }
+      ],
+      "by_raw_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s1_time": 11.278
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s1_time": 11.34
+        }
+      ],
+      "by_weighted_s1_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 11.249663890249899,
+          "raw_time": 11.278
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 11.311501534869684,
+          "raw_time": 11.34
+        }
+      ],
+      "by_raw_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s2_time": 47.697
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s2_time": 48.219
+        }
+      ],
+      "by_weighted_s2_time": [
+        {
+          "rank": 1,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 47.57329581618534,
+          "raw_time": 47.697
+        },
+        {
+          "rank": 2,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 48.09392888862934,
+          "raw_time": 48.219
+        }
+      ],
+      "by_raw_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "s3_time": 31.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "s3_time": 31.053
+        }
+      ],
+      "by_weighted_s3_time": [
+        {
+          "rank": 1,
+          "driver_name": "Angus Rogers",
+          "license": "Bronze",
+          "vehicle": "Porsche 718 GT4 RS CS",
+          "value": 30.955924896665024,
+          "raw_time": 31.036
+        },
+        {
+          "rank": 2,
+          "driver_name": "Jon Brel",
+          "license": "Bronze",
+          "vehicle": "Toyota GR Supra GT4 EVO2",
+          "value": 30.972880379867224,
+          "raw_time": 31.053
+        }
+      ]
+    }
+  }
+}
